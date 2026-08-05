@@ -277,5 +277,94 @@ class IndexGenerationTests(unittest.TestCase):
         self.assertEqual(report["tags"], ["仓位变化"])
 
 
+class InboxImportTests(unittest.TestCase):
+    """验证待导入文件只在解析成功且目标无冲突时移动。"""
+
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.root = Path(self.temp.name)
+        data = self.root / "data"
+        data.mkdir(parents=True)
+        (data / "entities.json").write_text(
+            json.dumps(
+                {
+                    "schemaVersion": 1,
+                    "influencers": [],
+                    "stocks": [],
+                    "industries": [],
+                    "tags": [],
+                    "sources": [],
+                }
+            ),
+            encoding="utf-8",
+        )
+        (data / "report-overrides.json").write_text(
+            json.dumps({"schemaVersion": 1, "reports": {}}),
+            encoding="utf-8",
+        )
+        (self.root / "Inbox").mkdir()
+
+    def tearDown(self):
+        self.temp.cleanup()
+
+    def write_inbox(self, name: str, html: str) -> Path:
+        path = self.root / "Inbox" / name
+        path.write_text(html, encoding="utf-8")
+        return path
+
+    def test_import_moves_valid_html_to_year_directory(self):
+        source = self.write_inbox(
+            "20270105_日报.html",
+            "<title>2027-01-05 日报</title><h2>核心结论</h2><p>市场维持震荡。</p>",
+        )
+
+        result = module.import_inbox(self.root)
+
+        self.assertFalse(source.exists())
+        self.assertTrue((self.root / "Reports" / "2027" / source.name).exists())
+        self.assertEqual(len(result.imported), 1)
+        self.assertEqual(result.failed, [])
+
+    def test_invalid_file_remains_in_inbox(self):
+        source = self.write_inbox("no-date.html", "<title>无日期日报</title>")
+
+        result = module.import_inbox(self.root)
+
+        self.assertTrue(source.exists())
+        self.assertEqual(len(result.failed), 1)
+
+    def test_existing_destination_is_never_overwritten(self):
+        destination = self.root / "Reports" / "2027" / "20270105_日报.html"
+        destination.parent.mkdir(parents=True)
+        destination.write_text("<title>2027-01-05 已归档版本</title>", encoding="utf-8")
+        source = self.write_inbox(
+            destination.name,
+            "<title>2027-01-05 冲突版本</title><p>不同内容。</p>",
+        )
+
+        result = module.import_inbox(self.root)
+
+        self.assertTrue(source.exists())
+        self.assertEqual(len(result.failed), 1)
+        self.assertIn("冲突", result.failed[0])
+        self.assertIn("已归档版本", destination.read_text(encoding="utf-8"))
+
+
+class PowerShellEntrypointTests(unittest.TestCase):
+    """防止 Windows PowerShell 5 再次误读中文脚本编码。"""
+
+    def test_entrypoint_uses_utf8_bom(self):
+        script = PROJECT_ROOT / "import_reports.ps1"
+        self.assertTrue(
+            script.read_bytes().startswith(b"\xef\xbb\xbf"),
+            "含中文的 PowerShell 5 脚本必须使用 UTF-8 BOM",
+        )
+
+    def test_entrypoint_configures_utf8_console_output(self):
+        script = (PROJECT_ROOT / "import_reports.ps1").read_text(encoding="utf-8-sig")
+        self.assertIn('$env:PYTHONIOENCODING = "utf-8"', script)
+        self.assertIn("[Console]::OutputEncoding", script)
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -37,6 +37,17 @@ class ParsedDocument:
         self.text = ""
 
 
+class ImportResult:
+    """汇总本次导入结果，并保留失败时回滚所需的移动记录。"""
+
+    def __init__(self) -> None:
+        self.imported: list[str] = []
+        self.skipped: list[str] = []
+        self.failed: list[str] = []
+        self.warnings: list[str] = []
+        self.moves: list[tuple[Path, Path]] = []
+
+
 def normalize_text(value: str) -> str:
     """合并空白并清理首尾空格，避免格式缩进进入索引。"""
 
@@ -527,19 +538,81 @@ def write_index_atomic(payload: dict[str, Any], destination: Path) -> None:
     temporary.replace(destination)
 
 
+def import_inbox(root: Path) -> ImportResult:
+    """预检并归档 Inbox 中的 HTML；任何冲突都会阻止本批次移动。"""
+
+    root = root.resolve()
+    inbox = root / "Inbox"
+    result = ImportResult()
+    if not inbox.exists():
+        return result
+
+    entities = load_entities(root / "data" / "entities.json")
+    planned: list[tuple[Path, Path]] = []
+    for source in sorted(inbox.glob("*.html"), key=lambda path: path.name.casefold()):
+        try:
+            record = parse_report(source, root, entities, {})
+        except (OSError, UnicodeError, ReportParseError) as error:
+            result.failed.append(f"{source.name}：{error}")
+            continue
+        destination = root / "Reports" / str(record["year"]) / source.name
+        if destination.exists():
+            if hashlib.sha256(source.read_bytes()).digest() == hashlib.sha256(
+                destination.read_bytes()
+            ).digest():
+                result.skipped.append(f"{source.name}：归档中已存在相同文件")
+            else:
+                result.failed.append(f"{source.name}：目标文件冲突，未覆盖现有归档")
+            continue
+        planned.append((source, destination))
+
+    if result.failed:
+        return result
+
+    for source, destination in planned:
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        source.replace(destination)
+        result.imported.append(destination.relative_to(root).as_posix())
+        result.moves.append((source, destination))
+    return result
+
+
+def rollback_import(result: ImportResult) -> None:
+    """索引生成失败时把本批次文件放回 Inbox，保持可重试状态。"""
+
+    for source, destination in reversed(result.moves):
+        if destination.exists() and not source.exists():
+            source.parent.mkdir(parents=True, exist_ok=True)
+            destination.replace(source)
+
+
 def parse_arguments(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="自动生成投资日报静态索引")
     parser.add_argument("--root", type=Path, default=Path.cwd(), help="站点项目根目录")
     mode = parser.add_mutually_exclusive_group(required=True)
     mode.add_argument("--write", action="store_true", help="验证后写入 reports.json")
     mode.add_argument("--check", action="store_true", help="检查 reports.json 是否为最新")
+    parser.add_argument(
+        "--import-inbox",
+        action="store_true",
+        help="先把 Inbox 中通过预检的 HTML 归档到年份目录",
+    )
     return parser.parse_args(argv)
 
 
 def main(argv: list[str] | None = None) -> int:
     args = parse_arguments(argv)
     root = args.root.resolve()
+    import_result = ImportResult()
     try:
+        if args.import_inbox:
+            if not args.write:
+                raise ReportParseError("--import-inbox 必须与 --write 一起使用")
+            import_result = import_inbox(root)
+            if import_result.failed:
+                for failure in import_result.failed:
+                    print(f"导入失败：{failure}", file=sys.stderr)
+                return 1
         payload, warnings = build_index(
             root,
             root / "data" / "entities.json",
@@ -558,8 +631,16 @@ def main(argv: list[str] | None = None) -> int:
             print(f"索引已更新：{len(payload['reports'])} 份日报。")
         for warning in warnings:
             print(f"警告：{warning}", file=sys.stderr)
+        if args.import_inbox:
+            print(
+                f"Inbox 处理完成：导入 {len(import_result.imported)} 份，"
+                f"跳过 {len(import_result.skipped)} 份。"
+            )
+            for message in import_result.skipped:
+                print(f"跳过：{message}", file=sys.stderr)
         return 0
     except (OSError, ValueError, json.JSONDecodeError) as error:
+        rollback_import(import_result)
         print(f"索引生成失败：{error}", file=sys.stderr)
         return 1
 

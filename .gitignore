@@ -1,1 +1,3 @@
 .worktrees/
+Inbox/*.html
+!Inbox/README.md
