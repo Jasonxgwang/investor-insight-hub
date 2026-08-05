@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { access, readFile } from "node:fs/promises";
 import {
   calculateStats,
   createSearchParams,
@@ -159,4 +159,24 @@ test("索引加载器会把网络失败和错误结构转换为明确错误", as
 
   await assert.rejects(loadReports("./reports.json", failedRequest), /无法读取日报索引/);
   await assert.rejects(loadReports("./reports.json", invalidPayload), /日报索引格式无效/);
+});
+
+test("首批索引包含三条唯一、有效且可访问的日报", async () => {
+  const indexUrl = new URL("../reports.json", import.meta.url);
+  const indexText = await readFile(indexUrl, "utf8").catch(() => "");
+  assert.notEqual(indexText, "", "reports.json 必须存在且可读取");
+
+  const payload = JSON.parse(indexText);
+  const normalized = payload.reports.map(normalizeReport).filter(Boolean);
+  assert.equal(payload.schemaVersion, 1);
+  assert.equal(normalized.length, 3);
+  assert.equal(new Set(normalized.map((report) => report.id)).size, 3);
+  assert.deepEqual(
+    normalized.map((report) => report.date).sort(),
+    ["2026-07-27", "2026-07-29", "2026-07-30"],
+  );
+
+  for (const report of normalized) {
+    await access(new URL(`../${report.file}`, import.meta.url));
+  }
 });

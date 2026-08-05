@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>投资观点与交易动作汇总｜2026-07-27 23:33</title>
+<style>
+:root {
+  --bg:#f4f7fb; --card:#fff; --text:#172033; --muted:#667085; --line:#e5eaf1;
+  --blue:#1d4ed8; --green:#067647; --greenbg:#ecfdf3; --red:#b42318; --redbg:#fff1f0;
+  --orange:#b54708; --orangebg:#fff7ed; --purple:#6941c6; --purplebg:#f4f3ff;
+  --cyan:#0e7490; --cyanbg:#ecfeff; --shadow:0 8px 26px rgba(16,24,40,.07);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Microsoft YaHei","PingFang SC",Arial,sans-serif;line-height:1.68}
+.container{max-width:1240px;margin:auto;padding:28px 22px 56px}
+.hero{background:linear-gradient(135deg,#172554 0%,#1d4ed8 58%,#0f766e 100%);color:#fff;border-radius:20px;padding:30px;box-shadow:var(--shadow)}
+.hero h1{margin:0 0 8px;font-size:30px}
+.hero p{margin:5px 0;opacity:.93}
+.hero .small{font-size:13px;opacity:.8}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:18px 0}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:15px;padding:17px 18px;box-shadow:var(--shadow)}
+.kpi b{display:block;font-size:27px;line-height:1.15}
+.kpi span{color:var(--muted);font-size:13px}
+.executive{background:#fff;border-left:5px solid var(--blue);border-radius:13px;padding:18px 20px;box-shadow:var(--shadow);margin-bottom:18px}
+.executive strong{color:#1d4ed8}
+.toolbar{position:sticky;top:0;z-index:10;background:rgba(244,247,251,.94);backdrop-filter:blur(8px);padding:11px 0;display:flex;gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--line)}
+.toolbar button{border:1px solid var(--line);background:#fff;padding:8px 14px;border-radius:999px;cursor:pointer;color:var(--text)}
+.toolbar button.active{background:#1e3a8a;color:#fff;border-color:#1e3a8a}
+section{margin-top:27px}
+h2{font-size:22px;margin:0 0 6px}
+.sub{color:var(--muted);font-size:14px;margin:0 0 13px}
+.table-wrap{background:#fff;border:1px solid var(--line);border-radius:15px;overflow:auto;box-shadow:var(--shadow)}
+table{width:100%;border-collapse:collapse;min-width:980px}
+th{background:#eef3f9;color:#344054;text-align:left;font-size:13px;padding:12px;position:sticky;top:0}
+td{padding:13px 12px;border-top:1px solid var(--line);font-size:14px;vertical-align:top}
+tr:hover td{background:#fafcff}
+.nowrap{white-space:nowrap}
+.badge,.pill{display:inline-block;border-radius:999px;padding:3px 9px;font-size:12px;font-weight:700;white-space:nowrap}
+.buy{color:var(--green);background:var(--greenbg)} .sell{color:var(--red);background:var(--redbg)}
+.reduce{color:var(--orange);background:var(--orangebg)} .intent{color:var(--purple);background:var(--purplebg)}
+.hold{color:#175cd3;background:#eff8ff} .cash{color:var(--cyan);background:var(--cyanbg)}
+.confidence,.limit{margin-top:6px;color:var(--muted);font-size:13px}
+.sources a{display:inline-block;text-decoration:none;background:#edf4ff;color:#2457a6;border-radius:999px;padding:2px 8px;font-size:12px;margin:2px 4px 2px 0}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.view-card{background:#fff;border:1px solid var(--line);border-radius:15px;padding:18px;box-shadow:var(--shadow)}
+.view-card.bull{border-top:4px solid var(--green)} .view-card.bear{border-top:4px solid var(--red)}
+.bull-pill{color:var(--green);background:var(--greenbg)} .bear-pill{color:var(--red);background:var(--redbg)}
+.card-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+.card-head h3{margin:8px 0 0;font-size:18px}
+.card-head .meta{font-size:12px;color:var(--muted);text-align:right;white-space:nowrap}
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.box{background:#fff;border:1px solid var(--line);border-radius:15px;padding:18px;box-shadow:var(--shadow)}
+.box h3{margin:0 0 10px}
+.timeline{list-style:none;margin:0;padding:0}
+.timeline li{display:grid;grid-template-columns:110px 1fr;gap:12px;padding:10px 0;border-top:1px solid var(--line)}
+.timeline li:first-child{border-top:0}
+.timeline time{font-weight:700;color:#1d4ed8}
+.notice{background:#fffbeb;border:1px solid #fde68a;border-radius:13px;padding:14px 16px;color:#713f12}
+.footer{margin-top:30px;border-top:1px solid var(--line);padding-top:16px;color:var(--muted);font-size:12px}
+.hidden{display:none!important}
+@media(max-width:860px){
+  .container{padding:16px 12px 40px} .hero h1{font-size:24px}
+  .kpis{grid-template-columns:repeat(2,1fr)} .cards,.compare{grid-template-columns:1fr}
+  .timeline li{grid-template-columns:88px 1fr}
+}
+@media print{
+  .toolbar{display:none} body{background:#fff} .hero,.kpi,.view-card,.box,.table-wrap{box-shadow:none}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<header class="hero">
+  <h1>近24小时投资观点与交易动作汇总</h1>
+  <p>优先提取明确买入、卖出、清仓、减仓、持仓、融资计划，以及主要看多和看空方向。</p>
+  <p class="small">生成文件：2026-07-27 23:33 ｜ 帖文范围：2026-07-27 05:35:34—2026-07-27 23:20:00 ｜ 144条帖文，15位有帖文作者</p>
+</header>
+
+<div class="kpis">
+  <div class="kpi"><b>9</b><span>交易动作或仓位信息</span></div>
+  <div class="kpi"><b>8</b><span>主要看多方向</span></div>
+  <div class="kpi"><b>5</b><span>主要看空/谨慎方向</span></div>
+  <div class="kpi"><b>2</b><span>核心多空冲突</span></div>
+</div>
+
+<div class="executive">
+  <strong>核心结论：</strong>
+  最强看多集中在<strong>神火股份/电解铝</strong>与<strong>紫金矿业</strong>；最强看空集中在<strong>长鑫科技及高估值半导体硬件</strong>。
+  长鑫当天同时出现“明确买入继续持有”和“开盘/盘中清仓”，是分歧最大的标的。
+  锂资源股则应区分时间维度：<strong>短期仍偏空、年底前后才可能反转；面向明年则存在条件性估值回归机会</strong>。
+</div>
+
+<nav class="toolbar">
+  <button class="active" onclick="filterSections('all',this)">全部</button>
+  <button onclick="filterSections('action',this)">交易动作</button>
+  <button onclick="filterSections('bull',this)">看多</button>
+  <button onclick="filterSections('bear',this)">看空/谨慎</button>
+</nav>
+
+<section data-section="action">
+  <h2>一、明确交易动作与仓位变化</h2>
+  <p class="sub">已成交、拟交易和仅披露持仓分别标注；对未直接写明标的的帖子保留语境判断说明。</p>
+  <div class="table-wrap">
+    <table>
+      <thead><tr><th>标的</th><th>动作</th><th>作者</th><th>时间</th><th>详细说明</th><th>原帖</th></tr></thead>
+      <tbody><tr data-filter="action">
+        <td><strong>长鑫科技（688825）</strong></td>
+        <td><span class="badge buy">买入并继续持有</span></td>
+        <td>飞翔芸</td>
+        <td class="nowrap">07-27 11:35—11:49</td>
+        <td>明确称“破例买入长鑫科技”；随后回复仍在持有，并称另有一笔38.02元委托未成交；认为当日换手达到50%以上会更稳。<div class="confidence">已执行</div></td>
+        <td class="sources"><a href="https://xueqiu.com/9957341637/402232999" target="_blank" rel="noopener">买入</a> <a href="https://xueqiu.com/9957341637/402233462" target="_blank" rel="noopener">未成交单</a> <a href="https://xueqiu.com/9957341637/402233526" target="_blank" rel="noopener">持有</a> <a href="https://xueqiu.com/9957341637/402235940" target="_blank" rel="noopener">换手判断</a></td>
+    </tr>
+<tr data-filter="action">
+        <td><strong>长鑫科技新股筹码</strong></td>
+        <td><span class="badge sell">集合竞价全部出清</span></td>
+        <td>挖地瓜的超级鹿鼎公</td>
+        <td class="nowrap">07-27 09:25；11:44</td>
+        <td>称“全部集合竞价出清”，并说明自己一贯在新股开盘卖出，之后的涨幅不属于自己的收益范围。<div class="confidence">已执行；标的由当日新股语境确认</div></td>
+        <td class="sources"><a href="https://weibo.com/3962719063/RaAa0kfXW" target="_blank" rel="noopener">出清</a> <a href="https://weibo.com/3962719063/RaB4t23lI" target="_blank" rel="noopener">解释</a></td>
+    </tr>
+<tr data-filter="action">
+        <td><strong>长鑫科技（结合当日语境）</strong></td>
+        <td><span class="badge sell">52.54元清仓</span></td>
+        <td>闯关东了吧</td>
+        <td class="nowrap">07-27 13:23</td>
+        <td>上午曾询问集合竞价卖单问题，下午称重新发起后在52.54元清仓。该条未直接写出证券名称，但与当日长鑫交易语境高度一致。<div class="confidence">已执行；标的为高概率语境判断</div></td>
+        <td class="sources"><a href="https://xueqiu.com/9618213450/402213127" target="_blank" rel="noopener">卖单问题</a> <a href="https://xueqiu.com/9618213450/402248944" target="_blank" rel="noopener">清仓</a></td>
+    </tr>
+<tr data-filter="action">
+        <td><strong>神火股份</strong></td>
+        <td><span class="badge intent">拟买入；前低附近拟融资</span></td>
+        <td>斯托伯的天空</td>
+        <td class="nowrap">07-27 17:37</td>
+        <td>明确表示“明天你们砸我就买”，若跌至上一低价附近则准备使用融资；同时认为神火一千多亿元市值合理。<div class="confidence">明确交易计划，尚未成交</div></td>
+        <td class="sources"><a href="https://xueqiu.com/9493911686/402295243" target="_blank" rel="noopener">估值</a> <a href="https://xueqiu.com/9493911686/402295669" target="_blank" rel="noopener">买入计划</a></td>
+    </tr>
+<tr data-filter="action">
+        <td><strong>宝丰能源</strong></td>
+        <td><span class="badge reduce">减仓，未清仓</span></td>
+        <td>挖地瓜的超级鹿鼎公</td>
+        <td class="nowrap">07-27 20:28确认</td>
+        <td>回应“7月20日是否卖出宝丰”时明确表示：只是减仓，没有清仓。<div class="confidence">历史动作确认；实际减仓日指向07-20</div></td>
+        <td class="sources"><a href="https://weibo.com/3962719063/RaEv01kso" target="_blank" rel="noopener">确认</a></td>
+    </tr>
+<tr data-filter="action">
+        <td><strong>中国海洋石油H</strong></td>
+        <td><span class="badge hold">小仓位持有</span></td>
+        <td>挖地瓜的超级鹿鼎公</td>
+        <td class="nowrap">07-27 09:13</td>
+        <td>称海油H上涨很强，但自己“无所谓，主要是仓位不多”，未披露当天加减仓。<div class="confidence">仓位披露</div></td>
+        <td class="sources"><a href="https://weibo.com/3962719063/RaA50Cti3" target="_blank" rel="noopener">仓位</a></td>
+    </tr>
+<tr data-filter="action">
+        <td><strong>胜宏科技／飞龙股份</strong></td>
+        <td><span class="badge hold">继续持有并坚决看多</span></td>
+        <td>老奈</td>
+        <td class="nowrap">07-27 17:28</td>
+        <td>披露PCB持仓亏损18%、液冷持仓盈利8%，两类合计亏损约5%—6%，仍可接受，未表示减仓。<div class="confidence">持仓与方向均明确</div></td>
+        <td class="sources"><a href="https://xueqiu.com/4086512744/402294556" target="_blank" rel="noopener">持仓</a></td>
+    </tr>
+<tr data-filter="action">
+        <td><strong>阿斯麦（ASML）</strong></td>
+        <td><span class="badge hold">继续持有</span></td>
+        <td>天地侠影</td>
+        <td class="nowrap">07-27 21:42—22:58</td>
+        <td>明确称自己持有阿斯麦已两年，但指出阿斯麦和台积电在其半导体持仓中表现最差；未披露卖出动作。<div class="confidence">持仓明确，态度偏谨慎</div></td>
+        <td class="sources"><a href="https://xueqiu.com/8601813520/402321653" target="_blank" rel="noopener">持仓表现</a> <a href="https://xueqiu.com/8601813520/402332299" target="_blank" rel="noopener">确认持有</a></td>
+    </tr>
+<tr data-filter="action">
+        <td><strong>长鑫卖出后的资金</strong></td>
+        <td><span class="badge cash">可继续持有现金</span></td>
+        <td>挖地瓜的超级鹿鼎公</td>
+        <td class="nowrap">07-27 12:32</td>
+        <td>被问及长鑫卖出资金如何分配时，明确表示现金也是一种选择，不必立即全部换成股票。<div class="confidence">资产配置态度</div></td>
+        <td class="sources"><a href="https://weibo.com/3962719063/RaBnVzTLS" target="_blank" rel="noopener">现金</a></td>
+    </tr></tbody>
+    </table>
+  </div>
+</section>
+
+<section data-section="bull">
+  <h2>二、主要看多标的与行业</h2>
+  <div class="cards"><article class="view-card bull" data-filter="bull">
+          <div class="card-head">
+            <div>
+              <span class="pill bull-pill">看多 · 强看多</span>
+              <h3>神火股份／云铝股份／电解铝</h3>
+            </div>
+            <div class="meta">斯托伯的天空；挖地瓜的超级鹿鼎公<br>09:01—21:01</div>
+          </div>
+          <p>斯托伯认为神火、云铝被A股给予了不合理的低估值，神火一千多亿元市值合理，并给出逢跌买入和前低融资计划。挖地瓜则连续强调电解铝现货社会库存下降、2.3万元/吨价格中枢半年内合理，并转发LME铝库存降至本世纪最低。</p>
+          <div class="limit"><strong>边界/风险：</strong>挖地瓜同时预计神火大概率没有中期分红；闯关东认为这本就是明牌预期，不应视作新增利空。</div>
+          <div class="sources"><a href="https://xueqiu.com/9493911686/402295669" target="_blank" rel="noopener">神火</a> <a href="https://weibo.com/3962719063/RaA0t2vlE" target="_blank" rel="noopener">社库</a> <a href="https://weibo.com/3962719063/RaA1sDWMg" target="_blank" rel="noopener">铝价</a> <a href="https://weibo.com/3962719063/RaEwYzwW4" target="_blank" rel="noopener">筹码</a> <a href="https://weibo.com/3962719063/RaEIGAX1R" target="_blank" rel="noopener">LME库存</a></div>
+        </article>
+<article class="view-card bull" data-filter="bull">
+          <div class="card-head">
+            <div>
+              <span class="pill bull-pill">看多 · 明确看多</span>
+              <h3>紫金矿业</h3>
+            </div>
+            <div class="meta">飞翔芸；斯托伯的天空<br>16:08；21:59—22:01</div>
+          </div>
+          <p>飞翔芸认为紫金连续站上年线，30元附近及30.2—30.8元缺口形成支撑，今年最坏阶段大概率已过去，将先于大盘走出新趋势。斯托伯则从海外可比估值角度认为紫金在十几倍估值时明显便宜，且仍处高速成长阶段。</p>
+          <div class="limit"><strong>边界/风险：</strong>飞翔芸主要依据技术位置；斯托伯主要依据跨市场估值差异。</div>
+          <div class="sources"><a href="https://xueqiu.com/9957341637/402283143" target="_blank" rel="noopener">技术判断</a> <a href="https://xueqiu.com/9493911686/402323750" target="_blank" rel="noopener">估值比较</a> <a href="https://xueqiu.com/9493911686/402324145" target="_blank" rel="noopener">便宜判断</a></div>
+        </article>
+<article class="view-card bull" data-filter="bull">
+          <div class="card-head">
+            <div>
+              <span class="pill bull-pill">看多 · 相对看多</span>
+              <h3>腾讯控股／苹果／谷歌</h3>
+            </div>
+            <div class="meta">天地侠影；斯托伯的天空<br>21:57—22:42</div>
+          </div>
+          <p>天地侠影表示长鑫与腾讯二选一会选腾讯，并认为十年后苹果大概率仍在全球前五。斯托伯认为AI并非必然利空腾讯，长期话语权仍在掌握终端设备和用户信息的苹果、谷歌、腾讯这类平台企业。</p>
+          <div class="limit"><strong>边界/风险：</strong>属于相对偏好和长期商业模式判断，没有披露当天买入。</div>
+          <div class="sources"><a href="https://xueqiu.com/8601813520/402323549" target="_blank" rel="noopener">苹果</a> <a href="https://xueqiu.com/9493911686/402324671" target="_blank" rel="noopener">平台逻辑</a> <a href="https://xueqiu.com/8601813520/402330081" target="_blank" rel="noopener">腾讯优先</a></div>
+        </article>
+<article class="view-card bull" data-filter="bull">
+          <div class="card-head">
+            <div>
+              <span class="pill bull-pill">看多 · 坚决看多</span>
+              <h3>胜宏科技／飞龙股份（PCB、液冷）</h3>
+            </div>
+            <div class="meta">老奈<br>17:28</div>
+          </div>
+          <p>明确表示继续坚决看多PCB和液冷，并披露相关持仓的盈亏情况。</p>
+          <div class="limit"><strong>边界/风险：</strong>方向明确，但组合当前仍整体亏损约5%—6%。</div>
+          <div class="sources"><a href="https://xueqiu.com/4086512744/402294556" target="_blank" rel="noopener">原帖</a></div>
+        </article>
+<article class="view-card bull" data-filter="bull">
+          <div class="card-head">
+            <div>
+              <span class="pill bull-pill">看多 · 相对看多</span>
+              <h3>赛轮轮胎</h3>
+            </div>
+            <div class="meta">伊夫圣洛朗<br>16:20</div>
+          </div>
+          <p>通过赛轮、中策、森麒麟近几周走势对比，认为赛轮已体现出龙头地位和成长前景。</p>
+          <div class="limit"><strong>边界/风险：</strong>属于行业内部相对评价，未见明确买入动作。</div>
+          <div class="sources"><a href="https://xueqiu.com/1066188300/402285018" target="_blank" rel="noopener">原帖</a></div>
+        </article>
+<article class="view-card bull" data-filter="bull">
+          <div class="card-head">
+            <div>
+              <span class="pill bull-pill">看多 · 偏多但带批评</span>
+              <h3>铜陵有色／招金矿业</h3>
+            </div>
+            <div class="meta">飞翔芸<br>17:47</div>
+          </div>
+          <p>判断铜陵有色主力近期在6元附近收集筹码，寻找机会后可能快速拉升；对招金矿业则认可其扩产前景。</p>
+          <div class="limit"><strong>边界/风险：</strong>同时强烈批评两家公司或控盘风格，治理和交易体验风险被其明确指出。</div>
+          <div class="sources"><a href="https://xueqiu.com/9957341637/402296923" target="_blank" rel="noopener">原帖</a></div>
+        </article>
+<article class="view-card bull" data-filter="bull">
+          <div class="card-head">
+            <div>
+              <span class="pill bull-pill">看多 · 中期条件性看多</span>
+              <h3>赣锋锂业／天齐锂业／中矿资源</h3>
+            </div>
+            <div class="meta">雪月霜<br>19:10—19:18</div>
+          </div>
+          <p>认为当前锂资源股大致按碳酸锂8万—10万元定价，只要明年价格不跌至6万—7万元，估值会有回归机会。</p>
+          <div class="limit"><strong>边界/风险：</strong>这是面向明年的条件性判断，并不支持短期立即反转；其本人还强调不要重仓、要考虑极端需求下滑风险。</div>
+          <div class="sources"><a href="https://xueqiu.com/1505944393/402306351" target="_blank" rel="noopener">估值</a> <a href="https://xueqiu.com/1505944393/402306939" target="_blank" rel="noopener">条件</a></div>
+        </article>
+<article class="view-card bull" data-filter="bull">
+          <div class="card-head">
+            <div>
+              <span class="pill bull-pill">看多 · 基本面偏正面</span>
+              <h3>煤炭行业／新增产能煤企</h3>
+            </div>
+            <div class="meta">闯关东了吧；挖地瓜的超级鹿鼎公<br>11:56—20:28</div>
+          </div>
+          <p>两人均关注到6月煤炭行业利润同比大增；闯关东结合产量下降与利润上升，认可“对有新增产能煤企更利好”的判断。</p>
+          <div class="limit"><strong>边界/风险：</strong>没有明确点名推荐某只煤炭股，也没有披露买入动作。</div>
+          <div class="sources"><a href="https://weibo.com/3962719063/RaB9m2yyn" target="_blank" rel="noopener">行业利润</a> <a href="https://xueqiu.com/9618213450/402281315" target="_blank" rel="noopener">产量利润</a> <a href="https://xueqiu.com/9618213450/402282267" target="_blank" rel="noopener">新增产能</a></div>
+        </article></div>
+</section>
+
+<section data-section="bear">
+  <h2>三、主要看空或谨慎观点</h2>
+  <div class="cards"><article class="view-card bear" data-filter="bear">
+          <div class="card-head">
+            <div>
+              <span class="pill bear-pill">看空/谨慎 · 强烈看空／高风险警示</span>
+              <h3>长鑫科技</h3>
+            </div>
+            <div class="meta">天地侠影；雪月霜；斯托伯的天空<br>11:39—22:42</div>
+          </div>
+          <p>天地侠影表示长鑫与腾讯二选一肯定选腾讯，甚至认为长鑫未来可能跌破8.66元发行价。雪月霜认为上市首日预期一次性拉得过高，机构可能向散户派发，并指出存储是周期行业，周期顶部利润不应给予30—40倍估值。斯托伯以海外IPO作为参照，质疑A股科技股的极端估值溢价。</p>
+          <div class="limit"><strong>边界/风险：</strong>与飞翔芸当日明确买入形成最鲜明的多空冲突。</div>
+          <div class="sources"> <a href="https://xueqiu.com/9493911686/402325876" target="_blank" rel="noopener">IPO比较</a> <a href="https://xueqiu.com/8601813520/402329520" target="_blank" rel="noopener">行业估值</a> <a href="https://xueqiu.com/8601813520/402330081" target="_blank" rel="noopener">跌破发行价判断</a></div>
+        </article>
+<article class="view-card bear" data-filter="bear">
+          <div class="card-head">
+            <div>
+              <span class="pill bear-pill">看空/谨慎 · 明显谨慎</span>
+              <h3>全球半导体／AI硬件上游</h3>
+            </div>
+            <div class="meta">天地侠影；斯托伯的天空<br>18:19—23:14</div>
+          </div>
+          <p>天地侠影认为全球半导体行业总市值过大、故事开始难以延续，流水线产品长期高毛利率难维持；芯片高潮更多依赖ASML供给瓶颈和对华出口限制，而非AI需求无止境。斯托伯认为AI产业链边际走弱，资本开支增加对市场刺激越来越小，一旦硅谷和华尔街削减投入，上游配件厂将面临降价或砍单。</p>
+          <div class="limit"><strong>边界/风险：</strong>斯托伯对晚间硬件股暴跌原因强调“传言未实锤”；并非否认AI长期增长的所有可能。</div>
+          <div class="sources"><a href="https://xueqiu.com/8601813520/402301250" target="_blank" rel="noopener">供给瓶颈</a> <a href="https://xueqiu.com/9493911686/402322005" target="_blank" rel="noopener">资本回报</a> <a href="https://xueqiu.com/9493911686/402323055" target="_blank" rel="noopener">削减资本开支</a> <a href="https://xueqiu.com/8601813520/402329520" target="_blank" rel="noopener">市值过大</a> <a href="https://xueqiu.com/8601813520/402334091" target="_blank" rel="noopener">毛利率</a></div>
+        </article>
+<article class="view-card bear" data-filter="bear">
+          <div class="card-head">
+            <div>
+              <span class="pill bear-pill">看空/谨慎 · 短期偏空／底部震荡</span>
+              <h3>锂资源股（短期）</h3>
+            </div>
+            <div class="meta">雪月霜<br>20:29—20:53</div>
+          </div>
+          <p>认为碳酸锂短期不具备反转条件，更可能继续底部震荡，最早反转时间在年底；机械类比紫金的回撤周期，至少要到8月以后才可能出现反弹。</p>
+          <div class="limit"><strong>边界/风险：</strong>不是长期彻底看空，而是强调时间、资金面和周期股必然回撤；与其明年估值回归判断并不矛盾。</div>
+          <div class="sources"><a href="https://xueqiu.com/1505944393/402313488" target="_blank" rel="noopener">反弹时间</a> <a href="https://xueqiu.com/1505944393/402314507" target="_blank" rel="noopener">短期判断</a> <a href="https://xueqiu.com/1505944393/402315608" target="_blank" rel="noopener">外部环境</a></div>
+        </article>
+<article class="view-card bear" data-filter="bear">
+          <div class="card-head">
+            <div>
+              <span class="pill bear-pill">看空/谨慎 · 熊市式看待</span>
+              <h3>非科技板块的短期市场环境</h3>
+            </div>
+            <div class="meta">斯托伯的天空<br>16:09</div>
+          </div>
+          <p>认为约70%的交易集中在科技抱团和长鑫，许多非科技股票可暂时按熊市环境看待。</p>
+          <div class="limit"><strong>边界/风险：</strong>这是市场资金结构判断，不是看空所有非科技公司的长期基本面；其本人反而看多神火、云铝等低估传统优质企业。</div>
+          <div class="sources"><a href="https://xueqiu.com/9493911686/402283256" target="_blank" rel="noopener">原帖</a></div>
+        </article>
+<article class="view-card bear" data-filter="bear">
+          <div class="card-head">
+            <div>
+              <span class="pill bear-pill">看空/谨慎 · 行业数据偏弱</span>
+              <h3>电力行业</h3>
+            </div>
+            <div class="meta">挖地瓜的超级鹿鼎公<br>12:06</div>
+          </div>
+          <p>转述6月电力行业利润约518亿元，同比下降约8%。</p>
+          <div class="limit"><strong>边界/风险：</strong>只是一条行业数据，没有进一步给出卖出或全面看空电力股的结论。</div>
+          <div class="sources"><a href="https://weibo.com/3962719063/RaBdi8dv2" target="_blank" rel="noopener">原帖</a></div>
+        </article></div>
+</section>
+
+<section data-section="all">
+  <h2>四、两个最重要的多空冲突</h2>
+  <div class="compare">
+    <div class="box">
+      <h3>长鑫科技：当日交易与估值判断完全对立</h3>
+      <p><strong>多方：</strong>飞翔芸明确买入并继续持有，认为高换手有助于后续稳定；HIS1963对合肥投资长鑫的长期产业价值持肯定态度。</p>
+      <p><strong>空方：</strong>挖地瓜和闯关东清仓；天地侠影偏好腾讯并提出未来跌破发行价的可能；雪月霜与斯托伯集中质疑周期顶部估值及科技溢价。</p>
+      <p class="limit">注意：对产业价值的认可，不等于认可上市首日股票价格。</p>
+    </div>
+    <div class="box">
+      <h3>锂资源股：短期偏空，中期条件性看多</h3>
+      <p><strong>短期：</strong>雪月霜判断碳酸锂尚不具备反转条件，更可能底部震荡，最早年底反转。</p>
+      <p><strong>中期：</strong>若明年碳酸锂不跌到6万—7万元，赣锋、天齐、中矿等按8万—10万元定价的估值可能回归。</p>
+      <p class="limit">这意味着更强调等待、控仓和承受周期回撤，而非短期追涨。</p>
+    </div>
+  </div>
+</section>
+
+<section data-section="all">
+  <h2>五、21点后的重要新增观点</h2>
+  <p class="sub">相较白天信息，晚间对半导体、AI硬件和平台型公司的判断明显强化。</p>
+  <div class="box"><ul class="timeline"><li><time>21:45—22:05</time><span>斯托伯：AI硬件上游风险上升，但长期更看好掌握终端和数据的平台企业——苹果、谷歌、腾讯。</span></li>
+<li><time>21:59—22:01</time><span>斯托伯：以南铜、自由港的海外估值为参照，认为紫金矿业处于明显低估状态。</span></li>
+<li><time>22:39—22:42</time><span>天地侠影：进一步强化对半导体整体估值和长鑫科技的看空，明确“长鑫与腾讯二选一选腾讯”，并提出长鑫可能跌破发行价。</span></li>
+<li><time>22:51—23:16</time><span>全球硬件股晚间大跌引发讨论，但斯托伯多次强调相关消息尚无实锤，不应把传言当事实。</span></li></ul></div>
+</section>
+
+<section data-section="all">
+  <h2>六、容易误读但本报告未算作明确信号的内容</h2>
+  <div class="notice">
+    老奈转引“硬科技黄金时代”并调侃长鑫市值，但语气可能包含讽刺，因此未将其单独算作长鑫买入推荐；
+    HIS1963赞扬合肥投资京东方和长鑫，属于产业政策评价，不等同于当前股价看多；
+    挖地瓜关于电力行业利润下降、煤炭和有色行业利润的数据，也只有在作者进一步给出方向时才列入看多或看空。
+  </div>
+</section>
+
+<footer class="footer">
+  本报告仅归纳上传文件中各作者在对应时间段的公开发言，不核验其真实持仓、成交记录或观点有效性，不构成投资建议。所有判断均尽量区分“已经执行”“计划执行”“仓位披露”和“单纯观点”。
+</footer>
+</div>
+<script>
+function filterSections(kind, button){
+  document.querySelectorAll('.toolbar button').forEach(x=>x.classList.remove('active'));
+  button.classList.add('active');
+  document.querySelectorAll('section[data-section]').forEach(sec=>{
+    const s=sec.getAttribute('data-section');
+    if(kind==='all' || s===kind || s==='all') sec.classList.remove('hidden');
+    else sec.classList.add('hidden');
+  });
+}
+</script>
+</body>
+</html>
