@@ -1,0 +1,63 @@
+name: 更新投资日报索引
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "Reports/**/*.html"
+      - "tools/build_reports_index.py"
+      - "data/entities.json"
+      - "data/report-overrides.json"
+      - "tests/**"
+      - ".github/workflows/update-reports.yml"
+  workflow_dispatch:
+
+# 同一分支只保留最新一次索引任务，避免连续上传多份日报时产生竞争提交。
+concurrency:
+  group: report-index-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  rebuild-index:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: 检出静态网站
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 配置 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: 配置 Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: 全量重建日报索引
+        run: python tools/build_reports_index.py --root . --write
+
+      - name: 运行自动导入测试
+        run: python -m unittest discover -s tests -p "test_*.py" -v
+
+      - name: 运行静态首页测试
+        run: node --test tests/site.test.mjs
+
+      - name: 提交更新后的日报索引
+        shell: bash
+        run: |
+          if git diff --quiet -- reports.json; then
+            echo "reports.json 已是最新状态。"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add reports.json
+          git commit -m "chore: update report index"
+          git push
