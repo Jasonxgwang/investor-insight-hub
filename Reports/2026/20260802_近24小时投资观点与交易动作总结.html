@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>近24小时投资观点与交易动作总结</title>
+<style>
+:root {
+  --bg:#f5f7fb; --card:#ffffff; --text:#172033; --muted:#667085; --line:#e5eaf2;
+  --bull:#087a55; --bull-bg:#eaf8f2; --bear:#b42318; --bear-bg:#fff0ee;
+  --warn:#9a6700; --warn-bg:#fff8e6; --blue:#2457d6; --blue-bg:#eef3ff;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei",Arial,sans-serif;line-height:1.65}
+.container{max-width:1180px;margin:0 auto;padding:30px 22px 60px}
+.hero{background:linear-gradient(135deg,#13213b,#244d87);color:#fff;border-radius:18px;padding:28px 30px;box-shadow:0 14px 38px rgba(22,43,78,.18)}
+.hero h1{margin:0 0 8px;font-size:30px;letter-spacing:.3px}
+.hero p{margin:3px 0;color:#dbe7ff}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:22px}
+.stat{background:rgba(255,255,255,.11);border:1px solid rgba(255,255,255,.18);border-radius:12px;padding:14px}
+.stat b{display:block;font-size:26px;line-height:1.2}
+.stat span{font-size:13px;color:#dce6f6}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px;margin-top:18px;box-shadow:0 5px 18px rgba(20,35,60,.05)}
+h2{font-size:21px;margin:0 0 15px}
+h3{font-size:17px;margin:18px 0 9px}
+.core{border-left:5px solid var(--blue);background:var(--blue-bg);padding:16px 18px;border-radius:10px;font-size:17px}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.tag{display:inline-block;padding:5px 9px;border-radius:999px;font-size:12px;font-weight:700}
+.bull{color:var(--bull);background:var(--bull-bg)}
+.bear{color:var(--bear);background:var(--bear-bg)}
+.warn{color:var(--warn);background:var(--warn-bg)}
+.neutral{color:var(--blue);background:var(--blue-bg)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.signal{border:1px solid var(--line);border-radius:13px;padding:16px;margin-bottom:11px}
+.signal .top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.signal h3{margin:0;font-size:17px}
+.signal p{margin:7px 0 0}
+.meta{color:var(--muted);font-size:12px;margin-top:8px}
+.level{white-space:nowrap;font-size:12px;font-weight:700;padding:4px 8px;border-radius:8px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+th,td{text-align:left;vertical-align:top;border-bottom:1px solid var(--line);padding:11px 10px}
+th{background:#f8fafc;color:#475467;font-size:13px}
+td time{white-space:nowrap;color:#344054}
+a{color:#2457d6;text-decoration:none}
+a:hover{text-decoration:underline}
+.note{color:var(--muted);font-size:13px}
+.callout{padding:13px 15px;border-radius:10px;background:var(--warn-bg);border:1px solid #f2dc9d}
+ul{margin:8px 0 0;padding-left:21px}
+footer{color:#7a8494;text-align:center;font-size:12px;margin-top:22px}
+@media(max-width:850px){
+  .stats{grid-template-columns:1fr 1fr} .grid{grid-template-columns:1fr}
+  table{display:block;overflow-x:auto} .hero h1{font-size:25px}
+}
+@media print{
+  body{background:#fff} .container{max-width:none;padding:0} .hero,.card{box-shadow:none}
+  a{color:#111;text-decoration:none}
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <section class="hero">
+    <h1>近24小时投资观点与交易动作总结</h1>
+    <p>数据生成时间：2026-08-02 20:51:32｜统计范围：严格近24小时</p>
+    <p>仅总结上传材料中的公开帖文与评论，不对其中事实、价格或观点作外部核验。</p>
+    <div class="stats">
+      <div class="stat"><b>171</b><span>雪球内容合计</span></div>
+      <div class="stat"><b>58</b><span>雪球主贴</span></div>
+      <div class="stat"><b>113</b><span>雪球大V回复</span></div>
+      <div class="stat"><b>12</b><span>微博主贴</span></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>核心摘要</h2>
+    <div class="core">
+      资金偏好呈现明显的“高估科技 → 低估价值/白酒/金融”切换，但并非全面进攻：最清晰的账户动作是股票仓位近期增加10个百分点、现金仍保留40%。最明确的多头是白酒反转、低估老牌价值股、高股息石油与银行；最明确的空头是长城汽车和锂电池板块。科技内部高度分化：端侧芯片业绩受到认可，但高估、拥挤和高融资仓位的科技股被建议逢高减持。
+    </div>
+    <div class="tags">
+      <span class="tag bull">最强看多：白酒反转</span>
+      <span class="tag bull">加仓：低估老登股</span>
+      <span class="tag bear">最强看空：锂电、长城汽车</span>
+      <span class="tag warn">仍持40%现金</span>
+      <span class="tag neutral">微博无明确交易动作</span>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>明确买卖与仓位变化</h2>
+    <table>
+      <thead><tr><th>时间</th><th>人物/来源</th><th>动作</th><th>核心含义</th><th>可信度</th></tr></thead>
+      <tbody>
+        <tr>
+          <td><time>08-02 20:42</time></td>
+          <td>滇南王<br><a href="https://xueqiu.com/2496980475/403306156" target="_blank" rel="noopener">原帖</a></td>
+          <td><span class="tag bull">已买入</span> 兴业银行、招商银行</td>
+          <td>称2026年5月“成功上车”，目前已有浮盈；逻辑是高分红、低估值。</td>
+          <td>高：本人原帖</td>
+        </tr>
+        <tr>
+          <td><time>08-02 19:30</time></td>
+          <td>大树军座<br><a href="https://xueqiu.com/1247219195/401177154" target="_blank" rel="noopener">原帖</a></td>
+          <td><span class="tag bull">明确推荐</span> 泸州老窖</td>
+          <td>建议买入以博取白酒反转弹性，同时提醒其下跌弹性也大于茅台；不选择其他业绩不稳定白酒。</td>
+          <td>高：本人评论</td>
+        </tr>
+        <tr>
+          <td><time>08-02 11:15 / 10:29</time></td>
+          <td>ericwarn丁宁<br><a href="https://xueqiu.com/9363345092/403273295" target="_blank" rel="noopener">原帖</a></td>
+          <td><span class="tag bull">加仓10%</span> 低估老登股</td>
+          <td>6月高位清仓沪深300指数基金；后续砍掉判断错误的小仓位，7月初现金升至50%；近期加回10%股票仓位，现金降至40%。</td>
+          <td>高：本人连续评论</td>
+        </tr>
+        <tr>
+          <td><time>08-02 10:35</time></td>
+          <td>ericwarn丁宁<br><a href="https://xueqiu.com/9363345092/403273295" target="_blank" rel="noopener">原帖</a></td>
+          <td><span class="tag bear">逢高卖出</span> 高估科技</td>
+          <td>认为拥挤科技“肯定不便宜”，应越涨越卖、进行高低切换。</td>
+          <td>高：本人评论</td>
+        </tr>
+        <tr>
+          <td><time>08-02 19:28</time></td>
+          <td>ericwarn丁宁<br><a href="https://xueqiu.com/9363345092/403218510" target="_blank" rel="noopener">原帖</a></td>
+          <td><span class="tag warn">7月调仓</span> 美的集团</td>
+          <td>只确认“7月调仓换股之前，美的是第一大重仓股”；材料未说明调仓后是否减持、保留或清仓。</td>
+          <td>高：本人评论，但现仓位未知</td>
+        </tr>
+        <tr>
+          <td><time>08-01 22:32</time></td>
+          <td>但斌转发文章<br><a href="https://xueqiu.com/1102105103/403259039" target="_blank" rel="noopener">原帖</a></td>
+          <td><span class="tag bull">顶格买入</span> 英伟达</td>
+          <td>转发标题称其英伟达仓位接近50%、看市值可能达到5万亿美元；这是二手文章标题，不是材料中的直接自述。</td>
+          <td>中：二手转发</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="card">
+    <h2>主要看多标的</h2>
+    <div class="grid">
+      <div>
+        <div class="signal">
+          <div class="top"><h3>1. 白酒：贵州茅台、泸州老窖</h3><span class="level bull">强看多</span></div>
+          <p>大树军座判断白酒熊市底部已出现，茅台提价被视为反转催化；进一步明确建议买泸州老窖博取更高弹性。</p>
+          <div class="meta">核心证据3条｜08-02 19:47、19:52、19:30｜<a href="https://xueqiu.com/1247219195/403303193" target="_blank" rel="noopener">主帖</a> · <a href="https://xueqiu.com/1247219195/401177154" target="_blank" rel="noopener">评论</a></div>
+        </div>
+        <div class="signal">
+          <div class="top"><h3>2. 低估老牌价值股/红利股</h3><span class="level bull">中强看多</span></div>
+          <p>代表账户已从高现金状态开始右侧加仓，股票仓位增加10个百分点；核心方法是低估买入、高估卖出，但仍保留40%现金，说明并非无条件全面看多。</p>
+          <div class="meta">核心证据5条｜08-02 10:00—11:15｜<a href="https://xueqiu.com/9363345092/403273295" target="_blank" rel="noopener">主题主帖</a></div>
+        </div>
+        <div class="signal">
+          <div class="top"><h3>3. 石油：中国石油、中国海油</h3><span class="level bull">中期看多</span></div>
+          <p>长期逻辑是需求持久、寡头格局、高分红与低估值；但同日出现“油价又崩了”的短期负面提示，因此更偏中长期配置观点。</p>
+          <div class="meta">多空证据各1条｜08-02 20:44 / 15:27｜<a href="https://xueqiu.com/2496980475/403306313" target="_blank" rel="noopener">长期看多</a> · <a href="https://xueqiu.com/9650668145/403290057" target="_blank" rel="noopener">短期油价压力</a></div>
+        </div>
+        <div class="signal">
+          <div class="top"><h3>4. 银行：兴业银行、招商银行</h3><span class="level bull">中强看多</span></div>
+          <p>发帖者披露已于5月买入并取得浮盈，继续认可高股息、高分红公司的长期回报。</p>
+          <div class="meta">直接持仓披露1条｜08-02 20:42｜<a href="https://xueqiu.com/2496980475/403306156" target="_blank" rel="noopener">原帖</a></div>
+        </div>
+      </div>
+      <div>
+        <div class="signal">
+          <div class="top"><h3>5. 保险、证券</h3><span class="level bull">中等看多</span></div>
+          <p>认为银行已经启动，而保险、证券基金配置仍低，潜力可能更大；地产态度谨慎。</p>
+          <div class="meta">直接观点1条｜08-02 11:06｜<a href="https://xueqiu.com/9363345092/403273295" target="_blank" rel="noopener">原帖</a></div>
+        </div>
+        <div class="signal">
+          <div class="top"><h3>6. 海康威视</h3><span class="level bull">中等看多</span></div>
+          <p>半年报被评价为大幅超预期，利润、毛利率修复并推出中期分红；属于基本面利好判断，但未出现明确买入动作。</p>
+          <div class="meta">原帖1条｜08-02 16:55｜<a href="https://xueqiu.com/2496980475/403294671" target="_blank" rel="noopener">原帖</a></div>
+        </div>
+        <div class="signal">
+          <div class="top"><h3>7. 顺丰控股</h3><span class="level bull">谨慎看多</span></div>
+          <p>发帖者表示目前价位仍看好顺丰，但对公司资本运作失望，属于带保留意见的价值判断。</p>
+          <div class="meta">评论1条｜08-02 13:13｜<a href="https://xueqiu.com/8601813520/403278424" target="_blank" rel="noopener">原帖</a></div>
+        </div>
+        <div class="signal">
+          <div class="top"><h3>8. 紫金矿业</h3><span class="level bull">弱至中等看多</span></div>
+          <p>观点集中在其国际化能力优于铜陵有色，并判断收购赤峰项目“应该不会”流产；未给出明确买入或仓位信息。</p>
+          <div class="meta">评论2条｜08-02 14:41、13:15｜<a href="https://xueqiu.com/1757813478/403282329" target="_blank" rel="noopener">国际化评价</a> · <a href="https://xueqiu.com/9957341637/403278166" target="_blank" rel="noopener">并购判断</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>主要看空标的</h2>
+    <div class="grid">
+      <div>
+        <div class="signal">
+          <div class="top"><h3>1. 长城汽车</h3><span class="level bear">强看空</span></div>
+          <p>雪月霜明确表示未来不看好，认为公司若不改变可能被时代淘汰，并将其视为“垃圾股”。这是本期资料中最强烈的个股负面表态。</p>
+          <div class="meta">原帖1条｜08-02 20:05｜<a href="https://xueqiu.com/1505944393/403304159" target="_blank" rel="noopener">原帖</a></div>
+        </div>
+        <div class="signal">
+          <div class="top"><h3>2. 锂电池：宁德时代、赣锋锂业及上游</h3><span class="level bear">强看空</span></div>
+          <p>柯中判断板块全面交易产能过剩，“锂电池板块结束”，建议绕道；并认同碳酸锂长期低于10万元、上游不应继续资本开支的悲观判断。</p>
+          <div class="meta">连续评论2条｜08-02 17:07、16:37｜<a href="https://xueqiu.com/6238316110/403291407" target="_blank" rel="noopener">原帖</a></div>
+        </div>
+        <div class="signal">
+          <div class="top"><h3>3. 高估、拥挤的科技股/AI硬件</h3><span class="level bear">中强看空</span></div>
+          <p>行中衡认为AI硬件大跌反映外盘与基本面不及预期，叠加量化、主动基金及融资仓位拥挤，问题短期难改；ericwarn丁宁建议高位科技越涨越卖。</p>
+          <div class="meta">核心证据3条｜08-02 17:31、10:35、10:00｜<a href="https://xueqiu.com/1553799558/403296607" target="_blank" rel="noopener">AI硬件判断</a> · <a href="https://xueqiu.com/9363345092/403273295" target="_blank" rel="noopener">估值切换</a></div>
+        </div>
+      </div>
+      <div>
+        <div class="signal">
+          <div class="top"><h3>4. 联讯仪器</h3><span class="level bear">强烈警惕</span></div>
+          <p>飞翔芸认为上涨除赛道和业绩外还包含明显炒作因素，并以“后面只能等ETF接盘”表达对高位风险的强烈担忧。</p>
+          <div class="meta">原帖1条｜08-02 11:12｜<a href="https://xueqiu.com/9957341637/403277648" target="_blank" rel="noopener">原帖</a></div>
+        </div>
+        <div class="signal">
+          <div class="top"><h3>5. 市场高杠杆与高成交状态</h3><span class="level warn">系统性风险</span></div>
+          <p>两融能否稳定在2.5万亿元被视为关键；另有观点认为2万亿元以上成交量处于历史峰值、不可持续，高位企业在融资撤退时承压。</p>
+          <div class="meta">原帖2条｜08-02 20:48、06:29｜<a href="https://xueqiu.com/2496980475/403306527" target="_blank" rel="noopener">两融风险</a> · <a href="https://xueqiu.com/1505944393/403266235" target="_blank" rel="noopener">成交风险</a></div>
+        </div>
+        <div class="signal">
+          <div class="top"><h3>6. 苹果短期业绩预期</h3><span class="level bear">中等利空</span></div>
+          <p>但斌转发内容称苹果下一财季营收增速指引低于市场预期，且iPhone、Mac、iPad受到供应限制；属于二手转发，不等同于本人明确看空。</p>
+          <div class="meta">转发1条｜08-02 13:34｜<a href="https://xueqiu.com/1102105103/403285033" target="_blank" rel="noopener">原帖</a></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>科技板块的分化信号</h2>
+    <div class="callout">
+      <strong>不是全面看空科技。</strong> 行中衡同时认可端侧AI企业瑞芯微、星宸科技、富瀚微的业绩表现；但对AI硬件拥挤交易和高估值持续性持负面态度。换言之，材料中的主线是“选择有业绩的端侧标的，回避高估、融资拥挤和纯叙事标的”。
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>微博信号</h2>
+    <p><strong>12条微博主贴中，没有出现明确的个股买入、卖出、加仓、减仓或仓位披露。</strong></p>
+    <ul>
+      <li>唯一直接与市场相关的表述是08-02 10:19关于美元指数走弱主要由日元对美元升值推动，属于汇率观察，不构成明确交易建议。</li>
+      <li>其余内容主要为社会、地缘与转发评论，不宜强行映射为股票多空信号。</li>
+      <li>“斯托伯的天空-雪球”微博账号在统计期内为0条。</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>综合排序</h2>
+    <table>
+      <thead><tr><th>方向</th><th>标的/板块</th><th>信号强度</th><th>一句话结论</th></tr></thead>
+      <tbody>
+        <tr><td><span class="tag bull">看多</span></td><td>白酒、茅台、泸州老窖</td><td>强</td><td>底部反转逻辑最集中，且出现泸州老窖明确买入建议。</td></tr>
+        <tr><td><span class="tag bull">看多</span></td><td>低估价值/老登股</td><td>中强</td><td>近期已加仓10%，但仍留40%现金，属于谨慎进攻。</td></tr>
+        <tr><td><span class="tag bull">看多</span></td><td>石油、银行、保险、证券</td><td>中</td><td>高股息、低估值及低配置是主要逻辑。</td></tr>
+        <tr><td><span class="tag bear">看空</span></td><td>长城汽车</td><td>强</td><td>明确列为未来不看好和回避标的。</td></tr>
+        <tr><td><span class="tag bear">看空</span></td><td>锂电池、宁德时代、赣锋锂业</td><td>强</td><td>核心判断是长期严重过剩和价格中枢下移。</td></tr>
+        <tr><td><span class="tag bear">看空</span></td><td>高估科技、AI硬件、联讯仪器</td><td>中强</td><td>拥挤、杠杆和估值是主要风险，策略偏向逢高卖出。</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="card">
+    <h2>口径说明</h2>
+    <p class="note">
+      “强”表示出现明确买入、卖出、回避或仓位变化；“中”表示观点清晰但没有交易动作；“弱”表示转发、自动资讯或上下文不完整。雪球总量按58条主贴与113条大V回复合计；微博为12条主贴。转发标题仅代表该账号传播了相关内容，不自动等同于其完整投资立场。
+    </p>
+  </section>
+
+  <footer>本报告为社交媒体内容整理，不构成投资建议。</footer>
+</div>
+</body>
+</html>
