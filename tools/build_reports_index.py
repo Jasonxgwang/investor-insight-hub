@@ -548,9 +548,26 @@ def import_inbox(root: Path) -> ImportResult:
         return result
 
     entities = load_entities(root / "data" / "entities.json")
+    archive_hashes: set[bytes] = set()
+    archive = root / "Reports"
+    if archive.exists():
+        for archived in archive.rglob("*.html"):
+            if archived.is_file():
+                archive_hashes.add(hashlib.sha256(archived.read_bytes()).digest())
+
     planned: list[tuple[Path, Path]] = []
-    for source in sorted(inbox.glob("*.html"), key=lambda path: path.name.casefold()):
+    planned_hashes: set[bytes] = set()
+    # 同内容异名时优先保留文件名更短的一份，例如不带“(1)”的原始文件名。
+    candidates = sorted(inbox.glob("*.html"), key=lambda path: (len(path.name), path.name.casefold()))
+    for source in candidates:
         try:
+            content_hash = hashlib.sha256(source.read_bytes()).digest()
+            if content_hash in archive_hashes:
+                result.skipped.append(f"{source.name}：归档中已存在相同内容")
+                continue
+            if content_hash in planned_hashes:
+                result.skipped.append(f"{source.name}：本批次存在重复内容")
+                continue
             record = parse_report(source, root, entities, {})
         except (OSError, UnicodeError, ReportParseError) as error:
             result.failed.append(f"{source.name}：{error}")
@@ -565,6 +582,7 @@ def import_inbox(root: Path) -> ImportResult:
                 result.failed.append(f"{source.name}：目标文件冲突，未覆盖现有归档")
             continue
         planned.append((source, destination))
+        planned_hashes.add(content_hash)
 
     if result.failed:
         return result

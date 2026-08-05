@@ -349,6 +349,33 @@ class InboxImportTests(unittest.TestCase):
         self.assertIn("冲突", result.failed[0])
         self.assertIn("已归档版本", destination.read_text(encoding="utf-8"))
 
+    def test_same_content_with_different_names_imports_only_one_file(self):
+        html = "<title>2027-01-05 日报</title><p>同一份日报内容。</p>"
+        duplicate = self.write_inbox("20270105_日报(1).html", html)
+        canonical = self.write_inbox("20270105_日报.html", html)
+
+        result = module.import_inbox(self.root)
+
+        self.assertEqual(len(result.imported), 1)
+        self.assertTrue((self.root / "Reports/2027" / canonical.name).exists())
+        self.assertTrue(duplicate.exists())
+        self.assertEqual(len(result.skipped), 1)
+        self.assertIn("重复内容", result.skipped[0])
+
+    def test_content_already_archived_is_skipped_even_when_filename_differs(self):
+        html = "<title>2027-01-05 日报</title><p>已经归档的日报内容。</p>"
+        archived = self.root / "Reports/2027/original.html"
+        archived.parent.mkdir(parents=True)
+        archived.write_text(html, encoding="utf-8")
+        source = self.write_inbox("20270105_另一个文件名.html", html)
+
+        result = module.import_inbox(self.root)
+
+        self.assertEqual(result.imported, [])
+        self.assertTrue(source.exists())
+        self.assertEqual(len(result.skipped), 1)
+        self.assertIn("归档中已存在相同内容", result.skipped[0])
+
 
 class PowerShellEntrypointTests(unittest.TestCase):
     """防止 Windows PowerShell 5 再次误读中文脚本编码。"""
