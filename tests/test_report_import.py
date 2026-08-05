@@ -426,5 +426,14 @@ class EndToEndImportTests(unittest.TestCase):
             self.assertEqual(report["sources"], ["雪球"])
 
 
+class RepositoryHygieneTests(unittest.TestCase):
+    """确保每日测试产生的缓存不会阻塞下一次自动发布。"""
+
+    def test_python_cache_is_ignored(self):
+        ignore_rules = (PROJECT_ROOT / ".gitignore").read_text(encoding="utf-8")
+        self.assertIn("__pycache__/", ignore_rules)
+        self.assertIn("*.py[cod]", ignore_rules)
+
+
 if __name__ == "__main__":
     unittest.main()
