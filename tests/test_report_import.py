@@ -101,6 +101,18 @@ class ParserTests(unittest.TestCase):
         with self.assertRaisesRegex(parser.ReportParseError, "无法识别日期"):
             parser.parse_report(path, self.root, self.entities, {})
 
+    def test_title_removes_parentheses_left_empty_by_date(self):
+        parser = self.require_module()
+        path = self.write_html(
+            "雪球微博近24h投资观点总结_20260803.html",
+            head="<title>雪球+微博近24小时投资观点总结（2026-08-03）</title>",
+            body="<h1>投资观点总结</h1><p>本期记录多空观点和交易动作。</p>",
+        )
+
+        report = parser.parse_report(path, self.root, self.entities, {})
+
+        self.assertEqual(report["title"], "雪球+微博近24小时投资观点总结")
+
 
 class EntityExtractionTests(unittest.TestCase):
     """验证显式元数据、表格和受控词典能够合并识别实体。"""

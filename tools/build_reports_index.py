@@ -194,6 +194,7 @@ def clean_title(value: str, date: str) -> str:
     value = value.replace(date, " ")
     value = re.sub(r"(?<!\d)20\d{6}(?!\d)", " ", value)
     value = re.sub(r"\b\d{1,2}:\d{2}(?::\d{2})?\b", " ", value)
+    value = re.sub(r"[（(]\s*[）)]", " ", value)
     return normalize_text(value.strip(" _-|｜—:："))
 
 

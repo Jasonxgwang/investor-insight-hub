@@ -162,7 +162,7 @@ test("索引加载器会把网络失败和错误结构转换为明确错误", as
   await assert.rejects(loadReports("./reports.json", invalidPayload), /日报索引格式无效/);
 });
 
-test("首批索引包含三条唯一、有效且可访问的日报", async () => {
+test("生成索引包含唯一、有效且可访问的日报", async () => {
   const indexUrl = new URL("../reports.json", import.meta.url);
   const indexText = await readFile(indexUrl, "utf8").catch(() => "");
   assert.notEqual(indexText, "", "reports.json 必须存在且可读取");
@@ -170,12 +170,12 @@ test("首批索引包含三条唯一、有效且可访问的日报", async () =>
   const payload = JSON.parse(indexText);
   const normalized = payload.reports.map(normalizeReport).filter(Boolean);
   assert.equal(payload.schemaVersion, 1);
-  assert.equal(normalized.length, 3);
-  assert.equal(new Set(normalized.map((report) => report.id)).size, 3);
-  assert.deepEqual(
-    normalized.map((report) => report.date).sort(),
-    ["2026-07-27", "2026-07-29", "2026-07-30"],
-  );
+  assert.ok(normalized.length >= 3);
+  assert.equal(new Set(normalized.map((report) => report.id)).size, normalized.length);
+  const dates = new Set(normalized.map((report) => report.date));
+  for (const initialDate of ["2026-07-27", "2026-07-29", "2026-07-30"]) {
+    assert.ok(dates.has(initialDate), `必须保留初始日报：${initialDate}`);
+  }
 
   const expectedStockCount = new Set(
     normalized.flatMap((report) => report.stocks.map((stock) => stock.code || stock.name)),
