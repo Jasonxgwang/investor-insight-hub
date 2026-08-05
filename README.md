@@ -1,10 +1,126 @@
 # Investor Insight Hub 投资观点库
 
-一个用于长期归档、分类和检索雪球与微博大 V 投资观点日报的纯静态网站。站点只包含 HTML、CSS、JavaScript 和 JSON，可直接部署到 GitHub Pages，不需要数据库、服务器或构建工具。
+用于长期归档、分类和检索雪球与微博大 V 投资观点日报的纯静态网站。网站运行时只有 HTML、CSS、JavaScript 和 JSON，可直接部署到 GitHub Pages，不需要数据库或服务器。
+
+## 每日维护：一分钟流程
+
+### 推荐方式：本地一键导入并发布
+
+1. 把新生成的 HTML 日报放入 `Inbox/`。
+2. 在项目根目录运行：
+
+```powershell
+.\import_reports.ps1 -Publish
+```
+
+脚本会自动完成：
+
+- 解析日期、标题、摘要、股票、大 V、行业、标签和来源。
+- 按日期年份移动到 `Reports/<年份>/`。
+- 全量重建并校验 `reports.json`。
+- 运行 Python 解析测试和 Node.js 首页测试。
+- 在工作区干净时提交并推送 GitHub。
+
+只想先在本地检查，不提交 GitHub 时运行：
+
+```powershell
+.\import_reports.ps1
+```
+
+### 备用方式：直接在 GitHub 上传
+
+1. 打开仓库中的 `Reports/<年份>/`，例如 `Reports/2027/`。
+2. 点击 `Add file` → `Upload files`，上传 HTML 并提交。
+3. GitHub Actions 自动扫描全部日报、更新 `reports.json` 并运行测试。
+4. GitHub Pages 随默认分支更新，不需要手工编辑 JSON。
+
+GitHub Pages 不能在浏览器运行时枚举服务器目录，因此目录扫描发生在本地脚本或 GitHub Actions 中；线上首页仍然是纯静态页面。
+
+## 目录结构
+
+```text
+Investor Insight Hub/
+├─ Inbox/                         # 本地待导入日报，HTML 不提交到 Git
+├─ Reports/
+│  ├─ 2026/
+│  ├─ 2027/
+│  └─ ...                         # 脚本按日期自动创建年份目录
+├─ data/
+│  ├─ entities.json               # 股票、大 V、行业、标签和来源词典
+│  └─ report-overrides.json       # 少量历史日报的人工校准元数据
+├─ tools/
+│  └─ build_reports_index.py      # HTML 解析与确定性索引生成器
+├─ .github/workflows/
+│  └─ update-reports.yml          # GitHub 端自动重建和校验
+├─ tests/
+│  ├─ site.test.mjs               # 首页、搜索、统计和路径测试
+│  ├─ test_report_import.py       # 解析、归档和索引测试
+│  └─ test_workflow_config.py     # GitHub Actions 契约测试
+├─ import_reports.ps1             # Windows 一键导入入口
+├─ reports.json                   # 首页唯一日报索引
+├─ index.html
+├─ style.css
+└─ script.js
+```
+
+## 自动解析规则
+
+解析器按稳定优先级提取元数据：
+
+| 字段 | 识别顺序 |
+| --- | --- |
+| 日期 | `report:date` → 文件名日期 → `<title>`、`<h1>` 和正文前部日期 |
+| 标题 | `report:title` → `<title>` → `<h1>` → 清理后的文件名 |
+| 摘要 | `report:summary` 或 `description` → “核心结论”等章节 → 第一段有效正文 |
+| 股票 | `report:stocks` → 股票表格列 → 受控股票别名词典 |
+| 大 V | `report:influencers` → 作者表格列 → 作者文本模式和别名词典 |
+| 标签、行业 | 显式元数据 → 受控关键词评分，避免产生大量近义分类 |
+| 来源 | `report:sources` → 雪球、微博等受控关键词 |
+
+文件缺少可识别日期时会停止导入，并把原 HTML 留在 `Inbox/`。同名归档文件存在时不会覆盖；内容冲突会明确报错。
+
+## 推荐的 HTML 元数据
+
+现有格式可以直接自动解析。为了让以后 AI 生成的日报达到更高准确率，建议在 `<head>` 中加入：
+
+```html
+<meta name="report:date" content="2027-01-05">
+<meta name="report:title" content="大 V 多空观点与交易动作总结">
+<meta name="report:summary" content="本期最重要的观点、动作和风险摘要。">
+<meta name="report:tags" content="多空观点,仓位变化,风险提示">
+<meta name="report:industries" content="半导体,有色金属">
+<meta name="report:stocks" content="紫金矿业|601899;腾讯控股|00700">
+<meta name="report:influencers" content="飞翔芸;挖地瓜的超级鹿鼎公">
+<meta name="report:sources" content="雪球,微博">
+```
+
+这些字段不是必填项。存在时会覆盖启发式结果，但不会改变日报正文和视觉样式。
+
+## 首页统计与搜索
+
+首页每次加载 `reports.json` 后自动计算：
+
+- 日报总数。
+- 最近更新日期。
+- 去重后的覆盖股票数。
+- 去重后的大 V 数。
+
+搜索框支持标题、摘要、日期、股票代码、股票名称、大 V 姓名、标签、行业和来源。左侧导航支持按年份和行业过滤；多个条件使用交集筛选。
+
+支持的 URL 参数：
+
+| 参数 | 用途 |
+| --- | --- |
+| `q` | 通用关键词 |
+| `year` | 年份 |
+| `industry` | 行业 |
+| `tag` | 标签 |
+| `stock` | 股票名称或代码 |
+| `influencer` | 大 V 名称 |
 
 ## 本地预览
 
-浏览器直接使用 `file://` 打开 `index.html` 时，通常会因浏览器安全策略而无法读取 `reports.json`。请在项目根目录启动一个本地 HTTP 服务：
+浏览器直接使用 `file://` 打开 `index.html` 时通常不能读取 `reports.json`。请在项目根目录启动静态服务：
 
 ```powershell
 python -m http.server 8765 --bind 127.0.0.1
@@ -16,128 +132,59 @@ python -m http.server 8765 --bind 127.0.0.1
 http://127.0.0.1:8765/
 ```
 
-如果系统找不到 `python`，可以使用任意静态文件服务器；站点本身没有服务器端依赖。
+## 手工检查与测试
 
-## 目录说明
-
-```text
-Investor Insight Hub/
-├─ index.html          # 首页结构
-├─ style.css           # 视觉与响应式样式
-├─ script.js           # 数据加载、搜索、筛选和渲染
-├─ reports.json        # 日报目录索引，也是首页唯一数据源
-├─ reports/
-│  └─ 2026/            # 按年份保存原始 HTML 日报
-├─ tests/
-│  └─ site.test.mjs    # 数据与目录完整性测试
-└─ docs/               # 设计说明和实施计划
-```
-
-## 新增一份日报
-
-### 1．复制 HTML 文件
-
-把新日报复制到对应年份目录：
-
-```text
-reports/2027/20270105_投资观点日报.html
-```
-
-日报文件可以保留自己的完整样式。首页不会读取正文，只通过“查看报告”按钮打开它。
-
-### 2．更新 reports.json
-
-在 `reports` 数组最前面增加一条记录。下面是一条完整示例：
-
-```json
-{
-  "id": "20270105-market-summary",
-  "date": "2027-01-05",
-  "year": 2027,
-  "title": "2027-01-05 投资观点日报",
-  "summary": "概括当日最重要的多空观点、交易动作和风险提示。",
-  "file": "reports/2027/20270105_投资观点日报.html",
-  "industries": ["半导体", "有色金属"],
-  "tags": ["多空观点", "仓位变化"],
-  "stocks": [
-    { "name": "紫金矿业", "code": "601899" },
-    { "name": "腾讯控股", "code": "00700" }
-  ],
-  "influencers": ["大 V 名称"],
-  "sources": ["雪球", "微博"],
-  "featured": false,
-  "metrics": {}
-}
-```
-
-字段维护规则：
-
-| 字段 | 必填 | 说明 |
-| --- | --- | --- |
-| `id` | 是 | 全站唯一且长期不变，建议使用日期加英文短名 |
-| `date` | 是 | `YYYY-MM-DD` 格式，用于排序和日期搜索 |
-| `year` | 否 | 可省略，脚本会从 `date` 推导 |
-| `title` | 是 | 首页显示的日报标题 |
-| `summary` | 否 | 建议用一至两句话概括最重要的信息 |
-| `file` | 否 | 相对首页的日报路径；缺少时不会显示查看按钮 |
-| `industries` | 否 | 左侧行业导航与搜索使用的分类数组 |
-| `tags` | 否 | 观点类型、动作或风险标签 |
-| `stocks` | 否 | 股票名称与代码对象数组；代码不确定时留空字符串 |
-| `influencers` | 否 | 正文中明确出现的大 V 名称数组 |
-| `sources` | 否 | 例如“雪球主贴”“雪球评论”“微博” |
-| `featured` | 否 | 预留精选功能，默认 `false` |
-| `metrics` | 否 | 预留阅读量、帖文数或排行指标，默认 `{}` |
-
-不要在 `reports.json` 中保存 Cookie、登录凭证、私有接口地址或原帖正文。
-
-### 3．运行检查
-
-项目不需要安装 npm 包。使用 Node.js 内置测试运行：
+只重建索引：
 
 ```powershell
+python tools/build_reports_index.py --root . --write
+```
+
+检查索引是否最新，不修改文件：
+
+```powershell
+python tools/build_reports_index.py --root . --check
+```
+
+运行全部测试：
+
+```powershell
+python -m unittest discover -s tests -p "test_*.py" -v
 node --test tests/site.test.mjs
 ```
 
-测试会检查数据函数、搜索筛选、首页基础结构、`reports.json` 格式、记录 ID 唯一性和日报文件路径。
+项目不依赖 npm 包或 Python 第三方库。
 
-### 4．本地查看并提交
+## 失败恢复
 
-启动本地 HTTP 服务，确认新增日报出现在首页，并测试股票名称、代码、大 V、标签和日期检索。确认后提交并推送到 GitHub，GitHub Pages 会自动更新。
+- **无法识别日期**：把 `YYYYMMDD` 加到文件名前部，或加入 `report:date` 元数据。
+- **同名文件冲突**：原文件仍在 `Inbox/`；确认内容后改名或删除重复文件，不要覆盖归档。
+- **摘要使用默认文字**：在 HTML 加入 `report:summary`，或使用“核心结论”章节。
+- **股票或大 V 未识别**：优先在 HTML 加显式元数据；长期使用的别名可加入 `data/entities.json`。
+- **Git 工作区不干净**：先提交或处理其他改动，再运行 `-Publish`，避免误提交无关文件。
+- **GitHub Actions 失败**：在仓库 `Actions` 页面查看“更新投资日报索引”日志；失败不会替换已有有效索引。
 
-## GitHub Pages 部署
+解析器和索引日志只输出文件名、归档路径、数量、警告和错误原因，不输出 Cookie 或日报正文。
 
-1. 在 GitHub 新建公开仓库，例如 `investor-insight-hub`。
-2. 将本项目推送到仓库的 `master` 或 `main` 分支。
-3. 打开仓库的 `Settings` → `Pages`。
-4. 在 `Build and deployment` 中选择 `Deploy from a branch`。
-5. 选择站点分支和 `/(root)` 目录，保存设置。
-6. 等待部署完成后，从 Pages 页面打开公开网址。
+## 数据维护边界
 
-站点资源全部使用相对路径，因此既支持用户主页仓库，也支持普通项目仓库路径。
+`data/entities.json` 使用受控分类，负责规范股票别名、大 V 别名、行业、标签和来源。新增长期出现的实体时，沿用现有数组结构添加一条记录即可。
 
-## URL 筛选接口
+`data/report-overrides.json` 只用于保存历史日报的人工校准结果。正常新日报不需要修改；优先改进 HTML 元数据或通用解析规则。
 
-首页支持以下查询参数：
+## 扩展接口
 
-| 参数 | 用途 |
-| --- | --- |
-| `q` | 通用关键词 |
-| `year` | 年份 |
-| `industry` | 行业 |
-| `tag` | 标签 |
-| `stock` | 股票名称或代码 |
-| `influencer` | 大 V 名称 |
+所有后续页面都应消费 `reports.json` 中统一记录，而不是重新解析 HTML：
 
-例如：
+- 股票页面使用 `stocks[].code` 和 `stocks[].name` 聚合。
+- 大 V 页面使用 `influencers[]` 聚合。
+- 标签页面使用 `tags[]` 聚合。
+- 热门排行可以读取预留的 `metrics`。
+- 观点时间线可以组合日期、股票和大 V 条件。
+- 月度汇总可以由生成器输出独立静态 JSON。
 
-```text
-/?year=2026&industry=半导体&q=长鑫
-```
+数据量显著增长后，可由生成器增加年度分片索引，同时保持首页数据访问接口不变。
 
-将来增加股票页、大 V 页或标签页时，可以通过这些参数跳回已经筛选好的日报列表。
+## GitHub Pages
 
-## 数据量增长后的扩展
-
-第一版一次加载单个 `reports.json`，适合数百份以内的日报。当索引体积明显影响加载速度时，可保留一个轻量清单，再按年份拆分为 `reports/2027/reports.json` 等文件。只需替换 `loadReports()` 的数据加载实现，统计、筛选和渲染函数无需重写。
-
-可继续扩展的页面包括股票详情、大 V 档案、标签聚合、热门排行和每月汇总。新页面应继续以 JSON 静态索引为数据边界，避免让首页逐份读取日报正文。
+当前仓库从 `master` 分支根目录部署 GitHub Pages。所有资源都使用相对路径，并严格保留 `Reports` 的大小写，因此既支持项目仓库 Pages 路径，也支持本地静态预览。

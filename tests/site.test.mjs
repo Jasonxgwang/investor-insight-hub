@@ -33,7 +33,7 @@ const makeReports = () => [
     date: "2026-07-30",
     title: "大 V 多空观点与交易动作总结",
     summary: "科技与资源方向出现分歧。",
-    file: "reports/2026/report-a.html",
+    file: "Reports/2026/report-a.html",
     industries: ["科技", "有色金属"],
     tags: ["多空观点", "仓位变化"],
     stocks: [
@@ -48,7 +48,7 @@ const makeReports = () => [
     date: "2026-07-29",
     title: "雪球大 V 观点总结",
     summary: "记录腾讯控股与宁德时代。",
-    file: "reports/2026/report-b.html",
+    file: "Reports/2026/report-b.html",
     industries: ["科技", "新能源"],
     tags: ["交易动作"],
     stocks: [
@@ -177,7 +177,21 @@ test("首批索引包含三条唯一、有效且可访问的日报", async () =>
     ["2026-07-27", "2026-07-29", "2026-07-30"],
   );
 
+  const expectedStockCount = new Set(
+    normalized.flatMap((report) => report.stocks.map((stock) => stock.code || stock.name)),
+  ).size;
+  const expectedInfluencerCount = new Set(
+    normalized.flatMap((report) => report.influencers),
+  ).size;
+  assert.deepEqual(calculateStats(normalized), {
+    reportCount: normalized.length,
+    latestDate: payload.site.updatedAt,
+    stockCount: expectedStockCount,
+    influencerCount: expectedInfluencerCount,
+  });
+
   for (const report of normalized) {
+    assert.match(report.file, new RegExp(`^Reports/${report.year}/.+\\.html$`));
     await access(new URL(`../${report.file}`, import.meta.url));
   }
 });
