@@ -1,0 +1,110 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import {
+  calculateStats,
+  createSearchParams,
+  filterReports,
+  normalizeReport,
+  readFilters,
+} from "../script.js";
+
+test("数据模块提供归档检索所需的公共接口", async () => {
+  let siteModule = {};
+
+  try {
+    siteModule = await import("../script.js");
+  } catch {
+    // 首次红灯运行时模块尚不存在，继续通过断言展示缺失的公共契约。
+  }
+
+  assert.equal(typeof siteModule.normalizeReport, "function");
+  assert.equal(typeof siteModule.calculateStats, "function");
+  assert.equal(typeof siteModule.filterReports, "function");
+  assert.equal(typeof siteModule.readFilters, "function");
+  assert.equal(typeof siteModule.createSearchParams, "function");
+});
+
+const makeReports = () => [
+  normalizeReport({
+    id: "20260730-market-summary",
+    date: "2026-07-30",
+    title: "大 V 多空观点与交易动作总结",
+    summary: "科技与资源方向出现分歧。",
+    file: "reports/2026/report-a.html",
+    industries: ["科技", "有色金属"],
+    tags: ["多空观点", "仓位变化"],
+    stocks: [
+      { name: "TCL 科技", code: "000100" },
+      { name: "紫金矿业", code: "601899" },
+    ],
+    influencers: ["飞翔的阿炳", "斯托伯的天空"],
+    sources: ["雪球", "微博"],
+  }),
+  normalizeReport({
+    id: "20260729-xueqiu-summary",
+    date: "2026-07-29",
+    title: "雪球大 V 观点总结",
+    summary: "记录腾讯控股与宁德时代。",
+    file: "reports/2026/report-b.html",
+    industries: ["科技", "新能源"],
+    tags: ["交易动作"],
+    stocks: [
+      { name: "腾讯控股", code: "00700" },
+      { name: "紫金矿业", code: "601899" },
+    ],
+    influencers: ["飞翔的阿炳", "伊夫圣洛朗"],
+    sources: ["雪球"],
+  }),
+].filter(Boolean);
+
+test("标准化记录会推导年份并填充安全默认值", () => {
+  const report = normalizeReport({ id: "one", date: "2026-07-30", title: "标题" });
+
+  assert.equal(report.year, 2026);
+  assert.deepEqual(report.tags, []);
+  assert.deepEqual(report.metrics, {});
+});
+
+test("标准化记录会拒绝缺少标识、日期或标题的数据", () => {
+  assert.equal(normalizeReport({ date: "2026-07-30", title: "标题" }), null);
+  assert.equal(normalizeReport({ id: "one", title: "标题" }), null);
+  assert.equal(normalizeReport({ id: "one", date: "2026-07-30" }), null);
+});
+
+test("统计会对股票和大 V 去重并找出最近日期", () => {
+  assert.deepEqual(calculateStats(makeReports()), {
+    reportCount: 2,
+    latestDate: "2026-07-30",
+    stockCount: 3,
+    influencerCount: 3,
+  });
+});
+
+test("关键词可匹配代码、大 V、标签和日期", () => {
+  const reports = makeReports();
+  assert.deepEqual(filterReports(reports, { q: "000100" }).map((item) => item.id), [
+    "20260730-market-summary",
+  ]);
+  assert.equal(filterReports(reports, { q: "伊夫圣洛朗" }).length, 1);
+  assert.equal(filterReports(reports, { q: "仓位变化" }).length, 1);
+  assert.equal(filterReports(reports, { q: "2026-07-29" }).length, 1);
+});
+
+test("关键词、年份和行业使用交集筛选并按日期倒序", () => {
+  const result = filterReports(makeReports(), {
+    q: "紫金",
+    year: "2026",
+    industry: "科技",
+  });
+
+  assert.equal(result.length, 2);
+  assert.ok(result[0].date > result[1].date);
+});
+
+test("预留 URL 筛选条件可往返且不保留空参数", () => {
+  const filters = readFilters("?q=TCL&year=2026&stock=000100&tag=");
+
+  assert.equal(filters.q, "TCL");
+  assert.equal(filters.stock, "000100");
+  assert.equal(createSearchParams(filters).toString(), "q=TCL&year=2026&stock=000100");
+});
