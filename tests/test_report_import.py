@@ -101,5 +101,90 @@ class ParserTests(unittest.TestCase):
             parser.parse_report(path, self.root, self.entities, {})
 
 
+class EntityExtractionTests(unittest.TestCase):
+    """验证显式元数据、表格和受控词典能够合并识别实体。"""
+
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.root = Path(self.temp.name)
+        self.entities = {
+            "influencers": [
+                {"name": "飞翔芸", "aliases": ["飞翔芸"]},
+                {"name": "伊夫圣洛朗", "aliases": ["伊夫圣洛朗"]},
+                {
+                    "name": "挖地瓜的超级鹿鼎公",
+                    "aliases": ["挖地瓜的超级鹿鼎公", "挖地瓜"],
+                },
+            ],
+            "stocks": [
+                {"name": "紫金矿业", "code": "601899", "aliases": ["紫金矿业", "紫金"]},
+                {"name": "腾讯控股", "code": "00700", "aliases": ["腾讯控股", "腾讯"]},
+            ],
+            "industries": [
+                {"name": "有色金属", "keywords": ["有色金属", "黄金", "铜", "铝"]}
+            ],
+            "tags": [
+                {"name": "风险提示", "keywords": ["风险提示", "谨慎", "回避"]}
+            ],
+            "sources": [
+                {"name": "雪球", "keywords": ["雪球", "大 V 评论"]},
+                {"name": "微博", "keywords": ["微博"]},
+            ],
+        }
+
+    def tearDown(self):
+        self.temp.cleanup()
+
+    def parse(self, name: str, head: str, body: str):
+        path = self.root / "Reports" / "2027" / name
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(
+            f"<!doctype html><html><head>{head}</head><body>{body}</body></html>",
+            encoding="utf-8",
+        )
+        return module.parse_report(path, self.root, self.entities, {})
+
+    def test_metadata_table_and_dictionary_entities_are_merged(self):
+        report = self.parse(
+            "20270105_entities.html",
+            (
+                '<meta name="report:stocks" content="紫金矿业|601899">'
+                '<meta name="report:influencers" content="飞翔芸">'
+                "<title>2027-01-05 实体识别日报</title>"
+            ),
+            (
+                "<h1>实体识别日报</h1><table>"
+                "<tr><th>标的</th><th>代码</th><th>作者</th></tr>"
+                "<tr><td>腾讯控股</td><td>00700</td><td>伊夫圣洛朗</td></tr>"
+                "</table><p>挖地瓜的超级鹿鼎公在微博继续关注有色金属并作出风险提示。</p>"
+                "<p>雪球主贴也讨论了相关观点。</p>"
+            ),
+        )
+
+        self.assertEqual(
+            report["stocks"],
+            [
+                {"name": "紫金矿业", "code": "601899"},
+                {"name": "腾讯控股", "code": "00700"},
+            ],
+        )
+        self.assertEqual(
+            report["influencers"],
+            ["飞翔芸", "伊夫圣洛朗", "挖地瓜的超级鹿鼎公"],
+        )
+        self.assertEqual(report["industries"], ["有色金属"])
+        self.assertEqual(report["tags"], ["风险提示"])
+        self.assertEqual(report["sources"], ["雪球", "微博"])
+
+    def test_css_numbers_are_not_stock_codes(self):
+        report = self.parse(
+            "20270105_css.html",
+            "<title>2027-01-05 无标的日报</title><style>.x{color:#667085}</style>",
+            "<h1>无标的日报</h1><p>统计数量为 344054 条，但没有具体证券标的。</p>",
+        )
+
+        self.assertEqual(report["stocks"], [])
+
+
 if __name__ == "__main__":
     unittest.main()

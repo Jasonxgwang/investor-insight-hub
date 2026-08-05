@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import hashlib
+import json
 import re
 from datetime import datetime
 from html.parser import HTMLParser
@@ -238,6 +239,152 @@ def stable_report_id(date: str, content: bytes) -> str:
     return f"{date.replace('-', '')}-{hashlib.sha256(content).hexdigest()[:10]}"
 
 
+def load_entities(path: Path) -> dict[str, Any]:
+    """读取受控实体词典；词典是识别别名和统一标签的维护边界。"""
+
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    if payload.get("schemaVersion") != 1:
+        raise ReportParseError(f"实体词典版本无效：{path}")
+    return payload
+
+
+def split_metadata_values(value: str) -> list[str]:
+    return [normalize_text(item) for item in re.split(r"[;；,，]", value) if normalize_text(item)]
+
+
+def append_unique(items: list[Any], value: Any, key) -> None:
+    identity = key(value)
+    if identity and all(key(existing) != identity for existing in items):
+        items.append(value)
+
+
+def extract_stocks(document: ParsedDocument, entities: dict[str, Any]) -> list[dict[str, str]]:
+    """按显式元数据、表格、词典顺序识别股票，不扫描任意六位数字。"""
+
+    stocks: list[dict[str, str]] = []
+    for item in re.split(r"[;；]", document.meta.get("report:stocks", "")):
+        if not normalize_text(item):
+            continue
+        name, separator, code = item.partition("|")
+        append_unique(
+            stocks,
+            {"name": normalize_text(name), "code": normalize_text(code) if separator else ""},
+            lambda stock: stock["code"] or stock["name"],
+        )
+
+    name_headers = {"标的", "股票", "证券", "股票名称", "证券名称"}
+    code_headers = {"代码", "股票代码", "证券代码"}
+    for table in document.tables:
+        if not table:
+            continue
+        headers = [normalize_text(cell).replace(" ", "") for cell in table[0]]
+        name_index = next((index for index, value in enumerate(headers) if value in name_headers), None)
+        code_index = next((index for index, value in enumerate(headers) if value in code_headers), None)
+        if name_index is None:
+            continue
+        for row in table[1:]:
+            if name_index >= len(row):
+                continue
+            name = normalize_text(row[name_index])
+            code = normalize_text(row[code_index]) if code_index is not None and code_index < len(row) else ""
+            if name:
+                append_unique(stocks, {"name": name, "code": code}, lambda stock: stock["code"] or stock["name"])
+
+    visible_text = document.text
+    for definition in entities.get("stocks", []):
+        aliases = [definition.get("name", ""), *definition.get("aliases", [])]
+        if any(alias and alias in visible_text for alias in aliases):
+            append_unique(
+                stocks,
+                {"name": definition["name"], "code": definition.get("code", "")},
+                lambda stock: stock["code"] or stock["name"],
+            )
+    return stocks
+
+
+def extract_influencers(document: ParsedDocument, entities: dict[str, Any]) -> list[str]:
+    """把作者别名统一为词典中的规范名称，并保留表格中的新作者。"""
+
+    influencers: list[str] = []
+    alias_map: dict[str, str] = {}
+    for definition in entities.get("influencers", []):
+        for alias in [definition.get("name", ""), *definition.get("aliases", [])]:
+            if alias:
+                alias_map[alias] = definition["name"]
+
+    def add_author(value: str) -> None:
+        value = normalize_text(value)
+        if not value:
+            return
+        canonical = alias_map.get(value, value)
+        append_unique(influencers, canonical, lambda item: item)
+
+    for value in split_metadata_values(document.meta.get("report:influencers", "")):
+        add_author(value)
+
+    author_headers = {"作者", "大V", "大v", "账号", "博主", "观点人"}
+    for table in document.tables:
+        if not table:
+            continue
+        headers = [normalize_text(cell).replace(" ", "") for cell in table[0]]
+        author_index = next((index for index, value in enumerate(headers) if value in author_headers), None)
+        if author_index is None:
+            continue
+        for row in table[1:]:
+            if author_index >= len(row):
+                continue
+            cell = normalize_text(row[author_index])
+            matched = [alias_map[alias] for alias in alias_map if alias in cell]
+            if matched:
+                for name in matched:
+                    add_author(name)
+            else:
+                for value in split_metadata_values(cell):
+                    add_author(value)
+
+    for definition in entities.get("influencers", []):
+        aliases = [definition.get("name", ""), *definition.get("aliases", [])]
+        if any(alias and alias in document.text for alias in aliases):
+            add_author(definition["name"])
+    return influencers
+
+
+def score_controlled_terms(
+    text: str,
+    headings: str,
+    definitions: list[dict[str, Any]],
+    limit: int,
+) -> list[str]:
+    """只从受控词表返回分类，避免相近词不断制造新标签。"""
+
+    scored: list[tuple[int, int, str]] = []
+    for position, definition in enumerate(definitions):
+        keywords = [keyword for keyword in definition.get("keywords", []) if keyword]
+        score = sum(text.count(keyword) for keyword in keywords)
+        score += 2 * sum(headings.count(keyword) for keyword in keywords)
+        if score:
+            scored.append((-score, position, definition["name"]))
+    return [name for _, _, name in sorted(scored)[:limit]]
+
+
+def extract_controlled_metadata(
+    document: ParsedDocument,
+    entities: dict[str, Any],
+    meta_name: str,
+    dictionary_name: str,
+    limit: int,
+) -> list[str]:
+    explicit = split_metadata_values(document.meta.get(meta_name, ""))
+    if explicit:
+        return explicit[:limit]
+    headings = "\n".join(text for _, text in document.headings)
+    return score_controlled_terms(document.text, headings, entities.get(dictionary_name, []), limit)
+
+
+def extract_sources(document: ParsedDocument, entities: dict[str, Any]) -> list[str]:
+    return extract_controlled_metadata(document, entities, "report:sources", "sources", 6)
+
+
 def parse_report(path: Path, root: Path, entities: dict[str, Any], overrides: dict[str, Any]) -> dict:
     """把单份 HTML 转换为首页索引使用的统一记录。"""
 
@@ -252,11 +399,13 @@ def parse_report(path: Path, root: Path, entities: dict[str, Any], overrides: di
         "title": title,
         "summary": summary,
         "file": path.relative_to(root).as_posix(),
-        "industries": [],
-        "tags": [],
-        "stocks": [],
-        "influencers": [],
-        "sources": [],
+        "industries": extract_controlled_metadata(
+            document, entities, "report:industries", "industries", 6
+        ),
+        "tags": extract_controlled_metadata(document, entities, "report:tags", "tags", 8),
+        "stocks": extract_stocks(document, entities),
+        "influencers": extract_influencers(document, entities),
+        "sources": extract_sources(document, entities),
         "featured": False,
         "metrics": {},
         "_warnings": warnings,
