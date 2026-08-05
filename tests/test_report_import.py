@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import shutil
+import subprocess
 import tempfile
 import unittest
 from pathlib import Path
@@ -403,6 +405,57 @@ class PowerShellEntrypointTests(unittest.TestCase):
         script = (PROJECT_ROOT / "import_reports.ps1").read_text(encoding="utf-8-sig")
         self.assertIn('$env:PYTHONIOENCODING = "utf-8"', script)
         self.assertIn("[Console]::OutputEncoding", script)
+
+    def test_inbox_entrypoint_runs_parent_script_with_publish(self):
+        inbox_entrypoint = PROJECT_ROOT / "Inbox" / "import_reports.ps1"
+        self.assertTrue(
+            inbox_entrypoint.exists(),
+            "从 Inbox 打开 PowerShell 时也应存在可运行的一键入口",
+        )
+        powershell = shutil.which("powershell.exe") or shutil.which("pwsh")
+        if powershell is None:
+            self.skipTest("当前环境没有可用于入口集成测试的 PowerShell")
+
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            inbox = root / "Inbox"
+            inbox.mkdir()
+            (root / "import_reports.ps1").write_text(
+                'param([switch]$Publish)\n'
+                'if ($Publish) { Write-Output "ROOT_PUBLISH" } '
+                'else { Write-Output "ROOT_LOCAL" }\n',
+                encoding="utf-8-sig",
+            )
+            (inbox / "import_reports.ps1").write_bytes(inbox_entrypoint.read_bytes())
+
+            result = subprocess.run(
+                [
+                    powershell,
+                    "-NoProfile",
+                    "-ExecutionPolicy",
+                    "Bypass",
+                    "-File",
+                    str(inbox / "import_reports.ps1"),
+                    "-Publish",
+                ],
+                cwd=inbox,
+                capture_output=True,
+                text=True,
+                encoding="utf-8",
+                check=False,
+            )
+
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn("ROOT_PUBLISH", result.stdout)
+
+    def test_personal_inbox_notes_do_not_dirty_git_worktree(self):
+        result = subprocess.run(
+            ["git", "check-ignore", "--quiet", "Inbox/说明.txt"],
+            cwd=PROJECT_ROOT,
+            check=False,
+        )
+
+        self.assertEqual(result.returncode, 0)
 
 
 class EndToEndImportTests(unittest.TestCase):

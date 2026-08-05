@@ -1,10 +1,12 @@
 # Inbox 待导入日报
 
-把每天新生成的 HTML 日报直接放在本目录，然后在项目根目录运行：
+把每天新生成的 HTML 日报直接放在本目录。若 PowerShell 是从本目录打开的，运行：
 
 ```powershell
 .\import_reports.ps1
 ```
+
+从项目根目录打开 PowerShell 时也可运行同名命令，两个入口效果相同。
 
 脚本会识别日报日期，把文件移动到 `Reports/<年份>/`，重新生成 `reports.json` 并运行测试。
 
