@@ -366,5 +366,65 @@ class PowerShellEntrypointTests(unittest.TestCase):
         self.assertIn("[Console]::OutputEncoding", script)
 
 
+class EndToEndImportTests(unittest.TestCase):
+    """在临时目录验证从 Inbox 到静态索引的完整数据流。"""
+
+    def test_import_build_and_rebuild_are_complete_and_stable(self):
+        with tempfile.TemporaryDirectory() as temporary:
+            root = Path(temporary)
+            data = root / "data"
+            inbox = root / "Inbox"
+            data.mkdir()
+            inbox.mkdir()
+            entities = {
+                "schemaVersion": 1,
+                "influencers": [{"name": "飞翔芸", "aliases": ["飞翔芸"]}],
+                "stocks": [
+                    {"name": "紫金矿业", "code": "601899", "aliases": ["紫金矿业"]}
+                ],
+                "industries": [
+                    {"name": "有色金属", "keywords": ["有色金属", "黄金"]}
+                ],
+                "tags": [{"name": "仓位变化", "keywords": ["仓位变化", "加仓"]}],
+                "sources": [{"name": "雪球", "keywords": ["雪球"]}],
+            }
+            entities_path = data / "entities.json"
+            overrides_path = data / "report-overrides.json"
+            entities_path.write_text(json.dumps(entities, ensure_ascii=False), encoding="utf-8")
+            overrides_path.write_text(
+                json.dumps({"schemaVersion": 1, "reports": {}}, ensure_ascii=False),
+                encoding="utf-8",
+            )
+            source = inbox / "20270105_自动导入验收.html"
+            source.write_text(
+                """<!doctype html><html><head>
+                <title>2027-01-05 自动导入验收</title>
+                <meta name="report:summary" content="紫金矿业获得关注并出现加仓。">
+                <meta name="report:stocks" content="紫金矿业|601899">
+                <meta name="report:influencers" content="飞翔芸">
+                </head><body><h1>自动导入验收</h1>
+                <p>雪球讨论有色金属，记录仓位变化。</p></body></html>""",
+                encoding="utf-8",
+            )
+
+            import_result = module.import_inbox(root)
+            first, _ = module.build_index(root, entities_path, overrides_path)
+            first_serialized = module.serialize_index(first)
+            second, _ = module.build_index(root, entities_path, overrides_path)
+
+            self.assertEqual(len(import_result.imported), 1)
+            self.assertTrue((root / "Reports/2027/20270105_自动导入验收.html").exists())
+            self.assertEqual(first_serialized, module.serialize_index(second))
+            report = first["reports"][0]
+            self.assertEqual(report["date"], "2027-01-05")
+            self.assertEqual(report["title"], "自动导入验收")
+            self.assertIn("紫金矿业", report["summary"])
+            self.assertEqual(report["stocks"], [{"name": "紫金矿业", "code": "601899"}])
+            self.assertEqual(report["influencers"], ["飞翔芸"])
+            self.assertEqual(report["industries"], ["有色金属"])
+            self.assertEqual(report["tags"], ["仓位变化"])
+            self.assertEqual(report["sources"], ["雪球"])
+
+
 if __name__ == "__main__":
     unittest.main()
