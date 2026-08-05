@@ -1,9 +1,11 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import {
   calculateStats,
   createSearchParams,
   filterReports,
+  loadReports,
   normalizeReport,
   readFilters,
 } from "../script.js";
@@ -22,6 +24,7 @@ test("数据模块提供归档检索所需的公共接口", async () => {
   assert.equal(typeof siteModule.filterReports, "function");
   assert.equal(typeof siteModule.readFilters, "function");
   assert.equal(typeof siteModule.createSearchParams, "function");
+  assert.equal(typeof siteModule.loadReports, "function");
 });
 
 const makeReports = () => [
@@ -107,4 +110,53 @@ test("预留 URL 筛选条件可往返且不保留空参数", () => {
   assert.equal(filters.q, "TCL");
   assert.equal(filters.stock, "000100");
   assert.equal(createSearchParams(filters).toString(), "q=TCL&year=2026&stock=000100");
+});
+
+test("首页提供完整的语义区域和可访问检索控件", async () => {
+  const html = await readFile(new URL("../index.html", import.meta.url), "utf8").catch(() => "");
+
+  assert.match(html, /<html[^>]+lang="zh-CN"/);
+  assert.match(html, /<meta[^>]+name="viewport"/);
+  assert.match(html, /<header[\s>]/);
+  assert.match(html, /<aside[^>]+id="filters-panel"/);
+  assert.match(html, /<main[\s>]/);
+  assert.match(html, /id="search-input"/);
+  assert.match(html, /id="year-filters"/);
+  assert.match(html, /id="industry-filters"/);
+  assert.match(html, /id="report-list"/);
+  assert.match(html, /<script[^>]+type="module"[^>]+src="\.\/script\.js"/);
+});
+
+test("样式表覆盖键盘焦点和两档响应式布局", async () => {
+  const css = await readFile(new URL("../style.css", import.meta.url), "utf8").catch(() => "");
+
+  assert.match(css, /:focus-visible/);
+  assert.match(css, /@media[^\{]+max-width:\s*820px/);
+  assert.match(css, /@media[^\{]+max-width:\s*560px/);
+  assert.match(css, /prefers-reduced-motion/);
+});
+
+test("索引加载器只返回通过标准化的有效记录", async () => {
+  const fetchIndex = async () => ({
+    ok: true,
+    json: async () => ({
+      reports: [
+        { id: "valid", date: "2026-07-30", title: "有效日报" },
+        { date: "2026-07-30", title: "缺少 ID" },
+      ],
+    }),
+  });
+
+  const loaded = await loadReports("./reports.json", fetchIndex);
+
+  assert.equal(loaded.length, 1);
+  assert.equal(loaded[0].id, "valid");
+});
+
+test("索引加载器会把网络失败和错误结构转换为明确错误", async () => {
+  const failedRequest = async () => ({ ok: false, status: 503 });
+  const invalidPayload = async () => ({ ok: true, json: async () => ({ reports: null }) });
+
+  await assert.rejects(loadReports("./reports.json", failedRequest), /无法读取日报索引/);
+  await assert.rejects(loadReports("./reports.json", invalidPayload), /日报索引格式无效/);
 });

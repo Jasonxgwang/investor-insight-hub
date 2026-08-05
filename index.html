@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+      name="description"
+      content="Investor Insight Hub 投资观点库：归档、检索雪球和微博大 V 投资观点日报。"
+    >
+    <title>Investor Insight Hub 投资观点库</title>
+    <link rel="stylesheet" href="./style.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">跳到日报列表</a>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="./" aria-label="Investor Insight Hub 投资观点库首页">
+          <span class="brand-mark" aria-hidden="true">IIH</span>
+          <span class="brand-copy">
+            <strong>Investor Insight Hub</strong>
+            <span>投资观点库</span>
+          </span>
+        </a>
+        <div class="header-status">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span>持续归档</span>
+        </div>
+      </div>
+    </header>
+
+    <section class="stats-band" aria-label="资料库统计">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <span class="stat-label">累计日报</span>
+          <strong class="stat-value" id="stat-reports">—</strong>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">最近更新</span>
+          <strong class="stat-value stat-value-date" id="stat-updated">—</strong>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">覆盖股票</span>
+          <strong class="stat-value" id="stat-stocks">—</strong>
+        </div>
+        <div class="stat-item">
+          <span class="stat-label">覆盖大 V</span>
+          <strong class="stat-value" id="stat-influencers">—</strong>
+        </div>
+      </div>
+    </section>
+
+    <div class="page-shell">
+      <section class="search-panel" aria-labelledby="search-heading">
+        <div class="search-copy">
+          <p class="eyebrow">INVESTMENT RESEARCH ARCHIVE</p>
+          <h1 id="search-heading">检索每日投资观点</h1>
+          <p>按股票、代码、大 V、标签或日期快速定位历史日报。</p>
+        </div>
+        <div class="search-controls">
+          <label class="search-field" for="search-input">
+            <span class="search-icon" aria-hidden="true"></span>
+            <input
+              id="search-input"
+              type="search"
+              autocomplete="off"
+              placeholder="搜索股票名称、代码、大 V、标签或日期"
+            >
+            <button
+              class="icon-button search-clear"
+              id="clear-search"
+              type="button"
+              aria-label="清空搜索"
+              title="清空搜索"
+              hidden
+            >×</button>
+          </label>
+          <button
+            class="filter-toggle"
+            id="filter-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="filters-panel"
+          >
+            <span class="filter-icon" aria-hidden="true"></span>
+            筛选
+          </button>
+        </div>
+      </section>
+
+      <div class="content-grid">
+        <aside class="filters-panel" id="filters-panel" aria-label="日报分类筛选">
+          <div class="filters-header">
+            <div>
+              <p class="eyebrow">FILTERS</p>
+              <h2>分类浏览</h2>
+            </div>
+            <button
+              class="icon-button filters-close"
+              id="filters-close"
+              type="button"
+              aria-label="关闭筛选面板"
+              title="关闭筛选面板"
+            >×</button>
+          </div>
+
+          <nav class="filter-section" aria-labelledby="year-heading">
+            <h3 id="year-heading">年份</h3>
+            <div class="filter-list" id="year-filters"></div>
+          </nav>
+
+          <nav class="filter-section" aria-labelledby="industry-heading">
+            <h3 id="industry-heading">行业</h3>
+            <div class="filter-list" id="industry-filters"></div>
+          </nav>
+
+          <button class="reset-button" id="reset-filters" type="button">清除全部筛选</button>
+        </aside>
+
+        <main id="main-content" tabindex="-1">
+          <div class="results-toolbar">
+            <div>
+              <p class="eyebrow">DAILY REPORTS</p>
+              <h2>日报归档</h2>
+            </div>
+            <p class="result-count" id="result-count" aria-live="polite">正在载入…</p>
+          </div>
+
+          <div class="active-filters" id="active-filters" aria-label="当前筛选条件"></div>
+          <section class="report-list" id="report-list" aria-label="日报列表" aria-live="polite"></section>
+        </main>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <p>Investor Insight Hub 投资观点库</p>
+      <p>本站内容仅用于个人研究归档，不构成投资建议。</p>
+    </footer>
+
+    <template id="report-template">
+      <article class="report-card">
+        <div class="report-date-block">
+          <time class="report-date"></time>
+          <span class="report-year"></span>
+        </div>
+        <div class="report-body">
+          <div class="report-source-row"></div>
+          <h3 class="report-title"></h3>
+          <p class="report-summary"></p>
+          <dl class="report-details"></dl>
+          <div class="report-tags"></div>
+        </div>
+        <div class="report-action"></div>
+      </article>
+    </template>
+
+    <template id="state-template">
+      <div class="state-message">
+        <span class="state-symbol" aria-hidden="true">i</span>
+        <h3 class="state-title"></h3>
+        <p class="state-description"></p>
+        <button class="state-action" type="button"></button>
+      </div>
+    </template>
+
+    <script type="module" src="./script.js"></script>
+  </body>
+</html>
