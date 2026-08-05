@@ -3,9 +3,11 @@
 
 from __future__ import annotations
 
+import argparse
 import hashlib
 import json
 import re
+import sys
 from datetime import datetime
 from html.parser import HTMLParser
 from pathlib import Path
@@ -248,6 +250,17 @@ def load_entities(path: Path) -> dict[str, Any]:
     return payload
 
 
+def load_overrides(path: Path) -> dict[str, dict[str, Any]]:
+    """读取少量人工校准记录，用于保留历史日报的高质量元数据。"""
+
+    if not path.exists():
+        return {}
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    if payload.get("schemaVersion") != 1 or not isinstance(payload.get("reports"), dict):
+        raise ReportParseError(f"日报覆盖文件格式无效：{path}")
+    return payload["reports"]
+
+
 def split_metadata_values(value: str) -> list[str]:
     return [normalize_text(item) for item in re.split(r"[;；,，]", value) if normalize_text(item)]
 
@@ -410,3 +423,146 @@ def parse_report(path: Path, root: Path, entities: dict[str, Any], overrides: di
         "metrics": {},
         "_warnings": warnings,
     }
+
+
+def validate_index(payload: dict[str, Any], root: Path) -> None:
+    """在写入前验证首页依赖的数据契约和所有归档路径。"""
+
+    if payload.get("schemaVersion") != 1 or not isinstance(payload.get("reports"), list):
+        raise ReportParseError("日报索引结构无效")
+
+    seen_ids: set[str] = set()
+    seen_paths: set[str] = set()
+    required = ("id", "date", "year", "title", "summary", "file")
+    reports = payload["reports"]
+    for report in reports:
+        missing = [field for field in required if report.get(field) in (None, "")]
+        if missing:
+            raise ReportParseError(f"日报记录缺少字段：{', '.join(missing)}")
+        if report["id"] in seen_ids:
+            raise ReportParseError(f"日报 ID 重复：{report['id']}")
+        seen_ids.add(report["id"])
+
+        normalized_path = str(report["file"]).replace("\\", "/")
+        folded_path = normalized_path.casefold()
+        if folded_path in seen_paths:
+            raise ReportParseError(f"日报路径重复：{normalized_path}")
+        seen_paths.add(folded_path)
+        if not normalized_path.startswith(f"Reports/{report['year']}/"):
+            raise ReportParseError(f"日报路径与年份不一致：{normalized_path}")
+        if int(str(report["date"])[:4]) != report["year"]:
+            raise ReportParseError(f"日报日期与年份不一致：{normalized_path}")
+        if not (root / normalized_path).is_file():
+            raise ReportParseError(f"日报文件不存在：{normalized_path}")
+
+        for field in ("industries", "tags", "stocks", "influencers", "sources"):
+            if not isinstance(report.get(field), list):
+                raise ReportParseError(f"日报字段必须是数组：{normalized_path} -> {field}")
+
+    expected_updated = max((report["date"] for report in reports), default="")
+    if payload.get("site", {}).get("updatedAt") != expected_updated:
+        raise ReportParseError("站点最近更新日期与日报数据不一致")
+
+
+def build_index(
+    root: Path,
+    entities_path: Path,
+    overrides_path: Path,
+) -> tuple[dict[str, Any], list[str]]:
+    """全量重建索引，以自动反映新增、删除、改名和规则升级。"""
+
+    root = root.resolve()
+    entities = load_entities(entities_path)
+    overrides = load_overrides(overrides_path)
+    archive = root / "Reports"
+    report_paths = sorted(
+        (path for path in archive.rglob("*.html") if path.is_file()),
+        key=lambda path: path.relative_to(root).as_posix().casefold(),
+    ) if archive.exists() else []
+
+    reports: list[dict[str, Any]] = []
+    warnings: list[str] = []
+    for path in report_paths:
+        relative = path.relative_to(root).as_posix()
+        record = parse_report(path, root, entities, overrides)
+        warnings.extend(f"{relative}：{message}" for message in record.pop("_warnings", []))
+        override = overrides.get(relative, {})
+        if not isinstance(override, dict):
+            raise ReportParseError(f"日报覆盖记录必须是对象：{relative}")
+        record.update(override)
+        record["file"] = relative
+        record["year"] = int(record["date"][:4])
+        reports.append(record)
+
+    reports.sort(
+        key=lambda report: (
+            -int(report["date"].replace("-", "")),
+            report["title"],
+            report["file"],
+        )
+    )
+    updated_at = max((report["date"] for report in reports), default="")
+    payload = {
+        "schemaVersion": 1,
+        "site": {
+            "name": "Investor Insight Hub 投资观点库",
+            "description": "雪球与微博大 V 投资观点日报归档",
+            "updatedAt": updated_at,
+        },
+        "reports": reports,
+    }
+    validate_index(payload, root)
+    return payload, warnings
+
+
+def serialize_index(payload: dict[str, Any]) -> str:
+    return json.dumps(payload, ensure_ascii=False, indent=2) + "\n"
+
+
+def write_index_atomic(payload: dict[str, Any], destination: Path) -> None:
+    """先写临时文件，再原子替换，避免中途失败破坏可用索引。"""
+
+    temporary = destination.with_suffix(destination.suffix + ".tmp")
+    temporary.write_text(serialize_index(payload), encoding="utf-8", newline="\n")
+    temporary.replace(destination)
+
+
+def parse_arguments(argv: list[str] | None = None) -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="自动生成投资日报静态索引")
+    parser.add_argument("--root", type=Path, default=Path.cwd(), help="站点项目根目录")
+    mode = parser.add_mutually_exclusive_group(required=True)
+    mode.add_argument("--write", action="store_true", help="验证后写入 reports.json")
+    mode.add_argument("--check", action="store_true", help="检查 reports.json 是否为最新")
+    return parser.parse_args(argv)
+
+
+def main(argv: list[str] | None = None) -> int:
+    args = parse_arguments(argv)
+    root = args.root.resolve()
+    try:
+        payload, warnings = build_index(
+            root,
+            root / "data" / "entities.json",
+            root / "data" / "report-overrides.json",
+        )
+        serialized = serialize_index(payload)
+        destination = root / "reports.json"
+        if args.check:
+            current = destination.read_text(encoding="utf-8") if destination.exists() else ""
+            if current != serialized:
+                print("reports.json 不是最新状态，请运行 --write。", file=sys.stderr)
+                return 1
+            print(f"索引检查通过：{len(payload['reports'])} 份日报。")
+        else:
+            write_index_atomic(payload, destination)
+            print(f"索引已更新：{len(payload['reports'])} 份日报。")
+        for warning in warnings:
+            print(f"警告：{warning}", file=sys.stderr)
+        return 0
+    except (OSError, ValueError, json.JSONDecodeError) as error:
+        print(f"索引生成失败：{error}", file=sys.stderr)
+        return 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

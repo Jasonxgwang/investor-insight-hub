@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import importlib.util
+import json
 import tempfile
 import unittest
 from pathlib import Path
@@ -184,6 +185,96 @@ class EntityExtractionTests(unittest.TestCase):
         )
 
         self.assertEqual(report["stocks"], [])
+
+
+class IndexGenerationTests(unittest.TestCase):
+    """验证全量扫描的结果可重复、可覆盖且符合首页契约。"""
+
+    def setUp(self):
+        self.temp = tempfile.TemporaryDirectory()
+        self.root = Path(self.temp.name)
+        self.entities_path = self.root / "data" / "entities.json"
+        self.overrides_path = self.root / "data" / "report-overrides.json"
+        self.entities_path.parent.mkdir(parents=True, exist_ok=True)
+        self.entities_path.write_text(
+            json.dumps(
+                {
+                    "schemaVersion": 1,
+                    "influencers": [],
+                    "stocks": [],
+                    "industries": [],
+                    "tags": [],
+                    "sources": [],
+                },
+                ensure_ascii=False,
+            ),
+            encoding="utf-8",
+        )
+        self.overrides_path.write_text(
+            json.dumps({"schemaVersion": 1, "reports": {}}, ensure_ascii=False),
+            encoding="utf-8",
+        )
+
+    def tearDown(self):
+        self.temp.cleanup()
+
+    def write_report(self, relative_path: str, title: str) -> Path:
+        path = self.root / relative_path
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(
+            f"<!doctype html><html><head><title>{title}</title></head>"
+            "<body><h1>日报</h1><p>本期记录市场观点和交易动作。</p></body></html>",
+            encoding="utf-8",
+        )
+        return path
+
+    def test_full_scan_is_sorted_stable_and_valid(self):
+        self.write_report("Reports/2027/20270105_b.html", "2027-01-05 B 日报")
+        self.write_report("Reports/2027/20270106_a.html", "2027-01-06 A 日报")
+
+        first, first_warnings = module.build_index(
+            self.root, self.entities_path, self.overrides_path
+        )
+        second, second_warnings = module.build_index(
+            self.root, self.entities_path, self.overrides_path
+        )
+
+        self.assertEqual(first, second)
+        self.assertEqual(first_warnings, second_warnings)
+        self.assertEqual(
+            [item["date"] for item in first["reports"]],
+            ["2027-01-06", "2027-01-05"],
+        )
+        self.assertEqual(first["site"]["updatedAt"], "2027-01-06")
+        module.validate_index(first, self.root)
+
+    def test_override_preserves_curated_fields(self):
+        path = self.write_report("Reports/2027/20270105_report.html", "2027-01-05 自动标题")
+        self.overrides_path.write_text(
+            json.dumps(
+                {
+                    "schemaVersion": 1,
+                    "reports": {
+                        path.relative_to(self.root).as_posix(): {
+                            "id": "curated-id",
+                            "title": "人工标题",
+                            "summary": "人工校准摘要。",
+                            "tags": ["仓位变化"],
+                        }
+                    },
+                },
+                ensure_ascii=False,
+            ),
+            encoding="utf-8",
+        )
+
+        payload, _ = module.build_index(self.root, self.entities_path, self.overrides_path)
+        report = payload["reports"][0]
+
+        self.assertEqual(report["id"], "curated-id")
+        self.assertEqual(report["title"], "人工标题")
+        self.assertEqual(report["summary"], "人工校准摘要。")
+        self.assertEqual(report["tags"], ["仓位变化"])
 
 
 if __name__ == "__main__":
