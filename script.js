@@ -10,6 +10,7 @@ const toStringArray = (value) =>
     : [];
 
 const normalizeForSearch = (value) => String(value || "").trim().toLocaleLowerCase("zh-CN");
+const compactForSearch = (value) => normalizeForSearch(value).replace(/\s+/g, "");
 
 /**
  * 把 reports.json 中可能缺少可选字段的记录整理为统一结构。
@@ -81,19 +82,19 @@ function buildSearchText(report) {
     ...report.stocks.flatMap((stock) => [stock.name, stock.code]),
   ];
 
-  return normalizeForSearch(values.join(" "));
+  return values.map(compactForSearch).join(" ");
 }
 
 function includesNormalized(values, expected) {
-  const needle = normalizeForSearch(expected);
+  const needle = compactForSearch(expected);
   if (!needle) return true;
-  return values.some((value) => normalizeForSearch(value).includes(needle));
+  return values.some((value) => compactForSearch(value).includes(needle));
 }
 
 /** 所有启用的筛选条件采用交集逻辑，结果固定按日期和 ID 倒序。 */
 export function filterReports(reports, filters = {}) {
   const active = { ...EMPTY_FILTERS, ...filters };
-  const keywords = normalizeForSearch(active.q).split(/\s+/).filter(Boolean);
+  const keywords = String(active.q || "").trim().split(/\s+/).map(compactForSearch).filter(Boolean);
 
   return reports
     .filter((report) => {

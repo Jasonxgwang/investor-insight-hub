@@ -85,6 +85,7 @@ test("统计会对股票和大 V 去重并找出最近日期", () => {
 
 test("关键词可匹配代码、大 V、标签和日期", () => {
   const reports = makeReports();
+  assert.equal(filterReports(reports, { q: "TCL科技" }).length, 1);
   assert.deepEqual(filterReports(reports, { q: "000100" }).map((item) => item.id), [
     "20260730-market-summary",
   ]);
