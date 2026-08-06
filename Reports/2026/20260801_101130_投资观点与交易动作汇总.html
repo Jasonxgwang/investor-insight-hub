@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>2026-08-01 近24小时投资观点与交易动作汇总</title>
+<style>
+:root {
+  --bg:#f5f7fb; --paper:#fff; --ink:#172033; --muted:#667085; --line:#e4e7ec;
+  --green:#067647; --green-bg:#ecfdf3; --red:#b42318; --red-bg:#fef3f2;
+  --blue:#175cd3; --blue-bg:#eff8ff; --amber:#b54708; --amber-bg:#fffaeb;
+  --purple:#6938ef; --purple-bg:#f4f3ff;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;line-height:1.65}
+.wrap{max-width:1220px;margin:0 auto;padding:28px 22px 60px}
+.hero{background:linear-gradient(135deg,#172033,#344054);color:#fff;border-radius:20px;padding:34px 38px;box-shadow:0 12px 30px rgba(16,24,40,.15)}
+.hero h1{margin:0 0 8px;font-size:30px;line-height:1.3}
+.hero p{margin:5px 0;color:#d0d5dd}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:24px}
+.kpi{background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:14px}
+.kpi b{display:block;font-size:22px;color:#fff}
+.kpi span{font-size:13px;color:#d0d5dd}
+nav{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0}
+nav a{text-decoration:none;color:#344054;background:#fff;border:1px solid var(--line);padding:8px 13px;border-radius:999px;font-size:14px}
+section{background:var(--paper);border:1px solid var(--line);border-radius:16px;margin:18px 0;padding:24px;box-shadow:0 2px 8px rgba(16,24,40,.04)}
+h2{font-size:23px;margin:0 0 14px} h3{margin:0;font-size:18px}
+.summary-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.summary-item{border-radius:12px;padding:16px 18px;border:1px solid var(--line);background:#fcfcfd}
+.summary-item strong{display:block;margin-bottom:5px}
+.table-wrap{overflow:auto;border:1px solid var(--line);border-radius:12px}
+table{width:100%;border-collapse:collapse;font-size:14px;background:#fff}
+th{background:#f9fafb;text-align:left;color:#475467;font-weight:650;position:sticky;top:0}
+th,td{padding:12px 13px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:none} .nowrap{white-space:nowrap}
+.badge,.pill{display:inline-block;border-radius:999px;padding:3px 9px;font-size:12px;font-weight:700;white-space:nowrap}
+.badge.green{color:var(--green);background:var(--green-bg)} .badge.red{color:var(--red);background:var(--red-bg)}
+.badge.blue{color:var(--blue);background:var(--blue-bg)} .badge.amber{color:var(--amber);background:var(--amber-bg)}
+.badge.purple{color:var(--purple);background:var(--purple-bg)} .badge.gray{color:#475467;background:#f2f4f7}
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.card{border:1px solid var(--line);border-left-width:5px;border-radius:12px;padding:17px;background:#fff}
+.card.bull{border-left-color:#12b76a} .card.bear{border-left-color:#f04438}
+.card-head{display:flex;align-items:flex-start;justify-content:space-between;gap:10px}
+.card.bull .pill{color:var(--green);background:var(--green-bg)} .card.bear .pill{color:var(--red);background:var(--red-bg)}
+.card p{margin:9px 0} .meta,.source{color:var(--muted);font-size:13px} .source{margin-top:7px}
+a{color:#175cd3} .source-link{font-size:13px;text-decoration:none}
+.callout{padding:16px 18px;border-radius:12px;background:#fffaeb;border:1px solid #fedf89;color:#7a2e0e}
+.note{color:var(--muted);font-size:13px}
+.footer{color:#667085;text-align:center;font-size:13px;margin-top:26px}
+@media(max-width:900px){.kpis{grid-template-columns:repeat(2,1fr)}.cards,.summary-grid{grid-template-columns:1fr}}
+@media(max-width:560px){.wrap{padding:14px 10px 36px}.hero{padding:24px 20px}.hero h1{font-size:24px}.kpis{grid-template-columns:1fr}section{padding:17px}}
+@media print{body{background:#fff}.wrap{max-width:none;padding:0}nav{display:none}section,.hero{box-shadow:none;break-inside:avoid}a{color:#000;text-decoration:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+  <h1>近24小时投资观点与交易动作汇总</h1>
+  <p>数据生成时间：2026-08-01 10:11:30（UTC+8）｜统计范围：严格近24小时</p>
+  <p>来源：雪球JS主贴、大V评论讨论、微博主贴。仅归纳原文，不构成投资建议。</p>
+  <div class="kpis">
+    <div class="kpi"><b>8</b><span>已确认操作/仓位信号</span></div>
+    <div class="kpi"><b>9</b><span>主要偏多方向</span></div>
+    <div class="kpi"><b>7</b><span>主要偏空或风险提示</span></div>
+    <div class="kpi"><b>40%</b><span>ericwarn丁宁当前现金仓位</span></div>
+  </div>
+</header>
+
+<nav>
+<a href="#summary">核心结论</a><a href="#actions">交易动作</a><a href="#bullish">主要看多</a>
+<a href="#bearish">主要看空</a><a href="#portfolio">公开仓位</a><a href="#timeline">时间线</a><a href="#caveats">未确认项</a>
+</nav>
+
+<section id="summary">
+<h2>一、核心结论</h2>
+<div class="summary-grid">
+  <div class="summary-item"><strong>整体市场：防守仍占上风</strong>雪月霜认为底部尚未确认，ericwarn丁宁虽完成价值股调仓，但保留约40%现金。天地侠影则看好8月价值回归，形成明显分歧。</div>
+  <div class="summary-item"><strong>锂矿：不是看空，而是“低买、不追、等2027年”</strong>雪月霜明确可逢低买入或补仓，主布局盐湖股份；但认为2026年下半年难有大行情。ericwarn丁宁则要求股票和碳酸锂期货同时出现右侧信号。</div>
+  <div class="summary-item"><strong>AI：美股巨头偏多，A股科技偏谨慎</strong>但斌看好谷歌、微软、亚马逊并确认买入海力士；天地侠影等人对A股高科技、AI硬件与算力商业模式保持警惕。</div>
+  <div class="summary-item"><strong>资源品：黄金长期偏多；铝短期有淡季压力</strong>黄金得到多位作者长期看好。超级鹿鼎公已从云铝相对转向神火，但提醒8—9月库存可能回升。</div>
+</div>
+<div class="callout" style="margin-top:14px"><strong>最值得关注的新增动作：</strong>飞翔芸建仓一只未公开名称的矿业类ST股；但斌确认最后一笔买入SK海力士；超级鹿鼎公确认月初减云铝、加神火且暂不换回；ericwarn丁宁披露当前40%现金。</div>
+</section>
+
+<section id="actions">
+<h2>二、明确买入、卖出与仓位调整</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>时间</th><th>作者</th><th>标的</th><th>动作</th><th>原文含义与判断</th><th>确认度</th></tr></thead>
+<tbody>
+        <tr>
+          <td class="nowrap">2026-08-01 10:09</td>
+          <td>ericwarn丁宁</td>
+          <td><strong>整体账户 / A股反弹组合</strong></td>
+          <td><span class="badge gray">防守仓位</span></td>
+          <td>确认“A股反弹”组合与实盘非常接近，但权重已被调整；当前实盘约40%为现金。<div class="source">原始数据行 494–498 · <a href="https://xueqiu.com/9363345092/403218510" target="_blank" rel="noopener">查看原帖</a></div></td>
+          <td>高</td>
+        </tr>
+        <tr>
+          <td class="nowrap">2026-08-01 10:00</td>
+          <td>ericwarn丁宁</td>
+          <td><strong>主流价值股</strong></td>
+          <td><span class="badge gray">调仓换股完成</span></td>
+          <td>历时约一个月的调仓换股已完成，持仓市值随价值股反弹再次接近历史高位。具体新增标的部分依赖原帖图片，文本数据未完整给出。<div class="source">原始数据行 8–13 · <a href="https://xueqiu.com/9363345092/403218510" target="_blank" rel="noopener">查看原帖</a></div></td>
+          <td>高</td>
+        </tr>
+        <tr>
+          <td class="nowrap">2026-07-31 14:59</td>
+          <td>ericwarn丁宁</td>
+          <td><strong>A股反弹（ZH810996）</strong></td>
+          <td><span class="badge gray">调整仓位</span></td>
+          <td>明确表示刚刚调整了雪球组合仓位；后续说明相关标的是最近一个月买入或加仓，并非全部在当日买入。<div class="source">原始数据行 389–391、1040–1044 · <a href="https://xueqiu.com/9363345092/403119629" target="_blank" rel="noopener">查看原帖</a></div></td>
+          <td>高</td>
+        </tr>
+        <tr>
+          <td class="nowrap">2026-07-31 16:33</td>
+          <td>ericwarn丁宁</td>
+          <td><strong>紫金矿业A/H</strong></td>
+          <td><span class="badge gray">确认持有</span></td>
+          <td>明确回复“买了紫金AH”；并称紫金是在其估值体系约“6折”时买入，目前约“7折多”。属于持仓确认，不能据此认定是当日新买。<div class="source">原始数据行 964–968、1064–1068 · <a href="https://xueqiu.com/9363345092/403119629" target="_blank" rel="noopener">查看原帖</a></div></td>
+          <td>高</td>
+        </tr>
+        <tr>
+          <td class="nowrap">2026-07-31 23:08</td>
+          <td>但斌</td>
+          <td><strong>SK海力士</strong></td>
+          <td><span class="badge gray">买入确认</span></td>
+          <td>称使用此前“2倍产品高位卖出策略”回笼的资金买入，最后一笔买的是海力士。对苹果新机换机潮亦持乐观判断。<div class="source">原始数据行 726–730 · <a href="https://xueqiu.com/1102105103/403192726" target="_blank" rel="noopener">查看原帖</a></div></td>
+          <td>中高</td>
+        </tr>
+        <tr>
+          <td class="nowrap">2026-07-31 11:34</td>
+          <td>飞翔芸</td>
+          <td><strong>未公开名称的ST矿业股</strong></td>
+          <td><span class="badge green">建仓</span></td>
+          <td>明确表示多年不买ST后，当日上午建仓一只ST股票；未公布名称。次日进一步强调矿山类ST的底层资产较容易估算。<div class="source">原始数据行 452–454 · <a href="https://xueqiu.com/9957341637/403074944" target="_blank" rel="noopener">查看原帖</a></div></td>
+          <td>高</td>
+        </tr>
+        <tr>
+          <td class="nowrap">2026-07-31 16:10–16:35</td>
+          <td>超级鹿鼎公 / 挖地瓜的超级鹿鼎公</td>
+          <td><strong>神火股份、云铝股份</strong></td>
+          <td><span class="badge gray">减云铝、加神火</span></td>
+          <td>确认月初因铝价下跌进行保护性换股，神火仓位显著高于云铝；截至7月31日表示“不换回了”。<div class="source">原始数据行 1568–1576、1593–1601 · <a href="https://weibo.com/3962719063/RbeGroA4f" target="_blank" rel="noopener">查看原帖</a></div></td>
+          <td>高</td>
+        </tr>
+        <tr>
+          <td class="nowrap">2026-08-01 09:52</td>
+          <td>雪月霜</td>
+          <td><strong>盐湖股份</strong></td>
+          <td><span class="badge gray">核心布局确认</span></td>
+          <td>确认组合中长期只配置盐湖股份，用于布局2027年碳酸锂机会。属于既有布局确认，并非当日新加仓。<div class="source">原始数据行 536–540 · <a href="https://xueqiu.com/1505944393/403213307" target="_blank" rel="noopener">查看原帖</a></div></td>
+          <td>高</td>
+        </tr></tbody>
+</table></div>
+</section>
+
+<section id="bullish">
+<h2>三、主要看多与推荐方向</h2>
+<div class="cards">
+        <article class="card bull">
+          <div class="card-head">
+            <h3>盐湖股份；赣锋锂业、天齐锂业、盛新锂能</h3>
+            <span class="pill">中期偏多、短期条件式买入</span>
+          </div>
+          <p class="meta">雪月霜 · 2026-08-01 07:58–09:52</p>
+          <p>认为锂股应从正常利润区间和估值出发，当前已“接近低估”；可逢低买入或补仓，但不要押注2026年下半年快速反转。本人主要用盐湖股份布局2027年；对天齐锂业H股的多年持有回答为“港股可以”。</p>
+          <a class="source-link" href="https://xueqiu.com/1505944393/403213307" target="_blank" rel="noopener">原帖/父帖</a>
+        </article>
+        <article class="card bull">
+          <div class="card-head">
+            <h3>谷歌、微软、亚马逊；SK海力士</h3>
+            <span class="pill">明确偏多</span>
+          </div>
+          <p class="meta">但斌 · 2026-07-31 13:58–23:08</p>
+          <p>认为美股更可能形成V形反转并创历史新高；强调大型科技公司AI资本开支正在兑现回报，并确认买入海力士。注意其看多的是底层资产和AI巨头，不等于建议持有高杠杆产品。</p>
+          <a class="source-link" href="https://xueqiu.com/1102105103/403192726" target="_blank" rel="noopener">原帖/父帖</a>
+        </article>
+        <article class="card bull">
+          <div class="card-head">
+            <h3>纳斯达克ETF</h3>
+            <span class="pill">明确推荐提高仓位</span>
+          </div>
+          <p class="meta">老奈 · 2026-07-31 20:48</p>
+          <p>建议多配置纳指ETF，接受少赚一些以降低个股风险；个股等待确定性机会和绝对低位再出击。</p>
+          <a class="source-link" href="https://xueqiu.com/4086512744/403078392" target="_blank" rel="noopener">原帖/父帖</a>
+        </article>
+        <article class="card bull">
+          <div class="card-head">
+            <h3>黄金、紫金矿业</h3>
+            <span class="pill">长期偏多</span>
+          </div>
+          <p class="meta">润哥、斯托伯的天空、ericwarn丁宁 · 2026-07-31 16:33–2026-08-01 07:54</p>
+          <p>润哥判断2026—2032年黄金长期上涨趋势不变；斯托伯称普通人应保持耐心、长期黄金“没啥问题”，并确认较早买入紫金；ericwarn丁宁确认持有紫金A/H。</p>
+          <a class="source-link" href="https://xueqiu.com/9493911686/403160052" target="_blank" rel="noopener">原帖/父帖</a>
+        </article>
+        <article class="card bull">
+          <div class="card-head">
+            <h3>宁德时代</h3>
+            <span class="pill">明确看好</span>
+          </div>
+          <p class="meta">斯托伯的天空 · 2026-07-31 14:34</p>
+          <p>称宁德时代是“真正的核心资产”，同时强调看好不等于无条件吹票。</p>
+          <a class="source-link" href="https://xueqiu.com/9493911686/403011616" target="_blank" rel="noopener">原帖/父帖</a>
+        </article>
+        <article class="card bull">
+          <div class="card-head">
+            <h3>价值股 / 高股息资产</h3>
+            <span class="pill">板块偏多</span>
+          </div>
+          <p class="meta">天地侠影、黄建平 · 2026-07-31 10:08–17:28</p>
+          <p>天地侠影看好8月价值回归；黄建平强调低利率环境下，稳定盈利、分红率高且仍有增长的优质公司，10倍左右市盈率具有吸引力。</p>
+          <a class="source-link" href="https://xueqiu.com/8601813520/403152669" target="_blank" rel="noopener">原帖/父帖</a>
+        </article>
+        <article class="card bull">
+          <div class="card-head">
+            <h3>东鹏饮料</h3>
+            <span class="pill">重点关注</span>
+          </div>
+          <p class="meta">滇南王 · 2026-08-01 09:06</p>
+          <p>原帖首句写作“东鹏财富”，但下文经营数据对应东鹏饮料；认为其业绩质量和分红均值得重视。未明确表示已买入。</p>
+          <a class="source-link" href="https://xueqiu.com/2496980475/403214693" target="_blank" rel="noopener">原帖/父帖</a>
+        </article>
+        <article class="card bull">
+          <div class="card-head">
+            <h3>中国海洋石油H、青岛港H、陕西煤业、中国平安、招商银行、天山铝业等</h3>
+            <span class="pill">实盘持仓显示偏多</span>
+          </div>
+          <p class="meta">挚爱子洲 · 2026-07-31 20:51</p>
+          <p>月报披露上述标的为主要仓位，其中中国海洋石油H占35%，体现对能源、高股息金融与周期价值股的集中偏好。</p>
+          <a class="source-link" href="https://xueqiu.com/7123126150/403176703" target="_blank" rel="noopener">原帖/父帖</a>
+        </article>
+        <article class="card bull">
+          <div class="card-head">
+            <h3>中煤能源 / 煤炭</h3>
+            <span class="pill">基本面偏多线索</span>
+          </div>
+          <p class="meta">16发财油菜君、超级鹿鼎公（转发） · 2026-07-31 12:35–15:07</p>
+          <p>高硫煤在硫磺价格上涨和先进煤化工配套下可能由扣分项转为收益项；煤矿复产偏慢、竞拍煤价上涨。主要是产业逻辑与转发信息，不等同于明确买入。</p>
+          <a class="source-link" href="https://xueqiu.com/4348548174/403122909" target="_blank" rel="noopener">原帖/父帖</a>
+        </article></div>
+</section>
+
+<section id="bearish">
+<h2>四、主要看空、卖出与风险提示</h2>
+<div class="cards">
+        <article class="card bear">
+          <div class="card-head">
+            <h3>A股大盘及“老登股”</h3>
+            <span class="pill">明显谨慎</span>
+          </div>
+          <p class="meta">雪月霜 · 2026-08-01 08:36–09:34</p>
+          <p>认为当前仍是牛市成交量而非真正熊市底部成交量，因此不敢判断价值股已见底；2026年下半年即使价值股不再下跌、能够稳住，已属于较好情形，预期大涨不现实。</p>
+          <a class="source-link" href="https://xueqiu.com/1505944393/403216423" target="_blank" rel="noopener">原帖/父帖</a>
+        </article>
+        <article class="card bear">
+          <div class="card-head">
+            <h3>锂矿股2026年下半年行情</h3>
+            <span class="pill">短期谨慎、反对追高</span>
+          </div>
+          <p class="meta">雪月霜、伊夫圣洛朗 · 2026-07-31 21:31–2026-08-01 08:40</p>
+          <p>雪月霜认为外盘与大盘风险使2026年下半年不太可能暴涨，真正机会更可能在2027年；伊夫圣洛朗认为碳酸锂价格仍可能进一步下探。两者并非长期看空锂股。</p>
+          <a class="source-link" href="https://xueqiu.com/1505944393/403213307" target="_blank" rel="noopener">原帖/父帖</a>
+        </article>
+        <article class="card bear">
+          <div class="card-head">
+            <h3>A股高科技 / AI硬件 / AI算力商业模式</h3>
+            <span class="pill">偏空或高估警示</span>
+          </div>
+          <p class="meta">天地侠影、超级鹿鼎公、山行 · 2026-07-31 11:01–20:39</p>
+          <p>天地侠影认为高科技板块疲态明显、顶部可能在反弹中逐步形成，并指出AI算力缺乏护城河；超级鹿鼎公认为科技股大幅高开可能是在换一批人套牢；山行指出国内AI硬件盈利蛋糕较小却估值最高。</p>
+          <a class="source-link" href="https://xueqiu.com/8601813520/403152669" target="_blank" rel="noopener">原帖/父帖</a>
+        </article>
+        <article class="card bear">
+          <div class="card-head">
+            <h3>电解铝短期景气</h3>
+            <span class="pill">短期谨慎，中期不悲观</span>
+          </div>
+          <p class="meta">超级鹿鼎公 · 2026-07-31 13:55–17:04</p>
+          <p>判断8—9月进入真正淡季，社会库存两个月可能增加10万—20万吨；但同时转发“电解铝需求问题不大”，因此更接近短期库存压力，而非全面看空行业。</p>
+          <a class="source-link" href="https://xueqiu.com/8790885129/403149050" target="_blank" rel="noopener">原帖/父帖</a>
+        </article>
+        <article class="card bear">
+          <div class="card-head">
+            <h3>“猛电”（作者昵称，原文未给正式代码）</h3>
+            <span class="pill">暂缓买回</span>
+          </div>
+          <p class="meta">挖地瓜的超级鹿鼎公 · 2026-07-31 17:07</p>
+          <p>原本计划中报后接回，但认为当前股价“不太香”，暂未行动。原文未给正式证券名称，报告不强行映射代码。</p>
+          <a class="source-link" href="https://weibo.com/3962719063/RbeTwqyNh" target="_blank" rel="noopener">原帖/父帖</a>
+        </article>
+        <article class="card bear">
+          <div class="card-head">
+            <h3>XL二南方海力士（07709）等高杠杆工具</h3>
+            <span class="pill">高位卖出提示</span>
+          </div>
+          <p class="meta">但斌 · 2026-07-31 10:13–11:57</p>
+          <p>多次强调该工具只适合抄底和上升阶段，涨至高位要卖出；这与其看好海力士底层资产并不矛盾。</p>
+          <a class="source-link" href="https://xueqiu.com/1102105103/403079681" target="_blank" rel="noopener">原帖/父帖</a>
+        </article>
+        <article class="card bear">
+          <div class="card-head">
+            <h3>云铝相对神火</h3>
+            <span class="pill">相对减配</span>
+          </div>
+          <p class="meta">超级鹿鼎公 · 2026-07-31 15:22–16:35</p>
+          <p>不是全面看空云铝，而是在铝价下跌情景下认为神火的保护更强，因此进行了相对仓位迁移，并决定暂不换回。</p>
+          <a class="source-link" href="https://weibo.com/3962719063/RbeGroA4f" target="_blank" rel="noopener">原帖/父帖</a>
+        </article></div>
+</section>
+
+<section id="portfolio">
+<h2>五、公开披露的主要持仓</h2>
+<p>挚爱子洲于2026年7月31日20:51披露7月末仓位。该表反映现有持仓偏好，不代表当日新买入。</p>
+<div class="table-wrap"><table>
+<thead><tr><th>序号</th><th>标的</th><th>仓位</th></tr></thead>
+<tbody><tr><td>1</td><td><strong>中国海洋石油H</strong></td><td>35%</td></tr><tr><td>2</td><td><strong>中国平安</strong></td><td>12%</td></tr><tr><td>3</td><td><strong>青岛港H</strong></td><td>11%</td></tr><tr><td>4</td><td><strong>陕西煤业</strong></td><td>11%</td></tr><tr><td>5</td><td><strong>招商银行</strong></td><td>10%</td></tr><tr><td>6</td><td><strong>天山铝业</strong></td><td>7%</td></tr><tr><td>7</td><td><strong>第一太平</strong></td><td>6%</td></tr><tr><td>8</td><td><strong>美的集团</strong></td><td>3%</td></tr><tr><td>9</td><td><strong>鄂资B</strong></td><td>3%</td></tr></tbody>
+</table></div>
+<p class="note">上述列示仓位合计98%，原帖称其余仓位不足为道。组合明显偏向能源、高股息金融、港股价值与周期资源。</p>
+</section>
+
+<section id="timeline">
+<h2>六、关键信号时间线</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>时间</th><th>作者</th><th>信号</th><th>类别</th></tr></thead>
+<tbody><tr><td class='nowrap'>2026-08-01 10:09</td><td>ericwarn丁宁</td><td>实盘约40%现金，组合权重已调整。</td><td><span class="badge amber">防守</span></td></tr><tr><td class='nowrap'>2026-08-01 10:04</td><td>ericwarn丁宁</td><td>锂矿需股票和碳酸锂期货同时出现右侧信号再抄底/加仓。</td><td><span class="badge amber">等待</span></td></tr><tr><td class='nowrap'>2026-08-01 09:52</td><td>雪月霜</td><td>确认主要以盐湖股份布局2027年碳酸锂机会。</td><td><span class="badge green">看多</span></td></tr><tr><td class='nowrap'>2026-08-01 09:34</td><td>雪月霜</td><td>认为真正市场底部尚未确认。</td><td><span class="badge red">谨慎</span></td></tr><tr><td class='nowrap'>2026-08-01 09:29</td><td>飞翔芸</td><td>强调矿山类ST需重资产核算与实地甄别。</td><td><span class="badge blue">持仓逻辑</span></td></tr><tr><td class='nowrap'>2026-08-01 08:53</td><td>雪月霜</td><td>对天齐锂业H股多年持有回答“港股可以”。</td><td><span class="badge green">看多</span></td></tr><tr><td class='nowrap'>2026-08-01 08:40</td><td>雪月霜</td><td>赣锋、天齐、盛新可逢低买入或补仓，但不宜期待下半年暴涨。</td><td><span class="badge green">条件买入</span></td></tr><tr><td class='nowrap'>2026-08-01 07:54</td><td>润哥</td><td>判断黄金2026—2032年长期上涨趋势不变。</td><td><span class="badge green">看多</span></td></tr><tr><td class='nowrap'>2026-07-31 23:08</td><td>但斌</td><td>确认最后一笔买入海力士。</td><td><span class="badge green">买入</span></td></tr><tr><td class='nowrap'>2026-07-31 22:52</td><td>但斌</td><td>看好谷歌、微软、亚马逊AI投入转化为回报。</td><td><span class="badge green">看多</span></td></tr><tr><td class='nowrap'>2026-07-31 21:25</td><td>斯托伯的天空</td><td>认为长期黄金没有问题，普通投资者应耐心。</td><td><span class="badge green">看多</span></td></tr><tr><td class='nowrap'>2026-07-31 20:51</td><td>挚爱子洲</td><td>披露主要持仓，中国海洋石油H占35%。</td><td><span class="badge blue">持仓</span></td></tr><tr><td class='nowrap'>2026-07-31 20:48</td><td>老奈</td><td>建议多配置纳指ETF，个股等待绝对低位。</td><td><span class="badge green">推荐</span></td></tr><tr><td class='nowrap'>2026-07-31 17:28</td><td>天地侠影</td><td>看好8月价值回归，认为高科技疲态明显。</td><td><span class="badge purple">多价值/空科技</span></td></tr><tr><td class='nowrap'>2026-07-31 17:07</td><td>超级鹿鼎公</td><td>“猛电”当前价格不够有吸引力，暂不接回。</td><td><span class="badge amber">观望</span></td></tr><tr><td class='nowrap'>2026-07-31 17:04</td><td>超级鹿鼎公</td><td>电解铝进入淡季，预计库存可能增加10万—20万吨。</td><td><span class="badge red">谨慎</span></td></tr><tr><td class='nowrap'>2026-07-31 16:35</td><td>超级鹿鼎公</td><td>月初减云铝加神火，暂不换回。</td><td><span class="badge blue">调仓</span></td></tr><tr><td class='nowrap'>2026-07-31 16:33</td><td>ericwarn丁宁</td><td>确认持有紫金A/H。</td><td><span class="badge blue">持仓</span></td></tr><tr><td class='nowrap'>2026-07-31 14:59</td><td>ericwarn丁宁</td><td>调整“A股反弹”组合仓位。</td><td><span class="badge blue">调仓</span></td></tr><tr><td class='nowrap'>2026-07-31 14:34</td><td>斯托伯的天空</td><td>明确看好宁德时代，称其为核心资产。</td><td><span class="badge green">看多</span></td></tr><tr><td class='nowrap'>2026-07-31 14:24</td><td>超级鹿鼎公</td><td>警惕科技股高开后套人。</td><td><span class="badge red">看空/谨慎</span></td></tr><tr><td class='nowrap'>2026-07-31 11:34</td><td>飞翔芸</td><td>建仓一只未公开名称的ST股。</td><td><span class="badge green">建仓</span></td></tr><tr><td class='nowrap'>2026-07-31 11:01</td><td>天地侠影</td><td>认为AI算力缺少护城河。</td><td><span class="badge red">看空</span></td></tr><tr><td class='nowrap'>2026-07-31 10:13–11:57</td><td>但斌</td><td>提示07709高位应卖出。</td><td><span class="badge red">卖出提示</span></td></tr></tbody>
+</table></div>
+</section>
+
+<section id="caveats">
+<h2>七、未确认或不应误读的信息</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>时间</th><th>事项</th><th>处理方式</th></tr></thead>
+<tbody><tr><td>2026-07-31 15:10</td><td>中孚实业“加仓2万股”</td><td>超级鹿鼎公回复“也可能是高挂卖单”，不能认定为已加仓。</td></tr><tr><td>2026-07-31 15:52</td><td>长鑫科技开盘是否卖出</td><td>飞翔芸仅回复“你说呢？”，语气上可能暗示卖出，但没有明确确认，未列入已确认操作。</td></tr><tr><td>2026-07-31 23:08</td><td>但斌“当然买了”的具体标的</td><td>回复上下文被截断，只能确定“最后一笔买了海力士”，不能确定前半句所指的另一标的。</td></tr><tr><td>2026-07-31至08-01</td><td>ericwarn丁宁最近一个月的全部买入清单</td><td>原帖部分依赖图片与截断文本；只确认其最近一个月有多项买入/加仓、持有紫金A/H、当前40%现金，不能完整还原每个标的。</td></tr><tr><td>全时段</td><td>新闻账号的融资、大宗交易与基金减持</td><td>属于自动新闻或转载，不等于监控作者本人买卖，不纳入“本人操作”。</td></tr></tbody>
+</table></div>
+</section>
+
+<section>
+<h2>八、综合判断</h2>
+<p><strong>当前共识并非全面转向进攻，而是“结构性做多＋高现金防守”。</strong>比较明确的多头方向是：低估锂矿的中长期布局、黄金与紫金、美股大型AI平台、海力士底层资产、价值与高股息资产。比较明确的风险方向是：A股高科技高估值、2026年下半年锂矿快速反转预期、电解铝淡季库存压力，以及高杠杆存储产品。</p>
+<p>操作层面，最强信号不是“全面加仓”，而是<strong>选择性换股、等待右侧信号和保留现金</strong>。这意味着作者群体整体仍承认市场波动和流动性风险，追涨型策略并不占主流。</p>
+</section>
+
+<div class="footer">生成于2026-08-01｜依据用户上传的严格近24小时数据整理｜原文可能包含截断、图片缺失或昵称指代，报告已对不确定项单独标注。</div>
+</div>
+</body>
+</html>
