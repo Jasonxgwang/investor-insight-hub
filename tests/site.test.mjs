@@ -5,6 +5,7 @@ import {
   calculateStats,
   createSearchParams,
   filterReports,
+  formatFilterValue,
   loadReports,
   normalizeReport,
   readFilters,
@@ -68,6 +69,24 @@ test("标准化记录会推导年份并填充安全默认值", () => {
   assert.deepEqual(report.metrics, {});
 });
 
+test("标准化记录提供稳定的报告类型", () => {
+  const daily = normalizeReport({
+    id: "daily-one",
+    date: "2026-08-05",
+    title: "大V每日观点：2026年8月5日",
+  });
+
+  const trend = normalizeReport({
+    id: "trend-one",
+    date: "2026-08-05",
+    title: "全站观点趋势专题：2026年7月27日—8月5日",
+    type: "trend",
+  });
+
+  assert.equal(daily.type, "daily");
+  assert.equal(trend.type, "trend");
+});
+
 test("标准化记录会拒绝缺少标识、日期或标题的数据", () => {
   assert.equal(normalizeReport({ date: "2026-07-30", title: "标题" }), null);
   assert.equal(normalizeReport({ id: "one", title: "标题" }), null);
@@ -105,12 +124,112 @@ test("关键词、年份和行业使用交集筛选并按日期倒序", () => {
   assert.ok(result[0].date > result[1].date);
 });
 
+test("报告类型可独立筛选并与年份行业使用交集逻辑", () => {
+  const reports = [
+    normalizeReport({
+      id: "daily",
+      date: "2026-08-06",
+      title: "大V每日观点：2026年8月6日",
+      type: "daily",
+      industries: ["有色金属"],
+    }),
+    normalizeReport({
+      id: "trend",
+      date: "2026-08-05",
+      title: "全站观点趋势专题：2026年7月27日—8月5日",
+      type: "trend",
+      industries: ["有色金属"],
+    }),
+    normalizeReport({
+      id: "portfolio",
+      date: "2026-08-05",
+      title: "大V雪球组合专题：2026年8月5日持仓分析",
+      type: "portfolio",
+      industries: ["科技"],
+    }),
+  ];
+
+  assert.deepEqual(
+    filterReports(reports, { type: "trend" }).map((report) => report.id),
+    ["trend"],
+  );
+
+  assert.deepEqual(
+    filterReports(reports, { type: "portfolio" }).map((report) => report.id),
+    ["portfolio"],
+  );
+
+  assert.deepEqual(
+    filterReports(reports, {
+      type: "daily",
+      year: "2026",
+      industry: "有色金属",
+    }).map((report) => report.id),
+    ["daily"],
+  );
+});
+
+test("报告类型导航使用固定顺序并统计各类型数量", async () => {
+  const siteModule = await import("../script.js");
+
+  assert.equal(typeof siteModule.getReportTypeOptions, "function");
+
+  const reports = [
+    ...Array.from({ length: 13 }, (_, index) =>
+      normalizeReport({
+        id: `daily-${index}`,
+        date: "2026-08-08",
+        title: `大V每日观点：${index}`,
+        type: "daily",
+      }),
+    ),
+    normalizeReport({
+      id: "trend-one",
+      date: "2026-08-05",
+      title: "全站观点趋势专题：2026年7月27日—8月5日",
+      type: "trend",
+    }),
+    normalizeReport({
+      id: "portfolio-one",
+      date: "2026-08-05",
+      title: "大V雪球组合专题：2026年8月5日持仓分析",
+      type: "portfolio",
+    }),
+  ];
+
+  assert.deepEqual(siteModule.getReportTypeOptions(reports), [
+    { value: "", label: "全部类型", count: 15 },
+    { value: "daily", label: "大V每日观点", count: 13 },
+    { value: "trend", label: "全站观点趋势专题", count: 1 },
+    { value: "portfolio", label: "大V雪球组合专题", count: 1 },
+  ]);
+});
+
 test("预留 URL 筛选条件可往返且不保留空参数", () => {
-  const filters = readFilters("?q=TCL&year=2026&stock=000100&tag=");
+  const filters = readFilters("?q=TCL&year=2026&type=daily&stock=000100&tag=");
 
   assert.equal(filters.q, "TCL");
+  assert.equal(filters.type, "daily");
   assert.equal(filters.stock, "000100");
-  assert.equal(createSearchParams(filters).toString(), "q=TCL&year=2026&stock=000100");
+  assert.equal(
+    createSearchParams(filters).toString(),
+    "q=TCL&year=2026&type=daily&stock=000100",
+  );
+});
+
+test("报告类型筛选值显示中文名称", () => {
+  assert.equal(formatFilterValue("type", "daily"), "大V每日观点");
+  assert.equal(formatFilterValue("type", "trend"), "全站观点趋势专题");
+  assert.equal(formatFilterValue("type", "portfolio"), "大V雪球组合专题");
+  assert.equal(formatFilterValue("year", "2026"), "2026");
+});
+
+test("未知报告类型 URL 参数会被忽略", () => {
+  const filters = readFilters("?year=2026&type=unknown");
+
+  assert.equal(filters.year, "2026");
+  assert.equal(filters.type, "");
+  assert.equal(createSearchParams(filters).toString(), "year=2026");
 });
 
 test("首页提供完整的语义区域和可访问检索控件", async () => {
@@ -123,9 +242,29 @@ test("首页提供完整的语义区域和可访问检索控件", async () => {
   assert.match(html, /<main[\s>]/);
   assert.match(html, /id="search-input"/);
   assert.match(html, /id="year-filters"/);
+  assert.match(html, /id="type-filters"/);
   assert.match(html, /id="industry-filters"/);
   assert.match(html, /id="report-list"/);
   assert.match(html, /<script[^>]+type="module"[^>]+src="\.\/script\.js"/);
+});
+
+test("筛选导航会把报告类型选项渲染到 type-filters 容器", async () => {
+  const script = await readFile(
+    new URL("../script.js", import.meta.url),
+    "utf8",
+  ).catch(() => "");
+
+  assert.match(script, /querySelector\("#type-filters"\)/);
+  assert.match(script, /getReportTypeOptions\(reports\)/);
+});
+
+test("报告类型筛选使用明确的中文标签", async () => {
+  const script = await readFile(
+    new URL("../script.js", import.meta.url),
+    "utf8",
+  ).catch(() => "");
+
+  assert.match(script, /type:\s*"报告类型"/);
 });
 
 test("样式表覆盖键盘焦点和两档响应式布局", async () => {

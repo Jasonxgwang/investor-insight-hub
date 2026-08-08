@@ -1,4 +1,35 @@
-const FILTER_KEYS = ["q", "year", "industry", "tag", "stock", "influencer"];
+const FILTER_KEYS = ["q", "year", "type", "industry", "tag", "stock", "influencer"];
+const REPORT_TYPES = Object.freeze(["daily", "trend", "portfolio"]);
+
+const REPORT_TYPE_OPTIONS = Object.freeze([
+  ["daily", "大V每日观点"],
+  ["trend", "全站观点趋势专题"],
+  ["portfolio", "大V雪球组合专题"],
+]);
+
+const REPORT_TYPE_LABELS = Object.freeze(
+  Object.fromEntries(REPORT_TYPE_OPTIONS),
+);
+
+export function formatFilterValue(key, value) {
+  if (key === "type") return REPORT_TYPE_LABELS[value] || value;
+  return value;
+}
+
+export function getReportTypeOptions(reports) {
+  return [
+    {
+      value: "",
+      label: "全部类型",
+      count: reports.length,
+    },
+    ...REPORT_TYPE_OPTIONS.map(([value, label]) => ({
+      value,
+      label,
+      count: reports.filter((report) => report.type === value).length,
+    })),
+  ];
+}
 
 const EMPTY_FILTERS = Object.freeze(
   Object.fromEntries(FILTER_KEYS.map((key) => [key, ""])),
@@ -29,10 +60,13 @@ export function normalizeReport(report) {
     : [];
 
   const date = String(report.date).trim();
+  const rawType = String(report.type || "").trim();
+  const type = REPORT_TYPES.includes(rawType) ? rawType : "daily";
 
   return {
     id: String(report.id).trim(),
     date,
+    type,
     year: Number(report.year) || Number(date.slice(0, 4)),
     title: String(report.title).trim(),
     summary: String(report.summary || "").trim(),
@@ -99,6 +133,7 @@ export function filterReports(reports, filters = {}) {
   return reports
     .filter((report) => {
       if (active.year && String(report.year) !== String(active.year)) return false;
+      if (active.type && report.type !== active.type) return false;
       if (!includesNormalized(report.industries, active.industry)) return false;
       if (!includesNormalized(report.tags, active.tag)) return false;
       if (!includesNormalized(report.influencers, active.influencer)) return false;
@@ -119,9 +154,15 @@ export function filterReports(reports, filters = {}) {
 /** 从任意查询字符串中只读取站点支持的参数，忽略未知参数。 */
 export function readFilters(search = "") {
   const params = new URLSearchParams(search);
-  return Object.fromEntries(
+  const filters = Object.fromEntries(
     FILTER_KEYS.map((key) => [key, String(params.get(key) || "").trim()]),
   );
+
+  if (filters.type && !REPORT_TYPES.includes(filters.type)) {
+    filters.type = "";
+  }
+
+  return filters;
 }
 
 /** 只输出非空条件，并保持固定顺序，便于生成稳定、可分享的 URL。 */
@@ -170,6 +211,7 @@ export async function loadReports(url = "./reports.json", fetchImpl = globalThis
 const FILTER_LABELS = {
   q: "搜索",
   year: "年份",
+  type: "报告类型",
   industry: "行业",
   tag: "标签",
   stock: "股票",
@@ -227,8 +269,10 @@ function createFilterOption(label, count, key, value, activeValue, onSelect) {
 
 function renderFilterNavigation(reports, filters, onSelect) {
   const yearContainer = document.querySelector("#year-filters");
+  const typeContainer = document.querySelector("#type-filters");
   const industryContainer = document.querySelector("#industry-filters");
   yearContainer.replaceChildren();
+  typeContainer.replaceChildren();
   industryContainer.replaceChildren();
 
   yearContainer.append(
@@ -236,6 +280,19 @@ function renderFilterNavigation(reports, filters, onSelect) {
   );
   for (const [year, count] of collectCounts(reports, "year")) {
     yearContainer.append(createFilterOption(year, count, "year", year, filters.year, onSelect));
+  }
+
+  for (const option of getReportTypeOptions(reports)) {
+    typeContainer.append(
+      createFilterOption(
+        option.label,
+        option.count,
+        "type",
+        option.value,
+        filters.type,
+        onSelect,
+      ),
+    );
   }
 
   industryContainer.append(
@@ -330,7 +387,11 @@ function renderActiveFilters(filters, onRemove) {
 
   for (const key of FILTER_KEYS) {
     if (!filters[key]) continue;
-    const chip = createTextElement("span", "active-filter", `${FILTER_LABELS[key]}：${filters[key]}`);
+    const chip = createTextElement(
+      "span",
+      "active-filter",
+      `${FILTER_LABELS[key]}：${formatFilterValue(key, filters[key])}`,
+    );
     const remove = createTextElement("button", "", "×");
     remove.type = "button";
     remove.title = `移除${FILTER_LABELS[key]}筛选`;

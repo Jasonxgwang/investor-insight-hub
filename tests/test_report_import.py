@@ -291,6 +291,65 @@ class IndexGenerationTests(unittest.TestCase):
         self.assertEqual(report["tags"], ["仓位变化"])
 
 
+    def test_generated_index_assigns_stable_report_types(self):
+        daily = self.write_report(
+            "Reports/2027/20270107_daily.html",
+            "2027-01-07 普通日报",
+        )
+        trend = self.write_report(
+            "Reports/2027/20270106_trend.html",
+            "2027-01-06 原始趋势标题",
+        )
+        portfolio = self.write_report(
+            "Reports/2027/20270105_portfolio.html",
+            "2027-01-05 原始组合标题",
+        )
+
+        self.overrides_path.write_text(
+            json.dumps(
+                {
+                    "schemaVersion": 1,
+                    "reports": {
+                        trend.relative_to(self.root).as_posix(): {
+                            "title": "全站观点趋势专题：2027年1月1日—1月6日",
+                        },
+                        portfolio.relative_to(self.root).as_posix(): {
+                            "title": "人工组合标题",
+                            "type": "portfolio",
+                        },
+                    },
+                },
+                ensure_ascii=False,
+            ),
+            encoding="utf-8",
+        )
+
+        payload, _ = module.build_index(
+            self.root,
+            self.entities_path,
+            self.overrides_path,
+        )
+
+        reports = {
+            item["file"]: item
+            for item in payload["reports"]
+        }
+
+        self.assertEqual(
+            reports[daily.relative_to(self.root).as_posix()].get("type"),
+            "daily",
+        )
+        self.assertEqual(
+            reports[trend.relative_to(self.root).as_posix()].get("type"),
+            "trend",
+        )
+        self.assertEqual(
+            reports[portfolio.relative_to(self.root).as_posix()].get("type"),
+            "portfolio",
+        )
+
+
+
 class InboxImportTests(unittest.TestCase):
     """验证待导入文件只在解析成功且目标无冲突时移动。"""
 

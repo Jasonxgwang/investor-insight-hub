@@ -63,7 +63,8 @@
         "雪球主贴"
       ],
       "featured": false,
-      "metrics": {}
+      "metrics": {},
+      "type": "daily"
     },
     {
       "id": "20260807-288c67e4f8",
@@ -142,7 +143,8 @@
         "微博"
       ],
       "featured": false,
-      "metrics": {}
+      "metrics": {},
+      "type": "daily"
     },
     {
       "id": "20260806-02de0e5a31",
@@ -244,7 +246,8 @@
         "雪球"
       ],
       "featured": false,
-      "metrics": {}
+      "metrics": {},
+      "type": "daily"
     },
     {
       "id": "20260727-d92a621377",
@@ -418,7 +421,8 @@
       ],
       "sources": [],
       "featured": false,
-      "metrics": {}
+      "metrics": {},
+      "type": "trend"
     },
     {
       "id": "20260805-cdb26cd2c6",
@@ -542,7 +546,8 @@
         "雪球评论"
       ],
       "featured": false,
-      "metrics": {}
+      "metrics": {},
+      "type": "daily"
     },
     {
       "id": "20260805-f98bdf018b",
@@ -692,7 +697,8 @@
         "雪球组合"
       ],
       "featured": false,
-      "metrics": {}
+      "metrics": {},
+      "type": "portfolio"
     },
     {
       "id": "20260804-83e6392641",
@@ -741,7 +747,8 @@
         "雪球评论"
       ],
       "featured": false,
-      "metrics": {}
+      "metrics": {},
+      "type": "daily"
     },
     {
       "id": "20260803-276d637fd6",
@@ -793,7 +800,8 @@
         "微博"
       ],
       "featured": false,
-      "metrics": {}
+      "metrics": {},
+      "type": "daily"
     },
     {
       "id": "20260802-589d0263be",
@@ -855,7 +863,8 @@
         "雪球"
       ],
       "featured": false,
-      "metrics": {}
+      "metrics": {},
+      "type": "daily"
     },
     {
       "id": "20260801-4ca1a30793",
@@ -1004,7 +1013,8 @@
         "微博"
       ],
       "featured": false,
-      "metrics": {}
+      "metrics": {},
+      "type": "daily"
     },
     {
       "id": "20260731-b115fea64b",
@@ -1064,7 +1074,8 @@
         "微博"
       ],
       "featured": false,
-      "metrics": {}
+      "metrics": {},
+      "type": "daily"
     },
     {
       "id": "20260730-dav-market-actions",
@@ -1167,7 +1178,8 @@
         "xueqiuPosts": 141,
         "xueqiuComments": 170,
         "weiboPosts": 38
-      }
+      },
+      "type": "daily"
     },
     {
       "id": "20260729-xueqiu-long-short",
@@ -1253,7 +1265,8 @@
         "雪球评论"
       ],
       "featured": false,
-      "metrics": {}
+      "metrics": {},
+      "type": "daily"
     },
     {
       "id": "20260728-1c48b9361b",
@@ -1372,7 +1385,8 @@
         "微博"
       ],
       "featured": false,
-      "metrics": {}
+      "metrics": {},
+      "type": "daily"
     },
     {
       "id": "20260727-investment-actions",
@@ -1487,7 +1501,8 @@
       "metrics": {
         "posts": 144,
         "activeInfluencers": 15
-      }
+      },
+      "type": "daily"
     }
   ]
 }

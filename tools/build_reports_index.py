@@ -17,6 +17,7 @@ from typing import Any
 DEFAULT_SUMMARY = "本期日报已归档，点击查看完整内容。"
 SUMMARY_HEADINGS = ("核心结论", "核心观点", "摘要", "市场概览")
 SKIP_SUMMARY_PREFIXES = ("统计口径", "实际记录区间", "生成文件", "免责声明")
+REPORT_TYPES = {"daily", "trend", "portfolio"}
 
 
 class ReportParseError(ValueError):
@@ -52,6 +53,19 @@ def normalize_text(value: str) -> str:
     """合并空白并清理首尾空格，避免格式缩进进入索引。"""
 
     return re.sub(r"\s+", " ", value).strip()
+
+
+def normalize_report_type(value: str | None, title: str) -> str:
+    """把报告稳定归入每日观点、趋势专题或雪球组合专题。"""
+
+    candidate = normalize_text(value or "")
+    if candidate in REPORT_TYPES:
+        return candidate
+    if title.startswith("全站观点趋势专题："):
+        return "trend"
+    if title.startswith("大V雪球组合专题："):
+        return "portfolio"
+    return "daily"
 
 
 class ReportHTMLParser(HTMLParser):
@@ -502,6 +516,7 @@ def build_index(
         if not isinstance(override, dict):
             raise ReportParseError(f"日报覆盖记录必须是对象：{relative}")
         record.update(override)
+        record["type"] = normalize_report_type(record.get("type"), record["title"])
         record["file"] = relative
         record["year"] = int(record["date"][:4])
         reports.append(record)
