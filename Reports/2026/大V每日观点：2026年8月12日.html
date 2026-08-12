@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="2026年8月12日大V每日观点：近24小时雪球与微博投资观点、交易动作和仓位变化汇总。">
+  <title>大V每日观点：2026年8月12日</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --panel: #ffffff;
+      --ink: #172033;
+      --muted: #657187;
+      --line: #e2e8f2;
+      --brand: #173b72;
+      --brand-2: #285aa3;
+      --bull: #b42318;
+      --bull-bg: #fff2f0;
+      --bear: #087443;
+      --bear-bg: #ebf8f1;
+      --hold: #8a5200;
+      --hold-bg: #fff7df;
+      --info: #245aa6;
+      --info-bg: #edf4ff;
+      --shadow: 0 12px 35px rgba(24, 50, 86, .08);
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 100% 0, rgba(69, 121, 197, .12), transparent 28rem),
+        var(--bg);
+      font-family: "Microsoft YaHei", "PingFang SC", "Noto Sans CJK SC", Arial, sans-serif;
+      line-height: 1.68;
+    }
+
+    a { color: var(--brand-2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .page { width: min(1180px, calc(100% - 32px)); margin: 28px auto 64px; }
+
+    .hero {
+      padding: 34px 38px;
+      color: #fff;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #122f5c, #245b9f 72%, #3777bd);
+      box-shadow: var(--shadow);
+    }
+
+    .eyebrow { margin: 0 0 6px; opacity: .8; font-size: 13px; letter-spacing: .12em; }
+    h1 { margin: 0; font-size: clamp(26px, 4vw, 42px); line-height: 1.25; }
+    .subtitle { max-width: 860px; margin: 14px 0 0; color: rgba(255,255,255,.82); }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .stat {
+      padding: 14px 16px;
+      border: 1px solid rgba(255,255,255,.16);
+      border-radius: 14px;
+      background: rgba(255,255,255,.09);
+    }
+    .stat strong { display: block; font-size: 23px; line-height: 1.2; }
+    .stat span { color: rgba(255,255,255,.72); font-size: 13px; }
+
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 18px 0;
+    }
+    .nav a {
+      padding: 8px 13px;
+      color: var(--brand);
+      border: 1px solid #d8e2ef;
+      border-radius: 999px;
+      background: rgba(255,255,255,.86);
+      font-size: 14px;
+    }
+
+    .panel {
+      margin-top: 18px;
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 18px;
+    }
+    h2 { margin: 0; color: var(--brand); font-size: 23px; }
+    h3 { margin: 0 0 8px; font-size: 17px; line-height: 1.4; }
+    .section-note { margin: 0; color: var(--muted); font-size: 13px; }
+
+    .lead-grid {
+      display: grid;
+      grid-template-columns: 1.35fr .65fr;
+      gap: 16px;
+    }
+
+    .verdict {
+      padding: 20px;
+      border-left: 5px solid var(--brand-2);
+      border-radius: 12px;
+      background: #f0f5fc;
+    }
+    .verdict p { margin: 7px 0 0; }
+    .signal-list { margin: 0; padding-left: 20px; }
+    .signal-list li + li { margin-top: 7px; }
+
+    .callout {
+      padding: 18px;
+      border: 1px solid #f0d99d;
+      border-radius: 12px;
+      background: #fff9e9;
+    }
+    .callout strong { color: #7b4a00; }
+    .callout p { margin: 7px 0 0; color: #694f23; font-size: 14px; }
+
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 13px; }
+    table { width: 100%; min-width: 860px; border-collapse: collapse; background: #fff; }
+    th, td { padding: 14px 15px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { color: #526176; background: #f7f9fc; font-size: 13px; white-space: nowrap; }
+    td { font-size: 14px; }
+    tr:last-child td { border-bottom: 0; }
+
+    .tag {
+      display: inline-block;
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .tag.sell { color: var(--bear); background: var(--bear-bg); }
+    .tag.buy { color: var(--bull); background: var(--bull-bg); }
+    .tag.hold { color: var(--hold); background: var(--hold-bg); }
+    .tag.view { color: var(--info); background: var(--info-bg); }
+    .tag.caution { color: #6b3c87; background: #f7edff; }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .card {
+      position: relative;
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+    }
+    .card.bull { border-top: 4px solid var(--bull); }
+    .card.bear { border-top: 4px solid var(--bear); }
+    .card.neutral { border-top: 4px solid var(--brand-2); }
+    .card p { margin: 8px 0 0; color: #3e4a5e; font-size: 14px; }
+    .meta { color: var(--muted); font-size: 12px; }
+    .links { margin-top: 12px; font-size: 13px; }
+    .links a { display: inline-block; margin: 0 12px 4px 0; }
+
+    .heat {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+    }
+    .heat-item { padding: 16px; border-radius: 13px; background: #f7f9fc; border: 1px solid var(--line); }
+    .heat-item strong { display: block; margin-bottom: 4px; }
+    .meter { height: 7px; margin-top: 12px; overflow: hidden; border-radius: 99px; background: #e8edf4; }
+    .meter span { display: block; height: 100%; border-radius: inherit; background: linear-gradient(90deg, #d65346, #a71912); }
+    .meter .w-92 { width: 92%; }
+    .meter .w-86 { width: 86%; }
+    .meter .w-82 { width: 82%; }
+    .meter .w-66 { width: 66%; }
+    .spaced-cards { margin-top: 14px; }
+
+    .timeline { display: grid; gap: 12px; }
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 130px 160px 1fr;
+      gap: 15px;
+      padding: 14px 0;
+      border-bottom: 1px dashed var(--line);
+    }
+    .timeline-item:last-child { border-bottom: 0; }
+    .timeline-item time, .timeline-item .author { color: var(--muted); font-size: 13px; }
+    .timeline-item p { margin: 0; font-size: 14px; }
+
+    .method { color: #4b586b; font-size: 14px; }
+    .method p { margin: 8px 0; }
+    .footnote { margin-top: 22px; color: var(--muted); font-size: 12px; text-align: center; }
+
+    @media (max-width: 860px) {
+      .stats, .heat { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .lead-grid, .cards { grid-template-columns: 1fr; }
+      .timeline-item { grid-template-columns: 1fr; gap: 2px; }
+      .panel { padding: 20px; }
+      .hero { padding: 28px 24px; }
+    }
+
+    @media (max-width: 520px) {
+      .page { width: min(100% - 20px, 1180px); margin-top: 10px; }
+      .stats { grid-template-columns: 1fr 1fr; }
+      .section-head { display: block; }
+      .section-note { margin-top: 6px; }
+    }
+
+    @media print {
+      body { background: #fff; }
+      .page { width: 100%; margin: 0; }
+      .hero, .panel { box-shadow: none; }
+      .nav { display: none; }
+      a { color: inherit; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <p class="eyebrow">INVESTOR INSIGHT HUB · DAILY BRIEF</p>
+      <h1>大V每日观点：2026年8月12日</h1>
+      <p class="subtitle">统计窗口：2026年8月11日16:11—8月12日16:11。聚焦明确看多、看空、买卖、推荐及仓位变化；自动资讯仅作为背景，不计为大V立场。</p>
+      <div class="stats">
+        <div class="stat"><strong>110</strong><span>雪球主贴</span></div>
+        <div class="stat"><strong>93</strong><span>雪球评论 / 回复</span></div>
+        <div class="stat"><strong>36</strong><span>微博主贴</span></div>
+        <div class="stat"><strong>0</strong><span>抓取失败账号</span></div>
+      </div>
+    </header>
+
+    <nav class="nav" aria-label="页内导航">
+      <a href="#summary">今日结论</a>
+      <a href="#actions">交易与仓位</a>
+      <a href="#bullish">主要看多</a>
+      <a href="#bearish">看空与谨慎</a>
+      <a href="#other">其他观点</a>
+      <a href="#method">口径说明</a>
+    </nav>
+
+    <section class="panel" id="summary">
+      <div class="section-head">
+        <h2>今日核心结论</h2>
+        <p class="section-note">先看方向，再看交易证据</p>
+      </div>
+      <div class="lead-grid">
+        <div class="verdict">
+          <h3>资源品与AI仍是主线，但内部正在明显分化</h3>
+          <ul class="signal-list">
+            <li><strong>资源品偏多：</strong>锂、铝、黄金及综合矿业获得多位大V正面讨论；其中锂的核心逻辑是新增供给受限，铝的核心逻辑是库存下降与价格中枢抬升。</li>
+            <li><strong>AI偏多但不追同一环节：</strong>但斌明确认为存储估值具备吸引力，并披露相关基金仍满仓、重仓AI产业链；HIS1963则用中际旭创/新易盛与中国石油做轮动。</li>
+            <li><strong>医药出现负面交易信号：</strong>管我财、伊夫圣洛朗均明确卖出或清仓羚锐制药；雪月霜提醒CXO当前“不便宜，不要追”。</li>
+            <li><strong>低估值与现金回报仍受重视：</strong>腾讯音乐被继续持有，微博观点强调“足够便宜＋有分红”才是买入前提。</li>
+          </ul>
+        </div>
+        <aside class="callout">
+          <strong>最需关注的反向信号</strong>
+          <p>锂板块虽然被低位看多，但作者同时明确表示“没说去买”；因此本报告将其列为行业观点，而不是买入动作。AI存储的看多则伴随“套牢盘多、分歧大”的风险提示。</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="panel" id="actions">
+      <div class="section-head">
+        <h2>明确交易动作与仓位变化</h2>
+        <p class="section-note">只收录有直接文字证据的动作</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>时间</th>
+              <th>发帖者</th>
+              <th>标的 / 方向</th>
+              <th>动作</th>
+              <th>核心摘要</th>
+              <th>原帖</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>8月12日 15:36</td>
+              <td>伊夫圣洛朗</td>
+              <td>羚锐制药</td>
+              <td><span class="tag sell">清仓</span></td>
+              <td>仓位原本不高，因买入成本较低，清仓时仍浮盈约5%；强调不要低估外部环境变化。</td>
+              <td><a href="https://xueqiu.com/1066188300/404733163" target="_blank" rel="noopener">雪球原帖</a></td>
+            </tr>
+            <tr>
+              <td>8月12日 14:13</td>
+              <td>管我财</td>
+              <td>羚锐制药</td>
+              <td><span class="tag sell">卖出</span></td>
+              <td>不能同时接受“营收增长乏力”和“应收账款大幅增加”，当天先行砍仓退出。</td>
+              <td><a href="https://xueqiu.com/9650668145/404717445" target="_blank" rel="noopener">雪球原帖</a></td>
+            </tr>
+            <tr>
+              <td>8月12日 14:19</td>
+              <td>管我财</td>
+              <td>腾讯音乐</td>
+              <td><span class="tag hold">继续持有</span></td>
+              <td>竞争加剧已部分反映在估值中；看好视频号潜在导流、现金与现金流状况及后续回购，暂不卖出。</td>
+              <td><a href="https://xueqiu.com/9650668145/404717445" target="_blank" rel="noopener">雪球评论所附父帖</a></td>
+            </tr>
+            <tr>
+              <td>8月11日 19:46</td>
+              <td>但斌</td>
+              <td>AI产业链</td>
+              <td><span class="tag hold">保持满仓</span></td>
+              <td>披露长江东方港湾2号仍保持满仓，且此前坚定重仓AI产业链；这是产品仓位说明，不等同于当天新增买入。</td>
+              <td><a href="https://xueqiu.com/1102105103/404605320" target="_blank" rel="noopener">雪球原帖</a></td>
+            </tr>
+            <tr>
+              <td>8月11日 18:03</td>
+              <td>HIS1963</td>
+              <td>云铝股份</td>
+              <td><span class="tag sell">由50%+降至约10%</span></td>
+              <td>已大幅降仓，仅保留低成本股息底仓；当前大涨也不减，期待明显下跌后才有勇气重新重仓。</td>
+              <td><a href="https://xueqiu.com/1760673340/404592354" target="_blank" rel="noopener">雪球评论所附父帖</a></td>
+            </tr>
+            <tr>
+              <td>8月12日 13:25</td>
+              <td>HIS1963</td>
+              <td>中际旭创 / 新易盛 / 中国石油</td>
+              <td><span class="tag view">轮动策略</span></td>
+              <td>光模块上涨时卖出并买入下跌的中国石油；中国石油上涨时反向操作，利用跷跷板价差横向切换。</td>
+              <td><a href="https://xueqiu.com/1760673340/404707774" target="_blank" rel="noopener">雪球原帖</a></td>
+            </tr>
+            <tr>
+              <td>8月12日 14:22—14:30</td>
+              <td>挖地瓜的超级鹿鼎公</td>
+              <td>新城（“游戏仓”）</td>
+              <td><span class="tag view">短线做T / 仍有持仓</span></td>
+              <td>展示2025年1月至今买卖记录，说明短线不一定是日内、可跨数天至数十天；当天称最后一笔小仓位仍被套。原始买卖明细在配图中，文本未提供价格全表。</td>
+              <td><a href="https://weibo.com/3962719063/Rd2WGdJQH" target="_blank" rel="noopener">买卖记录</a> · <a href="https://weibo.com/3962719063/Rd2TikcbX" target="_blank" rel="noopener">持仓说明</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel" id="bullish">
+      <div class="section-head">
+        <h2>主要看多方向</h2>
+        <p class="section-note">按证据强弱与讨论热度排序</p>
+      </div>
+      <div class="heat">
+        <div class="heat-item"><strong>锂资源</strong><span class="meta">观点集中度：高</span><div class="meter"><span class="w-92"></span></div></div>
+        <div class="heat-item"><strong>铝及综合矿业</strong><span class="meta">观点集中度：高</span><div class="meter"><span class="w-86"></span></div></div>
+        <div class="heat-item"><strong>AI存储</strong><span class="meta">观点强度：高</span><div class="meter"><span class="w-82"></span></div></div>
+        <div class="heat-item"><strong>低估值高分红</strong><span class="meta">观点强度：中</span><div class="meter"><span class="w-66"></span></div></div>
+      </div>
+
+      <div class="cards spaced-cards">
+        <article class="card bull">
+          <h3>天齐锂业、赣锋锂业及碳酸锂产业链</h3>
+          <div class="meta">雪月霜 · 8月12日 08:21—10:31 · 雪球</div>
+          <p>认为锂矿供给并非制造业式的快速开关，2027—2028年新增供给大体锁定；价格跌至一定水平会抑制复产，因此反驳“产能高于需求就必然跌回极低价格”的逻辑，并强调低位应敢于看多。</p>
+          <p><strong>限制条件：</strong>作者在评论中明确“没说去买”，所以这是行业看多判断，不是买入记录。</p>
+          <div class="links"><a href="https://xueqiu.com/1505944393/404646393" target="_blank" rel="noopener">供给逻辑</a><a href="https://xueqiu.com/1505944393/404649345" target="_blank" rel="noopener">产能利用率</a><a href="https://xueqiu.com/1505944393/404648320" target="_blank" rel="noopener">低位看多</a></div>
+        </article>
+
+        <article class="card bull">
+          <h3>电解铝、云铝及铝产业链</h3>
+          <div class="meta">挖地瓜的超级鹿鼎公 / HIS1963 / 斯托伯的天空 · 微博及雪球</div>
+          <p>电解铝社会库存继续明显下降；挖地瓜的超级鹿鼎公判断未来6—12个月电解铝价格中枢约2.3万元/吨，当天现货升至2.4万元以上。HIS1963保留约10%的云铝股息底仓；斯托伯近期持续关注神火股份。</p>
+          <p><strong>限制条件：</strong>HIS1963此前已从50%以上大幅降仓，说明其长期认可与当前仓位控制并存。</p>
+          <div class="links"><a href="https://weibo.com/3962719063/Rd0Z00h0o" target="_blank" rel="noopener">库存下降</a><a href="https://weibo.com/3962719063/Rd2T0rvPa" target="_blank" rel="noopener">价格中枢</a><a href="https://xueqiu.com/9493911686/404678634" target="_blank" rel="noopener">神火关注</a></div>
+        </article>
+
+        <article class="card bull">
+          <h3>AI存储及AI半导体产业链</h3>
+          <div class="meta">但斌 · 8月12日 09:54 · 雪球</div>
+          <p>认为存储板块基本面未发生本质变化，与GPU、TPU和台积电同属AI半导体链，景气度高度绑定；若认同AI是长周期产业浪潮，当前存储估值已具备较强吸引力。</p>
+          <p><strong>风险提示：</strong>存储是近期海外爆仓重灾区、套牢盘较多，短期分歧仍大。</p>
+          <div class="links"><a href="https://xueqiu.com/1102105103/404664476" target="_blank" rel="noopener">核心原帖</a></div>
+        </article>
+
+        <article class="card bull">
+          <h3>黄金、紫金矿业与大宗资源</h3>
+          <div class="meta">斯托伯的天空 / 飞翔芸 · 8月12日 · 雪球</div>
+          <p>斯托伯判断“全球大宗供给侧都在趋紧”，并点名紫金矿业；飞翔芸转发中金“继续超配黄金”的观点，理由包括全球流动性并未真正进入紧缩周期、增长放缓为未来宽松提供条件。</p>
+          <p><strong>证据属性：</strong>斯托伯为个人判断；飞翔芸一条为机构研报转发，不代表披露实际买入。</p>
+          <div class="links"><a href="https://xueqiu.com/9493911686/404737708" target="_blank" rel="noopener">大宗供给</a><a href="https://xueqiu.com/9957341637/404645298" target="_blank" rel="noopener">黄金观点转发</a></div>
+        </article>
+
+        <article class="card bull">
+          <h3>腾讯、阿里及拥有用户基础的大模型应用</h3>
+          <div class="meta">滇南王 · 8月12日 14:46 · 雪球</div>
+          <p>判断大模型应用竞争激烈，最终能活下来的企业大多需要庞大基础用户；国内更看好腾讯、阿里或其参股企业做出规模化应用的概率。</p>
+          <div class="links"><a href="https://xueqiu.com/2496980475/404724031" target="_blank" rel="noopener">雪球原帖</a></div>
+        </article>
+
+        <article class="card bull">
+          <h3>长期优质资产：茅台、腾讯、宁德时代</h3>
+          <div class="meta">丹书铁券 · 8月11日 21:53 · 雪球评论</div>
+          <p>以30年、20年、10年三个时间尺度，分别将贵州茅台、腾讯控股、宁德时代视作中国投资代表性公司，体现长期质量型选股偏好。</p>
+          <div class="links"><a href="https://xueqiu.com/9742512811/404610035" target="_blank" rel="noopener">雪球评论所附父帖</a></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel" id="bearish">
+      <div class="section-head">
+        <h2>主要看空、卖出与谨慎观点</h2>
+        <p class="section-note">区分基本面看空与估值/时点谨慎</p>
+      </div>
+      <div class="cards">
+        <article class="card bear">
+          <h3>羚锐制药：财务组合信号触发卖出</h3>
+          <div class="meta">管我财 / 伊夫圣洛朗 · 8月12日 · 雪球</div>
+          <p>两位大V同日明确退出。管我财的核心理由是营收增长乏力与应收账款大幅增加同时出现；伊夫圣洛朗则强调外部环境变化，清仓时仍有约5%浮盈。</p>
+          <div class="links"><a href="https://xueqiu.com/9650668145/404717445" target="_blank" rel="noopener">管我财</a><a href="https://xueqiu.com/1066188300/404733163" target="_blank" rel="noopener">伊夫圣洛朗</a></div>
+        </article>
+
+        <article class="card bear">
+          <h3>CXO：不否定行业，但当前不宜追高</h3>
+          <div class="meta">雪月霜 · 8月12日 09:40—09:45 · 雪球</div>
+          <p>认为若看好CXO，更好的买点应在2024年；当前板块“不便宜”，此时推荐或追入风险较高。这属于估值与买点谨慎，不是对行业长期基本面的全面看空。</p>
+          <div class="links"><a href="https://xueqiu.com/1505944393/404659189" target="_blank" rel="noopener">不要追</a><a href="https://xueqiu.com/1505944393/404661088" target="_blank" rel="noopener">买点判断</a></div>
+        </article>
+
+        <article class="card bear">
+          <h3>特斯拉 / SpaceX：警惕远期目标叙事切换</h3>
+          <div class="meta">老曾阿牛 · 8月12日 06:16 · 雪球</div>
+          <p>质疑市场从马斯克早年“2030年特斯拉销量2000万辆”的承诺，转而追捧“2030年SpaceX收入1万亿美元”，认为需要保留记录并在五年后检验。</p>
+          <div class="links"><a href="https://xueqiu.com/8058064790/404640990" target="_blank" rel="noopener">雪球原帖</a></div>
+        </article>
+
+        <article class="card bear">
+          <h3>超盈国际 / 申洲国际：中期盈利承压</h3>
+          <div class="meta">達人知命 · 8月11日 16:18 · 雪球</div>
+          <p>预计申洲国际中期利润下降约40%，并推测其持有的超盈国际也会受到人民币升值侵蚀利润、油价上涨推高成本的影响，但降幅或略好于申洲国际。</p>
+          <div class="links"><a href="https://xueqiu.com/8632046745/404580393" target="_blank" rel="noopener">雪球原帖</a></div>
+        </article>
+
+        <article class="card bear">
+          <h3>A股市场生态：估值与资金结构受到质疑</h3>
+          <div class="meta">斯托伯的天空 / 行中衡 · 8月11日—12日 · 雪球</div>
+          <p>斯托伯认为A股跷跷板效应明显、估值体系偏离基本面，非市场因素权重过高；行中衡则认为量化资金增强后，即使研究到牛股，也常因波动与交易结构只赚到小部分收益。</p>
+          <div class="links"><a href="https://xueqiu.com/9493911686/404628145" target="_blank" rel="noopener">估值体系</a><a href="https://xueqiu.com/1553799558/403836426" target="_blank" rel="noopener">量化影响所附父帖</a></div>
+        </article>
+
+        <article class="card bear">
+          <h3>宽基指数长期回报：极度谨慎的个人推演</h3>
+          <div class="meta">HIS1963 · 8月11日 17:13 · 雪球评论</div>
+          <p>推演未来十年标普500与沪深300可能仅在当前点位上下30%范围内波动。这是高度主观的宏观判断，原帖未给出估值模型或数据论证，不宜直接作为预测结论使用。</p>
+          <div class="links"><a href="https://xueqiu.com/8361579532/404245515" target="_blank" rel="noopener">雪球评论所附父帖</a></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel" id="other">
+      <div class="section-head">
+        <h2>其他值得保留的观点</h2>
+        <p class="section-note">未达到明确推荐标准，但有研究价值</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item">
+          <time>8月12日 09:55</time>
+          <div class="author">天地侠影</div>
+          <p><strong>羚锐制药：</strong>认为中报“还可以”，市场对价值股要求过高，但明确声明本人不持有。与两位卖出者形成分歧。 <a href="https://xueqiu.com/8601813520/404664572" target="_blank" rel="noopener">原帖</a></p>
+        </div>
+        <div class="timeline-item">
+          <time>8月12日 09:02</time>
+          <div class="author">飞翔芸</div>
+          <p><strong>ST司特：</strong>梳理宁德时代旗下时代资源大坪磷矿的储量、产能、品位与服务年限，属于产业链资料更新，尚未给出明确买入结论。 <a href="https://xueqiu.com/9957341637/404650457" target="_blank" rel="noopener">原帖</a></p>
+        </div>
+        <div class="timeline-item">
+          <time>8月12日 11:07</time>
+          <div class="author">黄建平</div>
+          <p><strong>国产智能汽车：</strong>体验理想L6后，对电动化、智能化和语音操控评价较高，并称国产车竞争力很强；这是产品体验评价，不等同于股票推荐。 <a href="https://xueqiu.com/9220236682/404686161" target="_blank" rel="noopener">原帖</a></p>
+        </div>
+        <div class="timeline-item">
+          <time>8月11日 18:09</time>
+          <div class="author">黄建平</div>
+          <p><strong>医药投资方法：</strong>通过智能工具分析专利、从源头研究药物底层逻辑，认为只有研究透彻才敢长期持有并买够仓位；未公开具体药物或公司。 <a href="https://xueqiu.com/9220236682/404595615" target="_blank" rel="noopener">原帖</a></p>
+        </div>
+        <div class="timeline-item">
+          <time>8月12日 06:51</time>
+          <div class="author">挖地瓜的超级鹿鼎公</div>
+          <p><strong>芯片、光模块、存储：</strong>不排斥科技资产，但买入前提是“足够便宜、有分红”，体现估值与股东回报优先，而非追逐赛道。 <a href="https://weibo.com/3962719063/RcZZj5XtI" target="_blank" rel="noopener">原帖</a></p>
+        </div>
+        <div class="timeline-item">
+          <time>8月11日 23:36</time>
+          <div class="author">挚爱子洲</div>
+          <p><strong>组合管理：</strong>个人投资者应优先控制回撤，不应追逐净值猛进；稳定表现更有利于把股权视作长期折现资产。 <a href="https://xueqiu.com/7123126150/404629015" target="_blank" rel="noopener">原帖</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel method" id="method">
+      <div class="section-head">
+        <h2>统计与判断口径</h2>
+        <p class="section-note">避免把资讯、转发和评论混为一谈</p>
+      </div>
+      <p><strong>数量口径：</strong>原始数据统计为雪球主贴110条、雪球大V评论/回复93条、微博主贴36条。雪球主贴中包含公司资讯与自动播报账号，因此“110条”不是110条独立大V观点。</p>
+      <p><strong>观点口径：</strong>“看多/看空”要求作者给出明确方向、估值判断或基本面判断；只有股票代码、数据转发或新闻标题，不直接判定为作者立场。</p>
+      <p><strong>交易口径：</strong>只有出现“买入、卖出、清仓、加仓、减仓、满仓、继续持有”等直接表述，才进入交易动作表。第三方在评论中的自述不归于被监控大V。</p>
+      <p><strong>链接口径：</strong>主贴使用该帖直链；评论无法单独定位时，使用数据中提供的父帖链接，并在表中明确标注“评论所附父帖”。</p>
+      <p><strong>风险提示：</strong>本页为公开社交平台信息摘要，仅用于观点跟踪，不构成任何投资建议。大V观点可能受持仓、表达时点、信息完整度及市场波动影响。</p>
+    </section>
+
+    <p class="footnote">数据生成时间：2026年8月12日16:11:49 · 报告按严格近24小时窗口整理</p>
+  </main>
+</body>
+</html>
