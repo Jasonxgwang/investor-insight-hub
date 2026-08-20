@@ -3,9 +3,32 @@
   "site": {
     "name": "Investor Insight Hub 投资观点库",
     "description": "雪球与微博大 V 投资观点日报归档",
-    "updatedAt": "2026-08-19"
+    "updatedAt": "2026-08-20"
   },
   "reports": [
+    {
+      "id": "20260820-e4127792f2",
+      "date": "2026-08-20",
+      "year": 2026,
+      "title": "大V每日观点：2026年8月20日",
+      "summary": "本期日报已归档，点击查看完整内容。",
+      "file": "Reports/2026/大V每日观点：2026年8月20日.html",
+      "industries": [
+        "红利价值"
+      ],
+      "tags": [
+        "多空观点",
+        "风险提示",
+        "买卖动作",
+        "持仓变化"
+      ],
+      "stocks": [],
+      "influencers": [],
+      "sources": [],
+      "featured": false,
+      "metrics": {},
+      "type": "daily"
+    },
     {
       "id": "20260819-c92f926aad",
       "date": "2026-08-19",
