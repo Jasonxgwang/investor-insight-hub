@@ -3,9 +3,60 @@
   "site": {
     "name": "Investor Insight Hub 投资观点库",
     "description": "雪球与微博大 V 投资观点日报归档",
-    "updatedAt": "2026-08-20"
+    "updatedAt": "2026-08-21"
   },
   "reports": [
+    {
+      "id": "20260821-e61904d408",
+      "date": "2026-08-21",
+      "year": 2026,
+      "title": "大V每日观点：2026年8月21日",
+      "summary": "本报告基于公开帖子整理，仅反映大V公开表达的投资观点。",
+      "file": "Reports/2026/大V每日观点：2026年8月21日_完整版.html",
+      "industries": [
+        "有色金属",
+        "人工智能",
+        "石油"
+      ],
+      "tags": [
+        "风险提示",
+        "多空观点",
+        "仓位变化",
+        "持仓变化",
+        "估值"
+      ],
+      "stocks": [
+        {
+          "name": "中远海控",
+          "code": ""
+        },
+        {
+          "name": "紫金矿业",
+          "code": ""
+        },
+        {
+          "name": "建滔集团",
+          "code": ""
+        },
+        {
+          "name": "泡泡玛特",
+          "code": ""
+        },
+        {
+          "name": "科技股整体",
+          "code": ""
+        },
+        {
+          "name": "紫金矿业",
+          "code": "601899"
+        }
+      ],
+      "influencers": [],
+      "sources": [],
+      "featured": false,
+      "metrics": {},
+      "type": "daily"
+    },
     {
       "id": "20260820-e4127792f2",
       "date": "2026-08-20",
