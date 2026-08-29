@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Investor Insight Hub 2026年8月6日至8月29日全站观点趋势与交易动作汇总">
+  <title>全站观点趋势专题：2026年8月6日—8月29日</title>
+  <style>
+    :root{
+      --ink:#172033;--muted:#667085;--line:#e4e7ec;--paper:#fff;--wash:#f6f8fb;
+      --navy:#183153;--blue:#2563eb;--blue-soft:#eff6ff;--green:#067647;--green-soft:#ecfdf3;
+      --red:#b42318;--red-soft:#fef3f2;--amber:#b54708;--amber-soft:#fffaeb;--violet:#6941c6;
+      --shadow:0 10px 28px rgba(24,49,83,.08);--radius:16px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--wash);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;line-height:1.72}
+    a{color:var(--blue);text-decoration:none}a:hover{text-decoration:underline}
+    .hero{background:linear-gradient(135deg,#10233f 0%,#1d3f69 60%,#285e89 100%);color:#fff;padding:58px 24px 50px}
+    .wrap{max-width:1180px;margin:0 auto}
+    .eyebrow{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:#b9d6f2;margin-bottom:10px}
+    h1{font-size:clamp(28px,4vw,46px);line-height:1.24;margin:0 0 16px;font-weight:760}
+    .subtitle{max-width:900px;color:#d5e4f2;font-size:16px;margin:0 0 14px}
+    .disclaimer{font-size:13px;color:#b9cadd;max-width:980px;margin:0}
+    .nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+    .nav-inner{max-width:1180px;margin:auto;padding:10px 20px;display:flex;gap:8px;overflow:auto}
+    .nav a{white-space:nowrap;color:#344054;padding:7px 11px;border-radius:9px;font-size:14px}.nav a:hover{background:var(--blue-soft);text-decoration:none;color:var(--blue)}
+    main{max-width:1180px;margin:0 auto;padding:28px 20px 60px}
+    section{scroll-margin-top:70px;margin:0 0 30px}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:16px;margin:0 0 14px}
+    h2{font-size:25px;line-height:1.35;margin:0;color:var(--navy)}
+    h3{font-size:18px;line-height:1.45;margin:0 0 8px;color:var(--navy)}
+    .hint{color:var(--muted);font-size:13px;margin:0}
+    .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:-54px;position:relative}
+    .stat{background:var(--paper);border:1px solid rgba(255,255,255,.55);border-radius:var(--radius);box-shadow:var(--shadow);padding:20px}
+    .stat strong{display:block;font-size:31px;line-height:1.1;color:var(--navy);margin-bottom:5px}.stat span{font-size:13px;color:var(--muted)}
+    .panel{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 3px 12px rgba(24,49,83,.04);padding:22px}
+    .archive{display:flex;flex-wrap:wrap;gap:8px}
+    .archive a,.archive .missing{display:inline-flex;align-items:center;gap:4px;padding:7px 10px;border:1px solid var(--line);border-radius:999px;background:#fff;font-size:13px}
+    .archive .missing{color:var(--red);background:var(--red-soft);border-color:#fecdca}
+    .conclusions{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .conclusion{border:1px solid var(--line);border-radius:13px;padding:16px 17px;background:#fff}
+    .conclusion p{margin:0;color:#475467;font-size:14px}.conclusion strong{color:var(--ink)}
+    .signal-strip{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+    .pill{display:inline-flex;align-items:center;padding:6px 9px;border-radius:999px;font-size:12px;font-weight:650}
+    .pos{background:var(--green-soft);color:var(--green)}.neg{background:var(--red-soft);color:var(--red)}.warn{background:var(--amber-soft);color:var(--amber)}.info{background:var(--blue-soft);color:var(--blue)}.violet{background:#f4f3ff;color:var(--violet)}
+    .table-wrap{overflow:auto;border:1px solid var(--line);border-radius:14px;background:#fff}
+    table{width:100%;border-collapse:collapse;min-width:820px;font-size:14px}
+    th{background:#f8fafc;color:#344054;text-align:left;font-size:13px;font-weight:700;padding:12px 13px;border-bottom:1px solid var(--line)}
+    td{vertical-align:top;padding:13px;border-bottom:1px solid #edf0f3;color:#475467}tr:last-child td{border-bottom:0}td strong{color:var(--ink)}
+    .trend td:first-child{min-width:150px}.trend td:last-child{min-width:130px}
+    .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:19px;box-shadow:0 3px 12px rgba(24,49,83,.035)}
+    .card p{margin:0 0 8px;color:#475467;font-size:14px}.card ul{margin:8px 0 0;padding-left:20px}.card li{margin:6px 0;color:#475467;font-size:14px}
+    .meta{font-size:12px;color:var(--muted);margin-bottom:10px}
+    .timeline td:nth-child(1){white-space:nowrap}.timeline td:nth-child(2){min-width:110px}.timeline td:nth-child(3){min-width:150px}.timeline td:nth-child(5){min-width:300px}
+    .tag{display:inline-block;padding:3px 7px;border-radius:7px;font-size:12px;font-weight:650;white-space:nowrap}
+    .done{background:var(--green-soft);color:var(--green)}.plan{background:var(--amber-soft);color:var(--amber)}.reduce{background:var(--red-soft);color:var(--red)}.hold{background:var(--blue-soft);color:var(--blue)}.history{background:#f2f4f7;color:#475467}
+    .callout{border-left:4px solid var(--blue);background:var(--blue-soft);padding:13px 15px;border-radius:0 12px 12px 0;color:#344054;margin-top:14px;font-size:14px}
+    .method{font-size:14px;color:#475467}.method li{margin:6px 0}
+    footer{border-top:1px solid var(--line);padding:22px 0 5px;color:var(--muted);font-size:12px}
+    @media(max-width:820px){.stats,.conclusions,.grid{grid-template-columns:1fr 1fr}.stats{margin-top:-30px}.hero{padding-bottom:48px}}
+    @media(max-width:560px){.stats,.conclusions,.grid{grid-template-columns:1fr}.stats{margin-top:-22px}main{padding-left:14px;padding-right:14px}.panel,.card{padding:16px}.hero{padding:40px 18px}.section-head{display:block}.hint{margin-top:4px}}
+    @media print{.nav{display:none}.hero{background:#183153!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.stats{margin-top:16px}.panel,.card,.stat{box-shadow:none}a{color:#174ea6}}
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Investor Insight Hub · Trend Special</div>
+      <h1>全站观点趋势专题：2026年8月6日—8月29日</h1>
+      <p class="subtitle">数据来源：Investor Insight Hub 在该日期段内的全部公开归档日报。按原帖证据追踪跨日观点、真实交易、仓位变化与重要分歧。</p>
+      <p class="disclaimer">本页不对帖文中的财务数据、预测与市场判断作外部核验，不构成投资建议。相邻日报“近24小时”窗口可能重叠；同一观点或动作按原帖链接去重，不重复放大声量。</p>
+    </div>
+  </header>
+
+  <nav class="nav" aria-label="页面目录"><div class="nav-inner">
+    <a href="#archive">日报档案</a><a href="#summary">核心结论</a><a href="#trend">跨日趋势</a><a href="#bull">持续看多</a><a href="#risk">看空与风险</a><a href="#actions">交易动作</a><a href="#debate">关键分歧</a><a href="#watch">后续观察</a><a href="#method">统计口径</a>
+  </div></nav>
+
+  <main>
+    <section aria-label="覆盖统计">
+      <div class="stats">
+        <div class="stat"><strong>24</strong><span>日历天数（8月6—29日）</span></div>
+        <div class="stat"><strong>23</strong><span>归档日报</span></div>
+        <div class="stat"><strong>1</strong><span>缺失日期（8月22日）</span></div>
+        <div class="stat"><strong>23/23</strong><span>出现资源、能源或周期品正面讨论</span></div>
+      </div>
+    </section>
+
+    <section id="archive">
+      <div class="section-head"><h2>日报档案</h2><p class="hint">点击日期可回到当日完整报告</p></div>
+      <div class="panel archive">
+        <a href="https://jasonxgwang.github.io/investor-insight-hub/Reports/2026/20260806_%E8%BF%9124%E5%B0%8F%E6%97%B6%E6%8A%95%E8%B5%84%E8%A7%82%E7%82%B9%E4%B8%8E%E4%BA%A4%E6%98%93%E5%8A%A8%E4%BD%9C%E6%80%BB%E7%BB%93.html">8月6日</a>
+        <a href="https://jasonxgwang.github.io/investor-insight-hub/Reports/2026/20260807_%E8%BF%9124%E5%B0%8F%E6%97%B6%E6%8A%95%E8%B5%84%E8%A7%82%E7%82%B9%E4%B8%8E%E4%BA%A4%E6%98%93%E5%8A%A8%E4%BD%9C%E6%80%BB%E7%BB%93.html">8月7日</a>
+        <a href="https://jasonxgwang.github.io/investor-insight-hub/Reports/2026/%E5%A4%A7V%E6%AF%8F%E6%97%A5%E8%A7%82%E7%82%B9%EF%BC%9A2026%E5%B9%B48%E6%9C%888%E6%97%A5.html">8月8日</a>
+        <a href="https://jasonxgwang.github.io/investor-insight-hub/Reports/2026/%E5%A4%A7V%E6%AF%8F%E6%97%A5%E8%A7%82%E7%82%B9%EF%BC%9A2026%E5%B9%B48%E6%9C%889%E6%97%A5.html">8月9日</a>
+        <a href="https://jasonxgwang.github.io/investor-insight-hub/Reports/2026/%E5%A4%A7V%E6%AF%8F%E6%97%A5%E8%A7%82%E7%82%B9%EF%BC%9A2026%E5%B9%B48%E6%9C%8810%E6%97%A5.html">8月10日</a>
+        <a href="https://jasonxgwang.github.io/investor-insight-hub/Reports/2026/%E5%A4%A7V%E6%AF%8F%E6%97%A5%E8%A7%82%E7%82%B9%EF%BC%9A2026%E5%B9%B48%E6%9C%8811%E6%97%A5.html">8月11日</a>
+        <a href="https://jasonxgwang.github.io/investor-insight-hub/Reports/2026/%E5%A4%A7V%E6%AF%8F%E6%97%A5%E8%A7%82%E7%82%B9%EF%BC%9A2026%E5%B9%B48%E6%9C%8812%E6%97%A5.html">8月12日</a>
+        <a href="https://jasonxgwang.github.io/investor-insight-hub/Reports/2026/%E5%A4%A7V%E6%AF%8F%E6%97%A5%E8%A7%82%E7%82%B9%EF%BC%9A2026%E5%B9%B48%E6%9C%8813%E6%97%A5.html">8月13日</a>
+        <a href="https://jasonxgwang.github.io/investor-insight-hub/Reports/2026/%E5%A4%A7V%E6%AF%8F%E6%97%A5%E8%A7%82%E7%82%B9%EF%BC%9A2026%E5%B9%B48%E6%9C%8814%E6%97%A5.html">8月14日</a>
+        <a href="https://jasonxgwang.github.io/investor-insight-hub/Reports/2026/%E5%A4%A7V%E6%AF%8F%E6%97%A5%E8%A7%82%E7%82%B9%EF%BC%9A2026%E5%B9%B48%E6%9C%8815%E6%97%A5.html">8月15日</a>
+        <a href="https://jasonxgwang.github.io/investor-insight-hub/Reports/2026/%E5%A4%A7V%E6%AF%8F%E6%97%A5%E8%A7%82%E7%82%B9%EF%BC%9A2026%E5%B9%B48%E6%9C%8816%E6%97%A5.html">8月16日</a>
+        <a href="https://jasonxgwang.github.io/investor-insight-hub/Reports/2026/%E5%A4%A7V%E6%AF%8F%E6%97%A5%E8%A7%82%E7%82%B9%EF%BC%9A2026%E5%B9%B48%E6%9C%8817%E6%97%A5.html">8月17日</a>
+        <a href="https://jasonxgwang.github.io/investor-insight-hub/Reports/2026/%E5%A4%A7V%E6%AF%8F%E6%97%A5%E8%A7%82%E7%82%B9%EF%BC%9A2026%E5%B9%B48%E6%9C%8818%E6%97%A5.html">8月18日</a>
+        <a href="https://jasonxgwang.github.io/investor-insight-hub/Reports/2026/%E5%A4%A7V%E6%AF%8F%E6%97%A5%E8%A7%82%E7%82%B9%EF%BC%9A2026%E5%B9%B48%E6%9C%8819%E6%97%A5.html">8月19日</a>
+        <a href="https://jasonxgwang.github.io/investor-insight-hub/Reports/2026/%E5%A4%A7V%E6%AF%8F%E6%97%A5%E8%A7%82%E7%82%B9%EF%BC%9A2026%E5%B9%B48%E6%9C%8820%E6%97%A5.html">8月20日</a>
+        <a href="https://jasonxgwang.github.io/investor-insight-hub/Reports/2026/%E5%A4%A7V%E6%AF%8F%E6%97%A5%E8%A7%82%E7%82%B9%EF%BC%9A2026%E5%B9%B48%E6%9C%8821%E6%97%A5_%E5%AE%8C%E6%95%B4%E7%89%88.html">8月21日</a>
+        <span class="missing">8月22日 · 无归档</span>
+        <a href="https://jasonxgwang.github.io/investor-insight-hub/Reports/2026/%E5%A4%A7V%E6%AF%8F%E6%97%A5%E8%A7%82%E7%82%B9%EF%BC%9A2026%E5%B9%B48%E6%9C%8823%E6%97%A5.html">8月23日</a>
+        <a href="https://jasonxgwang.github.io/investor-insight-hub/Reports/2026/%E5%A4%A7V%E6%AF%8F%E6%97%A5%E8%A7%82%E7%82%B9%EF%BC%9A2026%E5%B9%B48%E6%9C%8824%E6%97%A5.html">8月24日</a>
+        <a href="https://jasonxgwang.github.io/investor-insight-hub/Reports/2026/%E5%A4%A7V%E6%AF%8F%E6%97%A5%E8%A7%82%E7%82%B9%EF%BC%9A2026%E5%B9%B48%E6%9C%8825%E6%97%A5.html">8月25日</a>
+        <a href="https://jasonxgwang.github.io/investor-insight-hub/Reports/2026/%E5%A4%A7V%E6%AF%8F%E6%97%A5%E8%A7%82%E7%82%B9%EF%BC%9A2026%E5%B9%B48%E6%9C%8826%E6%97%A5.html">8月26日</a>
+        <a href="https://jasonxgwang.github.io/investor-insight-hub/Reports/2026/%E5%A4%A7V%E6%AF%8F%E6%97%A5%E8%A7%82%E7%82%B9%EF%BC%9A2026%E5%B9%B48%E6%9C%8827%E6%97%A5.html">8月27日</a>
+        <a href="https://jasonxgwang.github.io/investor-insight-hub/Reports/2026/%E5%A4%A7V%E6%AF%8F%E6%97%A5%E8%A7%82%E7%82%B9%EF%BC%9A2026%E5%B9%B48%E6%9C%8828%E6%97%A5.html">8月28日</a>
+        <a href="https://jasonxgwang.github.io/investor-insight-hub/Reports/2026/%E5%A4%A7V%E6%AF%8F%E6%97%A5%E8%A7%82%E7%82%B9%EF%BC%9A2026%E5%B9%B48%E6%9C%8829%E6%97%A5.html">8月29日</a>
+      </div>
+    </section>
+
+    <section id="summary">
+      <div class="section-head"><h2>核心结论</h2><p class="hint">跨日归并，不用单日噪声代替趋势</p></div>
+      <div class="conclusions">
+        <div class="conclusion"><p><strong>资源价值是全期最稳定的主线。</strong> 紫金、铜、黄金、电解铝、煤炭、油气和锂在不同日期轮动接力；即使个别作者兑现或换股，板块级叙事也没有中断。</p></div>
+        <div class="conclusion"><p><strong>锂是仓位变化最明显的方向。</strong> 由8月初的低估与条件买入，演变为盐湖股份明确买入、锂矿持续加仓，至8月25日出现“加仓数万股”，8月28日又披露锂矿并非轻仓。</p></div>
+        <div class="conclusion"><p><strong>AI不是统一看多或看空，而是分层。</strong> 应用端、谷歌、存储及精选AI龙头仍获真实配置；高估硬件、CPO、光模块、PCB扩产与拥挤交易则反复遭到风险提示。</p></div>
+        <div class="conclusion"><p><strong>白酒是中后段负面共识最集中的行业。</strong> 需求、渠道、业绩和估值四重压力被反复提及；但老窖、汾酒、古井B、水井坊等仍出现战术或逆向机会，不能写成全行业一致做空。</p></div>
+        <div class="conclusion"><p><strong>海螺水泥是持续时间最长的困境反转样本。</strong> 8月6日已“买够”，此后围绕现金亏损、供给出清、微利修复和资产价值持续强化；分歧主要在反转时间，而不是是否接近行业底部。</p></div>
+        <div class="conclusion"><p><strong>指数层面最大的矛盾来自时间尺度。</strong> 雪月霜多次判断“牛转熊”并保留现金；斯托伯最终给出五年内6000点。合并解读是中长期流动性偏多、短期结构和估值压力仍大。</p></div>
+      </div>
+      <div class="signal-strip"><span class="pill pos">最持续：资源价值</span><span class="pill violet">最大仓位变化：锂</span><span class="pill warn">最大分歧：AI/科技</span><span class="pill neg">最集中风险：白酒</span><span class="pill info">最长困境反转：水泥</span></div>
+    </section>
+
+    <section id="trend">
+      <div class="section-head"><h2>跨日趋势总览</h2><p class="hint">重点区分基本面方向、价格位置与实际交易</p></div>
+      <div class="table-wrap"><table class="trend">
+        <thead><tr><th>主线 / 标的</th><th>时间轨迹</th><th>核心看多依据</th><th>主要风险 / 反方</th><th>综合结论</th></tr></thead>
+        <tbody>
+          <tr><td><strong>紫金 / 铜 / 黄金</strong></td><td>8/6事件驱动 → 8/10长期趋势 → 8/17资源稀缺强化 → 8/24个别换股 → 8/29铜被称为确定性最强商品</td><td>资源储量、供给约束、金铜价格、全球矿业重估、弱美元叙事</td><td>周期位置、海外项目、短线追高；飞翔芸8/24卖紫金换万华</td><td><span class="pill pos">全期最强主线</span></td></tr>
+          <tr><td><strong>锂矿 / 盐湖股份</strong></td><td>8/6连续加仓 → 8/13盐湖24.8买入 → 8/15锂矿持续加仓 → 8/25盐湖加仓数万股 → 8/28锂矿非轻仓</td><td>估值低、供给弹性有限、库存与预期差、国内资源价值</td><td>周期波动、海外矿风险、扩张与融资；天齐/赣锋/盐湖之间选择分化</td><td><span class="pill violet">动作最连续</span></td></tr>
+          <tr><td><strong>电解铝 / 煤炭</strong></td><td>8/11煤炭组合大幅加仓 → 8/12云铝降仓留底仓 → 8/20煤炭减仓 → 8/27—29煤价、铝价与相对价值再强化</td><td>供给纪律、库存下降、现金流、分红与低估值</td><td>追涨风险、周期高位、分红预期；煤炭与铝之间存在再平衡</td><td><span class="pill pos">中长期偏多</span></td></tr>
+          <tr><td><strong>海螺水泥 / 水泥</strong></td><td>8/6“已买够” → 8/11—20反复论证底部 → 8/26给出修复区间 → 8/27挂17.5未成交 → 8/29仍称底部但节奏未定</td><td>现金亏损、产能出清、微利即带来利润弹性、矿山与骨料资产</td><td>需求下滑、行业反转可能推迟；天山等高负债公司不能等同于海螺</td><td><span class="pill info">最长困境反转</span></td></tr>
+          <tr><td><strong>AI / 科技</strong></td><td>8/6—8买AI与纳指 → 8/11出现泡沫/撤退观点 → 8/18谷歌加仓、AI高仓 → 8/20—27警惕PCB/CPO/光模块 → 8/29再提拥挤风险</td><td>应用端、云计算、存储、算力长周期与精选龙头业绩</td><td>资本开支回报、高估值、扩产门槛、机构拥挤和周期末端融资</td><td><span class="pill warn">长期产业多，短期估值空</span></td></tr>
+          <tr><td><strong>腾讯</strong></td><td>8/13挂436未成交 → 8/14在440加600股并打完资金 → 8/17确认上周抄底 → 8/24—25担忧AI投入 → 8/28产品体验获认可</td><td>主业安全垫、较低估值、AI向上期权与用户基础</td><td>自由现金流、资本开支回报、短期上涨催化不足</td><td><span class="pill pos">交易链完整，逻辑有保留</span></td></tr>
+          <tr><td><strong>白酒</strong></td><td>8/15轻仓老窖/汾酒 → 8/17—28“未到底、需求变化、业绩压力”占主导 → 8/28—29出现古井B、汾酒、水井坊逆向机会</td><td>悲观定价、收息、中端化与个股修复弹性</td><td>年轻人饮酒习惯、渠道库存、现金回款、长期成长和估值仍偏高</td><td><span class="pill neg">板块谨慎，个股战术</span></td></tr>
+          <tr><td><strong>火电 / 高股息</strong></td><td>8/19国电/华能分化 → 8/24大唐H重仓买入 → 8/25建滔换大唐 → 8/27火电已买并建议抄底 → 8/28行业电价压力与大唐多元业务并存</td><td>低PE、分红、留存利润投新能源、水电/铝业务对冲</td><td>煤价、电价、二季度盈利与减值；板块内资产结构差异大</td><td><span class="pill info">低估修复，必须选股</span></td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="bull">
+      <div class="section-head"><h2>持续看多与重点跟踪主线</h2><p class="hint">按持续性与交易证据排序</p></div>
+      <div class="grid">
+        <article class="card"><h3>1. 资源价值：紫金、铜、黄金</h3><div class="meta">飞翔芸、斯托伯、山行、大黄蚬子等｜覆盖全期</div><ul><li>产业逻辑从单一商品上涨，升级为储量、供给约束与全球资源重估。</li><li>8月14日铜陵有色逆势再买；8月29日铜被直接称为大宗商品中确定性最强的品种。</li><li>8月24日卖紫金换万华属于个体换仓，不足以推翻跨日主线。</li></ul><p><a href="https://xueqiu.com/3045778209/405055576">8/14 铜陵再买原帖</a> · <a href="https://jasonxgwang.github.io/investor-insight-hub/Reports/2026/%E5%A4%A7V%E6%AF%8F%E6%97%A5%E8%A7%82%E7%82%B9%EF%BC%9A2026%E5%B9%B48%E6%9C%8829%E6%97%A5.html">8/29 日报</a></p></article>
+        <article class="card"><h3>2. 盐湖股份与锂资源</h3><div class="meta">飞翔芸、雪月霜、ericwarn丁宁｜动作最密集</div><ul><li>8月6日逢低连续加仓；8月13日披露24.8元买入；8月25日再加仓数万股。</li><li>观点由“低估可参与”推进到“以资金表达判断”，但仍保留周期退出纪律。</li><li>后期更偏好国内资源，赣锋式海外扩张与高资本开支受到质疑。</li></ul><p><a href="https://xueqiu.com/9957341637/403872046">8/6 盐湖加仓</a> · <a href="https://xueqiu.com/1505944393/404827897">8/13 买入价</a> · <a href="https://xueqiu.com/9957341637/406554581">8/25 大额加仓</a></p></article>
+        <article class="card"><h3>3. 电解铝与煤炭</h3><div class="meta">斯托伯、超级鹿鼎公、闯关东了吧、挚爱子洲等</div><ul><li>铝的核心是库存与价格中枢，煤炭的核心是供给纪律、煤价与现金流。</li><li>8月11日煤炭组合大幅加仓；8月20日出现阶段减仓；月末又回到煤炭/云铝相对估值。</li><li>这是“长期认可、仓位动态平衡”，不能写成单向满仓。</li></ul><p><a href="https://xueqiu.com/9493911686/404514142">8/11 煤炭加仓</a> · <a href="https://weibo.com/3962719063/RefhjBHA7">8/20 部分减仓</a></p></article>
+        <article class="card"><h3>4. 海螺水泥：困境反转</h3><div class="meta">雪月霜为主｜8月6日至29日反复强化</div><ul><li>核心并非需求回到历史高峰，而是行业从现金亏损回到微利即可释放利润弹性。</li><li>矿山、骨料与区域成本优势使海螺与高杠杆水泥企业明显分化。</li><li>8月27日17.5元挂单未成交，属于买入意愿而非成交。</li></ul><p><a href="https://xueqiu.com/1505944393/403974939">8/6 底部逻辑</a> · <a href="https://xueqiu.com/1505944393/406827300">8/27 挂单未成交</a></p></article>
+        <article class="card"><h3>5. 火电、油气与高股息</h3><div class="meta">大唐发电H、中国海油、华能H、国电电力等</div><ul><li>大唐H形成“错杀—重仓买入—卖建滔继续加大唐”的完整行动链。</li><li>中海油持续被视为核心资源现金流资产；华能H到月末仍有防守性分红逻辑。</li><li>煤价与电价压力使火电必须按资产结构选股，不能只看行业标签。</li></ul><p><a href="https://xueqiu.com/1066188300/406275086">8/24 大唐重仓</a> · <a href="https://xueqiu.com/1066188300/406526053">8/25 换仓大唐</a></p></article>
+        <article class="card"><h3>6. AI应用、存储与精选龙头</h3><div class="meta">但斌、老奈、丹书铁券等｜分化中的多头</div><ul><li>谷歌加仓接近顶格、存储与海力士保持重仓，SpaceX也启动战略性建仓。</li><li>AI硬件在大跌后出现左侧配置，但后期明显收缩到业绩可见的龙头。</li><li>多头认可产业周期，反方质疑估值、资本开支回报与供给扩张，两者并不矛盾。</li></ul><p><a href="https://xueqiu.com/1102105103/405381367">8/18 谷歌加仓</a> · <a href="https://xueqiu.com/1102105103/405530938">8/19 SpaceX建仓</a></p></article>
+      </div>
+    </section>
+
+    <section id="risk">
+      <div class="section-head"><h2>持续看空、回避与风险主线</h2><p class="hint">“谨慎”不等于已卖出，“转发风险”不等于本人做空</p></div>
+      <div class="grid">
+        <article class="card"><h3>1. 白酒：需求、渠道与估值三重压力</h3><p>8月15日后负面观点显著增多，泸州老窖中报成为集中风险信号，茅台买点被下修，高端白酒长期需求也受质疑。反方主要是低价长期收息和个股逆向修复。</p><div class="signal-strip"><span class="pill neg">板块谨慎</span><span class="pill warn">个股仍有战术机会</span></div></article>
+        <article class="card"><h3>2. 高估AI硬件、CPO与光模块</h3><p>英伟达融资结构、PCB扩产门槛、CPO护城河、光模块估值与AI资本开支回报被连续质疑。到8月27—29日，主线收缩为精选龙头与应用端，而非无差别追科技。</p><div class="signal-strip"><span class="pill neg">估值风险</span><span class="pill warn">产业仍偏多</span></div></article>
+        <article class="card"><h3>3. 房地产、基建高应收与重资产制造</h3><p>房地产见底尚远、低利率未必拉动价格；高应收基建企业、汽车制造和部分风电/航空被认为资本开支大、回报不稳定。低估值本身不足以抵消资产负债表风险。</p></article>
+        <article class="card"><h3>4. 盲目海外扩张与资本配置</h3><p>盛新、中矿、赣锋等在海外矿、融资与扩张纪律上出现质疑；阿里、腾讯等互联网公司则分别面临股东回报和AI投入效率讨论。板块观点必须下沉到公司治理。</p></article>
+      </div>
+    </section>
+
+    <section id="actions">
+      <div class="section-head"><h2>关键交易与仓位动作时间线</h2><p class="hint">仅收录可识别的本人动作；条件单和历史动作单独标注</p></div>
+      <div class="table-wrap"><table class="timeline">
+        <thead><tr><th>日期</th><th>发帖者</th><th>标的 / 方向</th><th>性质</th><th>动作与边界</th><th>证据</th></tr></thead>
+        <tbody>
+          <tr><td>8/6</td><td>飞翔芸</td><td><strong>盐湖股份</strong></td><td><span class="tag done">连续加仓</span></td><td>利用低迷阶段逢低加仓；是本期锂仓位链的起点。</td><td><a href="https://xueqiu.com/9957341637/403872046">原帖</a></td></tr>
+          <tr><td>8/6</td><td>行中衡</td><td><strong>网络安全</strong></td><td><span class="tag done">建5%短线仓</span></td><td>未披露具体标的，并明确未买当日三只涨停股。</td><td><a href="https://xueqiu.com/1553799558/403836426">原帖</a></td></tr>
+          <tr><td>8/9</td><td>ericwarn丁宁</td><td><strong>多晶硅 / 平安</strong></td><td><span class="tag plan">计划抄底 / 轻仓接回</span></td><td>看多行业但对大全相对减配；平安仅轻仓接回。</td><td><a href="https://xueqiu.com/9363345092/404282589">讨论串</a></td></tr>
+          <tr><td>8/11</td><td>斯托伯</td><td><strong>煤炭组合</strong></td><td><span class="tag done">大幅加仓</span></td><td>组合级明确动作，是全期最清晰的煤炭加仓信号。</td><td><a href="https://xueqiu.com/9493911686/404514142">原帖/回复</a></td></tr>
+          <tr><td>8/12</td><td>管我财、伊夫圣洛朗</td><td><strong>羚锐制药</strong></td><td><span class="tag reduce">卖出 / 清仓</span></td><td>一方因营收与应收组合退出，一方清仓时仍有约5%浮盈。</td><td><a href="https://jasonxgwang.github.io/investor-insight-hub/Reports/2026/%E5%A4%A7V%E6%AF%8F%E6%97%A5%E8%A7%82%E7%82%B9%EF%BC%9A2026%E5%B9%B48%E6%9C%8812%E6%97%A5.html">当日日报</a></td></tr>
+          <tr><td>8/13</td><td>雪月霜</td><td><strong>盐湖股份</strong></td><td><span class="tag done">已买入</span></td><td>披露买入价24.8元，并保留下跌补仓思路。</td><td><a href="https://xueqiu.com/1505944393/404827897">原帖</a></td></tr>
+          <tr><td>8/13</td><td>伊夫圣洛朗</td><td><strong>腾讯</strong></td><td><span class="tag plan">挂436未成交</span></td><td>明确买入意愿，但当日没有成交。</td><td><a href="https://xueqiu.com/1066188300/404930117">原帖</a></td></tr>
+          <tr><td>8/14</td><td>伊夫圣洛朗</td><td><strong>腾讯</strong></td><td><span class="tag done">加仓 / 重仓</span></td><td>先加600股，随后称440港元把剩余资金全部买入。</td><td><a href="https://xueqiu.com/1066188300/405092951">原帖</a></td></tr>
+          <tr><td>8/14</td><td>大黄蚬子hgx</td><td><strong>铜陵有色</strong></td><td><span class="tag done">再次买入</span></td><td>面对外部“清仓有色”观点，明确逆向再买。</td><td><a href="https://xueqiu.com/3045778209/405055576">原帖</a></td></tr>
+          <tr><td>8/15</td><td>ericwarn丁宁</td><td><strong>锂矿；老窖/汾酒</strong></td><td><span class="tag done">持续加仓 / 轻仓买</span></td><td>锂矿连续加仓；白酒属于博弈反弹的战术小仓位。</td><td><a href="https://xueqiu.com/9363345092/405152684">讨论串</a></td></tr>
+          <tr><td>8/17</td><td>伊夫圣洛朗</td><td><strong>腾讯</strong></td><td><span class="tag hold">确认已买</span></td><td>披露上周已抄底；强调安全边际强于短期上涨催化。</td><td><a href="https://xueqiu.com/1066188300/405344347">原帖</a></td></tr>
+          <tr><td>8/18</td><td>但斌</td><td><strong>谷歌 / 存储</strong></td><td><span class="tag done">加仓 / 核心重仓</span></td><td>谷歌加至接近顶格、约占近30%；存储合计约26%。</td><td><a href="https://xueqiu.com/1102105103/405381367">原帖</a></td></tr>
+          <tr><td>8/18</td><td>老奈</td><td><strong>建滔积层板</strong></td><td><span class="tag done">明显加仓</span></td><td>认为估值尚便宜，同时保留公司声誉风险提示。</td><td><a href="https://xueqiu.com/4086512744/405456248">原帖</a></td></tr>
+          <tr><td>8/19</td><td>但斌</td><td><strong>SpaceX</strong></td><td><span class="tag done">战略性建仓</span></td><td>即使内部仍认为估值偏高，仍开始建仓并继续买入。</td><td><a href="https://xueqiu.com/1102105103/405530938">原帖</a></td></tr>
+          <tr><td>8/20</td><td>超级鹿鼎公</td><td><strong>煤炭、煤电、煤化工</strong></td><td><span class="tag reduce">部分卖出</span></td><td>明确卖出一些相关持仓；不等同于转为长期看空。</td><td><a href="https://weibo.com/3962719063/RefhjBHA7">原帖</a></td></tr>
+          <tr><td>8/24</td><td>伊夫圣洛朗</td><td><strong>大唐发电H</strong></td><td><span class="tag done">重新重仓</span></td><td>判断下跌为错杀，并押注中报与长协电价改善。</td><td><a href="https://xueqiu.com/1066188300/406275086">原帖</a></td></tr>
+          <tr><td>8/24</td><td>飞翔芸</td><td><strong>紫金 → 万华</strong></td><td><span class="tag done">卖出换股</span></td><td>明确用卖紫金所得资金买入万华化学。</td><td><a href="https://xueqiu.com/-1/406371423">原讨论</a></td></tr>
+          <tr><td>8/25</td><td>飞翔芸</td><td><strong>盐湖股份</strong></td><td><span class="tag done">加仓数万股</span></td><td>用资金表达对半年报和后续表现的判断。</td><td><a href="https://xueqiu.com/9957341637/406554581">原帖</a></td></tr>
+          <tr><td>8/25</td><td>伊夫圣洛朗</td><td><strong>建滔 → 大唐H</strong></td><td><span class="tag done">卖出换仓</span></td><td>卖建滔集团，凑齐资金继续买入大唐发电H。</td><td><a href="https://xueqiu.com/1066188300/406526053">原帖</a></td></tr>
+          <tr><td>8/27</td><td>老奈</td><td><strong>Pzxx（简称）</strong></td><td><span class="tag reduce">割肉卖出</span></td><td>因扩张与毛利率低于预期认错退出；全称、数量与是否清仓未确认。</td><td><a href="https://xueqiu.com/4086512744/406944155">原帖</a></td></tr>
+          <tr><td>8/27</td><td>雪月霜</td><td><strong>海螺水泥</strong></td><td><span class="tag plan">挂17.5未成交</span></td><td>只能记录买入意愿，不能写成已买入。</td><td><a href="https://xueqiu.com/1505944393/406827300">原帖</a></td></tr>
+          <tr><td>8/28</td><td>ericwarn丁宁</td><td><strong>猪肉、锂矿、多晶硅</strong></td><td><span class="tag hold">均非轻仓</span></td><td>披露三个方向都已押注，但未提供具体股票和比例。</td><td><a href="https://xueqiu.com/7054336253/406421801">原帖/回复</a></td></tr>
+          <tr><td>8/28</td><td>雪月霜</td><td><strong>总仓位 / 红利组合</strong></td><td><span class="tag reduce">组合调整 / 拟降仓</span></td><td>组合调仓已发布，但明细缺失；降低仓位为风险控制主张。</td><td><a href="https://xueqiu.com/1505944393/407127333">原帖/回复</a></td></tr>
+          <tr><td>8/29</td><td>张翼轸</td><td><strong>黄金ETF / 中证2000</strong></td><td><span class="tag hold">模型继续持有</span></td><td>规则化周度模型信号，不是临时主观买单。</td><td><a href="https://xueqiu.com/3559889031/407212839">原帖</a></td></tr>
+          <tr><td>8/29</td><td>大道无形 / 管我财</td><td><strong>西方石油 / 快手</strong></td><td><span class="tag reduce">退出倾向 / 修正</span></td><td>前者有机会拟卖；后者用备兑期权修正仓位，均不能写成正股已清仓。</td><td><a href="https://xueqiu.com/1231080118/407196032">西方石油</a> · <a href="https://xueqiu.com/-1/407116729">快手</a></td></tr>
+        </tbody>
+      </table></div>
+      <div class="callout"><strong>全期最清晰的三条行动链：</strong>盐湖股份由连续加仓升级为数万股加仓；腾讯由挂单未成交升级为440港元集中买入；大唐发电H由重仓抄底升级为卖出建滔继续换入。</div>
+    </section>
+
+    <section id="debate">
+      <div class="section-head"><h2>关键分歧</h2><p class="hint">分清时间尺度、公司差异和“观点—动作”的距离</p></div>
+      <div class="table-wrap"><table>
+        <thead><tr><th>主题</th><th>偏多 / 参与</th><th>谨慎 / 偏空</th><th>合并后的有效解读</th></tr></thead>
+        <tbody>
+          <tr><td><strong>A股</strong></td><td>长期流动性改善、五年6000点；部分账户保持高仓或满仓原则</td><td>牛转熊、现金为主、双创技术承压</td><td>长期指数判断不能替代短期仓位管理，结构性行情强于普涨假设。</td></tr>
+          <tr><td><strong>AI / 科技</strong></td><td>谷歌、存储、AI应用和精选龙头仍被买入或重仓</td><td>高估硬件、CPO、光模块、PCB扩产及AI资本开支泡沫</td><td>产业趋势仍多，估值与盈利兑现决定个股；从赛道投资转向精选。</td></tr>
+          <tr><td><strong>黄金</strong></td><td>超级牛市、模型转持黄金ETF、资源信用对冲</td><td>高位追买可能承受多年回撤，实际利率上升会压制商品</td><td>长期货币逻辑与短期价格位置冲突，不能用长期看多替代买点。</td></tr>
+          <tr><td><strong>白酒</strong></td><td>老窖/汾酒战术反弹，茅台/古井B收息，水井坊逆向机会</td><td>需求变化、渠道库存、业绩下滑、估值尚未到底</td><td>板块尚无一致反转信号，但低价个股可出现战术性与长期收息机会。</td></tr>
+          <tr><td><strong>煤炭</strong></td><td>供给纪律、煤价改善、组合大幅加仓</td><td>阶段减仓、破净才重新研究、中国神华估值偏贵</td><td>商品景气与股票买点并非同一问题，应区分煤种、资产与估值。</td></tr>
+          <tr><td><strong>火电</strong></td><td>大唐H重仓抄底、股息与留存利润成长</td><td>煤价上升、电价承压、部分公司二季度盈利低预期</td><td>行业不适合整体下注，大唐的水电/铝等对冲与普通煤电不同。</td></tr>
+          <tr><td><strong>水泥</strong></td><td>现金亏损、供给出清、微利修复、海螺资产价值</td><td>需求继续下降、反转时间不确定、旺季利润仍弱</td><td>接近底部的共识强于反转时点共识，适合赔率思维而非趋势确认。</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section id="watch">
+      <div class="section-head"><h2>后续最值得观察的五个验证点</h2><p class="hint">将观点转成可跟踪条件</p></div>
+      <div class="grid">
+        <article class="card"><h3>锂：仓位强化后，基本面是否接力</h3><p>跟踪库存、供给复产、国内资源项目与盐湖分红；特别留意“行业看多”与具体公司资本配置差异。</p></article>
+        <article class="card"><h3>资源：高位周期还是长期重估</h3><p>观察铜、金、铝、煤价与企业资本开支。如果供给纪律松动，长期稀缺叙事会先在盈利预期中暴露。</p></article>
+        <article class="card"><h3>AI：从资本开支转向利润兑现</h3><p>重点看应用收入、存储价格、PCB/光模块扩产与下游回报，判断“精选龙头”能否真正替代板块抱团。</p></article>
+        <article class="card"><h3>白酒：现金回款与库存是否先企稳</h3><p>比股价反弹更重要的是回款、渠道库存和业绩降幅；小酒企的招商弹性必须在行业修复后才成立。</p></article>
+        <article class="card"><h3>火电与水泥：困境反转的先后顺序</h3><p>火电看煤价、电价与资产结构；水泥看现金亏损、停产与微利修复。两类都不能只用静态低PE作结论。</p></article>
+      </div>
+    </section>
+
+    <section id="method">
+      <div class="section-head"><h2>统计与判断口径</h2></div>
+      <div class="panel method">
+        <ol>
+          <li><strong>覆盖范围：</strong>2026年8月6日至29日，共24个日历日、23份归档日报；8月22日无归档。</li>
+          <li><strong>去重原则：</strong>相邻“近24小时”窗口可能重叠，按原帖或父帖URL识别重复证据；同一动作不重复计数。</li>
+          <li><strong>动作判定：</strong>只有本人出现“买入、卖出、加仓、减仓、清仓、持有”等直接表达，才计为明确动作；挂单、条件性动作、模型调仓、历史回顾、模拟组合和第三方持仓分别标注。</li>
+          <li><strong>观点判定：</strong>转发新闻不自动归为作者本人观点；“看多”不自动等于“买入”，“谨慎”也不自动等于“卖出”或“做空”。</li>
+          <li><strong>链接说明：</strong>评论区多数只能定位到父帖；本页沿用日报中保存的原帖或父帖链接，不虚构评论直链。</li>
+          <li><strong>事实边界：</strong>所有目标价、估值、财务数字和行情预测均代表发帖者当时表达，未在本专题中另行核验。</li>
+        </ol>
+      </div>
+    </section>
+
+    <footer>Investor Insight Hub 投资观点库｜全站观点趋势专题｜生成于 2026年8月29日｜仅供个人研究归档，不构成投资建议。</footer>
+  </main>
+</body>
+</html>
