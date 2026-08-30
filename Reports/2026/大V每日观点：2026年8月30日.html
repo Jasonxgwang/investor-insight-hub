@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>大V每日观点：2026年8月30日</title>
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #657087;
+      --line: #dfe5ef;
+      --paper: #ffffff;
+      --wash: #f5f7fb;
+      --blue: #3157c8;
+      --blue-soft: #edf2ff;
+      --bull: #b42318;
+      --bull-soft: #fff1f0;
+      --bear: #087b52;
+      --bear-soft: #ebfaf3;
+      --watch: #946200;
+      --watch-soft: #fff8df;
+      --shadow: 0 10px 30px rgba(25, 39, 74, .08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--wash);
+      font: 15px/1.7 -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", Arial, sans-serif;
+    }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { width: min(1160px, calc(100% - 32px)); margin: 0 auto; }
+    header {
+      color: #fff;
+      background: linear-gradient(135deg, #15254d 0%, #244c9d 58%, #3272d8 100%);
+      padding: 46px 0 34px;
+    }
+    .eyebrow { margin: 0 0 8px; color: #c8d8ff; font-size: 13px; letter-spacing: .12em; }
+    h1 { margin: 0; font-size: clamp(28px, 4vw, 44px); line-height: 1.25; }
+    .subtitle { max-width: 820px; margin: 14px 0 0; color: #dbe5ff; }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 26px;
+    }
+    .stat {
+      padding: 14px 16px;
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 12px;
+      background: rgba(255,255,255,.09);
+      backdrop-filter: blur(6px);
+    }
+    .stat strong { display: block; font-size: 24px; line-height: 1.2; }
+    .stat span { color: #dbe5ff; font-size: 13px; }
+    main { padding: 28px 0 54px; }
+    .notice, section {
+      margin-bottom: 20px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+    }
+    .notice { border-left: 5px solid var(--blue); }
+    .notice strong { color: #193879; }
+    h2 { margin: 0 0 16px; font-size: 22px; line-height: 1.35; }
+    h3 { margin: 0 0 8px; font-size: 17px; }
+    p { margin: 7px 0; }
+    .lead { font-size: 16px; }
+    .grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+    .card { padding: 18px; border: 1px solid var(--line); border-radius: 13px; background: #fff; }
+    .card.bull { border-top: 4px solid var(--bull); }
+    .card.bear { border-top: 4px solid var(--bear); }
+    .card.watch { border-top: 4px solid var(--watch); }
+    .tag {
+      display: inline-block;
+      margin: 0 6px 6px 0;
+      padding: 2px 8px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .tag.bull { color: var(--bull); background: var(--bull-soft); }
+    .tag.bear { color: var(--bear); background: var(--bear-soft); }
+    .tag.watch { color: var(--watch); background: var(--watch-soft); }
+    .tag.info { color: var(--blue); background: var(--blue-soft); }
+    .meta { color: var(--muted); font-size: 13px; }
+    .signal { margin: 10px 0 0; padding-left: 20px; }
+    .signal li { margin: 6px 0; }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; }
+    table { width: 100%; border-collapse: collapse; min-width: 860px; background: #fff; }
+    th, td { padding: 13px 14px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { color: #34405a; background: #f4f6fa; font-size: 13px; white-space: nowrap; }
+    tr:last-child td { border-bottom: 0; }
+    .action { font-weight: 700; white-space: nowrap; }
+    .action.buy { color: var(--bull); }
+    .action.hold { color: var(--watch); }
+    .action.sell { color: var(--bear); }
+    .source-links a { display: inline-block; margin: 0 8px 4px 0; }
+    .small { color: var(--muted); font-size: 13px; }
+    .footnotes { margin: 0; padding-left: 20px; color: var(--muted); font-size: 13px; }
+    footer { padding: 0 0 42px; color: var(--muted); text-align: center; font-size: 12px; }
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 20px, 1160px); }
+      header { padding: 32px 0 28px; }
+      .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .grid-2 { grid-template-columns: 1fr; }
+      .notice, section { padding: 18px; border-radius: 13px; }
+    }
+    @media print {
+      body { background: #fff; }
+      header { background: #243f7d !important; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+      .notice, section { box-shadow: none; break-inside: avoid; }
+      a { color: #172033; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <p class="eyebrow">INVESTOR INSIGHT HUB · 每日观点摘要</p>
+      <h1>大V每日观点：2026年8月30日</h1>
+      <p class="subtitle">统计区间：严格近24小时，数据生成于2026-08-30 16:55:08。重点提取看多、看空、买卖与仓位信号；时间均为源文件记录时间。</p>
+      <div class="stats">
+        <div class="stat"><strong>75</strong><span>雪球主帖</span></div>
+        <div class="stat"><strong>104</strong><span>雪球大V回复</span></div>
+        <div class="stat"><strong>179</strong><span>雪球合计条目</span></div>
+        <div class="stat"><strong>30</strong><span>微博主帖</span></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="notice">
+      <strong>一句话结论：</strong>当日最强个股信号集中在赛轮轮胎、海螺水泥/水泥板块、盐湖股份和铜；最明确的交易动作是“已买入游戏股组合”，而中国平安处于“持股待涨”、拼多多属于“下跌后才加仓”。看空端主要针对比特币、长城汽车及国内新能源汽车销量趋势。未发现当日明确的新开空仓或已执行卖出动作。
+    </div>
+
+    <section>
+      <h2>核心观点速览</h2>
+      <div class="grid-2">
+        <article class="card bull">
+          <span class="tag bull">看多</span><span class="tag info">最强信号</span>
+          <h3>赛轮轮胎：低估值叠加盈利加速</h3>
+          <p>伊夫圣洛朗称公司二季度营收增速15.6%、净利润增速39.4%，当前约10倍PE，判断为“极限低估”，并给出先看15倍PE的明确估值锚；赛轮也是其第二大重仓。天地侠影同时确认半年报表现“没有让我失望”。</p>
+          <p class="meta">2026-08-30 15:47—16:35｜伊夫圣洛朗、天地侠影</p>
+          <p class="source-links"><a href="https://xueqiu.com/1066188300/407292546" target="_blank" rel="noopener">估值观点</a><a href="https://xueqiu.com/1066188300/407294387" target="_blank" rel="noopener">重仓披露</a><a href="https://xueqiu.com/8601813520/406441769" target="_blank" rel="noopener">半年报评价</a></p>
+        </article>
+
+        <article class="card bull">
+          <span class="tag bull">看多</span><span class="tag info">底部布局</span>
+          <h3>海螺水泥与水泥板块：行业亏损区或为绝对底部</h3>
+          <p>雪月霜明确表示已买入水泥，核心理由是当下处于历史最差利润与行业性亏损区，视为“绝对性底部”。其判断并非需求重回高峰，而是去产能、行业整合和盈利反转；认为长期稳态需求仍足以容纳头部企业。</p>
+          <p class="meta">2026-08-30 09:18—15:49｜雪月霜</p>
+          <p class="source-links"><a href="https://xueqiu.com/1505944393/407273027" target="_blank" rel="noopener">买入逻辑</a><a href="https://xueqiu.com/1505944393/407288892" target="_blank" rel="noopener">利润反转</a><a href="https://xueqiu.com/1505944393/407289337" target="_blank" rel="noopener">行业空间</a></p>
+        </article>
+
+        <article class="card bull">
+          <span class="tag bull">偏多</span><span class="tag watch">等待兑现</span>
+          <h3>盐湖股份：基本面改善而股价横盘</h3>
+          <p>飞翔芸对比去年末指出，公司新增近百亿元利润、收购一里坪盐湖、碳酸锂价格上涨且更接近分红，股价却基本未变，因而提出“不是现在低估，就是去年底高估”。这是明显的相对低估判断，但没有披露当日新增买入。</p>
+          <p class="meta">2026-08-30 11:37—11:41｜飞翔芸</p>
+          <p class="source-links"><a href="https://xueqiu.com/9957341637/407280582" target="_blank" rel="noopener">原帖</a><a href="https://xueqiu.com/8790358109/407278192" target="_blank" rel="noopener">相关回复</a></p>
+        </article>
+
+        <article class="card bull">
+          <span class="tag bull">看多</span><span class="tag info">资源品</span>
+          <h3>铜与黄金：资源品仍获正面判断</h3>
+          <p>飞翔芸称铜是所有大宗商品中“确定性最强的品种”，选择继续持有、等待市场兑现。大黄蚬子hgx借紫金矿业表达对纸币长期贬值的判断，认为加息或降息都无法改变真金白银的稀缺性，方向上利好黄金及金铜资源股。</p>
+          <p class="meta">2026-08-29 18:11、22:20｜飞翔芸、大黄蚬子hgx</p>
+          <p class="source-links"><a href="https://xueqiu.com/1703162877/407246802" target="_blank" rel="noopener">铜观点</a><a href="https://xueqiu.com/3045778209/407260599" target="_blank" rel="noopener">紫金/黄金观点</a></p>
+        </article>
+
+        <article class="card bull">
+          <span class="tag bull">指数看多</span><span class="tag watch">长期目标</span>
+          <h3>A股：斯托伯给出“五年内6000点”判断</h3>
+          <p>斯托伯的天空认为经济环境与货币存量已不同于十年前，持续增加的M2需要寻找去处，明确给出从现在起“五年内6000点”的判断；同时提醒A股仍可能让多数投资者亏损，并存在AI泡沫与IPO扩容等风险。</p>
+          <p class="meta">2026-08-29 20:00—21:52｜斯托伯的天空</p>
+          <p class="source-links"><a href="https://xueqiu.com/9493911686/407133903" target="_blank" rel="noopener">系列讨论</a></p>
+        </article>
+
+        <article class="card watch">
+          <span class="tag watch">中性偏多</span><span class="tag info">持股待涨</span>
+          <h3>中国平安：目前约7折，不高不低</h3>
+          <p>ericwarn丁宁将平安AH当前估值判断为约7折，处于“持股待涨阶段”，并非其4—6折的理想击球区。其高估锚为A股约1PR、H股约0.8PR，合计平均约9折；因此当前适合持有，不属于强力新增买点。</p>
+          <p class="meta">2026-08-30 10:04—10:39｜ericwarn丁宁</p>
+          <p class="source-links"><a href="https://xueqiu.com/9363345092/407275097" target="_blank" rel="noopener">原文讨论</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>明确交易与仓位动作</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>时间</th><th>发帖者</th><th>标的</th><th>动作</th><th>核心摘要</th><th>原文</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>08-30 11:20</td><td>ericwarn丁宁</td><td>吉比特、三七互娱、心动公司</td><td class="action buy">已买入</td>
+              <td>已买入游戏股组合，计划经历一轮低买高卖后，再判断“市赚率”估值方法是否适用。</td>
+              <td><a href="https://xueqiu.com/9363345092/407275097" target="_blank" rel="noopener">查看</a></td>
+            </tr>
+            <tr>
+              <td>08-30 09:18</td><td>雪月霜</td><td>海螺水泥/水泥板块</td><td class="action buy">已布局</td>
+              <td>明确说明买入水泥，理由是历史最差利润与行业性亏损对应绝对底部。</td>
+              <td><a href="https://xueqiu.com/1505944393/407273027" target="_blank" rel="noopener">查看</a></td>
+            </tr>
+            <tr>
+              <td>08-30 10:04</td><td>ericwarn丁宁</td><td>中国平安A/H</td><td class="action hold">持股待涨</td>
+              <td>约7折估值，不高不低；4—6折才是理想击球区，当前不主张追买。</td>
+              <td><a href="https://xueqiu.com/9363345092/407275097" target="_blank" rel="noopener">查看</a></td>
+            </tr>
+            <tr>
+              <td>08-30 07:55</td><td>czy710</td><td>拼多多</td><td class="action hold">条件式加仓</td>
+              <td>若未来股价大幅下跌，将继续买入并提高仓位；若不跌，则寻找更低估的优秀公司作为第三只持仓。</td>
+              <td><a href="https://xueqiu.com/6308001210/407219433" target="_blank" rel="noopener">查看</a></td>
+            </tr>
+            <tr>
+              <td>08-30 08:04</td><td>czy710</td><td>中海油H、拼多多、德翔海运</td><td class="action hold">持仓定位</td>
+              <td>中海油H与拼多多定位为长期投资；德翔海运定位为中短期投机，适合运价低迷底部买入、景气大涨后卖出。</td>
+              <td><a href="https://xueqiu.com/6308001210/407219433" target="_blank" rel="noopener">查看</a></td>
+            </tr>
+            <tr>
+              <td>08-29 18:11</td><td>飞翔芸</td><td>铜相关持仓</td><td class="action hold">继续持有</td>
+              <td>认为铜在大宗商品中确定性最强，选择“格局一下”，等待市场给出结果。</td>
+              <td><a href="https://xueqiu.com/1703162877/407246802" target="_blank" rel="noopener">查看</a></td>
+            </tr>
+            <tr>
+              <td>08-29 17:30</td><td>天地侠影</td><td>整体账户</td><td class="action hold">长期满仓</td>
+              <td>称自己总是满仓、从不择时，认为即使在牛市高点仍能找到低估股票；属于长期方法披露，并非当日新增仓位。</td>
+              <td><a href="https://xueqiu.com/8601813520/407240888" target="_blank" rel="noopener">查看</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="small">说明：本期没有发现可以确认的“当日已执行卖出”或“新开空仓”。微博中超级鹿鼎公关于云化债、煤炭股、神华集中仓位的内容均为历史复盘，不按当前交易信号统计。</p>
+    </section>
+
+    <section>
+      <h2>主要看空与谨慎观点</h2>
+      <div class="grid-2">
+        <article class="card bear">
+          <span class="tag bear">看空</span>
+          <h3>比特币及加密货币</h3>
+          <p>黄建平转述巴菲特“内在价值为零”的观点，并在评论中进一步表示“空洞的共识就是泡沫”。虽然原帖以提问形式呈现，但后续回复显示其态度明显偏空。</p>
+          <p class="meta">2026-08-30 13:58—16:37｜黄建平</p>
+          <p><a href="https://xueqiu.com/9220236682/407286835" target="_blank" rel="noopener">原文</a></p>
+        </article>
+
+        <article class="card bear">
+          <span class="tag bear">看空</span>
+          <h3>长城汽车与国内新能源汽车销量</h3>
+          <p>雪月霜称长城汽车继续下去可能与零跑处于同一竞争层级，甚至可能不如；同时判断今年国内新能源汽车销量确有下降。属于对行业需求与长城竞争位置的双重谨慎。</p>
+          <p class="meta">2026-08-30 07:26—07:34｜雪月霜</p>
+          <p class="source-links"><a href="https://xueqiu.com/1505944393/407269305" target="_blank" rel="noopener">长城汽车</a><a href="https://xueqiu.com/1505944393/407269141" target="_blank" rel="noopener">新能源销量</a></p>
+        </article>
+
+        <article class="card bear">
+          <span class="tag bear">回避</span>
+          <h3>格力电器</h3>
+          <p>ericwarn丁宁称因前几年公司“幺蛾子太多”，近几年已放弃格力。其策略性补充是：可用美的作为行业估值锚，美的明显低估时才考虑格力，美的明显高估时可考虑卖出格力。</p>
+          <p class="meta">2026-08-30 10:33—10:37｜ericwarn丁宁</p>
+          <p><a href="https://xueqiu.com/9363345092/407275097" target="_blank" rel="noopener">原文讨论</a></p>
+        </article>
+
+        <article class="card watch">
+          <span class="tag watch">谨慎</span>
+          <h3>中远海控：是否低估取决于高运价持续性</h3>
+          <p>按低景气ROE估值，当前约从买入时的4折升至8折，若高运价不能持续，则“肯定不低估”；若高运价长期化，PB与多年平均ROE模型下仍可能明显低估。czy710则明确表示对中远海控无兴趣。</p>
+          <p class="meta">2026-08-30 08:04—11:29｜ericwarn丁宁、czy710</p>
+          <p class="source-links"><a href="https://xueqiu.com/9363345092/407275097" target="_blank" rel="noopener">估值讨论</a><a href="https://xueqiu.com/6308001210/407219433" target="_blank" rel="noopener">持仓选择</a></p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>其他值得关注的方向</h2>
+      <ul class="signal">
+        <li><strong>高端白酒：</strong>雪月霜认为“年轻人不喝白酒”并非新问题，高端名酒具有金融与抗通胀属性；行业低迷期更适合做长期布局判断，但当日未披露新增买入。<a href="https://xueqiu.com/1505944393/407271940" target="_blank" rel="noopener">原文</a></li>
+        <li><strong>人形机器人：</strong>滇南王认为比亚迪、小米及多家未上市公司进入后，宇树科技将面临更激烈竞争；这是竞争格局提示，并非直接卖出信号。<a href="https://xueqiu.com/2496980475/407281780" target="_blank" rel="noopener">原文</a></li>
+        <li><strong>赛轮轮胎股东结构：</strong>天地侠影指出前十大股东中新进两家社保、合计三家社保，但国内基金有所减持。<a href="https://xueqiu.com/8601813520/407293971" target="_blank" rel="noopener">原文</a></li>
+        <li><strong>美联储政策：</strong>斯托伯认为沃什的鹰派发言目前仍是“嘴炮”，在真正加息前不应过度交易口头信号。<a href="https://xueqiu.com/9493911686/407261773" target="_blank" rel="noopener">原文</a></li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>本期信号排序</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>优先级</th><th>标的/方向</th><th>综合倾向</th><th>判断依据</th><th>需防范的误读</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>赛轮轮胎</td><td class="action buy">强看多</td><td>重仓、盈利加速、10倍PE、15倍PE锚</td><td>目标是观点锚，不是券商目标价</td></tr>
+            <tr><td>2</td><td>海螺水泥/水泥</td><td class="action buy">底部布局</td><td>明确买入，押注去产能与盈利反转</td><td>不等于需求恢复到历史高峰</td></tr>
+            <tr><td>3</td><td>铜/金铜资源</td><td class="action buy">中长期看多</td><td>铜确定性判断、货币贬值逻辑</td><td>未提供具体加仓价位</td></tr>
+            <tr><td>4</td><td>盐湖股份</td><td class="action buy">偏多</td><td>利润、资产、锂价、分红预期均改善</td><td>只构成相对低估判断</td></tr>
+            <tr><td>5</td><td>中国平安A/H</td><td class="action hold">持有</td><td>约7折，持股待涨</td><td>不是4—6折强买区</td></tr>
+            <tr><td>6</td><td>拼多多</td><td class="action hold">等待加仓</td><td>长期持仓；大跌后才加仓</td><td>未发生当日买入</td></tr>
+            <tr><td>7</td><td>比特币</td><td class="action sell">看空</td><td>内在价值与泡沫质疑</td><td>未披露做空操作</td></tr>
+            <tr><td>8</td><td>长城汽车/新能源车销量</td><td class="action sell">谨慎</td><td>竞争位置与销量趋势均偏弱</td><td>未给出目标价或卖出动作</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>统计口径与说明</h2>
+      <ul class="footnotes">
+        <li>原始数据共209条：雪球主帖75条、雪球大V回复104条、微博主帖30条；雪球合计179条。</li>
+        <li>同一观点在主帖和评论中重复出现时，仅合并总结一次；平台数量仍按原始采集数统计。</li>
+        <li>“买入、卖出、加仓、减仓、持有、满仓”等仅在作者明确表达时列入交易动作；条件式计划与历史复盘单独标注。</li>
+        <li>部分原帖正文在源文件中被截断，摘要只采用可见文字，不补写缺失内容。</li>
+        <li>本页是公开帖文摘要，不构成投资建议；观点中的财务数字和估值结论未经独立审计。</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="wrap">生成日期：2026年8月30日 · 数据来源：用户提供的近24小时雪球与微博采集文件</footer>
+</body>
+</html>
