@@ -1,0 +1,1581 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>2026-08-30 关注大V持仓与看好度分析</title>
+<style>
+:root{
+  --bg:#f5f7fb;--paper:#fff;--ink:#18202b;--muted:#677486;--line:#dfe5ee;
+  --accent:#254db5;--soft:#eef3ff;--green:#087f5b;--green-bg:#eaf8f2;
+  --orange:#a45b00;--orange-bg:#fff4e6;--red:#b42318;--red-bg:#fff1f0;
+  --shadow:0 6px 22px rgba(25,45,80,.07);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",Arial,sans-serif;line-height:1.65}
+a{color:var(--accent);text-decoration:none}a:hover{text-decoration:underline}
+.container{max-width:1320px;margin:0 auto;padding:28px 20px 60px}
+.hero{background:linear-gradient(135deg,#172554,#2946a5);color:#fff;padding:32px 36px;border-radius:20px;box-shadow:var(--shadow)}
+.hero h1{margin:0 0 8px;font-size:30px}.hero p{margin:6px 0;color:#dbe5ff}
+.stamp{display:inline-block;margin-top:10px;font-size:13px;padding:5px 10px;border:1px solid rgba(255,255,255,.28);border-radius:999px}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:18px 0}
+.metric{background:var(--paper);border:1px solid var(--line);border-radius:15px;padding:18px;box-shadow:var(--shadow)}
+.metric strong{font-size:29px;color:#173f9e;display:block}.metric span{font-weight:700}.metric small{display:block;color:var(--muted);margin-top:3px}
+.section{background:var(--paper);border:1px solid var(--line);border-radius:17px;padding:24px;margin-top:18px;box-shadow:var(--shadow)}
+.section h2{margin:0 0 14px;font-size:21px;border-bottom:1px solid var(--line);padding-bottom:10px}.section h3{font-size:17px;margin:22px 0 9px}
+.note{background:#f7f9fc;border:1px solid var(--line);border-radius:10px;padding:12px 14px;color:#4e5c6e;font-size:13px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.callout{border-radius:14px;padding:17px;border:1px solid var(--line);background:#fff}.callout h3{margin:0 0 7px;font-size:17px}.callout p{margin:0}
+.callout.good{background:var(--green-bg);border-color:#bfe8d8}.callout.warn{background:var(--orange-bg);border-color:#f2d1a2}.callout.info{background:var(--soft);border-color:#cbd8ff}
+.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;font-size:13px}th{text-align:left;background:#f1f4f9;padding:10px 9px;border-bottom:1px solid var(--line);white-space:nowrap}td{padding:10px 9px;border-bottom:1px solid #edf0f5;vertical-align:top}tr:last-child td{border-bottom:0}
+.rank{font-weight:800;color:#7b8797;width:38px}.code{display:inline-block;font-size:11px;color:#6f7c8d;background:#f1f3f6;padding:2px 5px;border-radius:5px;margin-left:4px}
+.pill{display:inline-block;padding:3px 8px;border-radius:999px;font-size:12px;font-weight:750;white-space:nowrap}.pill.strong{color:var(--green);background:var(--green-bg)}.pill.medium{color:var(--orange);background:var(--orange-bg)}.pill.light{color:#536070;background:#eef1f5}
+.portfolio-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}.portfolio-card{border:1px solid var(--line);border-radius:14px;padding:16px;background:#fff}.portfolio-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}.portfolio-head h3{margin:2px 0 0;font-size:17px}.influencer{font-size:12px;color:var(--muted);font-weight:700}.portfolio-meta{font-size:12px;color:var(--muted);margin:7px 0 12px}
+.holding-row{display:grid;grid-template-columns:minmax(130px,1.35fr) 1fr 58px;gap:10px;align-items:center;margin:8px 0}.holding-name{display:flex;justify-content:space-between;gap:8px;font-size:13px}.holding-name span{font-size:11px;color:var(--muted)}.holding-bar{height:8px;background:#edf1f7;border-radius:999px;overflow:hidden}.holding-bar i{display:block;height:100%;background:#5676d6;border-radius:999px}.holding-weight{text-align:right;font-size:12px;font-weight:800}.up{color:var(--green);font-weight:800}.down{color:var(--red);font-weight:800}.footer{text-align:center;color:var(--muted);font-size:12px;margin-top:20px}
+@media(max-width:900px){.metrics{grid-template-columns:1fr 1fr}.grid3{grid-template-columns:1fr}.portfolio-grid{grid-template-columns:1fr}.hero{padding:25px 22px}.holding-row{grid-template-columns:minmax(125px,1.35fr) .8fr 55px}}
+@media(max-width:560px){.metrics{grid-template-columns:1fr}.container{padding:14px 10px 40px}.section{padding:16px}}
+</style>
+</head>
+<body>
+<div class="container">
+  <header class="hero">
+    <h1>关注大V持仓与看好度分析</h1>
+    <p>延续既定口径：<strong>持仓越高，视为看好程度越高</strong>。同时区分“单组合高集中”与“跨大V共同持有”。</p>
+    <div class="stamp">最新快照：2026-08-30 18:12:48｜上一快照：2026-08-11 13:31:48</div>
+  </header>
+
+  <div class="metrics">
+    <div class="metric"><strong>14</strong><span>关注大V</span><small>按账号去重</small></div>
+    <div class="metric"><strong>23</strong><span>组合数量</span><small>不同策略组合</small></div>
+    <div class="metric"><strong>175</strong><span>最新持仓条目</span><small>最新快照记录</small></div>
+    <div class="metric"><strong>108</strong><span>公司/标的</span><small>对明显A/H同公司作名称归并</small></div>
+  </div>
+
+  <section class="section">
+    <h2>核心结论</h2>
+    <div class="grid3">
+      <div class="callout good"><h3>① 最强“多人共识”</h3><p><strong>中国海油、紫金矿业和腾讯控股</strong>最突出。对应分别有 6位、5位、4位 不同大V持有，属于跨账号共同认可，而不是单一组合独押。</p></div>
+      <div class="callout warn"><h3>② 最强“单人高确信度”</h3><p><strong>胜宏科技 98.89%、中远海控 90.00%、中矿资源 84.75%</strong>为最极端的单组合重仓。信号强，但更依赖单个大V判断。</p></div>
+      <div class="callout info"><h3>③ 当前最明显主线</h3><p><strong>有色金属、石油及天然气和工业工程</strong>的组合仓位合计居前，反映当前关注大V持仓的主要主题，但不等同于真实资金加总。</p></div>
+    </div>
+    <p class="note"><strong>本期变化说明：</strong>最新监控范围由 21 个组合扩大到 23 个组合；新增组合的 34 条记录属于首次快照。原有组合另有 4 条标的新出现、6 条标的退出。最新运行日志捕捉到的明确调仓动作数为 0，因此报告不把普通权重变化直接解释为买入或卖出。</p>
+  </section>
+
+  <section class="section">
+    <h2>跨大V持仓共识排行</h2>
+    <p class="note">“共识权重分”＝对同一公司，每位大V只取其所有组合中的最高持仓权重，再跨大V求和，以降低同一大V拥有多个组合造成的重复计数。该分数是比较看好强度的代理指标，不是可以直接相加的基金仓位。</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>#</th><th>公司</th><th>大V数</th><th>共识权重分</th><th>最高单组合仓位</th><th>持有人</th><th>判断</th></tr></thead>
+      <tbody>
+  <tr>
+    <td class="rank">1</td>
+    <td><strong>中国海油</strong></td>
+    <td><strong>6</strong></td>
+    <td>173.04</td>
+    <td>53.94%</td>
+    <td>達人知命、人和、润哥、山行、双目炯炯夏侯惇、斯托伯的天空</td>
+    <td><span class="pill strong">多人强共识</span></td>
+  </tr>
+  <tr>
+    <td class="rank">2</td>
+    <td><strong>紫金矿业</strong></td>
+    <td><strong>5</strong></td>
+    <td>176.34</td>
+    <td>66.29%</td>
+    <td>大黄蚬子hgx、人和、润哥、山行、斯托伯的天空</td>
+    <td><span class="pill strong">多人强共识</span></td>
+  </tr>
+  <tr>
+    <td class="rank">3</td>
+    <td><strong>腾讯控股</strong></td>
+    <td><strong>4</strong></td>
+    <td>78.64</td>
+    <td>48.94%</td>
+    <td>達人知命、山行、斯托伯的天空、天地侠影</td>
+    <td><span class="pill strong">多人强共识</span></td>
+  </tr>
+  <tr>
+    <td class="rank">4</td>
+    <td><strong>中远海控</strong></td>
+    <td><strong>3</strong></td>
+    <td>93.66</td>
+    <td>90.00%</td>
+    <td>大黄蚬子hgx、人和、HIS1963</td>
+    <td><span class="pill medium">多人共识</span></td>
+  </tr>
+  <tr>
+    <td class="rank">5</td>
+    <td><strong>云铝股份</strong></td>
+    <td><strong>3</strong></td>
+    <td>24.58</td>
+    <td>14.99%</td>
+    <td>人和、斯托伯的天空、HIS1963</td>
+    <td><span class="pill medium">多人共识</span></td>
+  </tr>
+  <tr>
+    <td class="rank">6</td>
+    <td><strong>中国石油</strong></td>
+    <td><strong>3</strong></td>
+    <td>17.45</td>
+    <td>6.97%</td>
+    <td>人和、斯托伯的天空、HIS1963</td>
+    <td><span class="pill medium">多人共识</span></td>
+  </tr>
+  <tr>
+    <td class="rank">7</td>
+    <td><strong>盐湖股份</strong></td>
+    <td><strong>2</strong></td>
+    <td>30.12</td>
+    <td>20.00%</td>
+    <td>人和、雪月霜</td>
+    <td><span class="pill strong">双人较强共识</span></td>
+  </tr>
+  <tr>
+    <td class="rank">8</td>
+    <td><strong>洛阳钼业</strong></td>
+    <td><strong>2</strong></td>
+    <td>24.45</td>
+    <td>23.06%</td>
+    <td>大黄蚬子hgx、柯中</td>
+    <td><span class="pill light">一般关注</span></td>
+  </tr>
+  <tr>
+    <td class="rank">9</td>
+    <td><strong>中国宏桥</strong></td>
+    <td><strong>2</strong></td>
+    <td>19.08</td>
+    <td>13.06%</td>
+    <td>双目炯炯夏侯惇、斯托伯的天空</td>
+    <td><span class="pill light">一般关注</span></td>
+  </tr>
+  <tr>
+    <td class="rank">10</td>
+    <td><strong>招商银行</strong></td>
+    <td><strong>2</strong></td>
+    <td>13.70</td>
+    <td>11.76%</td>
+    <td>人和、斯托伯的天空</td>
+    <td><span class="pill light">一般关注</span></td>
+  </tr>
+  <tr>
+    <td class="rank">11</td>
+    <td><strong>宝丰能源</strong></td>
+    <td><strong>2</strong></td>
+    <td>13.33</td>
+    <td>12.05%</td>
+    <td>人和、斯托伯的天空</td>
+    <td><span class="pill light">一般关注</span></td>
+  </tr>
+  <tr>
+    <td class="rank">12</td>
+    <td><strong>煤炭ETF国泰</strong></td>
+    <td><strong>2</strong></td>
+    <td>12.91</td>
+    <td>11.87%</td>
+    <td>闯关东了吧、斯托伯的天空</td>
+    <td><span class="pill light">一般关注</span></td>
+  </tr>
+  <tr>
+    <td class="rank">13</td>
+    <td><strong>云天化</strong></td>
+    <td><strong>2</strong></td>
+    <td>11.19</td>
+    <td>10.15%</td>
+    <td>人和、斯托伯的天空</td>
+    <td><span class="pill light">一般关注</span></td>
+  </tr>
+  <tr>
+    <td class="rank">14</td>
+    <td><strong>川恒股份</strong></td>
+    <td><strong>2</strong></td>
+    <td>10.20</td>
+    <td>9.08%</td>
+    <td>大黄蚬子hgx、斯托伯的天空</td>
+    <td><span class="pill light">一般关注</span></td>
+  </tr>
+  <tr>
+    <td class="rank">15</td>
+    <td><strong>兖矿能源</strong></td>
+    <td><strong>2</strong></td>
+    <td>9.97</td>
+    <td>7.05%</td>
+    <td>润哥、斯托伯的天空</td>
+    <td><span class="pill light">一般关注</span></td>
+  </tr>
+  <tr>
+    <td class="rank">16</td>
+    <td><strong>中国移动</strong></td>
+    <td><strong>2</strong></td>
+    <td>3.96</td>
+    <td>2.15%</td>
+    <td>人和、山行</td>
+    <td><span class="pill light">一般关注</span></td>
+  </tr>
+  <tr>
+    <td class="rank">17</td>
+    <td><strong>胜宏科技</strong></td>
+    <td><strong>1</strong></td>
+    <td>98.89</td>
+    <td>98.89%</td>
+    <td>老奈</td>
+    <td><span class="pill strong">单人极高集中</span></td>
+  </tr>
+  <tr>
+    <td class="rank">18</td>
+    <td><strong>中矿资源</strong></td>
+    <td><strong>1</strong></td>
+    <td>84.75</td>
+    <td>84.75%</td>
+    <td>柯中</td>
+    <td><span class="pill strong">单人极高集中</span></td>
+  </tr>
+  <tr>
+    <td class="rank">19</td>
+    <td><strong>中芯国际</strong></td>
+    <td><strong>1</strong></td>
+    <td>82.12</td>
+    <td>82.12%</td>
+    <td>lamlap123</td>
+    <td><span class="pill strong">单人极高集中</span></td>
+  </tr>
+  <tr>
+    <td class="rank">20</td>
+    <td><strong>赛轮轮胎</strong></td>
+    <td><strong>1</strong></td>
+    <td>59.96</td>
+    <td>59.96%</td>
+    <td>天地侠影</td>
+    <td><span class="pill strong">单人高集中</span></td>
+  </tr></tbody>
+    </table></div>
+  </section>
+
+  <section class="section">
+    <h2>单组合重仓排行：谁最“敢下重注”</h2>
+    <div class="table-wrap"><table>
+      <thead><tr><th>#</th><th>大V</th><th>组合</th><th>标的</th><th>行业</th><th>持仓</th><th>看好度代理</th><th>原组合</th></tr></thead>
+      <tbody>
+  <tr>
+    <td class="rank">1</td>
+    <td>老奈</td>
+    <td>港股</td>
+    <td><strong>胜宏科技</strong><span class="code">02476</span></td>
+    <td>工业工程</td>
+    <td><strong>98.89%</strong></td>
+    <td><span class="pill strong">极高集中</span></td>
+    <td><a href="https://xueqiu.com/P/ZH1127923" target="_blank" rel="noopener">组合 ↗</a></td>
+  </tr>
+  <tr>
+    <td class="rank">2</td>
+    <td>HIS1963</td>
+    <td>剑客2017</td>
+    <td><strong>中远海控</strong><span class="code">SH601919</span></td>
+    <td>交通运输</td>
+    <td><strong>90.00%</strong></td>
+    <td><span class="pill strong">极高集中</span></td>
+    <td><a href="https://xueqiu.com/P/ZH1004909" target="_blank" rel="noopener">组合 ↗</a></td>
+  </tr>
+  <tr>
+    <td class="rank">3</td>
+    <td>柯中</td>
+    <td>带你成长带你飞</td>
+    <td><strong>中矿资源</strong><span class="code">SZ002738</span></td>
+    <td>有色金属</td>
+    <td><strong>84.75%</strong></td>
+    <td><span class="pill strong">极高集中</span></td>
+    <td><a href="https://xueqiu.com/P/ZH267211" target="_blank" rel="noopener">组合 ↗</a></td>
+  </tr>
+  <tr>
+    <td class="rank">4</td>
+    <td>lamlap123</td>
+    <td>一骑绝尘</td>
+    <td><strong>中芯国际</strong><span class="code">00981</span></td>
+    <td>半导体</td>
+    <td><strong>82.12%</strong></td>
+    <td><span class="pill strong">极高集中</span></td>
+    <td><a href="https://xueqiu.com/P/ZH718125" target="_blank" rel="noopener">组合 ↗</a></td>
+  </tr>
+  <tr>
+    <td class="rank">5</td>
+    <td>大黄蚬子hgx</td>
+    <td>鸡肉加铜金</td>
+    <td><strong>紫金矿业</strong><span class="code">SH601899</span></td>
+    <td>有色金属</td>
+    <td><strong>66.29%</strong></td>
+    <td><span class="pill strong">高集中</span></td>
+    <td><a href="https://xueqiu.com/P/ZH2188271" target="_blank" rel="noopener">组合 ↗</a></td>
+  </tr>
+  <tr>
+    <td class="rank">6</td>
+    <td>天地侠影</td>
+    <td>实盘</td>
+    <td><strong>赛轮轮胎</strong><span class="code">SH601058</span></td>
+    <td>汽车</td>
+    <td><strong>59.96%</strong></td>
+    <td><span class="pill strong">高集中</span></td>
+    <td><a href="https://xueqiu.com/P/ZH349701" target="_blank" rel="noopener">组合 ↗</a></td>
+  </tr>
+  <tr>
+    <td class="rank">7</td>
+    <td>山行</td>
+    <td>欢送金毛</td>
+    <td><strong>中国海洋石油</strong><span class="code">00883</span></td>
+    <td>石油及天然气</td>
+    <td><strong>53.94%</strong></td>
+    <td><span class="pill strong">高集中</span></td>
+    <td><a href="https://xueqiu.com/P/ZH2398337" target="_blank" rel="noopener">组合 ↗</a></td>
+  </tr>
+  <tr>
+    <td class="rank">8</td>
+    <td>人和</td>
+    <td>中产之路</td>
+    <td><strong>紫金矿业</strong><span class="code">SH601899</span></td>
+    <td>有色金属</td>
+    <td><strong>49.03%</strong></td>
+    <td><span class="pill medium">明显重仓</span></td>
+    <td><a href="https://xueqiu.com/P/ZH1211900" target="_blank" rel="noopener">组合 ↗</a></td>
+  </tr>
+  <tr>
+    <td class="rank">9</td>
+    <td>天地侠影</td>
+    <td>港股实盘</td>
+    <td><strong>腾讯控股</strong><span class="code">00700</span></td>
+    <td>软件服务</td>
+    <td><strong>48.94%</strong></td>
+    <td><span class="pill medium">明显重仓</span></td>
+    <td><a href="https://xueqiu.com/P/ZH3209607" target="_blank" rel="noopener">组合 ↗</a></td>
+  </tr>
+  <tr>
+    <td class="rank">10</td>
+    <td>大黄蚬子hgx</td>
+    <td>紫禾筑</td>
+    <td><strong>紫金矿业</strong><span class="code">SH601899</span></td>
+    <td>有色金属</td>
+    <td><strong>47.40%</strong></td>
+    <td><span class="pill medium">明显重仓</span></td>
+    <td><a href="https://xueqiu.com/P/ZH2175195" target="_blank" rel="noopener">组合 ↗</a></td>
+  </tr>
+  <tr>
+    <td class="rank">11</td>
+    <td>双目炯炯夏侯惇</td>
+    <td>港股一箩筐</td>
+    <td><strong>中国海洋石油</strong><span class="code">00883</span></td>
+    <td>石油及天然气</td>
+    <td><strong>46.29%</strong></td>
+    <td><span class="pill medium">明显重仓</span></td>
+    <td><a href="https://xueqiu.com/P/ZH758744" target="_blank" rel="noopener">组合 ↗</a></td>
+  </tr>
+  <tr>
+    <td class="rank">12</td>
+    <td>闯关东了吧</td>
+    <td>挣钱为消费OK2</td>
+    <td><strong>中孚实业</strong><span class="code">SH600595</span></td>
+    <td>有色金属</td>
+    <td><strong>45.12%</strong></td>
+    <td><span class="pill medium">明显重仓</span></td>
+    <td><a href="https://xueqiu.com/P/ZH193209" target="_blank" rel="noopener">组合 ↗</a></td>
+  </tr>
+  <tr>
+    <td class="rank">13</td>
+    <td>大黄蚬子hgx</td>
+    <td>海运银行盖房子</td>
+    <td><strong>铜陵有色</strong><span class="code">SZ000630</span></td>
+    <td>有色金属</td>
+    <td><strong>43.22%</strong></td>
+    <td><span class="pill medium">明显重仓</span></td>
+    <td><a href="https://xueqiu.com/P/ZH2252865" target="_blank" rel="noopener">组合 ↗</a></td>
+  </tr>
+  <tr>
+    <td class="rank">14</td>
+    <td>山行</td>
+    <td>欢送金毛</td>
+    <td><strong>紫金矿业</strong><span class="code">02899</span></td>
+    <td>黄金及贵金属</td>
+    <td><strong>41.60%</strong></td>
+    <td><span class="pill medium">明显重仓</span></td>
+    <td><a href="https://xueqiu.com/P/ZH2398337" target="_blank" rel="noopener">组合 ↗</a></td>
+  </tr>
+  <tr>
+    <td class="rank">15</td>
+    <td>大黄蚬子hgx</td>
+    <td>虎年启航</td>
+    <td><strong>铜陵有色</strong><span class="code">SZ000630</span></td>
+    <td>有色金属</td>
+    <td><strong>41.42%</strong></td>
+    <td><span class="pill medium">明显重仓</span></td>
+    <td><a href="https://xueqiu.com/P/ZH3048003" target="_blank" rel="noopener">组合 ↗</a></td>
+  </tr>
+  <tr>
+    <td class="rank">16</td>
+    <td>天地侠影</td>
+    <td>实盘</td>
+    <td><strong>永新股份</strong><span class="code">SZ002014</span></td>
+    <td>轻工制造</td>
+    <td><strong>40.04%</strong></td>
+    <td><span class="pill medium">明显重仓</span></td>
+    <td><a href="https://xueqiu.com/P/ZH349701" target="_blank" rel="noopener">组合 ↗</a></td>
+  </tr>
+  <tr>
+    <td class="rank">17</td>
+    <td>雪月霜</td>
+    <td>红利组合</td>
+    <td><strong>海螺水泥</strong><span class="code">SH600585</span></td>
+    <td>建筑材料</td>
+    <td><strong>36.41%</strong></td>
+    <td><span class="pill medium">明显重仓</span></td>
+    <td><a href="https://xueqiu.com/P/ZH3638550" target="_blank" rel="noopener">组合 ↗</a></td>
+  </tr>
+  <tr>
+    <td class="rank">18</td>
+    <td>大黄蚬子hgx</td>
+    <td>紫禾筑</td>
+    <td><strong>铜陵有色</strong><span class="code">SZ000630</span></td>
+    <td>有色金属</td>
+    <td><strong>33.92%</strong></td>
+    <td><span class="pill medium">明显重仓</span></td>
+    <td><a href="https://xueqiu.com/P/ZH2175195" target="_blank" rel="noopener">组合 ↗</a></td>
+  </tr>
+  <tr>
+    <td class="rank">19</td>
+    <td>润哥</td>
+    <td>并非实盘</td>
+    <td><strong>中国海洋石油</strong><span class="code">00883</span></td>
+    <td>石油及天然气</td>
+    <td><strong>32.99%</strong></td>
+    <td><span class="pill medium">明显重仓</span></td>
+    <td><a href="https://xueqiu.com/P/ZH1748442" target="_blank" rel="noopener">组合 ↗</a></td>
+  </tr>
+  <tr>
+    <td class="rank">20</td>
+    <td>大黄蚬子hgx</td>
+    <td>海运银行盖房子</td>
+    <td><strong>紫金矿业</strong><span class="code">SH601899</span></td>
+    <td>有色金属</td>
+    <td><strong>32.42%</strong></td>
+    <td><span class="pill medium">明显重仓</span></td>
+    <td><a href="https://xueqiu.com/P/ZH2252865" target="_blank" rel="noopener">组合 ↗</a></td>
+  </tr>
+  <tr>
+    <td class="rank">21</td>
+    <td>人和</td>
+    <td>本科阶段</td>
+    <td><strong>紫金矿业</strong><span class="code">SH601899</span></td>
+    <td>有色金属</td>
+    <td><strong>32.31%</strong></td>
+    <td><span class="pill medium">明显重仓</span></td>
+    <td><a href="https://xueqiu.com/P/ZH886903" target="_blank" rel="noopener">组合 ↗</a></td>
+  </tr>
+  <tr>
+    <td class="rank">22</td>
+    <td>大黄蚬子hgx</td>
+    <td>虎年启航</td>
+    <td><strong>兴业银锡</strong><span class="code">SZ000426</span></td>
+    <td>有色金属</td>
+    <td><strong>32.08%</strong></td>
+    <td><span class="pill medium">明显重仓</span></td>
+    <td><a href="https://xueqiu.com/P/ZH3048003" target="_blank" rel="noopener">组合 ↗</a></td>
+  </tr>
+  <tr>
+    <td class="rank">23</td>
+    <td>天地侠影</td>
+    <td>港股实盘</td>
+    <td><strong>顺丰控股</strong><span class="code">06936</span></td>
+    <td>工用运输</td>
+    <td><strong>31.39%</strong></td>
+    <td><span class="pill medium">明显重仓</span></td>
+    <td><a href="https://xueqiu.com/P/ZH3209607" target="_blank" rel="noopener">组合 ↗</a></td>
+  </tr>
+  <tr>
+    <td class="rank">24</td>
+    <td>斯托伯的天空</td>
+    <td>懒人打法</td>
+    <td><strong>中国海洋石油</strong><span class="code">00883</span></td>
+    <td>石油及天然气</td>
+    <td><strong>25.35%</strong></td>
+    <td><span class="pill medium">中等仓位</span></td>
+    <td><a href="https://xueqiu.com/P/ZH3477733" target="_blank" rel="noopener">组合 ↗</a></td>
+  </tr>
+  <tr>
+    <td class="rank">25</td>
+    <td>斯托伯的天空</td>
+    <td>香江晚风</td>
+    <td><strong>中国海洋石油</strong><span class="code">00883</span></td>
+    <td>石油及天然气</td>
+    <td><strong>25.01%</strong></td>
+    <td><span class="pill medium">中等仓位</span></td>
+    <td><a href="https://xueqiu.com/P/ZH3231425" target="_blank" rel="noopener">组合 ↗</a></td>
+  </tr></tbody>
+    </table></div>
+  </section>
+
+  <section class="section">
+    <h2>行业偏好</h2>
+    <p class="note">“组合仓位合计”直接汇总 23 个组合的持仓权重，仅用于观察主题热度。同一大V可能有多个组合，因此不能理解为 14 位大V的真实资金配置比例；若最新记录的行业字段为空，则沿用同一股票代码在本工作簿中的最近非空分类。</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>行业</th><th>组合仓位合计</th><th>涉及组合数</th><th>涉及大V数</th></tr></thead>
+      <tbody>
+  <tr>
+    <td><strong>有色金属</strong></td>
+    <td>796.78</td>
+    <td>12</td>
+    <td>6</td>
+  </tr>
+  <tr>
+    <td><strong>石油及天然气</strong></td>
+    <td>193.84</td>
+    <td>6</td>
+    <td>5</td>
+  </tr>
+  <tr>
+    <td><strong>工业工程</strong></td>
+    <td>117.41</td>
+    <td>5</td>
+    <td>5</td>
+  </tr>
+  <tr>
+    <td><strong>基础化工</strong></td>
+    <td>105.06</td>
+    <td>7</td>
+    <td>4</td>
+  </tr>
+  <tr>
+    <td><strong>交通运输</strong></td>
+    <td>101.93</td>
+    <td>5</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><strong>汽车</strong></td>
+    <td>99.13</td>
+    <td>4</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><strong>半导体</strong></td>
+    <td>82.12</td>
+    <td>1</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><strong>软件服务</strong></td>
+    <td>78.64</td>
+    <td>4</td>
+    <td>4</td>
+  </tr>
+  <tr>
+    <td><strong>黄金及贵金属</strong></td>
+    <td>72.49</td>
+    <td>3</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><strong>轻工制造</strong></td>
+    <td>45.88</td>
+    <td>3</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><strong>其他</strong></td>
+    <td>45.80</td>
+    <td>6</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><strong>石油石化</strong></td>
+    <td>39.52</td>
+    <td>6</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><strong>工用运输</strong></td>
+    <td>38.20</td>
+    <td>2</td>
+    <td>2</td>
+  </tr>
+  <tr>
+    <td><strong>建筑材料</strong></td>
+    <td>36.41</td>
+    <td>1</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><strong>家庭电器及用品</strong></td>
+    <td>34.67</td>
+    <td>1</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><strong>一般金属及矿石</strong></td>
+    <td>33.10</td>
+    <td>3</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td><strong>原材料</strong></td>
+    <td>28.25</td>
+    <td>2</td>
+    <td>1</td>
+  </tr>
+  <tr>
+    <td><strong>煤炭</strong></td>
+    <td>24.96</td>
+    <td>5</td>
+    <td>3</td>
+  </tr></tbody>
+    </table></div>
+  </section>
+
+  <section class="section">
+    <h2>每个大V / 组合的核心重仓</h2>
+    <div class="portfolio-grid">
+      <article class="portfolio-card">
+        <div class="portfolio-head">
+          <div><div class="influencer">闯关东了吧</div><h3>挣钱为消费OK2</h3></div>
+          <a href="https://xueqiu.com/P/ZH193209" target="_blank" rel="noopener">雪球组合 ↗</a>
+        </div>
+        <div class="portfolio-meta">组合ID：ZH193209｜股票仓位合计：100.00%｜持仓数：30</div>
+        
+        <div class="holding-row">
+          <div class="holding-name"><strong>中孚实业</strong><span>SH600595</span></div>
+          <div class="holding-bar"><i style="width:45.12%"></i></div>
+          <div class="holding-weight">45.12%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>宏桥控股</strong><span>SZ002379</span></div>
+          <div class="holding-bar"><i style="width:23.39%"></i></div>
+          <div class="holding-weight">23.39%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>明泰铝业</strong><span>SH601677</span></div>
+          <div class="holding-bar"><i style="width:10.05%"></i></div>
+          <div class="holding-weight">10.05%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>黄金股ETF</strong><span>SH517520</span></div>
+          <div class="holding-bar"><i style="width:1.04%"></i></div>
+          <div class="holding-weight">1.04%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>煤炭ETF国泰</strong><span>SH515220</span></div>
+          <div class="holding-bar"><i style="width:1.04%"></i></div>
+          <div class="holding-weight">1.04%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>价值ETF富国</strong><span>SH512040</span></div>
+          <div class="holding-bar"><i style="width:1.02%"></i></div>
+          <div class="holding-weight">1.02%</div>
+        </div>
+      </article>
+      <article class="portfolio-card">
+        <div class="portfolio-head">
+          <div><div class="influencer">達人知命</div><h3>低估值輪動</h3></div>
+          <a href="https://xueqiu.com/P/ZH111175" target="_blank" rel="noopener">雪球组合 ↗</a>
+        </div>
+        <div class="portfolio-meta">组合ID：ZH111175｜股票仓位合计：99.99%｜持仓数：7</div>
+        
+        <div class="holding-row">
+          <div class="holding-name"><strong>大行科工</strong><span>02543</span></div>
+          <div class="holding-bar"><i style="width:24.84%"></i></div>
+          <div class="holding-weight">24.84%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>信邦控股</strong><span>01571</span></div>
+          <div class="holding-bar"><i style="width:18.82%"></i></div>
+          <div class="holding-weight">18.82%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>腾讯控股</strong><span>00700</span></div>
+          <div class="holding-bar"><i style="width:18.50%"></i></div>
+          <div class="holding-weight">18.50%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>中国海洋石油</strong><span>00883</span></div>
+          <div class="holding-bar"><i style="width:10.26%"></i></div>
+          <div class="holding-weight">10.26%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>德林国际</strong><span>01126</span></div>
+          <div class="holding-bar"><i style="width:9.83%"></i></div>
+          <div class="holding-weight">9.83%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>超盈国际控股</strong><span>02111</span></div>
+          <div class="holding-bar"><i style="width:9.71%"></i></div>
+          <div class="holding-weight">9.71%</div>
+        </div>
+      </article>
+      <article class="portfolio-card">
+        <div class="portfolio-head">
+          <div><div class="influencer">大黄蚬子hgx</div><h3>海运银行盖房子</h3></div>
+          <a href="https://xueqiu.com/P/ZH2252865" target="_blank" rel="noopener">雪球组合 ↗</a>
+        </div>
+        <div class="portfolio-meta">组合ID：ZH2252865｜股票仓位合计：99.14%｜持仓数：5</div>
+        
+        <div class="holding-row">
+          <div class="holding-name"><strong>铜陵有色</strong><span>SZ000630</span></div>
+          <div class="holding-bar"><i style="width:43.22%"></i></div>
+          <div class="holding-weight">43.22%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>紫金矿业</strong><span>SH601899</span></div>
+          <div class="holding-bar"><i style="width:32.42%"></i></div>
+          <div class="holding-weight">32.42%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>洛阳钼业</strong><span>SH603993</span></div>
+          <div class="holding-bar"><i style="width:15.77%"></i></div>
+          <div class="holding-weight">15.77%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>京东方A</strong><span>SZ000725</span></div>
+          <div class="holding-bar"><i style="width:6.99%"></i></div>
+          <div class="holding-weight">6.99%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>南山铝业</strong><span>SH600219</span></div>
+          <div class="holding-bar"><i style="width:0.74%"></i></div>
+          <div class="holding-weight">0.74%</div>
+        </div>
+      </article>
+      <article class="portfolio-card">
+        <div class="portfolio-head">
+          <div><div class="influencer">大黄蚬子hgx</div><h3>虎年启航</h3></div>
+          <a href="https://xueqiu.com/P/ZH3048003" target="_blank" rel="noopener">雪球组合 ↗</a>
+        </div>
+        <div class="portfolio-meta">组合ID：ZH3048003｜股票仓位合计：100.00%｜持仓数：6</div>
+        
+        <div class="holding-row">
+          <div class="holding-name"><strong>铜陵有色</strong><span>SZ000630</span></div>
+          <div class="holding-bar"><i style="width:41.42%"></i></div>
+          <div class="holding-weight">41.42%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>兴业银锡</strong><span>SZ000426</span></div>
+          <div class="holding-bar"><i style="width:32.08%"></i></div>
+          <div class="holding-weight">32.08%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>洛阳钼业</strong><span>SH603993</span></div>
+          <div class="holding-bar"><i style="width:21.41%"></i></div>
+          <div class="holding-weight">21.41%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>京东方A</strong><span>SZ000725</span></div>
+          <div class="holding-bar"><i style="width:3.52%"></i></div>
+          <div class="holding-weight">3.52%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>川恒股份</strong><span>SZ002895</span></div>
+          <div class="holding-bar"><i style="width:1.12%"></i></div>
+          <div class="holding-weight">1.12%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>中远海控</strong><span>SH601919</span></div>
+          <div class="holding-bar"><i style="width:0.45%"></i></div>
+          <div class="holding-weight">0.45%</div>
+        </div>
+      </article>
+      <article class="portfolio-card">
+        <div class="portfolio-head">
+          <div><div class="influencer">大黄蚬子hgx</div><h3>鸡肉加铜金</h3></div>
+          <a href="https://xueqiu.com/P/ZH2188271" target="_blank" rel="noopener">雪球组合 ↗</a>
+        </div>
+        <div class="portfolio-meta">组合ID：ZH2188271｜股票仓位合计：99.23%｜持仓数：4</div>
+        
+        <div class="holding-row">
+          <div class="holding-name"><strong>紫金矿业</strong><span>SH601899</span></div>
+          <div class="holding-bar"><i style="width:66.29%"></i></div>
+          <div class="holding-weight">66.29%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>洛阳钼业</strong><span>SH603993</span></div>
+          <div class="holding-bar"><i style="width:23.06%"></i></div>
+          <div class="holding-weight">23.06%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>京东方A</strong><span>SZ000725</span></div>
+          <div class="holding-bar"><i style="width:5.51%"></i></div>
+          <div class="holding-weight">5.51%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>国电电力</strong><span>SH600795</span></div>
+          <div class="holding-bar"><i style="width:4.37%"></i></div>
+          <div class="holding-weight">4.37%</div>
+        </div>
+      </article>
+      <article class="portfolio-card">
+        <div class="portfolio-head">
+          <div><div class="influencer">大黄蚬子hgx</div><h3>紫禾筑</h3></div>
+          <a href="https://xueqiu.com/P/ZH2175195" target="_blank" rel="noopener">雪球组合 ↗</a>
+        </div>
+        <div class="portfolio-meta">组合ID：ZH2175195｜股票仓位合计：99.56%｜持仓数：4</div>
+        
+        <div class="holding-row">
+          <div class="holding-name"><strong>紫金矿业</strong><span>SH601899</span></div>
+          <div class="holding-bar"><i style="width:47.40%"></i></div>
+          <div class="holding-weight">47.40%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>铜陵有色</strong><span>SZ000630</span></div>
+          <div class="holding-bar"><i style="width:33.92%"></i></div>
+          <div class="holding-weight">33.92%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>洛阳钼业</strong><span>SH603993</span></div>
+          <div class="holding-bar"><i style="width:14.86%"></i></div>
+          <div class="holding-weight">14.86%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>京东方A</strong><span>SZ000725</span></div>
+          <div class="holding-bar"><i style="width:3.38%"></i></div>
+          <div class="holding-weight">3.38%</div>
+        </div>
+      </article>
+      <article class="portfolio-card">
+        <div class="portfolio-head">
+          <div><div class="influencer">柯中</div><h3>带你成长带你飞</h3></div>
+          <a href="https://xueqiu.com/P/ZH267211" target="_blank" rel="noopener">雪球组合 ↗</a>
+        </div>
+        <div class="portfolio-meta">组合ID：ZH267211｜股票仓位合计：100.00%｜持仓数：5</div>
+        
+        <div class="holding-row">
+          <div class="holding-name"><strong>中矿资源</strong><span>SZ002738</span></div>
+          <div class="holding-bar"><i style="width:84.75%"></i></div>
+          <div class="holding-weight">84.75%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>阳光电源</strong><span>SZ300274</span></div>
+          <div class="holding-bar"><i style="width:9.37%"></i></div>
+          <div class="holding-weight">9.37%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>华友钴业</strong><span>SH603799</span></div>
+          <div class="holding-bar"><i style="width:3.29%"></i></div>
+          <div class="holding-weight">3.29%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>洛阳钼业</strong><span>SH603993</span></div>
+          <div class="holding-bar"><i style="width:1.39%"></i></div>
+          <div class="holding-weight">1.39%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>证券ETF鹏华</strong><span>SZ159993</span></div>
+          <div class="holding-bar"><i style="width:1.20%"></i></div>
+          <div class="holding-weight">1.20%</div>
+        </div>
+      </article>
+      <article class="portfolio-card">
+        <div class="portfolio-head">
+          <div><div class="influencer">老奈</div><h3>港股</h3></div>
+          <a href="https://xueqiu.com/P/ZH1127923" target="_blank" rel="noopener">雪球组合 ↗</a>
+        </div>
+        <div class="portfolio-meta">组合ID：ZH1127923｜股票仓位合计：100.00%｜持仓数：2</div>
+        
+        <div class="holding-row">
+          <div class="holding-name"><strong>胜宏科技</strong><span>02476</span></div>
+          <div class="holding-bar"><i style="width:98.89%"></i></div>
+          <div class="holding-weight">98.89%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>信达生物</strong><span>01801</span></div>
+          <div class="holding-bar"><i style="width:1.11%"></i></div>
+          <div class="holding-weight">1.11%</div>
+        </div>
+      </article>
+      <article class="portfolio-card">
+        <div class="portfolio-head">
+          <div><div class="influencer">人和</div><h3>本科阶段</h3></div>
+          <a href="https://xueqiu.com/P/ZH886903" target="_blank" rel="noopener">雪球组合 ↗</a>
+        </div>
+        <div class="portfolio-meta">组合ID：ZH886903｜股票仓位合计：100.00%｜持仓数：12</div>
+        
+        <div class="holding-row">
+          <div class="holding-name"><strong>紫金矿业</strong><span>SH601899</span></div>
+          <div class="holding-bar"><i style="width:32.31%"></i></div>
+          <div class="holding-weight">32.31%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>藏格矿业</strong><span>SZ000408</span></div>
+          <div class="holding-bar"><i style="width:20.42%"></i></div>
+          <div class="holding-weight">20.42%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>东鹏饮料</strong><span>SH605499</span></div>
+          <div class="holding-bar"><i style="width:11.50%"></i></div>
+          <div class="holding-weight">11.50%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>盐湖股份</strong><span>SZ000792</span></div>
+          <div class="holding-bar"><i style="width:10.12%"></i></div>
+          <div class="holding-weight">10.12%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>中国石油</strong><span>SH601857</span></div>
+          <div class="holding-bar"><i style="width:4.90%"></i></div>
+          <div class="holding-weight">4.90%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>新和成</strong><span>SZ002001</span></div>
+          <div class="holding-bar"><i style="width:4.02%"></i></div>
+          <div class="holding-weight">4.02%</div>
+        </div>
+      </article>
+      <article class="portfolio-card">
+        <div class="portfolio-head">
+          <div><div class="influencer">人和</div><h3>分散30</h3></div>
+          <a href="https://xueqiu.com/P/ZH1405164" target="_blank" rel="noopener">雪球组合 ↗</a>
+        </div>
+        <div class="portfolio-meta">组合ID：ZH1405164｜股票仓位合计：99.89%｜持仓数：24</div>
+        
+        <div class="holding-row">
+          <div class="holding-name"><strong>紫金矿业</strong><span>SH601899</span></div>
+          <div class="holding-bar"><i style="width:22.68%"></i></div>
+          <div class="holding-weight">22.68%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>藏格矿业</strong><span>SZ000408</span></div>
+          <div class="holding-bar"><i style="width:18.18%"></i></div>
+          <div class="holding-weight">18.18%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>云铝股份</strong><span>SZ000807</span></div>
+          <div class="holding-bar"><i style="width:4.59%"></i></div>
+          <div class="holding-weight">4.59%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>新和成</strong><span>SZ002001</span></div>
+          <div class="holding-bar"><i style="width:4.59%"></i></div>
+          <div class="holding-weight">4.59%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>盐湖股份</strong><span>SZ000792</span></div>
+          <div class="holding-bar"><i style="width:4.56%"></i></div>
+          <div class="holding-weight">4.56%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>中国海油</strong><span>SH600938</span></div>
+          <div class="holding-bar"><i style="width:4.21%"></i></div>
+          <div class="holding-weight">4.21%</div>
+        </div>
+      </article>
+      <article class="portfolio-card">
+        <div class="portfolio-head">
+          <div><div class="influencer">人和</div><h3>中产之路</h3></div>
+          <a href="https://xueqiu.com/P/ZH1211900" target="_blank" rel="noopener">雪球组合 ↗</a>
+        </div>
+        <div class="portfolio-meta">组合ID：ZH1211900｜股票仓位合计：99.99%｜持仓数：10</div>
+        
+        <div class="holding-row">
+          <div class="holding-name"><strong>紫金矿业</strong><span>SH601899</span></div>
+          <div class="holding-bar"><i style="width:49.03%"></i></div>
+          <div class="holding-weight">49.03%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>藏格矿业</strong><span>SZ000408</span></div>
+          <div class="holding-bar"><i style="width:14.28%"></i></div>
+          <div class="holding-weight">14.28%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>盐湖股份</strong><span>SZ000792</span></div>
+          <div class="holding-bar"><i style="width:7.61%"></i></div>
+          <div class="holding-weight">7.61%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>中国铝业</strong><span>SH601600</span></div>
+          <div class="holding-bar"><i style="width:6.34%"></i></div>
+          <div class="holding-weight">6.34%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>中金黄金</strong><span>SH600489</span></div>
+          <div class="holding-bar"><i style="width:6.20%"></i></div>
+          <div class="holding-weight">6.20%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>中国石油</strong><span>SH601857</span></div>
+          <div class="holding-bar"><i style="width:5.48%"></i></div>
+          <div class="holding-weight">5.48%</div>
+        </div>
+      </article>
+      <article class="portfolio-card">
+        <div class="portfolio-head">
+          <div><div class="influencer">润哥</div><h3>并非实盘</h3></div>
+          <a href="https://xueqiu.com/P/ZH1748442" target="_blank" rel="noopener">雪球组合 ↗</a>
+        </div>
+        <div class="portfolio-meta">组合ID：ZH1748442｜股票仓位合计：89.96%｜持仓数：8</div>
+        
+        <div class="holding-row">
+          <div class="holding-name"><strong>中国海洋石油</strong><span>00883</span></div>
+          <div class="holding-bar"><i style="width:32.99%"></i></div>
+          <div class="holding-weight">32.99%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>天齐锂业</strong><span>09696</span></div>
+          <div class="holding-bar"><i style="width:14.02%"></i></div>
+          <div class="holding-weight">14.02%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>新华保险</strong><span>01336</span></div>
+          <div class="holding-bar"><i style="width:12.34%"></i></div>
+          <div class="holding-weight">12.34%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>紫金矿业</strong><span>02899</span></div>
+          <div class="holding-bar"><i style="width:8.57%"></i></div>
+          <div class="holding-weight">8.57%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>招金矿业</strong><span>01818</span></div>
+          <div class="holding-bar"><i style="width:8.20%"></i></div>
+          <div class="holding-weight">8.20%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>中远海能</strong><span>01138</span></div>
+          <div class="holding-bar"><i style="width:6.81%"></i></div>
+          <div class="holding-weight">6.81%</div>
+        </div>
+      </article>
+      <article class="portfolio-card">
+        <div class="portfolio-head">
+          <div><div class="influencer">山行</div><h3>欢送金毛</h3></div>
+          <a href="https://xueqiu.com/P/ZH2398337" target="_blank" rel="noopener">雪球组合 ↗</a>
+        </div>
+        <div class="portfolio-meta">组合ID：ZH2398337｜股票仓位合计：99.27%｜持仓数：5</div>
+        
+        <div class="holding-row">
+          <div class="holding-name"><strong>中国海洋石油</strong><span>00883</span></div>
+          <div class="holding-bar"><i style="width:53.94%"></i></div>
+          <div class="holding-weight">53.94%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>紫金矿业</strong><span>02899</span></div>
+          <div class="holding-bar"><i style="width:41.60%"></i></div>
+          <div class="holding-weight">41.60%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>中国移动</strong><span>00941</span></div>
+          <div class="holding-bar"><i style="width:1.81%"></i></div>
+          <div class="holding-weight">1.81%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>华润电力</strong><span>00836</span></div>
+          <div class="holding-bar"><i style="width:0.96%"></i></div>
+          <div class="holding-weight">0.96%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>腾讯控股</strong><span>00700</span></div>
+          <div class="holding-bar"><i style="width:0.96%"></i></div>
+          <div class="holding-weight">0.96%</div>
+        </div>
+      </article>
+      <article class="portfolio-card">
+        <div class="portfolio-head">
+          <div><div class="influencer">双目炯炯夏侯惇</div><h3>港股一箩筐</h3></div>
+          <a href="https://xueqiu.com/P/ZH758744" target="_blank" rel="noopener">雪球组合 ↗</a>
+        </div>
+        <div class="portfolio-meta">组合ID：ZH758744｜股票仓位合计：65.76%｜持仓数：7</div>
+        
+        <div class="holding-row">
+          <div class="holding-name"><strong>中国海洋石油</strong><span>00883</span></div>
+          <div class="holding-bar"><i style="width:46.29%"></i></div>
+          <div class="holding-weight">46.29%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>中国宏桥</strong><span>01378</span></div>
+          <div class="holding-bar"><i style="width:6.02%"></i></div>
+          <div class="holding-weight">6.02%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>融创服务</strong><span>01516</span></div>
+          <div class="holding-bar"><i style="width:4.53%"></i></div>
+          <div class="holding-weight">4.53%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>第一太平</strong><span>00142</span></div>
+          <div class="holding-bar"><i style="width:4.07%"></i></div>
+          <div class="holding-weight">4.07%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>碧桂园服务</strong><span>06098</span></div>
+          <div class="holding-bar"><i style="width:2.81%"></i></div>
+          <div class="holding-weight">2.81%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>建滔集团</strong><span>00148</span></div>
+          <div class="holding-bar"><i style="width:1.31%"></i></div>
+          <div class="holding-weight">1.31%</div>
+        </div>
+      </article>
+      <article class="portfolio-card">
+        <div class="portfolio-head">
+          <div><div class="influencer">斯托伯的天空</div><h3>德州-扑克</h3></div>
+          <a href="https://xueqiu.com/P/ZH3242899" target="_blank" rel="noopener">雪球组合 ↗</a>
+        </div>
+        <div class="portfolio-meta">组合ID：ZH3242899｜股票仓位合计：90.13%｜持仓数：9</div>
+        
+        <div class="holding-row">
+          <div class="holding-name"><strong>云铝股份</strong><span>SZ000807</span></div>
+          <div class="holding-bar"><i style="width:14.99%"></i></div>
+          <div class="holding-weight">14.99%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>中国海油</strong><span>SH600938</span></div>
+          <div class="holding-bar"><i style="width:12.96%"></i></div>
+          <div class="holding-weight">12.96%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>神火股份</strong><span>SZ000933</span></div>
+          <div class="holding-bar"><i style="width:12.14%"></i></div>
+          <div class="holding-weight">12.14%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>紫金矿业</strong><span>SH601899</span></div>
+          <div class="holding-bar"><i style="width:10.07%"></i></div>
+          <div class="holding-weight">10.07%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>云天化</strong><span>SH600096</span></div>
+          <div class="holding-bar"><i style="width:10.02%"></i></div>
+          <div class="holding-weight">10.02%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>煤炭ETF国泰</strong><span>SH515220</span></div>
+          <div class="holding-bar"><i style="width:9.96%"></i></div>
+          <div class="holding-weight">9.96%</div>
+        </div>
+      </article>
+      <article class="portfolio-card">
+        <div class="portfolio-head">
+          <div><div class="influencer">斯托伯的天空</div><h3>经济周期</h3></div>
+          <a href="https://xueqiu.com/P/ZH3230887" target="_blank" rel="noopener">雪球组合 ↗</a>
+        </div>
+        <div class="portfolio-meta">组合ID：ZH3230887｜股票仓位合计：91.08%｜持仓数：9</div>
+        
+        <div class="holding-row">
+          <div class="holding-name"><strong>云铝股份</strong><span>SZ000807</span></div>
+          <div class="holding-bar"><i style="width:14.95%"></i></div>
+          <div class="holding-weight">14.95%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>神火股份</strong><span>SZ000933</span></div>
+          <div class="holding-bar"><i style="width:12.13%"></i></div>
+          <div class="holding-weight">12.13%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>宝丰能源</strong><span>SH600989</span></div>
+          <div class="holding-bar"><i style="width:12.05%"></i></div>
+          <div class="holding-weight">12.05%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>煤炭ETF国泰</strong><span>SH515220</span></div>
+          <div class="holding-bar"><i style="width:11.87%"></i></div>
+          <div class="holding-weight">11.87%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>紫金矿业</strong><span>SH601899</span></div>
+          <div class="holding-bar"><i style="width:10.85%"></i></div>
+          <div class="holding-weight">10.85%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>云天化</strong><span>SH600096</span></div>
+          <div class="holding-bar"><i style="width:10.15%"></i></div>
+          <div class="holding-weight">10.15%</div>
+        </div>
+      </article>
+      <article class="portfolio-card">
+        <div class="portfolio-head">
+          <div><div class="influencer">斯托伯的天空</div><h3>懒人打法</h3></div>
+          <a href="https://xueqiu.com/P/ZH3477733" target="_blank" rel="noopener">雪球组合 ↗</a>
+        </div>
+        <div class="portfolio-meta">组合ID：ZH3477733｜股票仓位合计：73.41%｜持仓数：5</div>
+        
+        <div class="holding-row">
+          <div class="holding-name"><strong>中国海洋石油</strong><span>00883</span></div>
+          <div class="holding-bar"><i style="width:25.35%"></i></div>
+          <div class="holding-weight">25.35%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>中化化肥</strong><span>00297</span></div>
+          <div class="holding-bar"><i style="width:16.24%"></i></div>
+          <div class="holding-weight">16.24%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>招商银行</strong><span>03968</span></div>
+          <div class="holding-bar"><i style="width:11.76%"></i></div>
+          <div class="holding-weight">11.76%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>腾讯控股</strong><span>00700</span></div>
+          <div class="holding-bar"><i style="width:10.24%"></i></div>
+          <div class="holding-weight">10.24%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>宁德时代</strong><span>03750</span></div>
+          <div class="holding-bar"><i style="width:9.82%"></i></div>
+          <div class="holding-weight">9.82%</div>
+        </div>
+      </article>
+      <article class="portfolio-card">
+        <div class="portfolio-head">
+          <div><div class="influencer">斯托伯的天空</div><h3>香江晚风</h3></div>
+          <a href="https://xueqiu.com/P/ZH3231425" target="_blank" rel="noopener">雪球组合 ↗</a>
+        </div>
+        <div class="portfolio-meta">组合ID：ZH3231425｜股票仓位合计：79.22%｜持仓数：8</div>
+        
+        <div class="holding-row">
+          <div class="holding-name"><strong>中国海洋石油</strong><span>00883</span></div>
+          <div class="holding-bar"><i style="width:25.01%"></i></div>
+          <div class="holding-weight">25.01%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>中国宏桥</strong><span>01378</span></div>
+          <div class="holding-bar"><i style="width:13.06%"></i></div>
+          <div class="holding-weight">13.06%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>中化化肥</strong><span>00297</span></div>
+          <div class="holding-bar"><i style="width:12.01%"></i></div>
+          <div class="holding-weight">12.01%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>紫金黄金国际</strong><span>02259</span></div>
+          <div class="holding-bar"><i style="width:7.10%"></i></div>
+          <div class="holding-weight">7.10%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>兖矿能源</strong><span>01171</span></div>
+          <div class="holding-bar"><i style="width:7.05%"></i></div>
+          <div class="holding-weight">7.05%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>紫金矿业</strong><span>02899</span></div>
+          <div class="holding-bar"><i style="width:7.02%"></i></div>
+          <div class="holding-weight">7.02%</div>
+        </div>
+      </article>
+      <article class="portfolio-card">
+        <div class="portfolio-head">
+          <div><div class="influencer">天地侠影</div><h3>港股实盘</h3></div>
+          <a href="https://xueqiu.com/P/ZH3209607" target="_blank" rel="noopener">雪球组合 ↗</a>
+        </div>
+        <div class="portfolio-meta">组合ID：ZH3209607｜股票仓位合计：100.00%｜持仓数：3</div>
+        
+        <div class="holding-row">
+          <div class="holding-name"><strong>腾讯控股</strong><span>00700</span></div>
+          <div class="holding-bar"><i style="width:48.94%"></i></div>
+          <div class="holding-weight">48.94%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>顺丰控股</strong><span>06936</span></div>
+          <div class="holding-bar"><i style="width:31.39%"></i></div>
+          <div class="holding-weight">31.39%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>福耀玻璃</strong><span>03606</span></div>
+          <div class="holding-bar"><i style="width:19.67%"></i></div>
+          <div class="holding-weight">19.67%</div>
+        </div>
+      </article>
+      <article class="portfolio-card">
+        <div class="portfolio-head">
+          <div><div class="influencer">天地侠影</div><h3>实盘</h3></div>
+          <a href="https://xueqiu.com/P/ZH349701" target="_blank" rel="noopener">雪球组合 ↗</a>
+        </div>
+        <div class="portfolio-meta">组合ID：ZH349701｜股票仓位合计：100.00%｜持仓数：2</div>
+        
+        <div class="holding-row">
+          <div class="holding-name"><strong>赛轮轮胎</strong><span>SH601058</span></div>
+          <div class="holding-bar"><i style="width:59.96%"></i></div>
+          <div class="holding-weight">59.96%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>永新股份</strong><span>SZ002014</span></div>
+          <div class="holding-bar"><i style="width:40.04%"></i></div>
+          <div class="holding-weight">40.04%</div>
+        </div>
+      </article>
+      <article class="portfolio-card">
+        <div class="portfolio-head">
+          <div><div class="influencer">雪月霜</div><h3>红利组合</h3></div>
+          <a href="https://xueqiu.com/P/ZH3638550" target="_blank" rel="noopener">雪球组合 ↗</a>
+        </div>
+        <div class="portfolio-meta">组合ID：ZH3638550｜股票仓位合计：56.41%｜持仓数：2</div>
+        
+        <div class="holding-row">
+          <div class="holding-name"><strong>海螺水泥</strong><span>SH600585</span></div>
+          <div class="holding-bar"><i style="width:36.41%"></i></div>
+          <div class="holding-weight">36.41%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>盐湖股份</strong><span>SZ000792</span></div>
+          <div class="holding-bar"><i style="width:20.00%"></i></div>
+          <div class="holding-weight">20.00%</div>
+        </div>
+      </article>
+      <article class="portfolio-card">
+        <div class="portfolio-head">
+          <div><div class="influencer">HIS1963</div><h3>剑客2017</h3></div>
+          <a href="https://xueqiu.com/P/ZH1004909" target="_blank" rel="noopener">雪球组合 ↗</a>
+        </div>
+        <div class="portfolio-meta">组合ID：ZH1004909｜股票仓位合计：100.00%｜持仓数：3</div>
+        
+        <div class="holding-row">
+          <div class="holding-name"><strong>中远海控</strong><span>SH601919</span></div>
+          <div class="holding-bar"><i style="width:90.00%"></i></div>
+          <div class="holding-weight">90.00%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>云铝股份</strong><span>SZ000807</span></div>
+          <div class="holding-bar"><i style="width:5.00%"></i></div>
+          <div class="holding-weight">5.00%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>中国石油</strong><span>SH601857</span></div>
+          <div class="holding-bar"><i style="width:5.00%"></i></div>
+          <div class="holding-weight">5.00%</div>
+        </div>
+      </article>
+      <article class="portfolio-card">
+        <div class="portfolio-head">
+          <div><div class="influencer">lamlap123</div><h3>一骑绝尘</h3></div>
+          <a href="https://xueqiu.com/P/ZH718125" target="_blank" rel="noopener">雪球组合 ↗</a>
+        </div>
+        <div class="portfolio-meta">组合ID：ZH718125｜股票仓位合计：99.77%｜持仓数：5</div>
+        
+        <div class="holding-row">
+          <div class="holding-name"><strong>中芯国际</strong><span>00981</span></div>
+          <div class="holding-bar"><i style="width:82.12%"></i></div>
+          <div class="holding-weight">82.12%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>中国建材</strong><span>03323</span></div>
+          <div class="holding-bar"><i style="width:14.20%"></i></div>
+          <div class="holding-weight">14.20%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>力劲科技</strong><span>00558</span></div>
+          <div class="holding-bar"><i style="width:2.43%"></i></div>
+          <div class="holding-weight">2.43%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>沃尔核材</strong><span>09981</span></div>
+          <div class="holding-bar"><i style="width:0.85%"></i></div>
+          <div class="holding-weight">0.85%</div>
+        </div>
+        <div class="holding-row">
+          <div class="holding-name"><strong>蓝光嘉宝服务</strong><span>02606</span></div>
+          <div class="holding-bar"><i style="width:0.17%"></i></div>
+          <div class="holding-weight">0.17%</div>
+        </div>
+      </article></div>
+  </section>
+
+  <section class="section">
+    <h2>两次快照的持仓结构变化</h2>
+    
+  <h3>① 新纳入监控的组合</h3>
+  <p class="note">本期新增 2 个组合，共带入 34 条首次快照记录。它们是监控范围扩大，不应当解释为本期买入。</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>大V</th><th>组合</th><th>持仓数</th><th>股票仓位合计</th><th>原组合</th></tr></thead>
+    <tbody>
+  <tr>
+    <td>人和</td>
+    <td><strong>分散30</strong><span class="code">ZH1405164</span></td>
+    <td>24</td>
+    <td>99.89%</td>
+    <td><a href="https://xueqiu.com/P/ZH1405164" target="_blank" rel="noopener">组合 ↗</a></td>
+  </tr>
+  <tr>
+    <td>人和</td>
+    <td><strong>中产之路</strong><span class="code">ZH1211900</span></td>
+    <td>10</td>
+    <td>99.99%</td>
+    <td><a href="https://xueqiu.com/P/ZH1211900" target="_blank" rel="noopener">组合 ↗</a></td>
+  </tr></tbody>
+  </table></div>
+    
+  <h3>② 原有组合的新增与退出标的</h3>
+  <p class="note">在排除首次纳入监控的组合后，原有组合出现 4 条“新出现”和 6 条“退出组合”记录。运行日志记录的明确调仓动作数为 0，因此这里只确认快照结构发生变化，不直接写成买入或卖出。</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>大V</th><th>组合</th><th>标的</th><th>变化类型</th><th>相关仓位</th><th>原组合</th></tr></thead>
+    <tbody>
+  <tr>
+    <td>達人知命</td>
+    <td>低估值輪動</td>
+    <td><strong>华晨中国</strong><span class="code">01114</span></td>
+    <td><span class="pill light">退出组合</span></td>
+    <td>4.25%</td>
+    <td><a href="https://xueqiu.com/P/ZH111175" target="_blank" rel="noopener">组合 ↗</a></td>
+  </tr>
+  <tr>
+    <td>斯托伯的天空</td>
+    <td>经济周期</td>
+    <td><strong>洛阳钼业</strong><span class="code">SH603993</span></td>
+    <td><span class="pill light">退出组合</span></td>
+    <td>2.88%</td>
+    <td><a href="https://xueqiu.com/P/ZH3230887" target="_blank" rel="noopener">组合 ↗</a></td>
+  </tr>
+  <tr>
+    <td>斯托伯的天空</td>
+    <td>香江晚风</td>
+    <td><strong>洛阳钼业</strong><span class="code">03993</span></td>
+    <td><span class="pill light">退出组合</span></td>
+    <td>4.92%</td>
+    <td><a href="https://xueqiu.com/P/ZH3231425" target="_blank" rel="noopener">组合 ↗</a></td>
+  </tr>
+  <tr>
+    <td>斯托伯的天空</td>
+    <td>德州-扑克</td>
+    <td><strong>洛阳钼业</strong><span class="code">SH603993</span></td>
+    <td><span class="pill light">退出组合</span></td>
+    <td>2.91%</td>
+    <td><a href="https://xueqiu.com/P/ZH3242899" target="_blank" rel="noopener">组合 ↗</a></td>
+  </tr>
+  <tr>
+    <td>人和</td>
+    <td>本科阶段</td>
+    <td><strong>中远海控</strong><span class="code">SH601919</span></td>
+    <td><span class="pill medium">新出现</span></td>
+    <td>1.93%</td>
+    <td><a href="https://xueqiu.com/P/ZH886903" target="_blank" rel="noopener">组合 ↗</a></td>
+  </tr>
+  <tr>
+    <td>人和</td>
+    <td>本科阶段</td>
+    <td><strong>公牛集团</strong><span class="code">SH603195</span></td>
+    <td><span class="pill medium">新出现</span></td>
+    <td>2.87%</td>
+    <td><a href="https://xueqiu.com/P/ZH886903" target="_blank" rel="noopener">组合 ↗</a></td>
+  </tr>
+  <tr>
+    <td>人和</td>
+    <td>本科阶段</td>
+    <td><strong>东鹏饮料</strong><span class="code">SH605499</span></td>
+    <td><span class="pill medium">新出现</span></td>
+    <td>11.50%</td>
+    <td><a href="https://xueqiu.com/P/ZH886903" target="_blank" rel="noopener">组合 ↗</a></td>
+  </tr>
+  <tr>
+    <td>人和</td>
+    <td>本科阶段</td>
+    <td><strong>云铝股份</strong><span class="code">SZ000807</span></td>
+    <td><span class="pill medium">新出现</span></td>
+    <td>2.04%</td>
+    <td><a href="https://xueqiu.com/P/ZH886903" target="_blank" rel="noopener">组合 ↗</a></td>
+  </tr>
+  <tr>
+    <td>人和</td>
+    <td>本科阶段</td>
+    <td><strong>世华科技</strong><span class="code">SH688093</span></td>
+    <td><span class="pill light">退出组合</span></td>
+    <td>2.03%</td>
+    <td><a href="https://xueqiu.com/P/ZH886903" target="_blank" rel="noopener">组合 ↗</a></td>
+  </tr>
+  <tr>
+    <td>人和</td>
+    <td>本科阶段</td>
+    <td><strong>艾力斯</strong><span class="code">SH688578</span></td>
+    <td><span class="pill light">退出组合</span></td>
+    <td>4.70%</td>
+    <td><a href="https://xueqiu.com/P/ZH886903" target="_blank" rel="noopener">组合 ↗</a></td>
+  </tr></tbody>
+  </table></div>
+    <h3>③ 同一持仓权重变化最大的10项</h3>
+    <p class="note">下表仅列两次快照中均存在的同一组合、同一标的。权重变化既可能来自价格波动，也可能来自未被日志捕捉的主动调整；其中变化幅度特别大的项目值得进一步回看雪球组合，但本表本身不作为买卖证据。</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>大V</th><th>组合</th><th>标的</th><th>前次</th><th>最新</th><th>变化</th></tr></thead>
+      <tbody>
+  <tr>
+    <td>HIS1963</td>
+    <td>剑客2017</td>
+    <td><strong>中远海控</strong></td>
+    <td>49.26%</td>
+    <td>90.00%</td>
+    <td class="up">+40.74pct</td>
+  </tr>
+  <tr>
+    <td>HIS1963</td>
+    <td>剑客2017</td>
+    <td><strong>中国石油</strong></td>
+    <td>40.65%</td>
+    <td>5.00%</td>
+    <td class="down">-35.65pct</td>
+  </tr>
+  <tr>
+    <td>老奈</td>
+    <td>港股</td>
+    <td><strong>胜宏科技</strong></td>
+    <td>74.96%</td>
+    <td>98.89%</td>
+    <td class="up">+23.93pct</td>
+  </tr>
+  <tr>
+    <td>老奈</td>
+    <td>港股</td>
+    <td><strong>信达生物</strong></td>
+    <td>25.04%</td>
+    <td>1.11%</td>
+    <td class="down">-23.93pct</td>
+  </tr>
+  <tr>
+    <td>斯托伯的天空</td>
+    <td>懒人打法</td>
+    <td><strong>腾讯控股</strong></td>
+    <td>23.98%</td>
+    <td>10.24%</td>
+    <td class="down">-13.74pct</td>
+  </tr>
+  <tr>
+    <td>雪月霜</td>
+    <td>红利组合</td>
+    <td><strong>盐湖股份</strong></td>
+    <td>33.19%</td>
+    <td>20.00%</td>
+    <td class="down">-13.19pct</td>
+  </tr>
+  <tr>
+    <td>斯托伯的天空</td>
+    <td>懒人打法</td>
+    <td><strong>中化化肥</strong></td>
+    <td>7.68%</td>
+    <td>16.24%</td>
+    <td class="up">+8.56pct</td>
+  </tr>
+  <tr>
+    <td>斯托伯的天空</td>
+    <td>懒人打法</td>
+    <td><strong>中国海洋石油</strong></td>
+    <td>19.79%</td>
+    <td>25.35%</td>
+    <td class="up">+5.56pct</td>
+  </tr>
+  <tr>
+    <td>人和</td>
+    <td>本科阶段</td>
+    <td><strong>紫金矿业</strong></td>
+    <td>37.75%</td>
+    <td>32.31%</td>
+    <td class="down">-5.44pct</td>
+  </tr>
+  <tr>
+    <td>斯托伯的天空</td>
+    <td>懒人打法</td>
+    <td><strong>宁德时代</strong></td>
+    <td>15.10%</td>
+    <td>9.82%</td>
+    <td class="down">-5.28pct</td>
+  </tr></tbody>
+    </table></div>
+  </section>
+
+  <section class="section">
+    <h2>如何使用这份持仓表</h2>
+    <p><strong>第一优先看“多人共识 + 高仓位”：</strong>同时具备多个大V认可和较高仓位，比单一组合重仓更有交叉验证价值。</p>
+    <p><strong>第二优先看“单人极端重仓”：</strong>代表个人确信度高，但不能与多人共识等同，需额外核验其逻辑和风险。</p>
+    <p><strong>第三看“同一主题反复出现”：</strong>若后续快照中高热度行业继续保持高仓位，并出现新的大V持有，共识信号才算进一步增强。</p>
+    <p><strong>变化记录要分层理解：</strong>首次快照是监控范围扩张；新增或退出是结构变化；普通权重升降还可能受到价格波动影响。</p>
+  </section>
+
+  <div class="footer">数据来源：用户提供的《雪球组合监控.xlsx》｜分析口径：仓位权重作为看好度代理｜不构成投资建议</div>
+</div>
+</body>
+</html>
