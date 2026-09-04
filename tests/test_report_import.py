@@ -580,6 +580,19 @@ class EndToEndImportTests(unittest.TestCase):
 class RepositoryHygieneTests(unittest.TestCase):
     """确保每日测试产生的缓存不会阻塞下一次自动发布。"""
 
+    def test_august_30_portfolio_report_is_curated_as_portfolio(self):
+        payload, _ = module.build_index(
+            PROJECT_ROOT,
+            PROJECT_ROOT / "data" / "entities.json",
+            PROJECT_ROOT / "data" / "report-overrides.json",
+        )
+        reports = {item["file"]: item for item in payload["reports"]}
+        report = reports[
+            "Reports/2026/20260830_关注大V持仓与看好度分析.html"
+        ]
+
+        self.assertEqual(report["type"], "portfolio")
+
     def test_python_cache_is_ignored(self):
         ignore_rules = (PROJECT_ROOT / ".gitignore").read_text(encoding="utf-8")
         self.assertIn("__pycache__/", ignore_rules)
