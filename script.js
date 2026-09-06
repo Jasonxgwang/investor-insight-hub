@@ -1,10 +1,16 @@
 const FILTER_KEYS = ["q", "year", "type", "industry", "tag", "stock", "influencer"];
-const REPORT_TYPES = Object.freeze(["daily", "trend", "portfolio"]);
+const REPORT_TYPES = Object.freeze([
+  "daily",
+  "trend",
+  "portfolio",
+  "quarterly-valuation",
+]);
 
 const REPORT_TYPE_OPTIONS = Object.freeze([
   ["daily", "大V每日观点"],
   ["trend", "全站观点趋势专题"],
   ["portfolio", "大V雪球组合专题"],
+  ["quarterly-valuation", "季度股票估值与分歧度专题"],
 ]);
 
 const REPORT_TYPE_LABELS = Object.freeze(

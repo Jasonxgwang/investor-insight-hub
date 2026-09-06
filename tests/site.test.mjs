@@ -83,8 +83,16 @@ test("标准化记录提供稳定的报告类型", () => {
     type: "trend",
   });
 
+  const valuation = normalizeReport({
+    id: "valuation-one",
+    date: "2026-09-06",
+    title: "2026年9月股票估值与分歧度",
+    type: "quarterly-valuation",
+  });
+
   assert.equal(daily.type, "daily");
   assert.equal(trend.type, "trend");
+  assert.equal(valuation.type, "quarterly-valuation");
 });
 
 test("标准化记录会拒绝缺少标识、日期或标题的数据", () => {
@@ -147,6 +155,13 @@ test("报告类型可独立筛选并与年份行业使用交集逻辑", () => {
       type: "portfolio",
       industries: ["科技"],
     }),
+    normalizeReport({
+      id: "quarterly-valuation",
+      date: "2026-09-06",
+      title: "2026年9月股票估值与分歧度",
+      type: "quarterly-valuation",
+      industries: ["科技"],
+    }),
   ];
 
   assert.deepEqual(
@@ -157,6 +172,11 @@ test("报告类型可独立筛选并与年份行业使用交集逻辑", () => {
   assert.deepEqual(
     filterReports(reports, { type: "portfolio" }).map((report) => report.id),
     ["portfolio"],
+  );
+
+  assert.deepEqual(
+    filterReports(reports, { type: "quarterly-valuation" }).map((report) => report.id),
+    ["quarterly-valuation"],
   );
 
   assert.deepEqual(
@@ -195,13 +215,20 @@ test("报告类型导航使用固定顺序并统计各类型数量", async () =>
       title: "大V雪球组合专题：2026年8月5日持仓分析",
       type: "portfolio",
     }),
+    normalizeReport({
+      id: "quarterly-valuation-one",
+      date: "2026-09-06",
+      title: "2026年9月股票估值与分歧度",
+      type: "quarterly-valuation",
+    }),
   ];
 
   assert.deepEqual(siteModule.getReportTypeOptions(reports), [
-    { value: "", label: "全部类型", count: 15 },
+    { value: "", label: "全部类型", count: 16 },
     { value: "daily", label: "大V每日观点", count: 13 },
     { value: "trend", label: "全站观点趋势专题", count: 1 },
     { value: "portfolio", label: "大V雪球组合专题", count: 1 },
+    { value: "quarterly-valuation", label: "季度股票估值与分歧度专题", count: 1 },
   ]);
 });
 
@@ -221,6 +248,10 @@ test("报告类型筛选值显示中文名称", () => {
   assert.equal(formatFilterValue("type", "daily"), "大V每日观点");
   assert.equal(formatFilterValue("type", "trend"), "全站观点趋势专题");
   assert.equal(formatFilterValue("type", "portfolio"), "大V雪球组合专题");
+  assert.equal(
+    formatFilterValue("type", "quarterly-valuation"),
+    "季度股票估值与分歧度专题",
+  );
   assert.equal(formatFilterValue("year", "2026"), "2026");
 });
 

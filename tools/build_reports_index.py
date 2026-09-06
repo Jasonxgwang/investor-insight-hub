@@ -17,7 +17,7 @@ from typing import Any
 DEFAULT_SUMMARY = "本期日报已归档，点击查看完整内容。"
 SUMMARY_HEADINGS = ("核心结论", "核心观点", "摘要", "市场概览")
 SKIP_SUMMARY_PREFIXES = ("统计口径", "实际记录区间", "生成文件", "免责声明")
-REPORT_TYPES = {"daily", "trend", "portfolio"}
+REPORT_TYPES = {"daily", "trend", "portfolio", "quarterly-valuation"}
 
 
 class ReportParseError(ValueError):
@@ -56,7 +56,7 @@ def normalize_text(value: str) -> str:
 
 
 def normalize_report_type(value: str | None, title: str) -> str:
-    """把报告稳定归入每日观点、趋势专题或雪球组合专题。"""
+    """把报告稳定归入每日观点或既有专题。"""
 
     candidate = normalize_text(value or "")
     if candidate in REPORT_TYPES:
@@ -65,6 +65,8 @@ def normalize_report_type(value: str | None, title: str) -> str:
         return "trend"
     if title.startswith("大V雪球组合专题："):
         return "portfolio"
+    if title.startswith("季度股票估值与分歧度专题：") or "股票估值与分歧度" in title:
+        return "quarterly-valuation"
     return "daily"
 
 

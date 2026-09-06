@@ -56,6 +56,18 @@ class ParserTests(unittest.TestCase):
         self.assertIsNotNone(module, "自动导入解析器尚未实现")
         return module
 
+    def test_stock_valuation_title_is_classified_as_quarterly_topic(self):
+        parser = self.require_module()
+
+        self.assertEqual(
+            parser.normalize_report_type(None, "2026年9月股票估值与分歧度"),
+            "quarterly-valuation",
+        )
+        self.assertEqual(
+            parser.normalize_report_type(None, "季度股票估值与分歧度专题：2026年第三季度"),
+            "quarterly-valuation",
+        )
+
     def test_explicit_metadata_has_highest_priority(self):
         parser = self.require_module()
         path = self.write_html(

@@ -1,0 +1,221 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>2026年9月股票估值与分歧度</title>
+  <style>
+    :root {
+      --ink: #12243a;
+      --muted: #65758b;
+      --navy: #17375e;
+      --blue: #1f6feb;
+      --sky: #eaf5fb;
+      --line: #d7e1ec;
+      --paper: #ffffff;
+      --page: #f3f6fa;
+      --green: #087a55;
+      --green-bg: #e8f7f0;
+      --amber: #a05a00;
+      --amber-bg: #fff3d8;
+      --red: #b42318;
+      --red-bg: #ffebe9;
+      --violet: #6941c6;
+      --violet-bg: #f2edff;
+      --shadow: 0 16px 40px rgba(18, 36, 58, .09);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--page);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      line-height: 1.55;
+    }
+    .wrap { width: min(1220px, calc(100% - 32px)); margin: 0 auto; }
+    header {
+      color: #fff;
+      background: linear-gradient(125deg, #102b4c 0%, #1b4c7c 65%, #226ea6 100%);
+      padding: 50px 0 76px;
+    }
+    .eyebrow { margin: 0 0 8px; color: #bfe4ff; font-size: 13px; font-weight: 700; letter-spacing: .12em; }
+    h1 { margin: 0; font-size: clamp(30px, 5vw, 50px); letter-spacing: -.035em; line-height: 1.15; }
+    .subtitle { max-width: 780px; margin: 16px 0 0; color: #d8e7f5; font-size: 15px; }
+    main { margin-top: -42px; padding-bottom: 56px; }
+    .panel { margin-bottom: 22px; padding: 24px; background: var(--paper); border: 1px solid var(--line); border-radius: 18px; box-shadow: var(--shadow); }
+    .metrics { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-bottom: 22px; }
+    .metric { padding: 20px; background: var(--paper); border: 1px solid var(--line); border-radius: 16px; box-shadow: var(--shadow); }
+    .metric small { display: block; color: var(--muted); font-size: 13px; font-weight: 700; }
+    .metric strong { display: block; margin-top: 7px; font-size: 29px; line-height: 1; }
+    .metric span { display: block; margin-top: 9px; color: var(--muted); font-size: 12px; }
+    .section-head { display: flex; gap: 18px; align-items: flex-end; justify-content: space-between; margin-bottom: 18px; }
+    h2 { margin: 0; font-size: 21px; letter-spacing: -.02em; }
+    h3 { margin: 0 0 13px; font-size: 17px; }
+    .section-head p, .note { margin: 5px 0 0; color: var(--muted); font-size: 13px; }
+    .controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    button, input { font: inherit; }
+    button {
+      padding: 7px 12px; color: #405269; background: #f7f9fc; border: 1px solid var(--line); border-radius: 999px; cursor: pointer;
+    }
+    button.active { color: #fff; background: var(--navy); border-color: var(--navy); }
+    input {
+      width: 180px; padding: 8px 11px; color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 9px; outline: none;
+    }
+    input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(31, 111, 235, .12); }
+    .table-shell { overflow-x: auto; border: 1px solid var(--line); border-radius: 12px; }
+    table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+    th { padding: 12px 13px; color: #fff; background: var(--navy); font-size: 12px; text-align: left; white-space: nowrap; }
+    td { padding: 11px 13px; border-bottom: 1px solid #e5ebf2; font-size: 13px; vertical-align: middle; }
+    tbody tr:nth-child(even) { background: var(--sky); }
+    tbody tr:hover { background: #fff8dc; }
+    tbody tr:last-child td { border-bottom: 0; }
+    td.num, th.num { text-align: right; }
+    .name { font-weight: 750; }
+    .badge { display: inline-block; padding: 4px 9px; border-radius: 999px; font-size: 12px; font-weight: 750; white-space: nowrap; }
+    .strong { color: var(--green); background: var(--green-bg); }
+    .bull { color: var(--blue); background: #e9f1ff; }
+    .neutral { color: var(--amber); background: var(--amber-bg); }
+    .bear { color: var(--red); background: var(--red-bg); }
+    .focus-grid { display: grid; grid-template-columns: 1.12fr .88fr; gap: 20px; }
+    .rules { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; }
+    .rule { padding: 13px 14px; border: 1px solid var(--line); border-radius: 10px; background: #fbfcfe; font-size: 13px; }
+    .rule b { display: block; margin-bottom: 2px; }
+    .source-list { margin: 10px 0 0; padding-left: 20px; color: var(--muted); font-size: 13px; }
+    a { color: #145da0; text-underline-offset: 2px; }
+    .footnote { padding: 16px 18px; color: var(--muted); background: #eef2f7; border-radius: 12px; font-size: 12px; }
+    .hidden { display: none; }
+    @media (max-width: 860px) {
+      .metrics { grid-template-columns: repeat(2, 1fr); }
+      .focus-grid { grid-template-columns: 1fr; }
+      .section-head { display: block; }
+      .controls { margin-top: 14px; }
+    }
+    @media (max-width: 520px) {
+      .wrap { width: min(100% - 20px, 1220px); }
+      .metrics, .rules { grid-template-columns: 1fr; }
+      .panel { padding: 17px; }
+      header { padding-top: 36px; }
+    }
+    @media print {
+      body { background: #fff; }
+      header { padding: 24px 0 54px; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+      .wrap { width: 100%; }
+      main { padding: 0 12px; }
+      .panel, .metric { box-shadow: none; break-inside: avoid; }
+      .controls { display: none; }
+      .table-shell { overflow: visible; }
+      th, .badge { print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <p class="eyebrow">VALUATION CONSENSUS · 2026-09-06</p>
+      <h1>2026年9月股票估值与分歧度</h1>
+      <p class="subtitle">23只股票目标价共识快照。已纳入厦门钨业，其余标的沿用上一版数据；本页不构成统一时点的重新估值。</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="metrics" aria-label="概览指标">
+      <div class="metric"><small>覆盖股票</small><strong>23</strong><span>A股与H股严格分列</span></div>
+      <div class="metric"><small>强烈看多</small><strong>7</strong><span>其中5只为小样本条件性评级</span></div>
+      <div class="metric"><small>看多</small><strong>8</strong><span>安全边际&gt;20%，分歧度30%–40%</span></div>
+      <div class="metric"><small>中性／看空</small><strong>8</strong><span>中性4只；看空或不够便宜4只</span></div>
+    </section>
+
+    <section class="panel">
+      <div class="section-head">
+        <div>
+          <h2>股票估值总表</h2>
+          <p>目标价均值与中位数单位随市场：A股为人民币元，H股为港元。</p>
+        </div>
+        <div class="controls" aria-label="筛选工具">
+          <button class="active" type="button" data-filter="all">全部</button>
+          <button type="button" data-filter="strong">强烈看多</button>
+          <button type="button" data-filter="bull">看多</button>
+          <button type="button" data-filter="neutral">中性</button>
+          <button type="button" data-filter="bear">看空</button>
+          <input id="search" type="search" placeholder="搜索股票或代码" aria-label="搜索股票或代码">
+        </div>
+      </div>
+      <div class="table-shell">
+        <table id="stock-table">
+          <thead>
+            <tr>
+              <th>股票</th><th>代码／市场</th><th class="num">目标价均值</th><th class="num">目标价中位数</th><th class="num">安全边际</th><th class="num">分歧度</th><th>综合结论</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr data-group="strong"><td class="name">中国海洋石油★</td><td>00883.HK</td><td class="num">32.29</td><td class="num">33.00</td><td class="num">22.39%</td><td class="num">21.99%</td><td><span class="badge strong">强烈看多</span></td></tr>
+            <tr data-group="strong"><td class="name">宁德时代H★</td><td>03750.HK</td><td class="num">822.07</td><td class="num">815.00</td><td class="num">29.93%</td><td class="num">27.00%</td><td><span class="badge strong">强烈看多</span></td></tr>
+            <tr data-group="strong"><td class="name">中化化肥</td><td>00297.HK</td><td class="num">1.9233</td><td class="num">1.93</td><td class="num">30.59%</td><td class="num">8.32%</td><td><span class="badge strong">强烈看多†</span></td></tr>
+            <tr data-group="strong"><td class="name">云天化</td><td>600096.SH</td><td class="num">43.64</td><td class="num">43.64</td><td class="num">29.42%</td><td class="num">1.19%</td><td><span class="badge strong">强烈看多†</span></td></tr>
+            <tr data-group="strong"><td class="name">海螺水泥A</td><td>600585.SH</td><td class="num">25.24</td><td class="num">23.50</td><td class="num">29.15%</td><td class="num">26.19%</td><td><span class="badge strong">强烈看多†</span></td></tr>
+            <tr data-group="strong"><td class="name">TCL科技</td><td>000100.SZ</td><td class="num">6.65</td><td class="num">6.74</td><td class="num">27.78%</td><td class="num">24.07%</td><td><span class="badge strong">强烈看多†</span></td></tr>
+            <tr data-group="strong"><td class="name">厦门钨业</td><td>600549.SH</td><td class="num">71.35</td><td class="num">72.60</td><td class="num">31.62%</td><td class="num">12.54%</td><td><span class="badge strong">强烈看多†</span></td></tr>
+            <tr data-group="bull"><td class="name">盐湖股份</td><td>000792.SZ</td><td class="num">43.88</td><td class="num">44.85</td><td class="num">38.30%</td><td class="num">31.45%</td><td><span class="badge bull">看多</span></td></tr>
+            <tr data-group="bull"><td class="name">中联重科A</td><td>000157.SZ</td><td class="num">10.16</td><td class="num">10.01</td><td class="num">34.87%</td><td class="num">30.50%</td><td><span class="badge bull">看多</span></td></tr>
+            <tr data-group="bull"><td class="name">腾讯控股★</td><td>00700.HK</td><td class="num">669.57</td><td class="num">663.00</td><td class="num">33.87%</td><td class="num">38.80%</td><td><span class="badge bull">看多</span></td></tr>
+            <tr data-group="bull"><td class="name">紫金矿业H</td><td>02899.HK</td><td class="num">50.45</td><td class="num">50.00</td><td class="num">27.46%</td><td class="num">35.68%</td><td><span class="badge bull">看多</span></td></tr>
+            <tr data-group="bull"><td class="name">紫金矿业A</td><td>601899.SH</td><td class="num">45.17</td><td class="num">45.95</td><td class="num">26.17%</td><td class="num">30.11%</td><td><span class="badge bull">看多</span></td></tr>
+            <tr data-group="bull"><td class="name">友邦保险★</td><td>01299.HK</td><td class="num">103.98</td><td class="num">103.77</td><td class="num">25.66%</td><td class="num">34.62%</td><td><span class="badge bull">看多</span></td></tr>
+            <tr data-group="bull"><td class="name">云铝股份</td><td>000807.SZ</td><td class="num">34.80</td><td class="num">35.28</td><td class="num">22.56%</td><td class="num">38.33%</td><td><span class="badge bull">看多</span></td></tr>
+            <tr data-group="bull"><td class="name">宝丰能源</td><td>600989.SH</td><td class="num">30.89</td><td class="num">30.27</td><td class="num">21.00%</td><td class="num">36.55%</td><td><span class="badge bull">看多</span></td></tr>
+            <tr data-group="neutral"><td class="name">招金矿业H</td><td>01818.HK</td><td class="num">35.24</td><td class="num">37.44</td><td class="num">37.23%</td><td class="num">86.47%</td><td><span class="badge neutral">中性：分歧大</span></td></tr>
+            <tr data-group="neutral"><td class="name">中芯国际H</td><td>00981.HK</td><td class="num">96.39</td><td class="num">98.75</td><td class="num">30.28%</td><td class="num">117.23%</td><td><span class="badge neutral">中性：分歧大</span></td></tr>
+            <tr data-group="neutral"><td class="name">京东方A</td><td>000725.SZ</td><td class="num">7.83</td><td class="num">7.78</td><td class="num">28.33%</td><td class="num">72.05%</td><td><span class="badge neutral">中性：分歧大</span></td></tr>
+            <tr data-group="neutral"><td class="name">铜陵有色</td><td>000630.SZ</td><td class="num">7.43</td><td class="num">7.43</td><td class="num">12.73%</td><td class="num">16.84%</td><td><span class="badge neutral">中性观察</span></td></tr>
+            <tr data-group="bear"><td class="name">紫金黄金国际</td><td>02259.HK</td><td class="num">169.59</td><td class="num">177.00</td><td class="num">3.94%</td><td class="num">31.63%</td><td><span class="badge bear">看空／不够便宜</span></td></tr>
+            <tr data-group="bear"><td class="name">华能国际H</td><td>00902.HK</td><td class="num">5.79</td><td class="num">5.20</td><td class="num">2.97%</td><td class="num">59.22%</td><td><span class="badge bear">看空／不够便宜</span></td></tr>
+            <tr data-group="bear"><td class="name">新华保险H</td><td>01336.HK</td><td class="num">49.68</td><td class="num">50.40</td><td class="num">1.04%</td><td class="num">50.32%</td><td><span class="badge bear">看空／不够便宜</span></td></tr>
+            <tr data-group="bear"><td class="name">中远海控H</td><td>01919.HK</td><td class="num">16.76</td><td class="num">17.90</td><td class="num">−1.62%</td><td class="num">60.27%</td><td><span class="badge bear">看空／不够便宜</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">★ 沿用核心样本：海洋石油、腾讯控股、友邦保险、宁德时代H。† 样本数较少，属于条件性评级。</p>
+      <p class="note" id="xmty-note">厦门钨业口径：<a href="https://vip.stock.finance.sina.com.cn/corp/go.php/stockIndustryNews/symbol/sh600549.phtml">股价48.79元（2026-09-04收盘）</a>，3家近6个月有效目标价；其中<a href="https://stock.finance.sina.com.cn/stock/go.php/vReport_Show/kind/lastest/rptid/840964711366/index.phtml">国泰海通66.25元</a>、<a href="https://news.10jqka.com.cn/20260827/c679344843.shtml">中金公司72.60元</a>、<a href="https://app.myzaker.com/article/6a6b0bf9b15ec0732521e278">国金证券75.20元</a>。仅2家为中报后明确目标价。</p>
+    </section>
+
+    <section class="panel">
+      <h2>四档评价规则</h2>
+      <div class="rules" style="margin-top:14px">
+        <div class="rule"><b style="color:var(--green)">强烈看多</b>安全边际&gt;20% 且分歧度&lt;30%</div>
+        <div class="rule"><b style="color:var(--blue)">看多</b>安全边际&gt;20% 且分歧度30%–40%</div>
+        <div class="rule"><b style="color:var(--amber)">中性</b>安全边际&gt;20% 且分歧度&gt;50%</div>
+        <div class="rule"><b style="color:var(--red)">看空／不够便宜</b>安全边际很小，即使分歧度较低</div>
+      </div>
+      <p class="note">其余22只股票的日期、来源与限制沿用原表及此前分析，未在本次补充中重新核验。</p>
+    </section>
+
+    <div class="footnote">
+      计算口径：安全边际＝（平均目标价－股价）÷平均目标价；分歧度＝（最高目标价－最低目标价）÷平均目标价。表内结论仅是对既有目标价样本的机械分类，不构成投资建议，也不保证收益。周期股盈利与商品价格假设波动较大，即便当前共识较强，也应持续检查钨、钴、稀土价格及盈利预测变化。
+    </div>
+  </main>
+
+  <script>
+    (() => {
+      const rows = [...document.querySelectorAll('#stock-table tbody tr')];
+      const buttons = [...document.querySelectorAll('[data-filter]')];
+      const search = document.querySelector('#search');
+      let active = 'all';
+      const apply = () => {
+        const query = search.value.trim().toLowerCase();
+        rows.forEach(row => {
+          const groupMatch = active === 'all' || row.dataset.group === active;
+          const textMatch = !query || row.textContent.toLowerCase().includes(query);
+          row.classList.toggle('hidden', !(groupMatch && textMatch));
+        });
+      };
+      buttons.forEach(button => button.addEventListener('click', () => {
+        active = button.dataset.filter;
+        buttons.forEach(item => item.classList.toggle('active', item === button));
+        apply();
+      }));
+      search.addEventListener('input', apply);
+    })();
+  </script>
+</body>
+</html>
