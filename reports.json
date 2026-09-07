@@ -3,21 +3,25 @@
   "site": {
     "name": "Investor Insight Hub 投资观点库",
     "description": "雪球与微博大 V 投资观点日报归档",
-    "updatedAt": "2026-09-06"
+    "updatedAt": "2026-09-07"
   },
   "reports": [
     {
-      "id": "20260906-3791183c5c",
-      "date": "2026-09-06",
+      "id": "20260907-3e29daffe6",
+      "date": "2026-09-07",
       "year": 2026,
       "title": "2026年9月股票估值与分歧度",
-      "summary": "VALUATION CONSENSUS · 2026-09-06",
+      "summary": "VALUATION CONSENSUS · 2026-09-07",
       "file": "Reports/2026/2026年9月股票估值与分歧度.html",
       "industries": [
+        "有色金属",
+        "轮胎",
+        "煤炭",
         "石油"
       ],
       "tags": [
-        "估值"
+        "估值",
+        "多空观点"
       ],
       "stocks": [
         {
@@ -46,6 +50,10 @@
         },
         {
           "name": "厦门钨业",
+          "code": ""
+        },
+        {
+          "name": "中煤能源A★",
           "code": ""
         },
         {
@@ -81,6 +89,30 @@
           "code": ""
         },
         {
+          "name": "中煤能源H",
+          "code": ""
+        },
+        {
+          "name": "陕西煤业",
+          "code": ""
+        },
+        {
+          "name": "中国神华A",
+          "code": ""
+        },
+        {
+          "name": "兖矿能源A",
+          "code": ""
+        },
+        {
+          "name": "兖矿能源H",
+          "code": ""
+        },
+        {
+          "name": "赛轮轮胎",
+          "code": ""
+        },
+        {
           "name": "招金矿业H",
           "code": ""
         },
@@ -94,6 +126,18 @@
         },
         {
           "name": "铜陵有色",
+          "code": ""
+        },
+        {
+          "name": "中国神华H",
+          "code": ""
+        },
+        {
+          "name": "天齐锂业A",
+          "code": ""
+        },
+        {
+          "name": "天齐锂业H",
           "code": ""
         },
         {
@@ -113,12 +157,20 @@
           "code": ""
         },
         {
+          "name": "赛轮轮胎",
+          "code": "601058"
+        },
+        {
           "name": "宁德时代",
           "code": "300750"
         },
         {
           "name": "腾讯控股",
           "code": "00700"
+        },
+        {
+          "name": "天齐锂业",
+          "code": "002466"
         }
       ],
       "influencers": [],
