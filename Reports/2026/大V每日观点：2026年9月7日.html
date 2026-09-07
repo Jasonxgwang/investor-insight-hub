@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>大V每日观点：2026年9月7日</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --panel: #ffffff;
+      --ink: #172033;
+      --muted: #667085;
+      --line: #e6eaf0;
+      --blue: #3159d6;
+      --blue-soft: #edf2ff;
+      --green: #177a55;
+      --green-soft: #eaf8f1;
+      --red: #b43a48;
+      --red-soft: #fff0f2;
+      --amber: #996515;
+      --amber-soft: #fff7e7;
+      --violet: #6f4bc3;
+      --violet-soft: #f3eeff;
+      --shadow: 0 10px 28px rgba(25, 39, 68, .07);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+      line-height: 1.65;
+    }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .hero {
+      color: #fff;
+      background:
+        radial-gradient(circle at 88% 12%, rgba(107, 139, 255, .34), transparent 32%),
+        linear-gradient(128deg, #14234a 0%, #223f88 56%, #3159d6 100%);
+      padding: 44px 22px 64px;
+    }
+    .wrap { max-width: 1180px; margin: 0 auto; }
+    .eyebrow {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      font-size: 13px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: #cdd8ff;
+    }
+    h1 { margin: 10px 0 8px; font-size: clamp(30px, 5vw, 48px); line-height: 1.18; }
+    .subtitle { max-width: 780px; margin: 0; color: #dfe6ff; font-size: 16px; }
+    .source-window { margin-top: 16px; color: #bfcaee; font-size: 13px; }
+
+    main { margin: -34px auto 56px; padding: 0 20px; }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .stat {
+      background: var(--panel);
+      border: 1px solid rgba(255,255,255,.7);
+      box-shadow: var(--shadow);
+      border-radius: 16px;
+      padding: 19px 20px;
+    }
+    .stat .value { font-weight: 760; font-size: 27px; line-height: 1.1; }
+    .stat .label { color: var(--muted); font-size: 13px; margin-top: 7px; }
+
+    .panel {
+      margin-top: 20px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 17px;
+      box-shadow: 0 6px 22px rgba(25, 39, 68, .045);
+      overflow: hidden;
+    }
+    .panel-head { padding: 23px 24px 13px; }
+    .panel-head h2 { margin: 0; font-size: 22px; }
+    .panel-head p { color: var(--muted); margin: 7px 0 0; font-size: 14px; }
+    .panel-body { padding: 8px 24px 24px; }
+
+    .takeaways {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .takeaway {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 17px 18px;
+      background: #fbfcfe;
+    }
+    .takeaway .kicker { font-weight: 700; font-size: 13px; color: var(--blue); }
+    .takeaway h3 { margin: 5px 0 6px; font-size: 17px; }
+    .takeaway p { margin: 0; font-size: 14px; color: #475467; }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      padding: 0 24px 14px;
+    }
+    .filter-btn {
+      border: 1px solid var(--line);
+      background: #fff;
+      color: #475467;
+      border-radius: 999px;
+      padding: 7px 13px;
+      cursor: pointer;
+      font-size: 13px;
+    }
+    .filter-btn.active { background: var(--blue); color: #fff; border-color: var(--blue); }
+    .search {
+      margin-left: auto;
+      min-width: 230px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 8px 11px;
+      font: inherit;
+      font-size: 13px;
+      outline: none;
+    }
+    .search:focus { border-color: #91a7ed; box-shadow: 0 0 0 3px var(--blue-soft); }
+
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; min-width: 960px; }
+    th {
+      position: sticky;
+      top: 0;
+      background: #f8fafc;
+      color: #475467;
+      font-size: 12px;
+      text-align: left;
+      padding: 11px 12px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      white-space: nowrap;
+    }
+    td {
+      vertical-align: top;
+      padding: 14px 12px;
+      border-bottom: 1px solid var(--line);
+      font-size: 13.5px;
+    }
+    tbody tr:last-child td { border-bottom: 0; }
+    tbody tr:hover { background: #fafbfe; }
+    .time { white-space: nowrap; color: var(--muted); }
+    .author { white-space: nowrap; font-weight: 650; }
+    .asset { min-width: 125px; font-weight: 700; }
+    .summary { min-width: 320px; color: #344054; }
+    .evidence { min-width: 120px; white-space: nowrap; }
+    .evidence a { display: block; margin-bottom: 4px; }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 3px 8px;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .buy { color: var(--green); background: var(--green-soft); }
+    .sell { color: var(--red); background: var(--red-soft); }
+    .bull { color: var(--green); background: var(--green-soft); }
+    .bear { color: var(--red); background: var(--red-soft); }
+    .hold { color: var(--blue); background: var(--blue-soft); }
+    .risk { color: var(--amber); background: var(--amber-soft); }
+    .theme { color: var(--violet); background: var(--violet-soft); }
+    .level { color: var(--muted); white-space: nowrap; }
+    .quote {
+      margin-top: 7px;
+      color: #667085;
+      font-size: 12.5px;
+      border-left: 3px solid #d9e1f8;
+      padding-left: 9px;
+    }
+    .note-list { margin: 0; padding-left: 20px; color: #475467; font-size: 14px; }
+    .note-list li + li { margin-top: 7px; }
+    .muted { color: var(--muted); }
+    .hidden-row { display: none; }
+    footer { text-align: center; color: var(--muted); font-size: 12.5px; padding: 4px 20px 34px; }
+
+    @media (max-width: 820px) {
+      .hero { padding-top: 34px; }
+      main { padding: 0 12px; }
+      .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .takeaways { grid-template-columns: 1fr; }
+      .panel-head, .panel-body { padding-left: 17px; padding-right: 17px; }
+      .toolbar { padding-left: 17px; padding-right: 17px; }
+      .search { width: 100%; margin-left: 0; }
+    }
+    @media print {
+      body { background: #fff; }
+      .hero { background: #203a77 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      main { margin-top: -26px; }
+      .panel, .stat { box-shadow: none; break-inside: avoid; }
+      .toolbar { display: none; }
+      a { color: #193fa8; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <div class="eyebrow">Investor Insight · 24H Monitor</div>
+      <h1>大V每日观点：2026年9月7日</h1>
+      <p class="subtitle">提炼明确的买卖与仓位动作，区分方向性观点、条件性判断和普通资讯。内容仅依据本期抓取文本，不对原作者观点作事实背书。</p>
+      <div class="source-window">统计窗口：2026-09-06 17:23—2026-09-07 17:23 ｜ 数据生成：2026-09-07 17:23:01</div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="stats" aria-label="数据统计">
+      <div class="stat"><div class="value">245</div><div class="label">全部原始记录</div></div>
+      <div class="stat"><div class="value">205</div><div class="label">雪球记录：84 主贴＋121 回复</div></div>
+      <div class="stat"><div class="value">40</div><div class="label">微博主贴</div></div>
+      <div class="stat"><div class="value">8</div><div class="label">明确交易/仓位信息</div></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>今日核心摘要</h2>
+        <p>先看实际动作，再看方向。黄金是本期最集中的看多主题；最清晰的个体交易来自 ericwarn丁宁、但斌、飞翔芸与管我财。</p>
+      </div>
+      <div class="panel-body takeaways">
+        <article class="takeaway">
+          <div class="kicker">明确动作</div>
+          <h3>买游戏，减保险银行</h3>
+          <p>ericwarn丁宁表示已买入市赚率明显低估的几只游戏股，提及三七互娱、吉比特、世纪华通；没有买当日大涨的心动公司。保险、银行均已适当减仓。</p>
+        </article>
+        <article class="takeaway">
+          <div class="kicker">最强看多</div>
+          <h3>黄金、存储、原油</h3>
+          <p>斯托伯的天空连续看多黄金，并认为长期只会嫌买少；但斌维持 AI 存储主线，海外组合约 25% 配置存储；斯托伯判断下半年油价大体在 85 美元以上。</p>
+        </article>
+        <article class="takeaway">
+          <div class="kicker">主要风险</div>
+          <h3>高估科技与光模块</h3>
+          <p>行中衡认为光模块反弹最多三天，随后或创新低、中期仍可能调整一年；飞翔芸和斯托伯共同警惕高价科技新股，雪月霜质疑电子厂高位定增扩产。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>交易、推荐与仓位变化</h2>
+        <p>只收录作者本人明确陈述的动作，或措辞足够清晰的策略建议。没有把第三方调仓资讯算作作者本人交易。</p>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>时间</th><th>动作</th><th>标的/板块</th><th>发帖者</th><th>核心摘要</th><th>原文</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="time">09-07<br>13:00–13:42</td>
+              <td><span class="badge buy">已买入</span></td>
+              <td class="asset">低估游戏股</td>
+              <td class="author">ericwarn丁宁</td>
+              <td class="summary">明确表示“市赚率明显低估的都买了”“游戏板块低估的几个都买了”；同一讨论中提及三七互娱、吉比特、世纪华通，但没有逐只确认持仓。明确未买当日暴涨的心动公司。<div class="quote">核心表述：AI 只做初筛，最终仍需自行精算估值。</div></td>
+              <td class="evidence"><a href="https://xueqiu.com/9363345092/408311765" target="_blank" rel="noopener">雪球主贴/评论</a></td>
+            </tr>
+            <tr>
+              <td class="time">09-07<br>13:23</td>
+              <td><span class="badge sell">小幅减仓</span></td>
+              <td class="asset">保险、银行</td>
+              <td class="author">ericwarn丁宁</td>
+              <td class="summary">认为“老登股最近涨得挺好”，成本较低者可以适当减一点，并明确称自己的保险、银行仓位“都减了点”。</td>
+              <td class="evidence"><a href="https://xueqiu.com/9363345092/408311765" target="_blank" rel="noopener">评论所在父帖</a></td>
+            </tr>
+            <tr>
+              <td class="time">09-07<br>13:37</td>
+              <td><span class="badge buy">抄底/持有</span></td>
+              <td class="asset">猪肉股、多晶硅</td>
+              <td class="author">ericwarn丁宁</td>
+              <td class="summary">今年已开始抄底猪肉股和多晶硅，逻辑是必需品周期不会永久萧条，终将迎来景气阶段；同时提醒反内卷见效需要时间，须承受等待。</td>
+              <td class="evidence"><a href="https://xueqiu.com/9363345092/408311765" target="_blank" rel="noopener">评论所在父帖</a></td>
+            </tr>
+            <tr>
+              <td class="time">09-07<br>13:10 / 13:33</td>
+              <td><span class="badge hold">主仓不动</span></td>
+              <td class="asset">当前组合</td>
+              <td class="author">ericwarn丁宁</td>
+              <td class="summary">将市场定义为非牛非熊的“猴市”：涨多卖一点、跌多买一点，小仓位做大 T，主仓位保持不动；单边上涨时才逐步减仓。</td>
+              <td class="evidence"><a href="https://xueqiu.com/9363345092/408311765" target="_blank" rel="noopener">评论所在父帖</a></td>
+            </tr>
+            <tr>
+              <td class="time">09-07<br>11:41</td>
+              <td><span class="badge buy">小额试仓</span></td>
+              <td class="asset">两倍杠杆 ETF<br><span class="muted">海力士主题，代码未写</span></td>
+              <td class="author">但斌</td>
+              <td class="summary">前些天买了一点点两倍杠杆 ETF，用于检验判断；明确强调此类产品损耗大、波动高，只适合短期博弈，不适合长期持有。对海力士正股基本面与创新高潜力仍偏乐观。</td>
+              <td class="evidence"><a href="https://xueqiu.com/1102105103/408304660" target="_blank" rel="noopener">雪球主贴</a></td>
+            </tr>
+            <tr>
+              <td class="time">09-07<br>02:46</td>
+              <td><span class="badge hold">组合配置</span></td>
+              <td class="asset">存储板块</td>
+              <td class="author">但斌</td>
+              <td class="summary">披露其海外组合中存储板块占比约 25%（含海力士）。引用第三方组合中 SNDK、MU 的高配，表达对 AI 时代存储需求、寡头格局和周期修复的认可。</td>
+              <td class="evidence"><a href="https://xueqiu.com/1102105103/408255346" target="_blank" rel="noopener">雪球主贴</a></td>
+            </tr>
+            <tr>
+              <td class="time">09-06<br>21:14</td>
+              <td><span class="badge buy">低位买回</span></td>
+              <td class="asset">“宏达”<br><span class="muted">原文未注明代码</span></td>
+              <td class="author">飞翔芸</td>
+              <td class="summary">被问“老师还有宏达吗”时回答“有低位买回”。由于抓取文本没有标注证券代码，本报告不擅自确定具体上市公司。</td>
+              <td class="evidence"><a href="https://xueqiu.com/6011177258/408235468" target="_blank" rel="noopener">评论所在父帖</a></td>
+            </tr>
+            <tr>
+              <td class="time">09-07<br>14:22</td>
+              <td><span class="badge buy">期权策略</span></td>
+              <td class="asset">百度集团-W<br>Sell Put 90</td>
+              <td class="author">管我财</td>
+              <td class="summary">表示支持卖出 9 月底、行权价 90 港元的认沽期权，并指出权利金约 3 港元。该策略意味着愿意在有效成本约 87 港元附近承接，但存在股价大跌时的接货风险。</td>
+              <td class="evidence"><a href="https://xueqiu.com/9650668145/213112777" target="_blank" rel="noopener">评论所在父帖</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel" id="direction-panel">
+      <div class="panel-head">
+        <h2>主要看多与看空观点</h2>
+        <p>“强”代表方向和逻辑都清晰；“中”代表方向明确但更偏主题判断；“观察”代表只具备相对偏好或条件。</p>
+      </div>
+      <div class="toolbar">
+        <button class="filter-btn active" data-filter="all">全部</button>
+        <button class="filter-btn" data-filter="bull">看多</button>
+        <button class="filter-btn" data-filter="bear">看空</button>
+        <button class="filter-btn" data-filter="risk">谨慎</button>
+        <button class="filter-btn" data-filter="theme">主题观察</button>
+        <input class="search" id="searchBox" type="search" placeholder="搜索标的、作者或观点">
+      </div>
+      <div class="table-wrap">
+        <table id="directionTable">
+          <thead><tr><th>方向</th><th>标的/主题</th><th>发帖者与时间</th><th>核心摘要</th><th>强度</th><th>原文</th></tr></thead>
+          <tbody>
+            <tr data-kind="bull">
+              <td><span class="badge bull">看多</span></td>
+              <td class="asset">黄金</td>
+              <td class="author">斯托伯的天空<br><span class="muted">09-06 18:05—09-07 16:43</span><br>飞翔芸<br><span class="muted">09-07 16:05</span></td>
+              <td class="summary">本期最强共识。斯托伯认为黄金强势、美元弱势，十年后回看只会嫌买少，并对央行连续增持表示“继续买买买”；飞翔芸将黄金视为中美金融角力主战场。</td>
+              <td class="level">强</td>
+              <td class="evidence">
+                <a href="https://weibo.com/4044309290/RgS5xAWWY" target="_blank" rel="noopener">长期判断</a>
+                <a href="https://weibo.com/4044309290/RgZ92qmpu" target="_blank" rel="noopener">十年视角</a>
+                <a href="https://weibo.com/4044309290/Rh0YR6mtS" target="_blank" rel="noopener">央行增持</a>
+                <a href="https://xueqiu.com/9957341637/408343854" target="_blank" rel="noopener">飞翔芸</a>
+              </td>
+            </tr>
+            <tr data-kind="bull">
+              <td><span class="badge bull">看多</span></td>
+              <td class="asset">AI 存储<br>海力士 / SNDK / MU</td>
+              <td class="author">但斌<br><span class="muted">09-07 02:46 / 11:41</span></td>
+              <td class="summary">AI 算力持续拉动 HBM，高带宽存储供给格局改善、估值仍低；其海外组合约 25% 配置存储。对海力士正股持积极判断，但不建议长期持有两倍杠杆产品。</td>
+              <td class="level">强</td>
+              <td class="evidence"><a href="https://xueqiu.com/1102105103/408255346" target="_blank" rel="noopener">组合配置</a><a href="https://xueqiu.com/1102105103/408304660" target="_blank" rel="noopener">海力士判断</a></td>
+            </tr>
+            <tr data-kind="bull">
+              <td><span class="badge bull">看多</span></td>
+              <td class="asset">原油与油气企业</td>
+              <td class="author">斯托伯的天空<br><span class="muted">09-07 13:53</span></td>
+              <td class="summary">判断下半年油价基本在 85 美元以上，油气企业利润可观；若美国战略储备不足或地缘局势升级，油价不排除挑战历史高位。</td>
+              <td class="level">强</td>
+              <td class="evidence"><a href="https://weibo.com/4044309290/RgZRt2g0Z" target="_blank" rel="noopener">微博原文</a></td>
+            </tr>
+            <tr data-kind="bull">
+              <td><span class="badge bull">看多</span></td>
+              <td class="asset">铜陵有色</td>
+              <td class="author">飞翔芸<br><span class="muted">09-06 17:47—20:24</span></td>
+              <td class="summary">认为铜陵有色发行 H 股是“新的起点”，当前至少不贵，后续机会较多。列出三项催化剂：米拉多二期、与 H 股相关的赞比亚铜矿收购、白河铜矿获批开工；对白河铜矿给出约五年的耐心窗口。</td>
+              <td class="level">强</td>
+              <td class="evidence"><a href="https://xueqiu.com/6011177258/408235468" target="_blank" rel="noopener">评论所在父帖</a></td>
+            </tr>
+            <tr data-kind="bull">
+              <td><span class="badge bull">看多</span></td>
+              <td class="asset">煤炭股</td>
+              <td class="author">16发财油菜君<br><span class="muted">09-07 10:51</span></td>
+              <td class="summary">把“煤价上涨、煤炭股下跌”视为承接机会，直言应“用盆去接”；认为市场担心煤价上涨招致政策压制，是刻舟求剑。</td>
+              <td class="level">强</td>
+              <td class="evidence"><a href="https://xueqiu.com/4348548174/408293764" target="_blank" rel="noopener">雪球原文</a></td>
+            </tr>
+            <tr data-kind="bull">
+              <td><span class="badge bull">看多</span></td>
+              <td class="asset">海螺水泥 / 水泥</td>
+              <td class="author">雪月霜<br><span class="muted">09-07 07:33—09:17</span></td>
+              <td class="summary">认为当前位置与估值足够低，不必等行业全面反转，只要明年“不再更差”即可支撑价值修复；判断水泥价格已难继续下探，未来重点可能转向骨料业务。</td>
+              <td class="level">强</td>
+              <td class="evidence"><a href="https://xueqiu.com/1505944393/408258238" target="_blank" rel="noopener">雪球主贴/评论</a></td>
+            </tr>
+            <tr data-kind="bull">
+              <td><span class="badge bull">看多</span></td>
+              <td class="asset">低估游戏股</td>
+              <td class="author">ericwarn丁宁<br><span class="muted">09-07 12:46—13:42</span></td>
+              <td class="summary">认为游戏公司报表正在修复、“他经济”复苏，而股价因缺少想象力长期处于低位；已经买入市赚率低估的几只游戏股。</td>
+              <td class="level">强</td>
+              <td class="evidence"><a href="https://xueqiu.com/9363345092/408311765" target="_blank" rel="noopener">雪球主贴/评论</a></td>
+            </tr>
+            <tr data-kind="bull">
+              <td><span class="badge bull">看多</span></td>
+              <td class="asset">猪肉股、多晶硅</td>
+              <td class="author">ericwarn丁宁<br><span class="muted">09-07 13:37</span></td>
+              <td class="summary">按必需品周期必然回归景气的逻辑进行左侧抄底，方向明确，但作者同时强调兑现周期可能较长。</td>
+              <td class="level">中</td>
+              <td class="evidence"><a href="https://xueqiu.com/9363345092/408311765" target="_blank" rel="noopener">评论所在父帖</a></td>
+            </tr>
+            <tr data-kind="bull theme">
+              <td><span class="badge theme">主题观察</span></td>
+              <td class="asset">农产品价格<br>双汇 / 伊利 / 海天</td>
+              <td class="author">滇南王<br><span class="muted">09-07 07:38</span></td>
+              <td class="summary">判断强厄尔尼诺可能带来干旱与洪涝、压低农产品产量，未来两年需重视农产品价格。文中标注三家公司，但没有明确发出买入建议。</td>
+              <td class="level">观察</td>
+              <td class="evidence"><a href="https://xueqiu.com/2496980475/408258368" target="_blank" rel="noopener">雪球原文</a></td>
+            </tr>
+            <tr data-kind="bull theme">
+              <td><span class="badge theme">相对偏好</span></td>
+              <td class="asset">中国海油 vs 拼多多</td>
+              <td class="author">czy710<br><span class="muted">09-07 15:47</span></td>
+              <td class="summary">用 2022—2026 年价格与分红对比指出：中国海油从约 9.98 港元升至 24.8 港元并累计分红约 4.68 港元，而拼多多利润大增但股价基本持平且未分红。属于股东回报比较，并非明确买卖建议。</td>
+              <td class="level">观察</td>
+              <td class="evidence"><a href="https://xueqiu.com/6308001210/408257549" target="_blank" rel="noopener">评论所在父帖</a></td>
+            </tr>
+            <tr data-kind="bear">
+              <td><span class="badge bear">看空</span></td>
+              <td class="asset">光模块</td>
+              <td class="author">行中衡<br><span class="muted">09-07 10:42</span></td>
+              <td class="summary">认为反弹最多持续三天，之后可能再创新低；中期仍需下跌约一年，是本期措辞最明确的板块看空观点。</td>
+              <td class="level">强</td>
+              <td class="evidence"><a href="https://xueqiu.com/1553799558/408291392" target="_blank" rel="noopener">雪球原文</a></td>
+            </tr>
+            <tr data-kind="bear risk">
+              <td><span class="badge bear">看空/警示</span></td>
+              <td class="asset">摩尔线程-U<br>高价科技新股</td>
+              <td class="author">飞翔芸<br><span class="muted">09-07 12:22</span><br>斯托伯的天空<br><span class="muted">09-07 10:39</span></td>
+              <td class="summary">飞翔芸强调好概念、好赛道、好企业不等于好股票，直接警示追高摩尔线程者的亏损风险；斯托伯认为近两年上市的许多科技股最终都会回落。</td>
+              <td class="level">强</td>
+              <td class="evidence"><a href="https://xueqiu.com/9957341637/408309727" target="_blank" rel="noopener">摩尔线程</a><a href="https://xueqiu.com/9493911686/408288891" target="_blank" rel="noopener">科技新股评论</a></td>
+            </tr>
+            <tr data-kind="bear risk">
+              <td><span class="badge bear">看空/警示</span></td>
+              <td class="asset">高位电子股<br>江波龙</td>
+              <td class="author">雪月霜<br><span class="muted">09-07 07:59—08:09</span></td>
+              <td class="summary">质疑电子企业在高位普遍选择定增、扩产而非分红，类比此前光伏扩产周期，并认为不少企业偏粗加工、缺少护城河；对江波龙定增表达明显负面态度。</td>
+              <td class="level">强</td>
+              <td class="evidence"><a href="https://xueqiu.com/1505944393/408259728" target="_blank" rel="noopener">电子股扩产</a><a href="https://xueqiu.com/1505944393/408259298" target="_blank" rel="noopener">江波龙</a></td>
+            </tr>
+            <tr data-kind="bear risk">
+              <td><span class="badge risk">谨慎</span></td>
+              <td class="asset">银行、保险及增发</td>
+              <td class="author">ericwarn丁宁 / 雪月霜 / 单缥烟<br><span class="muted">09-06 19:01—09-07 13:23</span></td>
+              <td class="summary">ericwarn丁宁已小幅减持保险、银行；雪月霜认为多数增发若不能带来高增长，会稀释投资者利益；单缥烟指出息差过低削弱银行内生增长。三者逻辑不同，但方向均偏谨慎。</td>
+              <td class="level">中</td>
+              <td class="evidence"><a href="https://xueqiu.com/9363345092/408311765" target="_blank" rel="noopener">减仓</a><a href="https://xueqiu.com/5324239224/408242722" target="_blank" rel="noopener">增发观点</a><a href="https://xueqiu.com/-1/408228577" target="_blank" rel="noopener">息差观点</a></td>
+            </tr>
+            <tr data-kind="bear theme">
+              <td><span class="badge risk">需求谨慎</span></td>
+              <td class="asset">全球消费<br>耐克 / 阿迪达斯</td>
+              <td class="author">斯托伯的天空<br><span class="muted">09-07 09:20</span></td>
+              <td class="summary">认为本轮通胀主要来自 AI 等供给侧投资，而全球消费端偏弱；耐克、阿迪达斯的下跌是消费疲弱的具体映射。属于宏观消费判断，未给出个股交易动作。</td>
+              <td class="level">中</td>
+              <td class="evidence"><a href="https://xueqiu.com/9755026092/408231897" target="_blank" rel="noopener">评论所在父帖</a></td>
+            </tr>
+            <tr data-kind="risk">
+              <td><span class="badge risk">工具风险</span></td>
+              <td class="asset">两倍杠杆 ETF</td>
+              <td class="author">但斌<br><span class="muted">09-07 11:41</span></td>
+              <td class="summary">即使看对正股方向，杠杆损耗、净值回撤与高波动也可能显著侵蚀收益；只适合短期博弈，不宜作为长期替代持仓。</td>
+              <td class="level">强</td>
+              <td class="evidence"><a href="https://xueqiu.com/1102105103/408304660" target="_blank" rel="noopener">雪球原文</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>边界与核验说明</h2>
+      </div>
+      <div class="panel-body">
+        <ul class="note-list">
+          <li>雪球记录共 205 条，其中主贴 84 条、监控大V回复 121 条；微博主贴 40 条（挖地瓜的超级鹿鼎公 22 条、斯托伯的天空 18 条）。</li>
+          <li>公司公告、融资余额播报、转载新闻和无方向性的日常内容不作为大V投资观点。第三方持仓变化只用来解释作者逻辑，不归入作者本人交易。</li>
+          <li>“宏达”在原始评论中没有证券代码，故保留原称并提示歧义；游戏股一栏列出的个股来自同一讨论上下文，不等同于作者逐只确认持仓。</li>
+          <li>评论数据只提供“父帖链接”，因此相关入口标为“评论所在父帖”；原始评论未提供独立永久链接。</li>
+          <li>本报告是信息整理，不构成投资建议；涉及期权、杠杆 ETF 和周期品时，实际风险可能远高于普通股票。</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>依据用户提供的“雪球JS评论＋微博主贴合并数据”整理 ｜ 2026-09-07</footer>
+
+  <script>
+    (() => {
+      const buttons = [...document.querySelectorAll('.filter-btn')];
+      const rows = [...document.querySelectorAll('#directionTable tbody tr')];
+      const search = document.getElementById('searchBox');
+      let active = 'all';
+
+      function applyFilter() {
+        const q = search.value.trim().toLowerCase();
+        rows.forEach(row => {
+          const kinds = (row.dataset.kind || '').split(' ');
+          const kindMatch = active === 'all' || kinds.includes(active);
+          const textMatch = !q || row.textContent.toLowerCase().includes(q);
+          row.classList.toggle('hidden-row', !(kindMatch && textMatch));
+        });
+      }
+
+      buttons.forEach(button => {
+        button.addEventListener('click', () => {
+          active = button.dataset.filter;
+          buttons.forEach(item => item.classList.toggle('active', item === button));
+          applyFilter();
+        });
+      });
+      search.addEventListener('input', applyFilter);
+    })();
+  </script>
+</body>
+</html>
