@@ -1,0 +1,429 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>大V每日观点：2026年09月15日</title>
+  <style>
+    :root {
+      --ink: #14213d;
+      --muted: #667085;
+      --line: #e6eaf0;
+      --panel: #ffffff;
+      --bg: #f5f7fb;
+      --navy: #10223f;
+      --blue: #2563eb;
+      --blue-soft: #eef4ff;
+      --green: #087a55;
+      --green-soft: #eaf8f2;
+      --red: #bc2f3a;
+      --red-soft: #fff0f1;
+      --amber: #a15c00;
+      --amber-soft: #fff7e8;
+      --slate-soft: #f2f4f7;
+      --shadow: 0 10px 28px rgba(16,34,63,.08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--bg);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      line-height: 1.68;
+    }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .page { width: min(1180px, calc(100% - 32px)); margin: 28px auto 54px; }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 34px 38px 30px;
+      color: #fff;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #0d1d37 0%, #153b6b 65%, #1c5aa5 100%);
+      box-shadow: var(--shadow);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 290px;
+      height: 290px;
+      right: -80px;
+      top: -120px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.08);
+    }
+    .eyebrow { font-size: 13px; letter-spacing: .18em; opacity: .72; }
+    h1 { margin: 7px 0 9px; font-size: clamp(28px, 4vw, 44px); line-height: 1.18; }
+    .subtitle { margin: 0; color: rgba(255,255,255,.78); font-size: 15px; }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0,1fr));
+      gap: 12px;
+      margin-top: 24px;
+    }
+    .stat {
+      padding: 14px 16px;
+      border: 1px solid rgba(255,255,255,.17);
+      border-radius: 14px;
+      background: rgba(255,255,255,.08);
+      backdrop-filter: blur(4px);
+    }
+    .stat b { display: block; font-size: 23px; line-height: 1.25; }
+    .stat span { display: block; margin-top: 4px; font-size: 12px; color: rgba(255,255,255,.72); }
+    .core {
+      margin-top: 18px;
+      padding: 20px 22px;
+      border: 1px solid var(--line);
+      border-left: 5px solid var(--blue);
+      border-radius: 15px;
+      background: var(--panel);
+      box-shadow: var(--shadow);
+    }
+    .core strong { display: block; margin-bottom: 8px; font-size: 17px; }
+    .core p { margin: 0; }
+    section {
+      margin-top: 20px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      background: var(--panel);
+      box-shadow: 0 5px 18px rgba(16,34,63,.045);
+    }
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    h2 { margin: 0; font-size: 23px; letter-spacing: -.02em; }
+    .section-note { color: var(--muted); font-size: 13px; text-align: right; }
+    .legend { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 650;
+    }
+    .trade { color: #fff; background: var(--blue); }
+    .bull { color: var(--green); background: var(--green-soft); }
+    .bear { color: var(--red); background: var(--red-soft); }
+    .conditional { color: var(--amber); background: var(--amber-soft); }
+    .discussion { color: #475467; background: var(--slate-soft); }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 13px; }
+    table { width: 100%; border-collapse: collapse; min-width: 850px; font-size: 14px; }
+    th {
+      padding: 12px 13px;
+      text-align: left;
+      color: #475467;
+      background: #f8fafc;
+      border-bottom: 1px solid var(--line);
+      font-size: 12px;
+      letter-spacing: .04em;
+    }
+    td { padding: 14px 13px; vertical-align: top; border-top: 1px solid var(--line); }
+    tbody tr:first-child td { border-top: 0; }
+    tbody tr:hover { background: #fbfcfe; }
+    .target { font-weight: 750; color: #172b4d; }
+    .meta { color: var(--muted); font-size: 12px; white-space: nowrap; }
+    .source-links { display: flex; flex-wrap: wrap; gap: 5px 10px; margin-top: 5px; font-size: 12px; }
+    .signal-grid { display: grid; grid-template-columns: repeat(3,minmax(0,1fr)); gap: 12px; }
+    .signal-card {
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fbfcfe;
+    }
+    .signal-card h3 { margin: 8px 0 6px; font-size: 17px; }
+    .signal-card p { margin: 0; font-size: 13px; color: #344054; }
+    .signal-card .meta { margin-top: 9px; }
+    .callout {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: var(--amber-soft);
+      color: #6d4200;
+      font-size: 13px;
+    }
+    .footnote { margin: 18px 4px 0; color: var(--muted); font-size: 12px; }
+    .nowrap { white-space: nowrap; }
+    @media (max-width: 860px) {
+      .stats { grid-template-columns: repeat(2,1fr); }
+      .signal-grid { grid-template-columns: 1fr; }
+      .section-head { align-items: flex-start; flex-direction: column; }
+      .section-note { text-align: left; }
+    }
+    @media (max-width: 560px) {
+      .page { width: min(100% - 18px, 1180px); margin-top: 9px; }
+      .hero { padding: 26px 20px; border-radius: 16px; }
+      .stats { grid-template-columns: 1fr 1fr; gap: 8px; }
+      .stat { padding: 12px; }
+      .stat b { font-size: 19px; }
+      section { padding: 18px 14px; border-radius: 15px; }
+      .core { padding: 17px; }
+    }
+    @media print {
+      body { background: #fff; }
+      .page { width: 100%; margin: 0; }
+      .hero, section, .core { box-shadow: none; break-inside: avoid; }
+      a { color: inherit; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="hero">
+      <div class="eyebrow">INVESTOR OPINION DIGEST</div>
+      <h1>大V每日观点</h1>
+      <p class="subtitle">2026年09月15日 · 统计区间：2026-09-14 20:25:56—2026-09-15 20:25:56（严格近24小时）</p>
+      <div class="stats">
+        <div class="stat"><b>271</b><span>雪球帖文（主贴147＋回复124）</span></div>
+        <div class="stat"><b>54</b><span>微博主贴</span></div>
+        <div class="stat"><b>1</b><span>最明确资金动作：盐湖股份</span></div>
+        <div class="stat"><b>0</b><span>可核验的当日卖出／减仓</span></div>
+      </div>
+    </header>
+
+    <div class="core">
+      <strong>当日核心结论</strong>
+      <p>资金信号集中于资源股：伊夫圣洛朗明确为盐湖股份赎回私募资金、已建底仓，并给出按市值分档加仓计划；16发财油菜君继续强调低估值资源股和高增长铜企。与此同时，A股整体判断偏谨慎，伊夫圣洛朗直言市场已进入熊市，雪月霜建议保留约一半现金。TCL科技、中远海控为重仓／持有披露；锂矿短期仍被视作下行趋势，只适合条件性、小仓位布局。未发现可核验的当日明确卖出或减仓。</p>
+    </div>
+
+    <section>
+      <div class="section-head">
+        <h2>重点交易信号</h2>
+        <div class="section-note">按“实际资金动作 ＞ 持仓披露 ＞ 条件计划 ＞ 历史复盘”排序</div>
+      </div>
+      <div class="legend">
+        <span class="tag trade">明确交易／资金动作</span>
+        <span class="tag bull">持仓披露</span>
+        <span class="tag conditional">条件性计划</span>
+        <span class="tag discussion">非当日操作</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>信号</th><th>标的／方向</th><th>发帖者与时间</th><th>核心摘要</th><th>原文</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><span class="tag trade">资金准备＋底仓</span></td>
+              <td class="target">盐湖股份</td>
+              <td><b>伊夫圣洛朗</b><div class="meta">09-15 15:08—15:14</div></td>
+              <td>当日赎回约50万元私募，称“子弹已在路上”；已进入底仓，市值跌破1200亿元开始加仓，若到1000亿元计划买成重仓；月底还可继续赎回约50万元。属于当日最明确、最完整的资金与分档买入计划。</td>
+              <td><div class="source-links"><a href="https://xueqiu.com/1066188300/409338742" target="_blank" rel="noopener noreferrer">15:08 主贴／评论</a></div></td>
+            </tr>
+            <tr>
+              <td><span class="tag trade">明确推荐</span></td>
+              <td class="target">盐湖股份</td>
+              <td><b>伊夫圣洛朗</b><div class="meta">09-14 23:07</div></td>
+              <td>称其正迎来“战略级别的买入机会”；长期理由是产能扩张、资产负债表稳健，以及对2030年利润空间的乐观判断。与次日实际调资、建底仓动作相互印证。</td>
+              <td><div class="source-links"><a href="https://xueqiu.com/1066188300/409244303" target="_blank" rel="noopener noreferrer">23:07 主贴</a><a href="https://xueqiu.com/1066188300/409356135" target="_blank" rel="noopener noreferrer">16:56 财务逻辑</a></div></td>
+            </tr>
+            <tr>
+              <td><span class="tag bull">重仓披露</span></td>
+              <td class="target">TCL科技</td>
+              <td><b>伊夫圣洛朗</b><div class="meta">09-14 22:51</div></td>
+              <td>明确表示“我也重仓TCL科技”，认可“面板二哥”的价值。未披露当日加仓；这是现有重仓信息，不应表述为当日买入。</td>
+              <td><div class="source-links"><a href="https://xueqiu.com/6930223813/409157260" target="_blank" rel="noopener noreferrer">22:51 评论父帖</a></div></td>
+            </tr>
+            <tr>
+              <td><span class="tag bull">重仓持有</span></td>
+              <td class="target">中远海控</td>
+              <td><b>HIS1963</b><div class="meta">09-15 17:56—19:35</div></td>
+              <td>自称重仓，面对低迷成交准备躺平至10月底；对公司将回购价上限提高至20元持积极态度，并推测高息低估蓝筹可能迎来结构性行情。未披露当日买卖。</td>
+              <td><div class="source-links"><a href="https://xueqiu.com/1760673340/409356643" target="_blank" rel="noopener noreferrer">17:56—19:35 评论串</a></div></td>
+            </tr>
+            <tr>
+              <td><span class="tag conditional">配置建议</span></td>
+              <td class="target">现金／控制仓位</td>
+              <td><b>雪月霜</b><div class="meta">09-15 16:55—16:58</div></td>
+              <td>认为“现在一定要留有现金”，对“约50%以上现金是否合适”的提问答“差不多”。这是对市场下行风险的配置建议，不等同于其本人实际现金仓位。</td>
+              <td><div class="source-links"><a href="https://xueqiu.com/1505944393/409354485" target="_blank" rel="noopener noreferrer">16:55—16:58 评论</a></div></td>
+            </tr>
+            <tr>
+              <td><span class="tag conditional">等待低位</span></td>
+              <td class="target">天齐锂业／锂矿</td>
+              <td><b>雪月霜</b><div class="meta">09-15 09:30—16:47</div></td>
+              <td>允许小仓位尝试但反对满仓；同时称板块仍在下行趋势，应等年底，天齐还需再跌约15%才更具买点，或待碳酸锂跌破10万元／吨再布局。因此不认定为当日明确买入。</td>
+              <td><div class="source-links"><a href="https://xueqiu.com/1505944393/409269470" target="_blank" rel="noopener noreferrer">09:30 小仓位</a><a href="https://xueqiu.com/1505944393/409330436" target="_blank" rel="noopener noreferrer">14:31／15:28 等待</a><a href="https://xueqiu.com/1505944393/409354485" target="_blank" rel="noopener noreferrer">16:47 再跌15%</a></div></td>
+            </tr>
+            <tr>
+              <td><span class="tag discussion">历史复盘</span></td>
+              <td class="target">招商轮船</td>
+              <td><b>雪月霜</b><div class="meta">09-14 22:02</div></td>
+              <td>回顾曾在4.6元首次买入、跌至3.9元补仓。这是过去操作案例，用于说明分批买入，不代表本统计期内加仓。</td>
+              <td><div class="source-links"><a href="https://xueqiu.com/1505944393/409238312" target="_blank" rel="noopener noreferrer">22:02 主贴</a></div></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout">严格口径：本期没有发现发帖者明确说“今天卖出、减仓或清仓”的可核验信息。雪月霜提到“估值差不多就走”属于对过去锂矿操作方法的复盘，不计作当日卖出。</div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>主要看多标的</h2>
+        <div class="section-note">按标的归并；“看多”不自动等同于“买入”</div>
+      </div>
+      <div class="signal-grid">
+        <article class="signal-card">
+          <span class="tag trade">强看多＋买入计划</span>
+          <h3>盐湖股份</h3>
+          <p>伊夫圣洛朗强调净现金充足、负债率低、产能扩张和未来分红潜力，并给出底仓和市值分档加仓计划。雪月霜也认为低价对应下一周期机会，但对锂价需求风险更谨慎。</p>
+          <div class="meta">伊夫圣洛朗 · <a href="https://xueqiu.com/1066188300/409244303" target="_blank" rel="noopener noreferrer">09-14 23:07</a> / <a href="https://xueqiu.com/1066188300/409338742" target="_blank" rel="noopener noreferrer">09-15 15:08</a></div>
+        </article>
+        <article class="signal-card">
+          <span class="tag bull">板块看多</span>
+          <h3>低估值资源股</h3>
+          <p>16发财油菜君认为，美国长期通胀、国内通缩的组合有利于全球定价、低估值的优质资源股，并称其“仍然是值得重仓的选择”。</p>
+          <div class="meta">16发财油菜君 · <a href="https://xueqiu.com/4348548174/409349988" target="_blank" rel="noopener noreferrer">16:11</a> / <a href="https://xueqiu.com/4348548174/409351806" target="_blank" rel="noopener noreferrer">16:24</a></div>
+        </article>
+        <article class="signal-card">
+          <span class="tag bull">个股组合看多</span>
+          <h3>紫金矿业／洛阳钼业／西部矿业</h3>
+          <p>看多逻辑是2025—2030年矿产铜增速明显快于南方铜业，而市盈率、市净率不足其一半；核心是“成长更快＋估值更低”。未披露当日买入。</p>
+          <div class="meta">16发财油菜君 · <a href="https://xueqiu.com/4348548174/409298028" target="_blank" rel="noopener noreferrer">11:05</a></div>
+        </article>
+        <article class="signal-card">
+          <span class="tag bull">重仓看多</span>
+          <h3>TCL科技</h3>
+          <p>直接披露重仓，并认可其面板资产价值；同一评论串称“面板一哥”太贵，但原文未点名，因此不直接归因为京东方A。</p>
+          <div class="meta">伊夫圣洛朗 · <a href="https://xueqiu.com/6930223813/409157260" target="_blank" rel="noopener noreferrer">09-14 22:51</a></div>
+        </article>
+        <article class="signal-card">
+          <span class="tag bull">持有＋价值判断</span>
+          <h3>云铝股份</h3>
+          <p>认为动态估值仅6倍多，比盐湖股份更低估；本人披露“也有仓位”，将其定位为偏分红、养老型资产，成长想象力弱于盐湖股份。</p>
+          <div class="meta">伊夫圣洛朗 · <a href="https://xueqiu.com/1066188300/409356135" target="_blank" rel="noopener noreferrer">17:42 评论</a></div>
+        </article>
+        <article class="signal-card">
+          <span class="tag bull">重仓持有</span>
+          <h3>中远海控</h3>
+          <p>看多依据是低估值、高股息和回购价上限提升；发帖者选择继续持有，并期待高息蓝筹结构性行情，但这仍是个人推测。</p>
+          <div class="meta">HIS1963 · <a href="https://xueqiu.com/1760673340/409356643" target="_blank" rel="noopener noreferrer">17:56—19:35</a></div>
+        </article>
+        <article class="signal-card">
+          <span class="tag bull">观点看多</span>
+          <h3>赛轮轮胎</h3>
+          <p>认为当前压制来自市场流动性而非公司基本面；下一轮市场突破时，赛轮轮胎“大概率是先锋”。未披露买入或加仓。</p>
+          <div class="meta">伊夫圣洛朗 · <a href="https://xueqiu.com/1066188300/409242591" target="_blank" rel="noopener noreferrer">09-14 22:44</a></div>
+        </article>
+        <article class="signal-card">
+          <span class="tag bull">估值看多</span>
+          <h3>复星医药</h3>
+          <p>滇南王认为其2025年净利润约33亿元、对应市盈率不足20倍，在创新药企业中估值较低、性价比较高。未给出目标价或交易动作。</p>
+          <div class="meta">滇南王 · <a href="https://xueqiu.com/2496980475/409366633" target="_blank" rel="noopener noreferrer">18:16</a></div>
+        </article>
+        <article class="signal-card">
+          <span class="tag conditional">条件看多</span>
+          <h3>海螺水泥</h3>
+          <p>雪月霜认为16—17元附近震荡且有股息托底，若继续深跌会吸引吃息资金买入；属于防守型、条件性正面判断。</p>
+          <div class="meta">雪月霜 · <a href="https://xueqiu.com/1505944393/409330436" target="_blank" rel="noopener noreferrer">15:45 评论</a></div>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>主要看空与风险提示</h2>
+        <div class="section-note">区分明确看空、条件风险与负面评价</div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>对象</th><th>性质</th><th>发帖者与时间</th><th>核心摘要</th><th>原文</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="target">A股整体</td>
+              <td><span class="tag bear">明确偏空</span></td>
+              <td><b>伊夫圣洛朗</b><div class="meta">09-15 19:47—20:05</div></td>
+              <td>称市场“其实已经是熊市”，当日成交额1.6万亿元、年内新低；估计本轮熊市平均成交额应在1万亿元以上，极端地量可能跌破9000亿元。</td>
+              <td><a href="https://xueqiu.com/1066188300/409377148" target="_blank" rel="noopener noreferrer">20:05 主贴</a></td>
+            </tr>
+            <tr>
+              <td class="target">科技／AI高估值资产</td>
+              <td><span class="tag bear">高风险提示</span></td>
+              <td><b>斯托伯的天空</b><div class="meta">09-14 23:22—23:30</div></td>
+              <td>认为华尔街对AI已由谨慎转向实质减少资本开支，IPO热度降温；在“大号2008”情境下给出“科技-70%起步”的极端压力判断。后者是条件推演，不是确定预测。</td>
+              <td><a href="https://xueqiu.com/9493911686/398284664" target="_blank" rel="noopener noreferrer">AI资本开支评论</a> / <a href="https://xueqiu.com/9493911686/409241080" target="_blank" rel="noopener noreferrer">极端情境评论</a></td>
+            </tr>
+            <tr>
+              <td class="target">天齐锂业／赣锋锂业／锂矿</td>
+              <td><span class="tag conditional">短空长多</span></td>
+              <td><b>雪月霜</b><div class="meta">09-15 09:34—18:52</div></td>
+              <td>短期判断是下行趋势、盈利可能随锂价转弱，不宜满仓抄底；若需求不崩，明年初可能估值修复，明年碳酸锂或见15—30万元高点。若AI相关需求下滑，锂价也可能跌至5—10万元，故必须留现金。</td>
+              <td><a href="https://xueqiu.com/1505944393/409271573" target="_blank" rel="noopener noreferrer">09:34</a> / <a href="https://xueqiu.com/1505944393/409366578" target="_blank" rel="noopener noreferrer">18:15 情景分析</a></td>
+            </tr>
+            <tr>
+              <td class="target">盛新锂能等扩产锂企</td>
+              <td><span class="tag bear">负面评价</span></td>
+              <td><b>雪月霜</b><div class="meta">09-15 13:17</div></td>
+              <td>批评产业链已有产能过剩压力时仍定增融资扩张，认为公司对未来谨慎却继续融资，对股东不友好。属于公司治理与资本开支层面的负面判断。</td>
+              <td><a href="https://xueqiu.com/6354260765/409189440" target="_blank" rel="noopener noreferrer">13:17 评论父帖</a></td>
+            </tr>
+            <tr>
+              <td class="target">黄酒／会稽山相关逻辑</td>
+              <td><span class="tag bear">板块看空</span></td>
+              <td><b>雪月霜</b><div class="meta">09-15 08:49—13:19</div></td>
+              <td>认为黄酒并非白酒替代品，储存、工艺和消费生态位更接近啤酒，且容易产能过剩，市场空间有限；明确表示“不看”。但未披露卖出或做空会稽山。</td>
+              <td><a href="https://xueqiu.com/1505944393/409206876" target="_blank" rel="noopener noreferrer">08:49 评论串</a> / <a href="https://xueqiu.com/1505944393/409266115" target="_blank" rel="noopener noreferrer">09:07 主贴／评论</a></td>
+            </tr>
+            <tr>
+              <td class="target">杭叉集团</td>
+              <td><span class="tag bear">事件负面</span></td>
+              <td><b>天地侠影</b><div class="meta">09-15 19:48</div></td>
+              <td>对公司在负债率仅约38%的情况下发行可转债融资表示“太让我失望”，认为没有必要进行股权性质融资。没有给出卖出动作。</td>
+              <td><a href="https://xueqiu.com/8871682425/409368182" target="_blank" rel="noopener noreferrer">19:48 评论父帖</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>市场与行业判断</h2>
+        <div class="section-note">只保留可能影响配置方向的信息</div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>主题</th><th>方向</th><th>关键判断</th><th>信息来源</th></tr></thead>
+          <tbody>
+            <tr><td class="target">市场流动性</td><td><span class="tag bear">偏空</span></td><td>A股成交额较年初高点明显收缩；伊夫圣洛朗据此判断熊市已形成。工业金属板块成交额也由约500亿元降至240亿元，为近一年低量，显示风险偏好疲弱。</td><td><a href="https://xueqiu.com/1066188300/409375377" target="_blank" rel="noopener noreferrer">伊夫圣洛朗 19:47</a> / <a href="https://xueqiu.com/9493911686/409290031" target="_blank" rel="noopener noreferrer">斯托伯 10:33</a></td></tr>
+            <tr><td class="target">高股息蓝筹</td><td><span class="tag bull">观察偏多</span></td><td>中远海控提高回购价上限，被HIS1963视为低估、高息蓝筹维护估值的可能先行信号，并猜测或出现高息结构性行情；这是推测而非已发生的板块趋势。</td><td><a href="https://xueqiu.com/1760673340/409356643" target="_blank" rel="noopener noreferrer">HIS1963 19:35</a></td></tr>
+            <tr><td class="target">资源股／铜</td><td><span class="tag bull">偏多</span></td><td>海外通胀与全球定价属性构成宏观支撑；具体偏好是兼具资源成长和低估值的紫金矿业、洛阳钼业、西部矿业。</td><td><a href="https://xueqiu.com/4348548174/409351806" target="_blank" rel="noopener noreferrer">16发财油菜君 16:24</a></td></tr>
+            <tr><td class="target">锂产业链</td><td><span class="tag conditional">高波动／待低位</span></td><td>核心不是单向看多或看空，而是需求情景：若需求稳定，2027年前后可能出现价格高点与估值修复；若需求下滑，则上游同样受冲击。当前策略偏向留现金、分批和等待。</td><td><a href="https://xueqiu.com/1505944393/409366578" target="_blank" rel="noopener noreferrer">雪月霜 18:15</a></td></tr>
+            <tr><td class="target">煤炭供给</td><td><span class="tag discussion">供给收紧线索</span></td><td>微博转发显示鄂尔多斯严查超能力生产、印尼Bayan Resources对煤炭供应协议启动不可抗力；但同期CCI 5500大卡指数由985降至981，价格仍弱。因此只能视为供给端利多线索，不能直接认定作者看多煤股。</td><td><a href="https://weibo.com/3962719063/RielN3UYw" target="_blank" rel="noopener noreferrer">安监通知 16:36</a> / <a href="https://weibo.com/3962719063/RiaLlktbc" target="_blank" rel="noopener noreferrer">印尼供给 07:28</a> / <a href="https://weibo.com/3962719063/RifnJuLnT" target="_blank" rel="noopener noreferrer">CCI 19:14</a></td></tr>
+            <tr><td class="target">AI／科技</td><td><span class="tag conditional">观点分歧</span></td><td>但斌持续转发AI模型、算力和创新内容，自己称AI创新仍在推进；斯托伯则重点警告资本开支与估值风险。由于大量内容是转发，不能将其全部视作作者明确投资立场。</td><td><a href="https://xueqiu.com/1102105103/409251306" target="_blank" rel="noopener noreferrer">但斌 01:58</a> / <a href="https://xueqiu.com/9493911686/398284664" target="_blank" rel="noopener noreferrer">斯托伯 23:30</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-head">
+        <h2>仅讨论：不纳入交易或多空结论</h2>
+        <div class="section-note">防止“提及标的”被误读为“推荐标的”</div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>标的／内容</th><th>为什么不计入明确多空</th><th>原文</th></tr></thead>
+          <tbody>
+            <tr><td class="target">腾讯控股／燧原科技</td><td>滇南王只核算腾讯早期投资燧原带来的账面回报，属于正面事件观察，没有表达买入、推荐或目标价。</td><td><a href="https://xueqiu.com/2496980475/409365609" target="_blank" rel="noopener noreferrer">18:09 主贴</a></td></tr>
+            <tr><td class="target">宁德时代</td><td>雪月霜以疑问方式提及“明年产能过剩”，没有形成确定判断，故不列为明确看空。</td><td><a href="https://xueqiu.com/1505944393/409326016" target="_blank" rel="noopener noreferrer">14:09 主贴</a></td></tr>
+            <tr><td class="target">赛力斯</td><td>滇南王对比媒体报道时约140元与当前约45元，只表达感触，未给出未来方向。</td><td><a href="https://xueqiu.com/2496980475/409331926" target="_blank" rel="noopener noreferrer">14:36 主贴</a></td></tr>
+            <tr><td class="target">中国石化／中国海油／中国石油</td><td>“累计发布100篇中国石化帖子”是平台成就分享，股票标签本身不是投资观点。</td><td><a href="https://xueqiu.com/2496980475/409270119" target="_blank" rel="noopener noreferrer">09:29 主贴</a></td></tr>
+            <tr><td class="target">美光／闪迪／SK海力士</td><td>帖子只有三个股票标签，没有文字方向。即使评论区谈到科技，也不足以认定对三只股票看多或看空。</td><td><a href="https://xueqiu.com/1505944393/409237190" target="_blank" rel="noopener noreferrer">09-14 21:52</a></td></tr>
+            <tr><td class="target">A00铝锭／氧化铝</td><td>微博仅报当日报价（铝锭上涨60元、氧化铝持平），没有交易或方向判断。</td><td><a href="https://weibo.com/3962719063/RicCbuZpn" target="_blank" rel="noopener noreferrer">12:11 微博</a></td></tr>
+            <tr><td class="target">“面板一哥”</td><td>伊夫圣洛朗称其“太贵”，但回复原文没有点名；虽语境可能指京东方A，仍不直接归入具体股票，以免过度解读。</td><td><a href="https://xueqiu.com/6930223813/409157260" target="_blank" rel="noopener noreferrer">09-14 22:54 评论父帖</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <p class="footnote">口径说明：雪球数量按原文件统计为主贴147条＋大V回复124条，共271条；微博主贴54条。公司公告搬运、行情快讯、生活内容及没有方向判断的股票标签未进入核心观点。评论链接采用数据文件提供的父帖链接。本文仅为公开帖文整理，不构成投资建议。</p>
+  </main>
+</body>
+</html>
