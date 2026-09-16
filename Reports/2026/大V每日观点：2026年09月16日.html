@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>大V每日观点：2026年09月16日</title>
+  <style>
+    :root {
+      --bg: #f4f7fb;
+      --paper: #ffffff;
+      --ink: #172033;
+      --muted: #667085;
+      --line: #e4e9f1;
+      --blue: #3157d5;
+      --blue-soft: #eef3ff;
+      --green: #157f63;
+      --green-soft: #eaf8f3;
+      --red: #b43a43;
+      --red-soft: #fff0f1;
+      --amber: #9a6500;
+      --amber-soft: #fff7e3;
+      --slate: #566176;
+      --slate-soft: #f0f2f6;
+      --shadow: 0 16px 46px rgba(28, 43, 77, .08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 5% 0%, rgba(49,87,213,.11), transparent 28rem),
+        linear-gradient(180deg, #f8faff 0, var(--bg) 26rem);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+        "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+      line-height: 1.72;
+    }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { width: min(1180px, calc(100% - 32px)); margin: 0 auto; }
+    header { padding: 54px 0 30px; }
+    .eyebrow {
+      color: var(--blue); font-size: 13px; font-weight: 800;
+      letter-spacing: .14em; text-transform: uppercase;
+    }
+    h1 { margin: 8px 0 10px; font-size: clamp(30px, 5vw, 52px); line-height: 1.15; letter-spacing: -.035em; }
+    .subtitle { color: var(--muted); font-size: 15px; }
+    .metrics {
+      display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px; margin-top: 26px;
+    }
+    .metric {
+      background: rgba(255,255,255,.88); border: 1px solid rgba(226,231,240,.9);
+      box-shadow: var(--shadow); border-radius: 16px; padding: 16px 18px;
+    }
+    .metric b { display: block; font-size: 23px; line-height: 1.25; }
+    .metric span { color: var(--muted); font-size: 12px; }
+    nav {
+      position: sticky; top: 0; z-index: 20; background: rgba(248,250,255,.92);
+      backdrop-filter: blur(14px); border-block: 1px solid var(--line);
+    }
+    nav .wrap { display: flex; gap: 22px; overflow-x: auto; padding-block: 11px; white-space: nowrap; }
+    nav a { color: #42506a; font-size: 14px; font-weight: 700; }
+    main { padding: 30px 0 70px; }
+    section { margin: 0 0 30px; scroll-margin-top: 58px; }
+    .section-head { display: flex; gap: 12px; align-items: baseline; margin: 0 0 14px; }
+    h2 { margin: 0; font-size: 24px; letter-spacing: -.02em; }
+    .section-note { color: var(--muted); font-size: 13px; }
+    .card {
+      background: var(--paper); border: 1px solid var(--line); border-radius: 18px;
+      box-shadow: var(--shadow); padding: 22px;
+    }
+    .lead {
+      display: grid; grid-template-columns: 1.15fr .85fr; gap: 16px;
+    }
+    .conclusion {
+      background: linear-gradient(135deg, #243d9e, #3157d5 55%, #4677ec);
+      color: #fff; border: 0;
+    }
+    .conclusion h2 { font-size: 25px; }
+    .conclusion ul { margin: 14px 0 0; padding-left: 1.2em; }
+    .conclusion li + li { margin-top: 7px; }
+    .heat { display: grid; gap: 10px; }
+    .heat-row { display: grid; grid-template-columns: 92px 1fr; gap: 10px; align-items: start; }
+    .heat-row strong { font-size: 14px; }
+    .heat-row div { color: #4d586c; font-size: 14px; }
+    .badge {
+      display: inline-flex; align-items: center; padding: 3px 9px; border-radius: 999px;
+      font-size: 12px; font-weight: 800; line-height: 1.6; white-space: nowrap;
+    }
+    .buy { color: var(--green); background: var(--green-soft); }
+    .sell { color: var(--red); background: var(--red-soft); }
+    .cond { color: var(--amber); background: var(--amber-soft); }
+    .hold { color: var(--blue); background: var(--blue-soft); }
+    .discuss { color: var(--slate); background: var(--slate-soft); }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 18px; box-shadow: var(--shadow); }
+    table { width: 100%; min-width: 900px; border-collapse: collapse; background: var(--paper); }
+    th, td { padding: 15px 16px; border-bottom: 1px solid var(--line); vertical-align: top; text-align: left; }
+    th { color: #5a6578; background: #f8fafd; font-size: 12px; letter-spacing: .04em; }
+    td { font-size: 14px; }
+    tr:last-child td { border-bottom: 0; }
+    .who { font-weight: 800; white-space: nowrap; }
+    .time { color: var(--muted); white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .asset { font-weight: 800; }
+    .signal { font-weight: 700; }
+    .evidence { color: #4d586c; }
+    .grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; }
+    .idea { position: relative; overflow: hidden; }
+    .idea::before { content: ""; position: absolute; inset: 0 auto 0 0; width: 5px; }
+    .idea.bull::before { background: var(--green); }
+    .idea.bear::before { background: var(--red); }
+    .idea.mixed::before { background: var(--amber); }
+    .idea h3 { display: flex; align-items: center; gap: 9px; margin: 0 0 8px; font-size: 18px; }
+    .idea p { margin: 0; color: #475268; font-size: 14px; }
+    .sources { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 7px 12px; font-size: 12px; }
+    .sources a { font-weight: 700; }
+    .market-list { display: grid; gap: 12px; }
+    .market-item { display: grid; grid-template-columns: 132px 1fr; gap: 14px; padding: 15px 0; border-bottom: 1px solid var(--line); }
+    .market-item:last-child { border-bottom: 0; }
+    .market-item h3 { margin: 0; font-size: 15px; }
+    .market-item p { margin: 0; color: #4e596e; font-size: 14px; }
+    .neutral-list { margin: 0; padding-left: 1.2em; color: #4d586c; }
+    .neutral-list li + li { margin-top: 7px; }
+    .method { color: var(--muted); font-size: 13px; }
+    footer { padding: 22px 0 42px; color: var(--muted); font-size: 12px; text-align: center; }
+    @media (max-width: 800px) {
+      header { padding-top: 36px; }
+      .metrics { grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .lead, .grid { grid-template-columns: 1fr; }
+      .market-item { grid-template-columns: 1fr; gap: 4px; }
+      .section-head { display: block; }
+      .section-note { display: block; margin-top: 3px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="eyebrow">Daily Influencer Market Brief</div>
+      <h1>大V每日观点</h1>
+      <div class="subtitle">2026年09月16日｜统计窗口：2026-09-15 16:45—2026-09-16 16:45（严格近24小时）</div>
+      <div class="metrics">
+        <div class="metric"><b>147</b><span>雪球主贴</span></div>
+        <div class="metric"><b>132</b><span>雪球大V回复</span></div>
+        <div class="metric"><b>38</b><span>微博主贴</span></div>
+        <div class="metric"><b>盐湖股份</b><span>当日最强明确交易信号</span></div>
+      </div>
+    </div>
+  </header>
+
+  <nav>
+    <div class="wrap">
+      <a href="#summary">核心结论</a>
+      <a href="#trades">重点交易信号</a>
+      <a href="#bull">主要看多</a>
+      <a href="#bear">主要看空</a>
+      <a href="#market">市场与行业</a>
+      <a href="#neutral">仅讨论</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <section id="summary" class="lead">
+      <article class="card conclusion">
+        <h2>当日核心结论</h2>
+        <ul>
+          <li><strong>交易最集中于盐湖股份：</strong>伊夫圣洛朗明确“继续加仓”，雪月霜明确“补回来一点、之后向下买”，形成当日最清晰的同向买入信号。</li>
+          <li><strong>多空分歧最大的是锂产业链：</strong>盐湖股份获得加仓，但雪月霜认为碳酸锂尚未到利润底、天齐锂业仍可能下探，且对宁德时代给出长期偏空判断。</li>
+          <li><strong>周期修复主线：</strong>TCL科技/TV面板、水泥/海螺水泥、中远海控及高股息资产被看多；黄金与资源品亦出现强烈增配建议。</li>
+          <li><strong>风险偏好仍低：</strong>有大V判断熊市已开始、成交额仍需收缩；科技股后续承压与红利股修复并存，仓位管理上强调保留现金。</li>
+        </ul>
+      </article>
+      <aside class="card">
+        <div class="section-head"><h2>信号强度</h2></div>
+        <div class="heat">
+          <div class="heat-row"><strong>强买入</strong><div>盐湖股份、黄金</div></div>
+          <div class="heat-row"><strong>偏多</strong><div>中远海控、TCL科技、海螺水泥/水泥、拼多多、复星医药</div></div>
+          <div class="heat-row"><strong>偏空</strong><div>宁德时代、天齐锂业短期、五粮液、原油高价持续性</div></div>
+          <div class="heat-row"><strong>混合</strong><div>碳酸锂：短期尚未见底，长期仍等待下一轮周期</div></div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="trades">
+      <div class="section-head">
+        <h2>重点交易信号</h2>
+        <span class="section-note">按“实际动作＞持仓披露＞条件性建议”排序</span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>类型</th><th>时间</th><th>发帖者</th><th>标的</th><th>动作/状态</th><th>关键信息</th><th>原文</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><span class="badge buy">明确加仓</span></td><td class="time">09-16 11:31</td><td class="who">伊夫圣洛朗</td>
+              <td class="asset">盐湖股份</td><td class="signal">“今天继续加仓”</td><td class="evidence">直接披露当日加仓，无条件语气。</td>
+              <td><a href="https://xueqiu.com/1066188300/409466716" target="_blank" rel="noopener noreferrer">雪球原文</a></td>
+            </tr>
+            <tr>
+              <td><span class="badge buy">明确买回</span></td><td class="time">09-16 10:51</td><td class="who">雪月霜</td>
+              <td class="asset">盐湖股份</td><td class="signal">补回部分卖出仓位</td><td class="evidence">称“补回来一点，之后开始向下买”；随后披露显示成本约24.7元。</td>
+              <td><a href="https://xueqiu.com/1505944393/409455596" target="_blank" rel="noopener noreferrer">雪球原文</a></td>
+            </tr>
+            <tr>
+              <td><span class="badge hold">买入中/持仓</span></td><td class="time">09-15 20:56</td><td class="who">czy710</td>
+              <td class="asset">拼多多</td><td class="signal">持仓约27%，仍在买入</td><td class="evidence">明确表示尚在学习、买入中；仓位已占约27%。</td>
+              <td><a href="https://xueqiu.com/6308001210/409306006" target="_blank" rel="noopener noreferrer">雪球父帖</a></td>
+            </tr>
+            <tr>
+              <td><span class="badge sell">卖出期权</span></td><td class="time">09-16 01:41</td><td class="who">大道无形我有型</td>
+              <td class="asset">西方石油 OXY</td><td class="signal">全仓覆盖卖出Call</td><td class="evidence">称即使被行权也“不心疼”。这是覆盖式卖出看涨期权，不等同于已卖出股票。</td>
+              <td><a href="https://xueqiu.com/1247347556/409403417" target="_blank" rel="noopener noreferrer">雪球原文</a></td>
+            </tr>
+            <tr>
+              <td><span class="badge hold">持仓披露</span></td><td class="time">09-15 17:42</td><td class="who">伊夫圣洛朗</td>
+              <td class="asset">云铝股份</td><td class="signal">披露仍有仓位</td><td class="evidence">认为云铝估值更低、偏吃息；盐湖股份成长空间更大。</td>
+              <td><a href="https://xueqiu.com/1066188300/409356135" target="_blank" rel="noopener noreferrer">雪球父帖</a></td>
+            </tr>
+            <tr>
+              <td><span class="badge hold">已满仓位</span></td><td class="time">09-16 11:47</td><td class="who">雪月霜</td>
+              <td class="asset">海螺水泥</td><td class="signal">称“不加”因相关仓位已打满</td><td class="evidence">同时表示剩余资金准备买盐湖股份；语境显示并非转为看空海螺。</td>
+              <td><a href="https://xueqiu.com/1505944393/409455596" target="_blank" rel="noopener noreferrer">雪球父帖</a></td>
+            </tr>
+            <tr>
+              <td><span class="badge cond">条件买入</span></td><td class="time">09-15 16:47</td><td class="who">雪月霜</td>
+              <td class="asset">天齐锂业</td><td class="signal">再跌约15%可买</td><td class="evidence">属于条件性建议；次日又判断股价或进入30元区间，短期仍偏谨慎。</td>
+              <td><a href="https://xueqiu.com/1505944393/409354485" target="_blank" rel="noopener noreferrer">雪球父帖</a></td>
+            </tr>
+            <tr>
+              <td><span class="badge cond">强烈增配建议</span></td><td class="time">09-16 12:31</td><td class="who">斯托伯的天空</td>
+              <td class="asset">黄金</td><td class="signal">“使劲儿加”</td><td class="evidence">美联储决议前给出强烈方向性建议，但未明确披露本人当日成交。</td>
+              <td><a href="https://weibo.com/4044309290/RimaUFSQz" target="_blank" rel="noopener noreferrer">微博原文</a></td>
+            </tr>
+            <tr>
+              <td><span class="badge discuss">持仓退出披露</span></td><td class="time">09-16 10:32</td><td class="who">天地侠影</td>
+              <td class="asset">杭叉集团</td><td class="signal">当前已不持有</td><td class="evidence">未说明何时卖出；仍认为股价跌过头，但对可转债融资表达失望。</td>
+              <td><a href="https://xueqiu.com/8871682425/409368182" target="_blank" rel="noopener noreferrer">雪球父帖</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="bull">
+      <div class="section-head"><h2>主要看多标的</h2><span class="section-note">按标的归并同类观点</span></div>
+      <div class="grid">
+        <article class="card idea bull">
+          <h3>盐湖股份 <span class="badge buy">强看多</span></h3>
+          <p>两位大V在同一交易日明确加仓/买回。伊夫圣洛朗强调净现金、低负债、未来产能翻倍与潜在股东回报；雪月霜则采取分批向下买入，但承认锂周期短期尚未到利润底。</p>
+          <div class="sources"><a href="https://xueqiu.com/1066188300/409466716" target="_blank" rel="noopener noreferrer">伊夫圣洛朗 09-16 11:31</a><a href="https://xueqiu.com/1505944393/409455596" target="_blank" rel="noopener noreferrer">雪月霜 09-16 10:51</a><a href="https://xueqiu.com/1066188300/409356135" target="_blank" rel="noopener noreferrer">基本面论证</a></div>
+        </article>
+        <article class="card idea bull">
+          <h3>中远海控 <span class="badge buy">偏多</span></h3>
+          <p>HIS1963以200—300亿元常态利润与4%—6%股息率评估安全垫，选择继续持有并只跟踪CCFI；单缥烟认为公司2022年以来治理、主业和分红发生改善。回购限价上调进一步强化价值认可预期。</p>
+          <div class="sources"><a href="https://xueqiu.com/1760673340/409514141" target="_blank" rel="noopener noreferrer">HIS1963 09-16 16:42</a><a href="https://xueqiu.com/2799158966/409421159" target="_blank" rel="noopener noreferrer">单缥烟 09-16 09:02</a><a href="https://xueqiu.com/8632046745/409383309" target="_blank" rel="noopener noreferrer">達人知命 09-15 21:11</a></div>
+        </article>
+        <article class="card idea bull">
+          <h3>TCL科技 / TV面板 <span class="badge buy">周期反转</span></h3>
+          <p>伊夫圣洛朗认为下半年同比改善逻辑清晰：头部厂商稼动率已接近高位，涨价函与大屏化推动面积需求，指向TV面板第二轮上行周期；OLED仍在爬坡但目前对利润拖累有限。</p>
+          <div class="sources"><a href="https://xueqiu.com/1066188300/409494660" target="_blank" rel="noopener noreferrer">TCL业绩逻辑 09-16 14:36</a><a href="https://xueqiu.com/1066188300/409485918" target="_blank" rel="noopener noreferrer">面板反转 09-16 13:47</a></div>
+        </article>
+        <article class="card idea bull">
+          <h3>水泥 / 海螺水泥 <span class="badge buy">底部修复</span></h3>
+          <p>雪月霜认为水泥价格指数与煤价差已显示拐点，行业处于成本高、售价低、亏现金后挺价的阶段；即使尚未完成全面反转，也存在从亏损向盈亏平衡修复的估值机会。对海螺的表述是“低位、可作红利股”，但需承受10%—20%短期波动。</p>
+          <div class="sources"><a href="https://xueqiu.com/1505944393/409499648" target="_blank" rel="noopener noreferrer">拐点判断 09-16 15:03</a><a href="https://xueqiu.com/1505944393/409382983" target="_blank" rel="noopener noreferrer">行业逻辑 09-15 21:07</a><a href="https://xueqiu.com/1505944393/409455596" target="_blank" rel="noopener noreferrer">海螺观点 09-16 11:25</a></div>
+        </article>
+        <article class="card idea bull">
+          <h3>拼多多 <span class="badge buy">买入中</span></h3>
+          <p>czy710将其低成本、反向定制和供应链能力类比盖可保险的低成本直销模式，认可管理层“报忧不报喜”的风格；本人仍在买入，披露仓位约27%，但也强调研究时间尚短。</p>
+          <div class="sources"><a href="https://xueqiu.com/6308001210/409414084" target="_blank" rel="noopener noreferrer">商业模式 09-16 07:37</a><a href="https://xueqiu.com/6308001210/409306006" target="_blank" rel="noopener noreferrer">仓位披露 09-15 20:56</a></div>
+        </article>
+        <article class="card idea bull">
+          <h3>黄金与硬资源 <span class="badge buy">长期偏多</span></h3>
+          <p>斯托伯给出黄金强增配建议；16发财油菜君认为美债与财政约束会凸显金、铜、煤、油的抗通胀属性；润哥判断美元长期贬值将推升大宗商品，同时人民币升值有利A/H股人民币资产重估。</p>
+          <div class="sources"><a href="https://weibo.com/4044309290/RimaUFSQz" target="_blank" rel="noopener noreferrer">黄金 09-16 12:31</a><a href="https://xueqiu.com/4348548174/409351806" target="_blank" rel="noopener noreferrer">硬资源 09-16 10:39</a><a href="https://xueqiu.com/4348548174/409351806" target="_blank" rel="noopener noreferrer">润哥 09-15 21:51</a></div>
+        </article>
+        <article class="card idea bull">
+          <h3>复星医药 <span class="badge buy">性价比</span></h3>
+          <p>滇南王以2025年约33亿元净利润、约587亿元市值为依据，认为其市盈率不到20倍，在创新药企业中估值较低、利润规模居前。属于观点看多，不是买入披露。</p>
+          <div class="sources"><a href="https://xueqiu.com/2496980475/409366633" target="_blank" rel="noopener noreferrer">滇南王 09-15 18:16</a></div>
+        </article>
+        <article class="card idea bull">
+          <h3>云铝股份 <span class="badge hold">持有偏多</span></h3>
+          <p>伊夫圣洛朗称其动态估值约6倍、比盐湖股份更低估，定位偏“吃息养老”；本人披露持有，但认为成长弹性不及盐湖股份。</p>
+          <div class="sources"><a href="https://xueqiu.com/1066188300/409356135" target="_blank" rel="noopener noreferrer">伊夫圣洛朗 09-15 17:42</a></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="bear">
+      <div class="section-head"><h2>主要看空与风险提示</h2><span class="section-note">区分长期逻辑与短期价格判断</span></div>
+      <div class="grid">
+        <article class="card idea bear">
+          <h3>宁德时代 <span class="badge sell">长期偏空</span></h3>
+          <p>雪月霜认为多家车企正降低宁德电池使用比例，“去宁化”会削弱客户黏性与议价权；即便技术领先，下游自建或扶持二线厂商也可能迫使其降价，判断股价存在长期下行压力。滇南王亦提示制造业扩产—过剩—价格战风险。</p>
+          <div class="sources"><a href="https://xueqiu.com/1505944393/409473459" target="_blank" rel="noopener noreferrer">雪月霜 09-16 12:14</a><a href="https://xueqiu.com/1505944393/409472694" target="_blank" rel="noopener noreferrer">车企变化 09-16 12:07</a><a href="https://xueqiu.com/2496980475/409416248" target="_blank" rel="noopener noreferrer">产能过剩 09-16 08:14</a></div>
+        </article>
+        <article class="card idea mixed">
+          <h3>碳酸锂 / 天齐锂业 <span class="badge cond">短空长多</span></h3>
+          <p>短期上，雪月霜认为碳酸锂尚未出现业绩底与估值底，跌破12万元可能触发进一步下跌；天齐锂业可能进入30元区间。长期上，他并未转为空头，而是计划在真正底部不断加仓，并认为后续仍有新一轮反转。</p>
+          <div class="sources"><a href="https://xueqiu.com/1505944393/409475024" target="_blank" rel="noopener noreferrer">仓位策略 09-16 12:29</a><a href="https://xueqiu.com/1505944393/409443011" target="_blank" rel="noopener noreferrer">12万元关口 09-16 10:13</a><a href="https://xueqiu.com/1505944393/409430002" target="_blank" rel="noopener noreferrer">天齐锂业 09-16 09:40</a></div>
+        </article>
+        <article class="card idea bear">
+          <h3>原油高价 <span class="badge sell">持续性存疑</span></h3>
+          <p>黄建平认为近期原油上涨带有明显短期炒作性质，不可能长期维持高价；此处针对油价而非明确看空某一家油气公司。</p>
+          <div class="sources"><a href="https://xueqiu.com/9220236682/409470095" target="_blank" rel="noopener noreferrer">黄建平 09-16 11:48</a></div>
+        </article>
+        <article class="card idea bear">
+          <h3>五粮液 <span class="badge sell">价格偏空</span></h3>
+          <p>雪月霜判断股价“65有希望”，结合当日语境属于继续下探预期，而不是65元上行目标；对白酒板块整体也较谨慎，并提到泸州老窖创新低。</p>
+          <div class="sources"><a href="https://xueqiu.com/1505944393/409434228" target="_blank" rel="noopener noreferrer">雪月霜 09-16 09:51</a><a href="https://xueqiu.com/1505944393/409380802" target="_blank" rel="noopener noreferrer">白酒评论 09-16 08:40</a></div>
+        </article>
+        <article class="card idea bear">
+          <h3>西方石油 OXY <span class="badge cond">上行收益受限</span></h3>
+          <p>大道无形我有型为全部持仓卖出覆盖式Call，并表示被行权也可接受。这体现对短期继续大涨的信心有限，但不等同于直接清仓或裸看空。</p>
+          <div class="sources"><a href="https://xueqiu.com/1247347556/409403417" target="_blank" rel="noopener noreferrer">大道无形我有型 09-16 01:41</a></div>
+        </article>
+        <article class="card idea bear">
+          <h3>ST司特 <span class="badge discuss">观望</span></h3>
+          <p>飞翔芸仅表示技术缺口仍有效、继续等待基本面根本变化。应归为偏谨慎观望，不构成明确卖出或看空。</p>
+          <div class="sources"><a href="https://xueqiu.com/9957341637/409512751" target="_blank" rel="noopener noreferrer">飞翔芸 09-16 16:30</a></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="market">
+      <div class="section-head"><h2>市场与行业判断</h2><span class="section-note">仅保留对投资方向有实际意义的内容</span></div>
+      <div class="card market-list">
+        <div class="market-item">
+          <h3>大盘与仓位</h3>
+          <p>伊夫圣洛朗判断市场已进入熊市，按扩容后的市场容量估算，极限地量可能低于9000亿元；雪月霜认同大盘可能继续下台阶，并建议保留约一半现金，以便真正底部出现时仍有资金。<a href="https://xueqiu.com/1066188300/409377148" target="_blank" rel="noopener noreferrer">伊夫圣洛朗</a> · <a href="https://xueqiu.com/1505944393/409354485" target="_blank" rel="noopener noreferrer">雪月霜</a></p>
+        </div>
+        <div class="market-item">
+          <h3>科技与红利轮动</h3>
+          <p>雪月霜认为科技股短期尚未破位，但公募年底考核后支撑可能减弱，届时高股息“老登股”才有机会；斯托伯则认为当前资金过度集中科技，压制了油气、资源和其他景气板块。这是风格判断，不是已发生的调仓。<a href="https://xueqiu.com/1505944393/409430002" target="_blank" rel="noopener noreferrer">雪月霜</a> · <a href="https://xueqiu.com/9493911686/409392042" target="_blank" rel="noopener noreferrer">斯托伯</a></p>
+        </div>
+        <div class="market-item">
+          <h3>锂产业链</h3>
+          <p>当日呈现“个股买入、行业等底”的结构：盐湖股份因资源、资产负债表和扩产逻辑获加仓，天齐及碳酸锂价格则被认为短期仍有下行空间；真正利润底出现后才转向重仓策略。</p>
+        </div>
+        <div class="market-item">
+          <h3>周期品</h3>
+          <p>面板和水泥被判断已进入或接近修复阶段；黄金、铜、煤、油被部分大V视为对冲海外通胀与货币超发的硬资产。需要注意，黄建平同时质疑原油当前高价的可持续性，因此“长期资源逻辑”与“短期油价判断”并不一致。</p>
+        </div>
+        <div class="market-item">
+          <h3>人民币资产</h3>
+          <p>润哥判断未来五年人民币升值将推动人民币资产重估，利好A股与港股低估值公司；同时美元长期贬值可能抬升大宗商品。这是宏观方向判断，未给出当天具体买卖标的。<a href="https://xueqiu.com/4348548174/409351806" target="_blank" rel="noopener noreferrer">原讨论链接</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="neutral">
+      <div class="section-head"><h2>仅讨论，不作交易解读</h2><span class="section-note">防止把提及、转发或情绪表达过度解读</span></div>
+      <div class="card">
+        <ul class="neutral-list">
+          <li><strong>欣旺达：</strong>主要作为宁德时代的比较对象出现，没有明确买入、推荐或独立看多论证。</li>
+          <li><strong>中国海洋石油/中国石油：</strong>斯托伯讨论股价受压、czy710说明更熟悉中海油，HIS1963坚持高息股框架；本统计窗口内未见明确加减仓动作。</li>
+          <li><strong>煤炭：</strong>微博转发小保当竞拍价与CCI指数，属于数据观察；未据此直接推断为明确买入。</li>
+          <li><strong>铝：</strong>“铝朋友翻红”只是盘面感叹；云铝的持仓和估值比较另行列入，不把该微博视作买入信号。</li>
+          <li><strong>自动资讯账号：</strong>公司公告、融资融券、专利及ETF行情类帖子计入原始数量，但不作为大V主观多空观点。</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="card method">
+        <strong>口径说明：</strong>雪球主贴147条、监控大V回复132条、微博主贴38条，均来自所附近24小时原始文本。报告优先保留明确买卖、加减仓、持仓变化和条件性建议；“看多/看空”仅依据发帖者原意归类，不代表事实核验或投资建议。评论区链接为原始数据提供的父帖链接。
+      </div>
+    </section>
+  </main>
+
+  <footer>基于近24小时公开帖文整理｜生成日期：2026年09月16日</footer>
+</body>
+</html>
