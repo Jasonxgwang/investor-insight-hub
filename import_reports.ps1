@@ -59,6 +59,97 @@ function Invoke-Python {
     }
 }
 
+function Normalize-GitProxy {
+    param([string]$Proxy)
+
+    if ([string]::IsNullOrWhiteSpace($Proxy)) {
+        return $null
+    }
+
+    $value = $Proxy.Trim()
+    if ($value.Contains(";")) {
+        $parts = @($value -split ";" | Where-Object { -not [string]::IsNullOrWhiteSpace($_) })
+        $https = $parts | Where-Object { $_ -like "https=*" } | Select-Object -First 1
+        $http = $parts | Where-Object { $_ -like "http=*" } | Select-Object -First 1
+        if ($https) {
+            $value = $https
+        } elseif ($http) {
+            $value = $http
+        } elseif ($parts.Count -gt 0) {
+            $value = $parts[0]
+        }
+    }
+
+    $value = $value -replace "^(https?|socks5?)=", ""
+    if ($value -notmatch "^[a-z]+://") {
+        $value = "http://$value"
+    }
+
+    return $value
+}
+
+function Add-GitProxyCandidate {
+    param(
+        [Parameter(Mandatory)][System.Collections.ArrayList]$Candidates,
+        [Parameter(Mandatory)][System.Collections.Generic.HashSet[string]]$Seen,
+        [Parameter(Mandatory)][string]$Label,
+        [string]$Proxy
+    )
+
+    $normalized = Normalize-GitProxy -Proxy $Proxy
+    if (-not $normalized) {
+        return
+    }
+
+    if ($Seen.Add($normalized)) {
+        [void]$Candidates.Add([PSCustomObject]@{
+            Label = "$Label $normalized"
+            Args = @("-c", "http.https://github.com.proxy=$normalized")
+        })
+    }
+}
+
+function Get-GitHubPushArgs {
+    param([Parameter(Mandatory)][string]$Branch)
+
+    $candidates = New-Object System.Collections.ArrayList
+    $seen = New-Object "System.Collections.Generic.HashSet[string]"
+
+    [void]$candidates.Add([PSCustomObject]@{
+        Label = "直连"
+        Args = @("-c", "http.https://github.com.proxy=")
+    })
+
+    $repoProxy = git config --get http.https://github.com.proxy
+    if ($LASTEXITCODE -eq 0) {
+        Add-GitProxyCandidate -Candidates $candidates -Seen $seen -Label "仓库代理" -Proxy $repoProxy
+    }
+
+    $internetSettings = Get-ItemProperty -Path "HKCU:\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -ErrorAction SilentlyContinue
+    if ($internetSettings -and $internetSettings.ProxyEnable -eq 1) {
+        Add-GitProxyCandidate -Candidates $candidates -Seen $seen -Label "系统代理" -Proxy $internetSettings.ProxyServer
+    }
+
+    foreach ($port in @(7897, 7890, 7899, 10809, 1080)) {
+        $listening = Get-NetTCPConnection -State Listen -LocalAddress 127.0.0.1 -LocalPort $port -ErrorAction SilentlyContinue
+        if ($listening) {
+            Add-GitProxyCandidate -Candidates $candidates -Seen $seen -Label "本地代理" -Proxy "127.0.0.1:$port"
+        }
+    }
+
+    $timeoutArgs = @("-c", "http.lowSpeedLimit=1", "-c", "http.lowSpeedTime=8")
+    foreach ($candidate in $candidates) {
+        Write-Host "检查 GitHub 连接：$($candidate.Label)..."
+        & git @timeoutArgs @($candidate.Args) ls-remote --heads origin $Branch *> $null
+        if ($LASTEXITCODE -eq 0) {
+            Write-Host "使用 GitHub 连接：$($candidate.Label)"
+            return @($candidate.Args)
+        }
+    }
+
+    throw "无法连接 GitHub。已尝试直连、系统代理和常见本地代理端口；本地提交已保留，可切换 VPN 后重新运行。"
+}
+
 if ($Publish) {
     # 发布前要求工作区干净，避免把与日报导入无关的用户文件一起提交。
     $existingChanges = @(git status --porcelain --untracked-files=all)
@@ -114,7 +205,8 @@ if ($LASTEXITCODE -ne 0) {
     throw "无法提交日报更新。"
 }
 
-git push origin $branch
+$gitHubArgs = Get-GitHubPushArgs -Branch $branch
+git @gitHubArgs push origin $branch
 if ($LASTEXITCODE -ne 0) {
     throw "Git 推送失败；本地提交已保留，可排查网络后重新推送。"
 }
