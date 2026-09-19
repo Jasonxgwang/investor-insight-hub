@@ -90,8 +90,8 @@ function Normalize-GitProxy {
 
 function Add-GitProxyCandidate {
     param(
-        [Parameter(Mandatory)][System.Collections.ArrayList]$Candidates,
-        [Parameter(Mandatory)][System.Collections.Generic.HashSet[string]]$Seen,
+        [System.Collections.ArrayList]$Candidates,
+        [System.Collections.Generic.HashSet[string]]$Seen,
         [Parameter(Mandatory)][string]$Label,
         [string]$Proxy
     )

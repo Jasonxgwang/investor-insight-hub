@@ -477,6 +477,48 @@ class PowerShellEntrypointTests(unittest.TestCase):
         self.assertIn('$env:PYTHONIOENCODING = "utf-8"', script)
         self.assertIn("[Console]::OutputEncoding", script)
 
+    def test_git_proxy_candidate_accepts_empty_seen_set(self):
+        powershell = shutil.which("powershell.exe") or shutil.which("pwsh")
+        if powershell is None:
+            self.skipTest("当前环境没有可用于代理函数测试的 PowerShell")
+
+        script = (PROJECT_ROOT / "import_reports.ps1").read_text(encoding="utf-8-sig")
+        helper_source = script.split("function Normalize-GitProxy", 1)[1]
+        helper_source = "function Normalize-GitProxy" + helper_source.split(
+            "function Get-GitHubPushArgs", 1
+        )[0]
+        probe = (
+            helper_source
+            + "\n"
+            + "$candidates = New-Object System.Collections.ArrayList\n"
+            + "$seen = New-Object 'System.Collections.Generic.HashSet[string]'\n"
+            + "Add-GitProxyCandidate -Candidates $candidates -Seen $seen -Label '系统代理' -Proxy '127.0.0.1:7897'\n"
+            + "if ($candidates.Count -ne 1) { throw 'candidate was not added' }\n"
+            + "Write-Output $candidates[0].Args[1]\n"
+        )
+
+        result = subprocess.run(
+            [
+                powershell,
+                "-NoProfile",
+                "-ExecutionPolicy",
+                "Bypass",
+                "-Command",
+                probe,
+            ],
+            cwd=PROJECT_ROOT,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            check=False,
+        )
+
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn(
+            "http.https://github.com.proxy=http://127.0.0.1:7897",
+            result.stdout,
+        )
+
     def test_inbox_entrypoint_runs_parent_script_with_publish(self):
         inbox_entrypoint = PROJECT_ROOT / "Inbox" / "import_reports.ps1"
         self.assertTrue(
