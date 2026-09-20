@@ -519,6 +519,62 @@ class PowerShellEntrypointTests(unittest.TestCase):
             result.stdout,
         )
 
+    def test_github_push_args_continue_after_failed_direct_probe(self):
+        powershell = shutil.which("powershell.exe") or shutil.which("pwsh")
+        if powershell is None:
+            self.skipTest("当前环境没有可用于代理函数测试的 PowerShell")
+
+        script = (PROJECT_ROOT / "import_reports.ps1").read_text(encoding="utf-8-sig")
+        helper_source = script.split("function Normalize-GitProxy", 1)[1]
+        helper_source = "function Normalize-GitProxy" + helper_source.split(
+            "if ($Publish)", 1
+        )[0]
+
+        with tempfile.TemporaryDirectory() as temporary:
+            fake_git = Path(temporary) / "git.cmd"
+            fake_git.write_text(
+                "@echo off\n"
+                "if \"%1\"==\"config\" (\n"
+                "  echo http://127.0.0.1:7897\n"
+                "  exit /b 0\n"
+                ")\n"
+                "echo %* | find \"proxy=http://127.0.0.1:7897\" >nul\n"
+                "if not errorlevel 1 exit /b 0\n"
+                "echo simulated direct failure 1>&2\n"
+                "exit /b 1\n",
+                encoding="ascii",
+            )
+            probe = (
+                helper_source
+                + "\n"
+                + "$ErrorActionPreference = 'Stop'\n"
+                + f"$env:PATH = '{temporary}' + [IO.Path]::PathSeparator + $env:PATH\n"
+                + "$args = Get-GitHubPushArgs -Branch 'master'\n"
+                + "Write-Output $args[1]\n"
+            )
+
+            result = subprocess.run(
+                [
+                    powershell,
+                    "-NoProfile",
+                    "-ExecutionPolicy",
+                    "Bypass",
+                    "-Command",
+                    probe,
+                ],
+                cwd=PROJECT_ROOT,
+                capture_output=True,
+                text=True,
+                encoding="utf-8",
+                check=False,
+            )
+
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIn(
+            "http.https://github.com.proxy=http://127.0.0.1:7897",
+            result.stdout,
+        )
+
     def test_inbox_entrypoint_runs_parent_script_with_publish(self):
         inbox_entrypoint = PROJECT_ROOT / "Inbox" / "import_reports.ps1"
         self.assertTrue(

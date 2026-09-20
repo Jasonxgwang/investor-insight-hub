@@ -140,8 +140,15 @@ function Get-GitHubPushArgs {
     $timeoutArgs = @("-c", "http.lowSpeedLimit=1", "-c", "http.lowSpeedTime=8")
     foreach ($candidate in $candidates) {
         Write-Host "检查 GitHub 连接：$($candidate.Label)..."
-        & git @timeoutArgs @($candidate.Args) ls-remote --heads origin $Branch *> $null
-        if ($LASTEXITCODE -eq 0) {
+        $previousErrorActionPreference = $ErrorActionPreference
+        try {
+            $ErrorActionPreference = "Continue"
+            & git @timeoutArgs @($candidate.Args) ls-remote --heads origin $Branch > $null 2> $null
+            $probeExitCode = $LASTEXITCODE
+        } finally {
+            $ErrorActionPreference = $previousErrorActionPreference
+        }
+        if ($probeExitCode -eq 0) {
             Write-Host "使用 GitHub 连接：$($candidate.Label)"
             return @($candidate.Args)
         }
