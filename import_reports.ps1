@@ -157,6 +157,16 @@ function Get-GitHubPushArgs {
     throw "无法连接 GitHub。已尝试直连、系统代理和常见本地代理端口；本地提交已保留，可切换 VPN 后重新运行。"
 }
 
+function Invoke-GitHubPush {
+    param([Parameter(Mandatory)][string]$Branch)
+
+    $gitHubArgs = Get-GitHubPushArgs -Branch $Branch
+    git @gitHubArgs push origin $Branch
+    if ($LASTEXITCODE -ne 0) {
+        throw "Git 推送失败；本地提交已保留，可排查网络后重新推送。"
+    }
+}
+
 if ($Publish) {
     # 发布前要求工作区干净，避免把与日报导入无关的用户文件一起提交。
     $existingChanges = @(git status --porcelain --untracked-files=all)
@@ -201,6 +211,14 @@ if ($LASTEXITCODE -ne 0) {
 
 git diff --cached --quiet
 if ($LASTEXITCODE -eq 0) {
+    $aheadCount = git rev-list --count "origin/$branch..HEAD" 2> $null
+    if ($LASTEXITCODE -eq 0 -and [int]$aheadCount -gt 0) {
+        Write-Host "没有新的日报差异，但检测到 $aheadCount 个本地提交尚未推送。"
+        Invoke-GitHubPush -Branch $branch
+        Write-Host "本地保留的日报提交已推送到 GitHub，GitHub Pages 将自动更新。"
+        exit 0
+    }
+
     Write-Host "没有需要发布的新日报。"
     exit 0
 }
@@ -212,10 +230,6 @@ if ($LASTEXITCODE -ne 0) {
     throw "无法提交日报更新。"
 }
 
-$gitHubArgs = Get-GitHubPushArgs -Branch $branch
-git @gitHubArgs push origin $branch
-if ($LASTEXITCODE -ne 0) {
-    throw "Git 推送失败；本地提交已保留，可排查网络后重新推送。"
-}
+Invoke-GitHubPush -Branch $branch
 
 Write-Host "日报已推送到 GitHub，GitHub Pages 将自动更新。"

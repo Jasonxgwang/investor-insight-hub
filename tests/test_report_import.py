@@ -575,6 +575,13 @@ class PowerShellEntrypointTests(unittest.TestCase):
             result.stdout,
         )
 
+    def test_publish_pushes_preserved_local_commits(self):
+        script = (PROJECT_ROOT / "import_reports.ps1").read_text(encoding="utf-8-sig")
+
+        self.assertIn('git rev-list --count "origin/$branch..HEAD"', script)
+        self.assertIn("本地提交尚未推送", script)
+        self.assertIn("Invoke-GitHubPush -Branch $branch", script)
+
     def test_inbox_entrypoint_runs_parent_script_with_publish(self):
         inbox_entrypoint = PROJECT_ROOT / "Inbox" / "import_reports.ps1"
         self.assertTrue(
