@@ -531,8 +531,8 @@ class PowerShellEntrypointTests(unittest.TestCase):
         )[0]
 
         with tempfile.TemporaryDirectory() as temporary:
-            fake_git = Path(temporary) / "git.cmd"
-            fake_git.write_text(
+            fake_git_cmd = Path(temporary) / "git.cmd"
+            fake_git_cmd.write_text(
                 "@echo off\n"
                 "if \"%1\"==\"config\" (\n"
                 "  echo http://127.0.0.1:7897\n"
@@ -544,6 +544,21 @@ class PowerShellEntrypointTests(unittest.TestCase):
                 "exit /b 1\n",
                 encoding="ascii",
             )
+            fake_git = Path(temporary) / "git"
+            fake_git.write_text(
+                "#!/bin/sh\n"
+                "if [ \"$1\" = \"config\" ]; then\n"
+                "  echo http://127.0.0.1:7897\n"
+                "  exit 0\n"
+                "fi\n"
+                "case \"$*\" in\n"
+                "  *proxy=http://127.0.0.1:7897*) exit 0 ;;\n"
+                "esac\n"
+                "echo simulated direct failure >&2\n"
+                "exit 1\n",
+                encoding="ascii",
+            )
+            fake_git.chmod(0o755)
             probe = (
                 helper_source
                 + "\n"

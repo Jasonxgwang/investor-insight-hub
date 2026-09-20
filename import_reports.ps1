@@ -130,10 +130,12 @@ function Get-GitHubPushArgs {
         Add-GitProxyCandidate -Candidates $candidates -Seen $seen -Label "系统代理" -Proxy $internetSettings.ProxyServer
     }
 
-    foreach ($port in @(7897, 7890, 7899, 10809, 1080)) {
-        $listening = Get-NetTCPConnection -State Listen -LocalAddress 127.0.0.1 -LocalPort $port -ErrorAction SilentlyContinue
-        if ($listening) {
-            Add-GitProxyCandidate -Candidates $candidates -Seen $seen -Label "本地代理" -Proxy "127.0.0.1:$port"
+    if (Get-Command Get-NetTCPConnection -ErrorAction SilentlyContinue) {
+        foreach ($port in @(7897, 7890, 7899, 10809, 1080)) {
+            $listening = Get-NetTCPConnection -State Listen -LocalAddress 127.0.0.1 -LocalPort $port -ErrorAction SilentlyContinue
+            if ($listening) {
+                Add-GitProxyCandidate -Candidates $candidates -Seen $seen -Label "本地代理" -Proxy "127.0.0.1:$port"
+            }
         }
     }
 
