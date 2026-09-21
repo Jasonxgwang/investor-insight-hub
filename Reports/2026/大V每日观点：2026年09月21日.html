@@ -1,0 +1,398 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>大V每日观点：2026年09月21日</title>
+  <style>
+    :root {
+      --ink: #17212b;
+      --muted: #66717d;
+      --line: #d8dee5;
+      --paper: #ffffff;
+      --canvas: #f3f5f7;
+      --green: #18794e;
+      --green-soft: #e8f5ee;
+      --red: #b42318;
+      --red-soft: #fff0ee;
+      --amber: #9a6700;
+      --amber-soft: #fff7df;
+      --blue: #175cd3;
+      --blue-soft: #eef4ff;
+      --charcoal: #20262d;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--canvas);
+      font-family: "Microsoft YaHei", "PingFang SC", system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.65;
+      letter-spacing: 0;
+    }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .page { max-width: 1180px; margin: 0 auto; background: var(--paper); min-height: 100vh; }
+
+    header {
+      padding: 34px 40px 30px;
+      color: #fff;
+      background: var(--charcoal);
+      border-bottom: 5px solid #2f8f68;
+    }
+    .eyebrow { color: #a8dfc7; font-size: 13px; font-weight: 700; }
+    h1 { margin: 5px 0 14px; font-size: 30px; line-height: 1.25; }
+    .period { color: #ced4da; }
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1px;
+      margin-top: 24px;
+      background: #46505a;
+      border: 1px solid #46505a;
+    }
+    .stat { padding: 14px 16px; background: #2a3138; }
+    .stat strong { display: block; font-size: 24px; color: #fff; }
+    .stat span { color: #bac2ca; font-size: 13px; }
+
+    main { padding: 32px 40px 48px; }
+    section { margin-top: 36px; }
+    section:first-child { margin-top: 0; }
+    h2 {
+      margin: 0 0 16px;
+      padding-bottom: 9px;
+      font-size: 21px;
+      border-bottom: 2px solid var(--ink);
+    }
+    h3 { margin: 0 0 6px; font-size: 17px; }
+    p { margin: 0; }
+    .lead {
+      padding: 20px 22px;
+      background: #f7faf8;
+      border-left: 5px solid var(--green);
+      font-size: 16px;
+    }
+    .lead strong { color: #0f5d3c; }
+
+    .signal-list { border-top: 1px solid var(--line); }
+    .signal {
+      display: grid;
+      grid-template-columns: 112px minmax(0, 1fr) 178px;
+      gap: 18px;
+      align-items: start;
+      padding: 17px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .tag {
+      display: inline-block;
+      width: fit-content;
+      padding: 3px 9px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .trade { color: var(--green); background: var(--green-soft); }
+    .bull { color: var(--blue); background: var(--blue-soft); }
+    .risk { color: var(--red); background: var(--red-soft); }
+    .hold { color: var(--amber); background: var(--amber-soft); }
+    .meta { color: var(--muted); font-size: 13px; }
+    .signal .meta { text-align: right; }
+
+    .columns { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+    .view-group { border-top: 4px solid var(--green); }
+    .view-group.bearish { border-top-color: var(--red); }
+    .view-group h2 { border-bottom-width: 1px; }
+    .view-item { padding: 17px 0; border-bottom: 1px solid var(--line); }
+    .view-item ul { margin: 7px 0 0; padding-left: 20px; }
+    .view-item li { margin: 4px 0; }
+    .source { margin-top: 8px; color: var(--muted); font-size: 13px; }
+
+    .judgments { width: 100%; border-collapse: collapse; }
+    .judgments th, .judgments td {
+      padding: 12px 13px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--line);
+    }
+    .judgments th { background: #edf1f4; font-size: 13px; }
+    .judgments td:first-child { width: 19%; font-weight: 700; }
+    .judgments td:nth-child(2) { width: 18%; }
+
+    .discussion {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px 24px;
+    }
+    .discussion-item { padding: 14px 0; border-bottom: 1px solid var(--line); }
+    .discussion-item strong { display: block; }
+
+    .note {
+      margin-top: 38px;
+      padding: 16px 18px;
+      color: #4e5964;
+      background: #f5f6f7;
+      border: 1px solid var(--line);
+      font-size: 13px;
+    }
+    footer { padding: 18px 40px 26px; color: var(--muted); font-size: 12px; }
+
+    @media (max-width: 760px) {
+      header, main { padding-left: 20px; padding-right: 20px; }
+      h1 { font-size: 25px; }
+      .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .columns, .discussion { grid-template-columns: 1fr; }
+      .signal { grid-template-columns: 1fr; gap: 7px; }
+      .signal .meta { text-align: left; }
+      .judgments { display: block; overflow-x: auto; }
+      footer { padding-left: 20px; padding-right: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="eyebrow">投资观点监测日报</div>
+      <h1>大V每日观点：2026年09月21日</h1>
+      <div class="period">统计区间：2026年09月20日 16:26:55 至 2026年09月21日 16:26:55（严格近24小时）</div>
+      <div class="stats" aria-label="采集统计">
+        <div class="stat"><strong>84</strong><span>雪球主贴</span></div>
+        <div class="stat"><strong>95</strong><span>雪球大V回复</span></div>
+        <div class="stat"><strong>68</strong><span>微博主贴</span></div>
+        <div class="stat"><strong>1</strong><span>明确买入动作</span></div>
+      </div>
+    </header>
+
+    <main>
+      <section>
+        <h2>当日核心结论</h2>
+        <div class="lead">
+          <strong>交易层面信号很少，方向性观点明显多于实际操作。</strong>
+          唯一清晰买入是伊夫圣洛朗小额建立宁德时代观察仓；未发现明确卖出、清仓或减仓动作。
+          观点上，核心城市房地产中长期供需、煤油铜与海运景气、银行分红能力偏多；科技板块筹码压力、融资交易和原油期货风险偏谨慎。
+          地产需要严格区分“核心城市房价可能企稳上行”与“地产股值得买入”：雪月霜明确认为地产股当前难选，并未给出买入建议。
+        </div>
+      </section>
+
+      <section>
+        <h2>重点交易信号</h2>
+        <div class="signal-list">
+          <article class="signal">
+            <span class="tag trade">明确买入</span>
+            <div>
+              <h3>宁德时代：建立小额观察仓</h3>
+              <p>伊夫圣洛朗明确表示“买了一点观察仓”。这是本期唯一能够确认的实际买入，但仓位性质为观察仓，不等同于重仓看多。</p>
+            </div>
+            <div class="meta">伊夫圣洛朗<br>09-21 14:50<br><a href="https://xueqiu.com/1066188300/410048368" target="_blank" rel="noopener">查看原文</a></div>
+          </article>
+
+          <article class="signal">
+            <span class="tag hold">仓位纪律</span>
+            <div>
+              <h3>物业管理：已有仓位，但即使腰斩也不加仓</h3>
+              <p>管我财表示对头部物业管理公司不太担心，但其限制性仓位按买入价计算，即使股价腰斩也不会加仓。属于持仓与风险上限说明，不是新增买入。</p>
+            </div>
+            <div class="meta">管我财<br>09-21 16:12<br><a href="https://xueqiu.com/3338215700/409860342" target="_blank" rel="noopener">查看讨论</a></div>
+          </article>
+
+          <article class="signal">
+            <span class="tag bull">配置观点</span>
+            <div>
+              <h3>消费、消费电子与小市值题材：按周期分层</h3>
+              <p>行中衡给出“长线消费、中线消费电子、短线小市值题材股”的时间维度配置框架，并认为后续主流板块可能来自9月18日强势方向。属于方向建议，未披露具体交易。</p>
+            </div>
+            <div class="meta">行中衡<br>09-21 10:08<br><a href="https://xueqiu.com/1553799558/409848439" target="_blank" rel="noopener">查看讨论</a></div>
+          </article>
+
+          <article class="signal">
+            <span class="tag bull">行业看多</span>
+            <div>
+              <h3>煤炭、石油、铜、海运：三季度景气偏强</h3>
+              <p>16发财油菜君判断煤、油、铜价格同比和环比均增长，三季报有望较好；油运价格上涨带来更强业绩弹性，并进一步看好柴油炼化的长景气周期。</p>
+            </div>
+            <div class="meta">16发财油菜君<br>09-20 18:42<br><a href="https://xueqiu.com/4348548174/409955017" target="_blank" rel="noopener">行业原文</a> · <a href="https://xueqiu.com/4348548174/409946984" target="_blank" rel="noopener">炼化原文</a></div>
+          </article>
+
+          <article class="signal">
+            <span class="tag risk">明确风控</span>
+            <div>
+              <h3>不建议轻易融资，先保留生活现金</h3>
+              <p>斯托伯的天空提醒非长期交易老手不要轻易使用融资，并要求保留生活费，以应对全球经济危机等极端情景。属于仓位与杠杆管理，不是市场方向判断。</p>
+            </div>
+            <div class="meta">斯托伯的天空<br>09-21 11:06 / 09:48<br><a href="https://xueqiu.com/9493911686/409990907" target="_blank" rel="noopener">查看原文及讨论</a></div>
+          </article>
+
+          <article class="signal">
+            <span class="tag hold">无卖出动作</span>
+            <div>
+              <h3>本期未检出明确卖出、减仓或清仓</h3>
+              <p>部分内容表达谨慎、估值担忧或行业风险，但没有出现可确认的个人卖出/减仓执行。涉及“跌”“做空”等词语的反讽和转述均未计入交易动作。</p>
+            </div>
+            <div class="meta">全量复核<br>84主贴 + 95回复 + 68微博</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="columns">
+        <div class="view-group">
+          <h2>主要看多标的与方向</h2>
+
+          <article class="view-item">
+            <h3>核心城市优质住宅与房地产供需</h3>
+            <ul>
+              <li>雪月霜判断核心城市房价明年有望企稳上行，之后新房供给可能因开工与预售制度变化而收缩；机会先集中于北上广深，之后可能扩展至杭州、南京、合肥、青岛、天津、重庆、郑州、大连等城市。</li>
+              <li>这是一项中长期房价与供需判断，不等于看多所有城市、老旧住宅或地产股。</li>
+            </ul>
+            <div class="source">雪月霜 · 09-21 16:13、16:15 · <a href="https://xueqiu.com/1505944393/410061881" target="_blank" rel="noopener">主帖与讨论</a>；<a href="https://xueqiu.com/1505944393/410052171" target="_blank" rel="noopener">看多地产原文</a></div>
+          </article>
+
+          <article class="view-item">
+            <h3>煤炭、石油、铜、柴油炼化与海运</h3>
+            <ul>
+              <li>16发财油菜君认为海外通胀有利于全球定价资源品，煤油铜三季度价格改善，油运弹性尤其突出。</li>
+              <li>柴油供需紧张被定义为结构性、长周期机会，方向明确但未给出具体个股与买点。</li>
+            </ul>
+            <div class="source">16发财油菜君 · 09-20 18:42 / 16:27，09-21 11:02 · <a href="https://xueqiu.com/4348548174/409955017" target="_blank" rel="noopener">景气判断</a> · <a href="https://xueqiu.com/4348548174/409946984" target="_blank" rel="noopener">柴油炼化研究</a></div>
+          </article>
+
+          <article class="view-item">
+            <h3>银行：工商银行为代表的高分红大行</h3>
+            <p>滇南王强调工商银行上市20年的累计分红能力，并以“强者恒强”概括，连带提及建设银行、农业银行。属于基本面偏多评价，未出现买入动作。</p>
+            <div class="source">滇南王 · 09-21 14:18 · <a href="https://xueqiu.com/2496980475/410042370" target="_blank" rel="noopener">查看原文</a></div>
+          </article>
+
+          <article class="view-item">
+            <h3>宁德时代</h3>
+            <p>实际信号来自伊夫圣洛朗的小额观察仓。雪月霜对宁德时代、碳酸锂和锂矿关系的表述带明显反讽且文本截断，不能据此追加为明确看多。</p>
+            <div class="source">伊夫圣洛朗 · 09-21 14:50 · <a href="https://xueqiu.com/1066188300/410048368" target="_blank" rel="noopener">买入原文</a></div>
+          </article>
+
+          <article class="view-item">
+            <h3>电解铝：基本面数据偏强，价格表现偏弱</h3>
+            <p>微博信息显示电解铝社会库存跌破70万吨、行业即时理论利润上升；但作者同时称“铝朋友真的不太硬”。因此只能归为基本面观察，不能视作买入推荐。</p>
+            <div class="source">挖地瓜的超级鹿鼎公 · 09-21 09:26 / 10:40 / 14:00 · <a href="https://weibo.com/3962719063/Rj669CDLX" target="_blank" rel="noopener">库存</a> · <a href="https://weibo.com/3962719063/Rj6AlEHj4" target="_blank" rel="noopener">价格感受</a> · <a href="https://weibo.com/3962719063/Rj7TphXou" target="_blank" rel="noopener">利润数据</a></div>
+          </article>
+        </div>
+
+        <div class="view-group bearish">
+          <h2>主要看空与谨慎方向</h2>
+
+          <article class="view-item">
+            <h3>科技板块：筹码与资金压力</h3>
+            <p>斯托伯的天空认为科技板块套牢盘较大、缺少增量资金，短期抬升困难；同时承认行情可能在不可预测的时点突然逆转。应归为短期谨慎，而非长期做空。</p>
+            <div class="source">斯托伯的天空 · 09-21 09:28 / 09:46 · <a href="https://xueqiu.com/9493911686/409983939" target="_blank" rel="noopener">市场原文</a> · <a href="https://xueqiu.com/9493911686/409989003" target="_blank" rel="noopener">讨论原文</a></div>
+          </article>
+
+          <article class="view-item">
+            <h3>地产股：行业见底不代表股票容易买</h3>
+            <p>雪月霜认为房地产整体“跌不动”，但部分企业仍会被淘汰；央企偏贵、便宜公司质量又差，因此明确表示地产股难选、暂时作罢。对地产股的态度明显弱于对核心城市房价的判断。</p>
+            <div class="source">雪月霜 · 09-21 14:17 · <a href="https://xueqiu.com/1505944393/410040229" target="_blank" rel="noopener">查看讨论</a></div>
+          </article>
+
+          <article class="view-item">
+            <h3>杭州新房：短期销售仍弱</h3>
+            <p>挖地瓜的超级鹿鼎公称近期杭州新房销售不佳，部分楼盘需要开启分销、依赖中介卖房。这与核心城市中长期供给逻辑并不矛盾，但提示当前销售尚未全面转强。</p>
+            <div class="source">挖地瓜的超级鹿鼎公 · 09-21 15:28 · <a href="https://weibo.com/3962719063/Rj8tile4f" target="_blank" rel="noopener">查看原文</a></div>
+          </article>
+
+          <article class="view-item">
+            <h3>原油期货与融资杠杆</h3>
+            <p>斯托伯的天空指出原油期货今年使不少投机者遭受损失，并反复强调融资的高风险。这里看空的是高杠杆交易方式与短期博弈，不等于看空石油股长期基本面。</p>
+            <div class="source">斯托伯的天空 · 09-21 08:12 / 11:06 · <a href="https://xueqiu.com/9493911686/409975904" target="_blank" rel="noopener">期货原文</a> · <a href="https://xueqiu.com/9493911686/409990907" target="_blank" rel="noopener">融资讨论</a></div>
+          </article>
+
+          <article class="view-item">
+            <h3>高位牛股与牛市情绪</h3>
+            <p>滇南王提醒牛市和牛股后期容易脱离价值，追高者可能高位站岗；市场一致认为“还会更好”时需警惕顶部。属于广义风险提示，不针对其列出的个股作直接看空。</p>
+            <div class="source">滇南王 · 09-20 22:05 / 22:01 · <a href="https://xueqiu.com/2496980475/409964859" target="_blank" rel="noopener">牛市风险</a> · <a href="https://xueqiu.com/2496980475/409964691" target="_blank" rel="noopener">周期风险</a></div>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h2>市场与行业判断</h2>
+        <table class="judgments">
+          <thead>
+            <tr><th>方向</th><th>结论强度</th><th>可执行含义</th><th>来源</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>核心城市房地产</td>
+              <td><span class="tag bull">中长期偏多</span></td>
+              <td>关注核心城市优质新房供需变化，但不直接映射为地产股普涨；今年难言反转，预期可能先行。</td>
+              <td>雪月霜</td>
+            </tr>
+            <tr>
+              <td>地产政策与融资</td>
+              <td><span class="tag bull">边际改善</span></td>
+              <td>政策由限制转向鼓励、可转债融资放开，对有背景的房企相对有利；文中提及保利、万科、绿地仅作关联标的。</td>
+              <td><a href="https://xueqiu.com/2496980475/410016355" target="_blank" rel="noopener">滇南王 11:19</a></td>
+            </tr>
+            <tr>
+              <td>资源与运输</td>
+              <td><span class="tag bull">景气偏多</span></td>
+              <td>煤、油、铜及油运受价格与海外通胀驱动，三季报预期较强；关注周期波动与追高风险。</td>
+              <td>16发财油菜君</td>
+            </tr>
+            <tr>
+              <td>科技</td>
+              <td><span class="tag risk">短期谨慎</span></td>
+              <td>筹码压力和资金不足限制短期表现，但反转时点不可预测，不宜简单外推为长期看空。</td>
+              <td>斯托伯的天空</td>
+            </tr>
+            <tr>
+              <td>美国AI与经济</td>
+              <td><span class="tag hold">信息冲突</span></td>
+              <td>同一作者同时转发AI支出下滑、Meta获上调评级、美国AI带动高增长等相反材料，不能认定为其单一方向观点。</td>
+              <td>但斌</td>
+            </tr>
+            <tr>
+              <td>白酒</td>
+              <td><span class="tag hold">分化观察</span></td>
+              <td>高端产品价格有涨有跌，新品小瓶化获正面评价；舍得历史业绩落差被用作警示，整体未形成明确行业推荐。</td>
+              <td>滇南王及资讯帖</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>仅讨论，不作为交易信号</h2>
+        <div class="discussion">
+          <div class="discussion-item">
+            <strong>紫金黄金、云铝、神火、中国海油目标价</strong>
+            斯托伯的天空紧接着说明“我乱说的”，属于戏谑表达，不能视为正式目标价或推荐。<br>
+            <span class="meta">09-21 09:20 · <a href="https://xueqiu.com/9493911686/409982520" target="_blank" rel="noopener">原文</a></span>
+          </div>
+          <div class="discussion-item">
+            <strong>宁德时代、碳酸锂与锂矿</strong>
+            雪月霜的文字含反讽且采集文本末尾截断，方向存在歧义；除伊夫圣洛朗的观察仓外，不追加交易结论。<br>
+            <span class="meta">09-21 14:21 / 14:26 · <a href="https://xueqiu.com/1505944393/410043828" target="_blank" rel="noopener">原文</a></span>
+          </div>
+          <div class="discussion-item">
+            <strong>Meta Muse目标价820美元</strong>
+            这是但斌转发的第三方投行观点，不等于其本人推荐或买入。<br>
+            <span class="meta">09-21 10:32 · <a href="https://xueqiu.com/1102105103/410005072" target="_blank" rel="noopener">原文</a></span>
+          </div>
+          <div class="discussion-item">
+            <strong>美的、海天、格力</strong>
+            滇南王肯定佛山制造业与企业实力，但没有出现估值、买点或仓位动作，归为公司质量讨论。<br>
+            <span class="meta">09-21 11:12 · <a href="https://xueqiu.com/2496980475/410014734" target="_blank" rel="noopener">原文</a></span>
+          </div>
+        </div>
+      </section>
+
+      <div class="note">
+        <strong>口径说明：</strong>“明确交易”仅指作者清楚说明已买入、卖出、加减仓或仓位变化；“观点看多/看空”要求存在清晰方向判断；转发、反讽、标题摘录、行情数据和仅列出股票代码均归为“仅讨论”。自动资讯账号内容不作为大V个人观点。本文是对指定采集文件的结构化摘要，不构成投资建议。
+      </div>
+    </main>
+
+    <footer>
+      数据源：20260921_162655_雪球JS评论加微博主贴_近24小时.txt · 生成日：2026年09月21日
+    </footer>
+  </div>
+</body>
+</html>
